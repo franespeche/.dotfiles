@@ -1,11 +1,10 @@
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                    Env Variables                        #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 MUSIC_BOT_DIRECTORY=~/voice/examples/music-bot
 CHROME_EXTENSION_DIRECTORY=/Users/franespeche/ecommerce-catalog
-DARK_MODE_SCRIPT_EXEC=~/.oh-my-zsh/custom/dark.sh
+DARK_MODE_SCRIPT_EXEC=~/.oh-my-zsh/custom/scripts/dark.sh
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                       Styling                           #
