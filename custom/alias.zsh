@@ -111,21 +111,15 @@ function py3install() {
 function ra() {
   msg "reload .zshrc"
   exec zsh
-# omz reload
-#  reload.zsh
-#  msg "reload .bash_profile"
-#  reload.term
 }
 
-# Terminal Navigation
+# navigation
 function changeDirectory() {
   msg "cd $1"
   cd "$1"
 }
 
 alias cds="changeDirectory ~/scaleapi/crawler-providers/"
-alias cde="changeDirectory ~/scraper-extractors/"
-alias cdt="changeDirectory ~/scaleapi/scraper-toolkit"
 alias cdx="changeDirectory ~/ecommerce-catalog"
 
 # Init
@@ -154,16 +148,6 @@ function gcob() {
 function gcmsg() {
   msg "git commit -m $1"
   git commit -m $1
-}
-
-function gcgs() {
-  msg "git checkout provider/generalScraper__$1"
-  git checkout provider/generalScraper__"$1"
-}
-
-function gcgsb() {
-  msg "git checkout -b provider/generalScraper__$1"
-  git checkout -b provider/generalScraper__"$1"
 }
 
 function gce() {
@@ -208,17 +192,13 @@ function gf() {
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#                       Sraping                           #
+#                       # # # #                           #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 function ys() {
-  pwd=`pwd`
   if [[ $pwd = $CHROME_EXTENSION_DIRECTORY ]]
   then
     msg "yarn start extension-toolkit (just frontend)"
     npm start serve:extension-toolkit
-  else
-    msg "yarn scrape"
-    yarn scrape
   fi
 }
