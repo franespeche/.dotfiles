@@ -8,13 +8,14 @@
 ```
 # scripts
 ```
+# path
 ~/.config/custom/scripts
 ```
-- screenshoot
-  python script that uploads a screenshot got from selected area and paste its url to clipboard
+  ## screenshoot:
+   python script that uploads a screenshot from a selected area and paste its url to clipboard
 
-- wm
-  simple bash chronometer
+  ## wm
+   simple bash chronometer
 
-- voice
-  discord bot found on the web with changes
+  ## voice
+   discord bot found on the web with changes
