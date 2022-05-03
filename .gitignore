@@ -15,3 +15,5 @@ zsh/.zcompdump-Scale C02FT2RHMD6P-5.8
 zsh/.zcompdump-Scale- C02FT2RHMD6P-5.8
 
 custom/scale_alias.zsh
+
+.gitignore
