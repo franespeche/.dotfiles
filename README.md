@@ -18,7 +18,7 @@ $ screenshoot
 
 
 $ wm
-# simple bash chronometer
+# simple chronometer
 # path: ~/.config/custom/scripts/wm
 
 
