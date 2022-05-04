@@ -21,17 +21,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # plugins
 plugins=(git vi-mode)
 
-
-
-# ! git
-# ! checking 02/05/22
-#
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# !check
+# omz
 source $ZSH/oh-my-zsh.sh
 
 autoload -Uz promptinit
@@ -41,6 +31,7 @@ promptinit
 # # # # # # # # # # # #
 #       default       #
 # # # # # # # # # # # #
+
 export PATH=$HOME/.local/bin:$PATH
 # pyenv init
 eval "$(pyenv init -)"
@@ -49,14 +40,17 @@ eval "$(pyenv init -)"
 # # # # # # # # # # # #
 #         nvm         #
 # # # # # # # # # # # #
+
 export NVM_DIR="$HOME/.nvm" # path
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+
 # # # # # # # # # # # #
 #       cursor        #
 # # # # # # # # # # # #
+
 cursor_mode() {
     # cursor shapes: https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html
     cursor_block='\e[2 q'
@@ -86,9 +80,11 @@ cursor_mode() {
 }
 cursor_mode
 
+
 # # # # # # # # # # # #
 #         vim         #
 # # # # # # # # # # # #
+
 # surroundings
 #
 # https://github.com/tpope/vim-surround
@@ -101,9 +97,11 @@ bindkey -M vicmd ds delete-surround
 bindkey -M vicmd ys add-surround
 bindkey -M visual S add-surround
 
+
 # # # # # # # # # # # #
 #       unused        #
 # # # # # # # # # # # #
+#
 # case-sensitive completion.
 # CASE_SENSITIVE="true"
 #
@@ -122,4 +120,4 @@ bindkey -M visual S add-surround
 #     bindkey -M $km $c select-bracketed
 #   done
 # done
-
+#

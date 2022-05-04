@@ -1,4 +1,4 @@
-# this file goes in root dir
+# ! this file goes in root dir
 
 # found at https://thevaluable.dev/zsh-install-configure-mouseless/
 # store config files at ~/.config
