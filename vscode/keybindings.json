@@ -1,0 +1,353 @@
+[
+    {
+        "key": "alt+cmd+v",
+        "command": "editor.emmet.action.balanceOut"
+    },
+    {
+        "key": "alt+cmd+b",
+        "command": "editor.emmet.action.balanceIn"
+    },
+    {
+        "key": "tab",
+        "command": "tab",
+        "when": "editorTextFocus && !editorTabMovesFocus"
+    },
+    {
+        "key": "shift+tab",
+        "command": "outdent",
+        "when": "editorTextFocus && !editorTabMovesFocus"
+    },
+    /* * * * * * * * * * * * * * * * * * *
+    *         CURRENT DIRECTORY          *
+    * * * * * * * * * * * * * * * * * * */
+    // {
+    //     "key": "cmd+shift+c",
+    //     "command": "workbench.action.terminal.newWithCwd",
+    //     "args": {
+    //       "cwd": "${fileDirname}"
+    //     }
+    // },
+      
+    /* * * * * * * * * * * * * * * * * * *
+    *             RIGHT KEY              *
+    * * * * * * * * * * * * * * * * * * */
+
+    // Focus Last Editor Group
+    {
+        "key": "shift+cmd+l",
+        "command": "workbench.action.focusSecondEditorGroup",
+        "when": "activeEditorGroupIndex == 1 && !activeEditorGroupLast"
+    },
+
+    // Hide SideBar 
+    {
+        "key": "shift+cmd+l",
+        "command": "workbench.action.closeSidebar",
+        "when": "activeEditorGroupLast"
+    },
+
+    // Focus First Editor Group
+    {
+        "key": "shift+cmd+l",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "sideBarFocus"
+    },
+
+    // Show SideBar
+    // {
+    //     "key": "shift+cmd+l",
+    //     "command": "workbench.action.focusSideBar",
+    //     "when": "activeEditorGroupLast"
+    // },
+
+    // Split edito group to left side, leaving the group to the right
+    {
+        "key": "shift+alt+cmd+l",
+        "command": "workbench.action.splitEditorToRightGroup"
+    },
+
+    /* * * * * * * * * * * * * * * * * * *
+    *             LEFT KEY               *
+    * * * * * * * * * * * * * * * * * * */
+
+    // Focus First Editor Group
+    {
+        "key": "shift+cmd+h",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "activeEditorGroupLast"
+    },
+
+    // Focus SideBar
+    {
+        "key": "shift+cmd+h",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "workbench.action.focusSideBar",
+                "workbench.action.focusSideBar"
+            ],
+        },
+        "when": "activeEditorGroupIndex == 1"
+    },
+
+    // Close SideBar
+    {
+        "key": "shift+cmd+h",
+        "command": "workbench.action.closeSidebar",
+        "when": "sideBarFocus"
+    },
+
+    // Split to Left Group
+    {
+        "key": "shift+alt+cmd+l",
+        "command": "workbench.action.splitEditorToLeftGroup"
+    },
+
+    /* * * * * * * * * * * * * * * * * * *
+    *             UP KEY                 *
+    * * * * * * * * * * * * * * * * * * */
+    
+    // Open Terminal without focusing on it
+    {
+        "key": "shift+cmd+k",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "workbench.action.togglePanel",
+                "workbench.action.focusActiveEditorGroup",
+                "workbench.action.focusActiveEditorGroup"
+            ]
+        },
+        "when": "editorTextFocus"
+    },
+    
+    // Focus Editor 
+    {
+        "key": "shift+cmd+k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "sideBarFocus || panelFocus"
+    },
+
+    /* * * * * * * * * * * * * * * * * * *
+    *             DOWN KEY               *
+    * * * * * * * * * * * * * * * * * * */
+    
+    // Focus panel
+    {
+        "key": "shift+cmd+j",
+        "command": "workbench.action.focusPanel"
+    },
+
+    // Close panel
+    {
+        "key": "shift+cmd+j",
+        "command": "workbench.action.togglePanel",
+        "when": "panelFocus"
+    },
+
+    // {
+    //     "key": "shift+cmd+j",
+    //     "command": "-workbench.action.search.toggleQueryDetails",
+    //     "when": "inSearchEditor || searchViewletFocus"
+    // },
+    {
+        "key": "cmd+0",
+        "command": "workbench.action.zoomReset"
+    },
+    {
+        "key": "cmd+numpad0",
+        "command": "-workbench.action.zoomReset"
+    },
+    {
+        "key": "shift+cmd+b",
+        "command": "editor.debug.action.toggleBreakpoint",
+        "when": "debuggersAvailable && editorTextFocus"
+    },
+    {
+        "key": "f9",
+        "command": "-editor.debug.action.toggleBreakpoint",
+        "when": "debuggersAvailable && editorTextFocus"
+    },
+    {
+        "key": "shift+cmd+7",
+        "command": "workbench.action.debug.start",
+        "when": "debuggersAvailable && debugState == 'inactive'"
+    },
+    {
+        "key": "shift+cmd+7",
+        "command": "workbench.action.debug.continue",
+        "when": "debuggersAvailable && debugState == 'active'"
+    },
+    {
+        "key": "shift+cmd+8",
+        "command": "workbench.action.debug.stepOver",
+        "when": "debugState == 'stopped'"
+    },
+    {
+        "key": "shift+cmd+8",
+        "command": "-numberedBookmarks.toggleBookmark8",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+cmd+9",
+        "command": "-numberedBookmarks.toggleBookmark9",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+cmd+9",
+        "command": "workbench.action.debug.stepInto",
+        "when": "debugState != 'inactive'"
+    },
+    {
+        "key": "shift+cmd+7",
+        "command": "-numberedBookmarks.toggleBookmark7",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+f5",
+        "command": "-workbench.action.debug.stop",
+        "when": "inDebugMode && !focusedSessionIsAttach"
+    },
+    {
+        "key": "shift+alt+cmd+0",
+        "command": "workbench.action.debug.stop"
+    },
+    {
+        "key": "shift+cmd+0",
+        "command": "workbench.action.debug.stepOut",
+        "when": "debugState == 'stopped'"
+    },
+    {
+        "key": "shift+alt+cmd+6",
+        "command": "workbench.debug.viewlet.action.disableAllBreakpoints"
+    },
+    {
+        "key": "shift+alt+cmd+6",
+        "command": "workbench.debug.viewlet.action.enableAllBreakpoints"
+    },
+    {
+        "key": "ctrl+0",
+        "command": "-workbench.action.lastEditorInGroup"
+    },
+    {
+        "key": "cmd+j",
+        "command": "-workbench.action.togglePanel"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.terminal.scrollDown",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "alt+cmd+pagedown",
+        "command": "-workbench.action.terminal.scrollDown",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "shift+alt+j",
+        "command": "workbench.action.terminal.scrollDownPage",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "pagedown",
+        "command": "-workbench.action.terminal.scrollDownPage",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.terminal.scrollUp",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "alt+cmd+pageup",
+        "command": "-workbench.action.terminal.scrollUp",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "shift+alt+k",
+        "command": "workbench.action.terminal.scrollUpPage",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "pageup",
+        "command": "-workbench.action.terminal.scrollUpPage",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    // Open link
+    {
+        "key": "cmd+o",
+        "command": "editor.action.openLink",
+        "when": "!sideBarFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "-extension.vim_ctrl+k",
+        "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "-deleteAllRight",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+cmd+n",
+        "command": "extension.advancedNewFile"
+    },
+    {
+        "key": "alt+cmd+n",
+        "command": "-extension.advancedNewFile"
+    },
+    {
+        "key": "shift+cmd+h",
+        "command": "-workbench.action.replaceInFiles"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "-mssql.runQuery",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "-workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "shift+alt+cmd+e",
+        "command": "workbench.action.files.revert"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "workbench.view.explorer"
+    },
+    {
+        "key": "shift+cmd+c",
+        "command": "-mssql.connect",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    // Cycle through suggestions
+    {
+        "key": "shift+cmd+k",
+        "command": "selectPrevSuggestion", 
+        "when": "suggestWidgetVisible || findWidgetVisible || parameterHintsVisible || quickFixWidgetVisible"
+    },
+    {
+        "key": "shift+cmd+j",
+        "command": "selectNextSuggestion", 
+        "when": "suggestWidgetVisible || findWidgetVisible || parameterHintsVisible || quickFixWidgetVisible"
+    },
+//     {
+//         "key": "shift+cmd+k",
+//         "command": "next", 
+//         "when": "focusedView == workbench.view.search"
+//    },
+    {
+        "key": "shift+cmd+[",
+        "command": "workbench.action.previousPanelView", 
+        "when": "panelFocus"
+    },
+    {
+        "key": "shift+cmd+]",
+        "command": "workbench.action.nextPanelView", 
+        "when": "panelFocus"
+    },
+]
