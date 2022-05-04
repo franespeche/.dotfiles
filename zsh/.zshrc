@@ -31,6 +31,7 @@ promptinit
 # # # # # # # # # # # #
 #       default       #
 # # # # # # # # # # # #
+
 export PATH=$HOME/.local/bin:$PATH
 # pyenv init
 eval "$(pyenv init -)"
