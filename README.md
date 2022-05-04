@@ -22,7 +22,7 @@ $ wm
 # path: ~/.config/custom/scripts/wm
 
 
-$ voice
+$ bot start
 # discord bot found on the web with changes
 # path: ~/.config/custom/scripts/voice
 
