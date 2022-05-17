@@ -57,17 +57,15 @@ function setItermProfile(){
 
 # toggle dark mode
 function dark() {
-  ## check current mode and set oposite mode
-   if [[ $(defaults read -g AppleInterfaceStyle) == 'Dark' ]]; then
-     setItermProfile light &&
-       msg "switched to light mode"
+  # check current mode and set to opposite
+  if [[ $(defaults read -g AppleInterfaceStyle) == 'Dark' ]]; then
+    setItermProfile light &&
+    msg "switched to light mode" &&
    else
-     setItermProfile dark &&
-       msg "switched to dark mode"
+    setItermProfile dark &&
+    msg "switched to dark mode" &&
    fi
-  osascript -e \
-  'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
-
+  # change os mode
   $DARK_MODE_SCRIPT_EXEC
 }
 
