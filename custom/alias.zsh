@@ -1,3 +1,4 @@
+#!/bin/zsh
 # $COLUMNS = n of columns in terminal
 # pwd=$(echo "${PWD/$HOME/}" | wc -c)
 # branch=$(git branch --show-current | wc -c)
@@ -31,7 +32,7 @@ white='\033[0;37m'
 WHITE='\033[1;37m'
 blue='\033[0;34m'
 BLUE='\033[1;34m'
-cyan='\033[0;36m'
+local cyan='\033[0;36m'
 CYAN='\033[1;36m'
 NC='\033[0m'
 
@@ -58,12 +59,16 @@ function setItermProfile(){
 # toggle dark mode
 function dark() {
   # check current mode and set to opposite
+  # prevent stdout and stderr
+
   if [[ $(defaults read -g AppleInterfaceStyle) == 'Dark' ]]; then
     setItermProfile light &&
     msg "switched to light mode" &&
+    -
    else
     setItermProfile dark &&
     msg "switched to dark mode" &&
+    -
    fi
   # change os mode
   $DARK_MODE_SCRIPT_EXEC
@@ -103,8 +108,7 @@ function py3install() {
 function ra() {
   msg "reload .zshrc"
   omz reload
-  # reload.zsh="source ~/.zshrc"
-  # reload.term="source ~/.bash_profile && source ~/.zshrc"
+  source $ZSH_CUSTOM/scale_alias.zsh
 }
 
 # cd
@@ -140,6 +144,7 @@ alias c=clear
 alias ll='ls -la'
 alias ls='exa --icons --tree --level 1'
 alias va='vim $ZSH_CUSTOM/alias.zsh'
+alias vs='vim $ZSH_CUSTOM/.scale.env'
 alias vg='vim ~/.oh-my-zsh/plugins/git/git.plugin.zsh'
 alias vo='vim ~/.oh-my-zsh/oh-my-zsh.sh'
 alias vz='vim ~/.zshrc'
@@ -161,14 +166,21 @@ function grs() {
   echo $stagedFiles |
     while read x; do
       i=$[$i + 1]
-      dict[$i]=$x
-
       echo "  $i. $x"
+      dict[$i]=$x
     done
-    #
+
+ i=$[$i + 1]
+ dict[$i]="exit"
+ echo "  $i. exit"
+
   #prompt
   read -s file
   echo
+
+  if [[ ${dict[$file]} == "exit" ]] then
+    return
+  fi
 
   { #try
       git restore --staged ${dict[$file]} &&
@@ -202,6 +214,14 @@ function gcmsg() {
 function gce() {
   msg "git commit --allow-empty -m \"$1\""
   git commit --allow-empty -m "$1"
+}
+
+function gri() {
+  if [[ $# == 0 ]]; then
+    exit 1
+  fi
+  msg "git rebase -i HEAD~\"$1\""
+  git rebase -i HEAD~"$1"
 }
 
 function glom() {
@@ -254,5 +274,6 @@ function gf() {
   msg "git fetch"
   git fetch
 }
+alias t="lazygit"
 
 alias glol='git log --graph --oneline --decorate'
