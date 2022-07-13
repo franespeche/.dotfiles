@@ -2,6 +2,7 @@ if exists('g:loaded_bufstop')
   finish
 endif
 
+
 let g:loaded_bufstop = 1
 
 let s:name = "--Bufstop--"

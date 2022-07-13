@@ -16,6 +16,10 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 
+" NERDTree
+" Plug 'preservim/nerdtree'
+" Plug 'ryanoasis/vim-devicons'
+
 " git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -39,11 +43,14 @@ call plug#end()
 
 " source ~/.config/nvim/diff.vim
 source ~/.config/nvim/settings.vim
+" source ~/.config/nvim/NERDTree.vim
 source ~/.config/nvim/coc.vim
 source ~/.config/nvim/mappings.vim
 source ~/.config/nvim/plugs.vim
 source ~/.config/nvim/theme.vim
 source ~/.config/nvim/lightline.vim
 source ~/.config/nvim/fzf.vim
+source ~/.config/nvim/coc-explorer.vim
+" source ~/.config/nvim/project.vim
 "source ~/.config/nvim/.vim
 

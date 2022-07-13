@@ -13,6 +13,7 @@ MUSIC_BOT_DIRECTORY=$CUSTOM_SCRIPTS/voice/examples/music-bot
 CHROME_EXTENSION_DIRECTORY=/Users/franespeche/ecommerce-catalog
 DARK_MODE_SCRIPT_EXEC=$CUSTOM_SCRIPTS/dark.sh
 ZSHC=$ZSH_CUSTOM
+NVIM=$HOME/.config/nvim/
 
 # # # # # # # # # # # #
 #       styles        #

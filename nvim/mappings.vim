@@ -1,19 +1,42 @@
 map Y yy
 
+" source vim
+noremap <silent> <leader>rr :source ~/.config/nvim/init.vim<cr>
+
 " motion
 noremap H ^
 noremap L $
 nmap ! :!
 map <leader>ww :wincmd w<cr>
 
-" splits navigation
+" splits,navigation
 noremap <C-h> :wincmd h<cr>
 noremap <C-j> :wincmd j<cr>
 noremap <C-k> :wincmd k<cr>
 noremap <C-l> :wincmd l<cr>
 
+" NERDTree
+" nnoremap <leader>n :NERDTreeFocus<CR>
+" nnoremap <leader>n :NERDTree<CR>
+" nnoremap <leader>nn :NERDTreeToggle<CR>
+" nnoremap <leader>nf :NERDTreeFind<CR>
+
+" coc-explorer 
+"
+" open explorer
+nmap <leader>ee :CocCommand explorer<cr>
+" reveal to current buffer for closest coc-explorer
+nmap <Leader>er :call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
+" use preset argument to open it
+nmap <space>ed :CocCommand explorer --preset .vim<CR>
+nmap <space>ef :CocCommand explorer --preset floating<CR>
+nmap <space>ec :CocCommand explorer --preset cocConfig<CR>
+nmap <space>eb :CocCommand explorer --preset buffer<CR>
+" list presets
+nmap <space>el :CocList explPresets<CR>
+
 " splits resizing
-noremap <silent> <C-<> :vertical resize -3<cr>
+noremap <silent> <C-<>r:vertical resize -3<cr>
 noremap <silent> <C->> :vertical resize +3<cr>
 noremap <silent> <leader>f :wincmd _<cr>
 noremap <silent> <leader>F :wincmd =<cr>
@@ -26,16 +49,10 @@ map <leader>tk <C-w>t<C-w>K
 map <C-y> <C-y>k
 map <C-e> <C-e>j
 
-" map <leader>ww :wincmd w<cr>
-" map <leader>wh :wincmd h<cr>
-" map <leader>wj :wincmd j<cr>
-" map <leader>wk :wincmd k<cr>
-" map <leader>wl :wincmd l<cr>
-
 " buffers
 nmap <leader>md :b#<cr>                         " Previous buffer
 nmap <leader>wd :bd<cr>                         " delete buffer
-nmap <leader>wD :!rm %<cr>:bd!<cr>              " delete buffer and file
+nmap <leader>D :!rm %<cr>:bd!<cr>              " delete buffer and file
 "
 " Copy current file path to registers \"* and \"+
 nmap <leader>cp :let @*=@%<cr>:let @+=@%<cr>

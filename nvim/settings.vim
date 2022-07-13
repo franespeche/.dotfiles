@@ -1,5 +1,7 @@
 let g:mapleader = ","
 
+set encoding=UTF-8
+
 set cmdheight=2										" cmd height
 
 set shortmess+=c									" dont pass messages to |ins-completion-menu|

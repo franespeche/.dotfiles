@@ -15,9 +15,9 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 command! -nargs=* -bang RgFzf call RipgrepFzf(<q-args>, <bang>1)
 
-nnoremap <leader>ms :<C-u>Files<cr>
-nnoremap <leader>mb :Buffers<cr>
-nnoremap <leader>mr :Files <C-R>=expand('%:h')<CR><CR>
+nnoremap <leader>ff :<C-u>Files<cr>
+nnoremap <leader>fb :Buffers<cr>
+nnoremap <leader>fF :Files <C-R>=expand('%:h')<CR><CR>
 nnoremap <leader>a :RgFzf<cr>
 nnoremap <leader>za mA:RgFzf <C-r>=expand("<cword>")<cr><cr>
 nnoremap <leader>zr mA:Rg <C-r>=expand("<cword>")<cr><space>
