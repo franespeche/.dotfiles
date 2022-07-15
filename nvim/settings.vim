@@ -2,7 +2,7 @@ let g:mapleader = ","
 
 set mouse=a												" enable mouse scroll
 
-set encoding=UTF-8
+set encoding=UTF-8								" encoding
 
 set cmdheight=2										" cmd height
 
@@ -43,21 +43,9 @@ highlight Comment cterm=italic  	" italic comments
 set noswapfile
 
 set fillchars=fold:/,diff:⣿
-
 " set fillchars+=vert:\
-
-
-" Tabs and indenting
-"set expandtab
-"set tabstop=2
-"set softtabstop=2
-"set shiftwidth=2
-"set shiftround
-"set smartindent
 
 set gdefault											" s///g default
 
 set splitbelow										" open split lanes to right and bottom
 set splitright
-" save edit position
-"autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
