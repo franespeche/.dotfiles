@@ -1,3 +1,4 @@
+" plugins
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'machakann/vim-sandwich'											" wrap words with specified character
 Plug 'rakr/vim-one'
@@ -25,7 +26,7 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}" terminal
 " Plug 'stefandtw/quickfix-reflector.vim'
 call plug#end()
 
-
+" configs
 source ~/.config/nvim/coc-explorer.vim
 source ~/.config/nvim/settings.vim
 source ~/.config/nvim/coc.vim

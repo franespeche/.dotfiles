@@ -1,8 +1,13 @@
 " source vim
-noremap <silent> <leader>rr :source %<cr>
+noremap <silent> <leader>rr :so %<cr>
+
 " change background
 noremap <silent> <leader>bd :set background=dark<cr>
 noremap <silent> <leader>bl :set background=light<cr>
+
+" cd cwd
+" # see :help expand
+noremap  <leader>cd :cd %:h<cr> :pwd<cr>
 
 " motion
 noremap H ^
@@ -17,19 +22,21 @@ noremap <silent> <C-h> :wincmd h<cr>
 noremap <silent> <C-j> :wincmd j<cr>
 noremap <silent> <C-k> :wincmd k<cr>
 "	      resizing
-noremap <silent> <space>sb :wincmd _<cr>
-noremap <silent> <space>sn :wincmd =<cr>
+noremap <silent> <leader>wb :wincmd _<cr>
+noremap <silent> <leader>wn :wincmd =<cr>
 noremap <silent> <silent> <C-<> :vertical resize -3<cr>
 noremap <silent> <silent> <C->> :vertical resize +3<cr>
 "       rotate
-noremap <silent> <leader>wr :wincmd r<cr>
+noremap <silent> <leader>ws :wincmd r<cr>
+noremap <silent> <leader>wh :wincmd H<cr>
+noremap <silent> <leader>wv :wincmd J<cr>
 "				swap
 noremap <silent> <leader>mw :call MarkWindowSwap()<CR>
 noremap <silent> <leader>sp :call DoWindowSwap()<CR>
+"				fullscreen
+nnoremap <silent> <leader>zo :ZoomToggle<CR>
 
 " explorer
-" reveal to current buffer for closest coc-explorer
-" nmap <leader>er :call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
 nmap <space>en :CocCommand explorer --preset nvim<CR>
 nmap <space>ef :CocCommand explorer --preset floating<CR>
 nmap <space>eb :CocCommand explorer --preset buffer<CR>
@@ -47,30 +54,33 @@ noremap <silent> <space>t3 gt3<cr>
 noremap <silent> <space>t4 gt4<cr>
 noremap <silent> <space>t5 gt5<cr>
 
+" scroll fast
+map <C-k> 3<C-y>2k
+map <C-j> 3<C-e>2j
+" scroll window
 map <C-y> <C-y>k
 map <C-e> <C-e>j
 
 " buffers
 " nmap <space>nn :b#<cr>
-nmap <space>nn :bn<cr>
-nmap <leader>wd :bd<cr>
-" nmap <leader>D :!rm %<cr>:bd!<cr>
+nmap <leader>bp :bp<cr>
+nmap <leader>bn :bn<cr>
+nmap <leader>bd :bd!<cr>
 
 " substitute
 nmap <leader>ss :%s/\v
 " substitute word
 nmap <leader>sw :%s#<C-r>=expand("<cword>")<cr>#
 
-" dehighlight find result
+" dehighlight find results
 nmap <silent> <esc><esc> :noh<cr>
 " find cword
-nmap <leader>fw /<C-r>=expand("<cword>")<cr>
+nmap <leader>fw /<C-r>=expand("<cword>")<cr><cr>
 
-
-" show fixes
-nmap <leader>f <Plug>(coc-codeaction)
+" show hints
+nmap <space>ch <Plug>(coc-codeaction)
 " quick fix
-nmap <leader>qf <Plug>(coc-fix-current)
+nmap <space>qf <Plug>(coc-fix-current)
 
 " restart ts-server
 nmap <silent> <space>tr :CocCommand tsserver.restart<cr>
