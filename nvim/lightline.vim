@@ -1,12 +1,19 @@
 let g:lightline = {
       \   'colorscheme': 'one',
+			\   'subseparator': {
+			\			'left': '|',
+			\		},
       \   'active': {
       \     'left': [
-      \       [ 'mode', 'paste' ],
+      \       [ 'mode', 'paste'],
       \       [ 'coc_errors', 'coc_warnings', 'coc_ok' ],
-      \       [ 'coc_status' ],
-      \       [ 'gitbranch', 'readonly', 'absolutepath', 'modified' ]
-      \     ]
+      \       [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+      \     ],
+      \     'right': [
+      \       [ 'lineinfo' ],
+      \       [ 'percent'  ],
+      \       [ 'absolutepath' ],
+      \     ],
       \   },
       \   'component_function': {
       \     'gitbranch': 'FugitiveHead'
@@ -25,6 +32,8 @@ let g:lightline = {
       \     't': 'T',
       \   }
       \ }
+
+set noshowmode										" do not show -- INSERT -- when on insert mode
 
 " register compoments:
 call lightline#coc#register()

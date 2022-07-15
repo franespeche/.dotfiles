@@ -1,5 +1,7 @@
 let g:mapleader = ","
 
+set mouse=a												" enable mouse scroll
+
 set encoding=UTF-8
 
 set cmdheight=2										" cmd height
@@ -17,7 +19,7 @@ set clipboard=unnamedplus 				" use all clipboards
 set undolevels=2000     					" numbers of undo
 set undofile            					" persist undo
 
-set hidden												" better multiple hidden buffers
+set hidden												" don't prompt for save when leaving an unsaved buffer
 
 set wildmode=list:full						" autocomplete first occurence
 set wildignore=.git,.hg,*.o,*.a,*.class,*.jar,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo,**/cache/*,**/logs/*,**/target/*,*.hi,tags,**/dist/*,**/public/**/vendor/**,**/public/vendor/**,**/node_modules/**

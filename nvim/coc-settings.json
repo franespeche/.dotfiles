@@ -14,29 +14,25 @@
 	"codeLens.enable": false,
 "explorer.keyMappings.global": {
     "i": false, // cancel default mapkey
-    "<c-o>": "noop",
-
     "*": "toggleSelection",
     "<tab>": "actionMenu",
-
     "gk": ["wait", "expandablePrev"],
     "gj": ["wait", "expandableNext"],
     "h": ["wait", "collapse"],
     "l": ["wait", "expandable?", "expand", "open"],
     "J": ["wait", "toggleSelection", "normal:j"],
     "K": ["wait", "toggleSelection", "normal:k"],
-    "gl": ["wait", "expand:recursive"],
-    "gh": ["wait", "collapse:recursive"],
+    "el": ["wait", "expand:recursive"],
+    "eh": ["wait", "collapse:recursive"],
     "<2-LeftMouse>": [
       "expandable?",
       ["expanded?", "collapse", "expand"],
       "open"
     ],
-    "o": ["wait", "expanded?", "collapse", "expand"],
     "<cr>": ["wait", "expandable?", "cd", "open"],
     "e": "open",
-    "s": "open:split",
-    "E": "open:vsplit",
+    "o": "open:split",
+    "O": "open:vsplit",
     "t": "open:tab",
     "<bs>": ["wait", "gotoParent"],
     "gs": ["wait", "reveal:select"],
@@ -90,7 +86,5 @@
 
     "[c": ["wait", "markPrev:git"],
     "]c": ["wait", "markNext:git"],
-    "<<": "gitStage",
-    ">>": "gitUnstage"
   }
 }

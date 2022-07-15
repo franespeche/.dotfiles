@@ -54,6 +54,7 @@ function msg() {
 
 # change iterm profile
 function setItermProfile(){
+	export ITERM_PROFILE="$1"
   echo -e "\033]50;SetProfile=$1\a"
 }
 
@@ -275,6 +276,6 @@ function gf() {
   msg "git fetch"
   git fetch
 }
-alias t="lazygit"
+alias lg="lazygit"
 
 alias glol='git log --graph --oneline --decorate'
