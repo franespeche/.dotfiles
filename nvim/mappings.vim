@@ -54,9 +54,6 @@ noremap <silent> <space>t3 gt3<cr>
 noremap <silent> <space>t4 gt4<cr>
 noremap <silent> <space>t5 gt5<cr>
 
-" scroll fast
-map <C-k> 3<C-y>2k
-map <C-j> 3<C-e>2j
 " scroll window
 map <C-y> <C-y>k
 map <C-e> <C-e>j

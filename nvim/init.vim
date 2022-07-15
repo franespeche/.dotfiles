@@ -1,13 +1,13 @@
 " plugins
 call plug#begin(stdpath('data') . '/plugged')
-Plug 'machakann/vim-sandwich'											" wrap words with specified character
-Plug 'rakr/vim-one'
+Plug 'machakann/vim-sandwich'											" wrap words with a given character
+Plug 'rakr/vim-one'																" colorscheme
+Plug 'itchyny/lightline.vim'											" statusline
 Plug 'tpope/vim-commentary'												" comment text
 Plug 'kdheepak/lazygit.nvim'											" git console
 Plug 'danro/rename.vim'														" :rename[!] {newname}
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'itchyny/lightline.vim'											" statusline
+Plug 'junegunn/fzf'																" fuzzy finder (dependency)
+Plug 'junegunn/fzf.vim'                           " fuzzy finder
 Plug 'josa42/vim-lightline-coc'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'antoinemadec/coc-fzf'
