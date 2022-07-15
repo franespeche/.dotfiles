@@ -13,15 +13,15 @@ noremap  <leader>cd :cd %:h<cr> :pwd<cr>
 noremap H ^
 noremap L $
 
-" splits creation
+" splits create
 noremap <silent> <leader>l :vsp<cr>
 noremap <silent> <leader>j :sp<cr>
-" 	     navigation
+" 	     navigate
 noremap <silent> <C-l> :wincmd l<cr>
 noremap <silent> <C-h> :wincmd h<cr>
 noremap <silent> <C-j> :wincmd j<cr>
 noremap <silent> <C-k> :wincmd k<cr>
-"	      resizing
+"	      resize
 noremap <silent> <leader>wb :wincmd _<cr>
 noremap <silent> <leader>wn :wincmd =<cr>
 noremap <silent> <silent> <C-<> :vertical resize -3<cr>
@@ -42,8 +42,6 @@ nmap <space>ef :CocCommand explorer --preset floating<CR>
 nmap <space>eb :CocCommand explorer --preset buffer<CR>
 nmap <space>es :CocCommand explorer --preset scale<CR>
 nmap <space>el :CocList explPresets<CR>
-nmap <space>ts4 :set tabstop=4 | :set softtabstop=4 noexpandtab | set shiftwidth=4
-nmap <space>ts2 :set tabstop=2 | :set softtabstop=2 noexpandtab | set shiftwidth=2
 
 " tabs
 noremap <silent> <space>tp :tabprev<cr>
