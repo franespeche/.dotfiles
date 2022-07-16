@@ -5,6 +5,9 @@ noremap <silent> <leader>rr :so %<cr>
 noremap <silent> <leader>bd :set background=dark<cr>
 noremap <silent> <leader>bl :set background=light<cr>
 
+" toggle dark mode
+noremap <silent> <leader>im :ToggleDarkMode()<cr>
+
 " cd cwd
 " # see :help expand
 noremap  <leader>cd :cd %:h<cr> :pwd<cr>

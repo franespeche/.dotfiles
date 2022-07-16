@@ -20,5 +20,5 @@ function! DoWindowSwap()
     exe 'hide buf' markedBuf
 endfunction
 
-nmap <silent> <space>wm :call MarkWindowSwap()<CR>
-nmap <silent> <space>wp :call DoWindowSwap()<CR>
+" nmap <silent> <space>wm :call MarkWindowSwap()<CR>
+" nmap <silent> <space>wp :call DoWindowSwap()<CR>

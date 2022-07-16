@@ -18,7 +18,8 @@ Plug 'maxmellon/vim-jsx-pretty'										" jsx support
 Plug 'tpope/vim-vinegar'													" simpler netrw
 Plug 'chiel92/vim-autoformat'											" format text
 Plug 'wellle/targets.vim'													" change words between delimiters
-Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}" terminal
+Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}  " terminal
+Plug 'voldikss/vim-floaterm'
 " Plug 'stefandtw/quickfix-reflector.vim'
 " Plug 'danro/rename.vim'														" :rename[!] {newname}
 " Plug 'tpope/vim-fugitive'
