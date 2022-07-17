@@ -2,8 +2,19 @@
 #         zsh         #
 # # # # # # # # # # # #
 
+if [[ `uname` == 'Linux' ]]; then
+	source $XDG_CONFIG_HOME/zsh/.aliases.lnx
+	# keyboard speed
+	set r rate 200 50
+fi
+
 # source zsh files
-for zsh_file (~/.config/zsh/*.zsh) source $zsh_file
+# for zsh_file (~/.config/zsh/*.zsh) source $zsh_file
+#
+source $ZDOTDIR/.aliases
+
+[ -f $XDG_CONFIG_HOME/.env ] && source $XDG_CONFIG_HOME
+
 
 # source private cfg
 source ~/.zshrc.local
