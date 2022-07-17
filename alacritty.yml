@@ -1,12 +1,41 @@
-selection:
-  save_to_clipboard: true
-
 cursor:
   unfocused_hollow: true
   style: Beam
 
 shell:
   program: /bin/zsh
+
+env:
+  WINIT_X11_SCALE_FACTOR: "1.0"
+
+window:
+  dimensions:
+    columns: 0
+    lines: 0
+  decorations: full
+  startup_mode: Fullscreen
+scrolling:
+  history: 10000
+  multiplier: 1
+font:
+  normal:
+    family: Iosevka Nerd Font
+  bold:
+    family: Iosevka Nerd Font
+  italic:
+    family: Iosevka Nerd Font
+  size: 16
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: -1
+  use_thin_strokes: true
+
+draw_bold_text_with_bright_colors: false
 
 schemes:
 one_light: &light
@@ -46,6 +75,5 @@ one-dark: &dark
     blue:       '#61afef'
     magenta:    '#c678dd'
     cyan:       '#56b6c2'
-    white:      '#828997' # mono-2
 
 colors: *dark

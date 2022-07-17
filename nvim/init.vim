@@ -30,7 +30,6 @@ source ~/.config/nvim/coc-explorer.vim
 source ~/.config/nvim/settings.vim
 source ~/.config/nvim/coc.vim
 source ~/.config/nvim/mappings.vim
-source ~/.config/nvim/scale.vim
 source ~/.config/nvim/plugs.vim
 source ~/.config/nvim/theme.vim
 source ~/.config/nvim/lightline.vim

@@ -46,7 +46,6 @@ noremap <silent> <leader>tt :FloatermNew<cr>
 nmap <space>en :CocCommand explorer --preset nvim<CR>
 nmap <space>ef :CocCommand explorer --preset floating<CR>
 nmap <space>eb :CocCommand explorer --preset buffer<CR>
-nmap <space>es :CocCommand explorer --preset scale<CR>
 nmap <space>el :CocList explPresets<CR>
 
 " tabs

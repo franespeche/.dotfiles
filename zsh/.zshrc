@@ -2,24 +2,56 @@
 #         zsh         #
 # # # # # # # # # # # #
 
+# source plugins
+if [ -d $ZDOTDIR/plugins/ ]; then
+	# exit if empty
+	if [ -z "$(ls $ZDOTDIR/plugins/)" ]; then
+		echo "No files in $ZDOTDIR/plugins/"
+			return
+	fi
+
+	for file ($ZDOTDIR/plugins/*(D)); do
+	if [[ $1 == "-v" ]]; then
+		# verbose
+		echo "sourcing $file"
+	fi
+	source $file
+	done
+fi
+
+# source .zsh files
+for zsh_file ($ZDOTDIR/*.zsh(D)); do
+	if [[ $1 == "-v" ]]; then
+		# verbose
+		echo "sourcing $zsh_file"
+	fi
+	source $zsh_file
+	unset zsh_file
+done
+
+# linux only
 if [[ `uname` == 'Linux' ]]; then
-	for lnx_file ($ZDOTDIR/*.lnx(D)) source $lnx_file
-	# keyboard speed
+	# source .zsh files
+	for zsh_linux_file ($ZDOTDIR/linux/*.zsh(D)); do
+		if [[ $1 == "-v" ]]; then
+			# verbose
+			echo "sourcing $zsh_linux_file"
+		fi
+		source $zsh_linux_file
+	done
+	unset zsh_linux_file
+
+	# set keyboard speed
 	set r rate 200 50
 fi
 
+# fzf show hidden files
+export FZF_DEFAULT_COMMAND="find -L"
 
-# source zsh files
-# for zsh_file (~/.config/zsh/*.zsh) source $zsh_file
-#
-source $ZDOTDIR/.aliases
+# source alias
 
-
-# source private cfg
-# source ~/.zshrc.local
-
-# theme
-ZSH_THEME="frean"
+# source local cfg
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -37,16 +69,13 @@ plugins=(git vi-mode)
 autoload -Uz promptinit
 promptinit
 
-# use .. instead of cd ..
-setopt auto_cd
-
-# # # # # # # # # # # #
-#       default       #
-# # # # # # # # # # # #
-
 export PATH=$HOME/.local/bin:$PATH
+
 # pyenv init
 eval "$(pyenv init -)"
+
+# use .. instead of cd ..
+setopt auto_cd
 
 # # # # # # # # # # # #
 #         nvm         #
@@ -56,39 +85,6 @@ export NVM_DIR="$HOME/.nvm" # path
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-# # # # # # # # # # # #
-#       cursor        #
-# # # # # # # # # # # #
-
-cursor_mode() {
-    # cursor shapes: https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html
-    cursor_block='\e[2 q'
-    cursor_beam='\e[6 q'
-
-    function zle-keymap-select {
-        if [[ ${KEYMAP} == vicmd ]] ||
-            [[ $1 = 'block' ]]; then
-            echo -ne $cursor_block
-        elif [[ ${KEYMAP} == main ]] ||
-            [[ ${KEYMAP} == viins ]] ||
-            [[ ${KEYMAP} = '' ]] ||
-            [[ $1 = 'beam' ]]; then
-            echo -ne $cursor_beam
-        fi
-    }
-
-    zle-line-init() {
-        echo -ne $cursor_beam
-    }
-
-    zle -N zle-keymap-select
-    zle -N zle-line-init
-
-    # makes changing btwn modes faster
-    export KEYTIMEOUT=1
-}
-cursor_mode
 
 
 # # # # # # # # # # # #

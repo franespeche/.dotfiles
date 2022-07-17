@@ -1,5 +1,4 @@
 function ps() {
-	echo "b4"
 	msg "sudo pacman -S $1"
 	sudo pacman -S $1
 }

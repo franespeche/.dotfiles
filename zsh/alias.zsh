@@ -3,39 +3,17 @@
 # pwd=$(echo "${PWD/$HOME/}" | wc -c)
 # branch=$(git branch --show-current | wc -c)
 
-
 # # # # # # # # # # # #
 #         env         #
 # # # # # # # # # # # #
 
-CUSTOM_SCRIPTS=$ZSH_CUSTOM/scripts
+CUSTOM_SCRIPTS=$ZDOTDIR/custom/scripts
 MUSIC_BOT_DIRECTORY=$CUSTOM_SCRIPTS/voice/examples/music-bot
 CHROME_EXTENSION_DIRECTORY=/Users/franespeche/ecommerce-catalog
 DARK_MODE_SCRIPT_EXEC=$CUSTOM_SCRIPTS/dark.sh
-ZSHC=$ZSH_CUSTOM
-NVIM=$HOME/.config/nvim/
+ZSHC=$ZDOTDIR
+NVIM=$XDG_CONFIG_HOME/nvim/
 
-# # # # # # # # # # # #
-#       styles        #
-# # # # # # # # # # # #
-
-# color mapping
-grey='\033[1;30m'
-red='\033[0;31m'
-RED='\033[1;31m'
-green='\033[0;32m'
-GREEN='\033[1;32m'
-yellow='\033[0;33m'
-YELLOW='\033[1;33m'
-purple='\033[0;35m'
-PURPLE='\033[1;35m'
-white='\033[0;37m'
-WHITE='\033[1;37m'
-blue='\033[0;34m'
-BLUE='\033[1;34m'
-local cyan='\033[0;36m'
-CYAN='\033[1;36m'
-NC='\033[0m'
 
 # # # # # # # # # # # #
 #       prompt        #
@@ -109,8 +87,8 @@ function py3install() {
 # relaod zsh
 function ra() {
   msg "reload .zshrc"
-  omz reload
-  source $ZSH_CUSTOM/scale_alias.zsh
+	source $ZDOTDIR/.zshrc $1
+  # omz reload
 }
 
 # cd
@@ -118,6 +96,8 @@ function changeDirectory() {
   msg "cd $1"
   cd "$1"
 }
+
+alias cdz="cd $ZDOTDIR"
 
 # music bot
 function bot() {
@@ -137,19 +117,17 @@ function bot() {
 # # # # # # # # # # # #
 
 alias vim='nvim'
-alias zc="changeDirectory $ZSH_CUSTOM"
+alias zc="changeDirectory $ZDOTDIR"
 alias s=shoot
 alias g=googler
 alias p=python3
 alias pyl=py3install
 alias c=clear
-alias ll='ls -la'
 alias ls='exa --icons --tree --level 1'
-alias va='vim $ZSH_CUSTOM/alias.zsh'
-alias vs='vim $ZSH_CUSTOM/.scale.env'
-alias vg='vim ~/.oh-my-zsh/plugins/git/git.plugin.zsh'
-alias vo='vim ~/.oh-my-zsh/oh-my-zsh.sh'
-alias vz='vim ~/.zshrc'
+alias ll='ls -la'
+alias lld="ll | grep \"^\..*\""
+alias va='vim $ZDOTDIR/alias.zsh'
+alias vz='vim $ZDOTDIR/.zshrc'
 
 # # # # # # # # # # # #
 #         git         #
