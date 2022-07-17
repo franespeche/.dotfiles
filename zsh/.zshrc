@@ -37,6 +37,8 @@ plugins=(git vi-mode)
 autoload -Uz promptinit
 promptinit
 
+# use .. instead of cd ..
+setopt auto_cd
 
 # # # # # # # # # # # #
 #       default       #
