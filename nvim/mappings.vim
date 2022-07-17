@@ -39,6 +39,9 @@ noremap <silent> <leader>sp :call DoWindowSwap()<CR>
 "				fullscreen
 nnoremap <silent> <leader>zo :ZoomToggle<CR>
 
+" floating terminal
+noremap <silent> <leader>tt :FloatermNew<cr>
+
 " explorer
 nmap <space>en :CocCommand explorer --preset nvim<CR>
 nmap <space>ef :CocCommand explorer --preset floating<CR>
@@ -63,7 +66,7 @@ map <C-e> <C-e>j
 " nmap <space>nn :b#<cr>
 nmap <leader>bp :bp<cr>
 nmap <leader>bn :bn<cr>
-nmap <leader>bd :bd!<cr>
+" nmap <leader>bd :bd!<cr>
 
 " substitute
 nmap <leader>ss :%s/\v
