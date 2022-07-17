@@ -5,6 +5,9 @@
 # source zsh files
 for zsh_file (~/.config/zsh/*.zsh) source $zsh_file
 
+# source private cfg
+source ~/.zshrc.local
+
 # theme
 ZSH_THEME="frean"
 
