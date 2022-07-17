@@ -1,3 +1,13 @@
+selection:
+  save_to_clipboard: true
+
+cursor:
+  unfocused_hollow: true
+  style: Beam
+
+shell:
+  program: /bin/zsh
+
 schemes:
 one_light: &light
   primary:
