@@ -5,6 +5,7 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
+
 # not mine:
 #
 # Defines environment variables.
@@ -18,3 +19,4 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
 fi
 . "$HOME/.cargo/env"
 
+[ -f $XDG_CONFIG_HOME/.env ] && source $XDG_CONFIG_HOME/.env

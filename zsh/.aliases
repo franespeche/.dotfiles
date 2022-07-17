@@ -118,6 +118,8 @@ function changeDirectory() {
   cd "$1"
 }
 
+alias cdz="cd $ZDOTDIR"
+
 # music bot
 function bot() {
   START="start"
@@ -145,11 +147,8 @@ alias c=clear
 alias ls='exa --icons --tree --level 1'
 alias ll='ls -la'
 alias lld="ll | grep \"^\..*\""
-alias va='vim $ZDOTDIR/alias.zsh'
-alias vs='vim $ZDOTDIR/.scale.env'
-# alias vg='vim ~/.oh-my-zsh/plugins/git/git.plugin.zsh'
-# alias vo='vim ~/.oh-my-zsh/oh-my-zsh.sh'
-alias vz='vim ~/.zshrc'
+alias va='vim $ZDOTDIR/.aliases'
+alias vz='vim $ZDOTDIR/.zshrc'
 
 # # # # # # # # # # # #
 #         git         #
