@@ -17,8 +17,8 @@ noremap H ^
 noremap L $
 
 " splits create
-noremap <silent> <leader>l :vsp<cr>
-noremap <silent> <leader>j :sp<cr>
+noremap <silent> <space>nl :vsp<cr>
+noremap <silent> <space>nd :sp<cr>
 " 	     navigate
 noremap <silent> <C-l> :wincmd l<cr>
 noremap <silent> <C-h> :wincmd h<cr>
@@ -38,6 +38,11 @@ noremap <silent> <leader>mw :call MarkWindowSwap()<CR>
 noremap <silent> <leader>sp :call DoWindowSwap()<CR>
 "				fullscreen
 nnoremap <silent> <leader>zo :ZoomToggle<CR>
+"				scroll
+map <C-y> <C-y>k
+map <C-e> <C-e>j
+"       close
+noremap <leader>q :q<cr>
 
 " floating terminal
 noremap <silent> <leader>tt :FloatermNew<cr>
@@ -49,17 +54,9 @@ nmap <space>eb :CocCommand explorer --preset buffer<CR>
 nmap <space>el :CocList explPresets<CR>
 
 " tabs
-noremap <silent> <space>tp :tabprev<cr>
-noremap <silent> <space>tn :tabnext<cr>
-noremap <silent> <space>t1 gt1<cr>
-noremap <silent> <space>t2 gt2<cr>
-noremap <silent> <space>t3 gt3<cr>
-noremap <silent> <space>t4 gt4<cr>
-noremap <silent> <space>t5 gt5<cr>
+noremap <silent> <space>nt :tabnew<cr>
+noremap <silent> <space>qt :tabclose<cr>
 
-" scroll window
-map <C-y> <C-y>k
-map <C-e> <C-e>j
 
 " buffers
 " nmap <space>nn :b#<cr>
