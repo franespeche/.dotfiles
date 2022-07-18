@@ -39,61 +39,66 @@ noremap <silent> <leader>sp :call DoWindowSwap()<CR>
 "				fullscreen
 nnoremap <silent> <leader>zo :ZoomToggle<CR>
 
+<<<<<<< Updated upstream
 " explorer
 nmap <space>en :CocCommand explorer --preset nvim<CR>
 nmap <space>ef :CocCommand explorer --preset floating<CR>
 nmap <space>eb :CocCommand explorer --preset buffer<CR>
 nmap <space>es :CocCommand explorer --preset scale<CR>
 nmap <space>el :CocList explPresets<CR>
+=======
+" floating terminal
+noremap <silent> <leader>tt :FloatermNew<cr>
 
-" tabs
-noremap <silent> <space>tp :tabprev<cr>
-noremap <silent> <space>tn :tabnext<cr>
-noremap <silent> <space>t1 gt1<cr>
-noremap <silent> <space>t2 gt2<cr>
-noremap <silent> <space>t3 gt3<cr>
-noremap <silent> <space>t4 gt4<cr>
-noremap <silent> <space>t5 gt5<cr>
+" exit terminal mode
+tnoremap <esc> <C-\><C-n>:q!<cr>
+>>>>>>> Stashed changes
 
-" scroll window
+" follow scroll with cursor
 map <C-y> <C-y>k
 map <C-e> <C-e>j
 
 " buffers
-" nmap <space>nn :b#<cr>
 nmap <leader>bp :bp<cr>
 nmap <leader>bn :bn<cr>
+<<<<<<< Updated upstream
 nmap <leader>bd :bd!<cr>
+=======
+>>>>>>> Stashed changes
 
-" substitute
+" start a substitute
 nmap <leader>ss :%s/\v
-" substitute word
+" substitute cword
 nmap <leader>sw :%s#<C-r>=expand("<cword>")<cr>#
 
-" dehighlight find results
-nmap <silent> <esc><esc> :noh<cr>
 " find cword
 nmap <leader>fw /<C-r>=expand("<cword>")<cr><cr>
-
-" show hints
-nmap <space>ch <Plug>(coc-codeaction)
-" quick fix
-nmap <space>qf <Plug>(coc-fix-current)
-
-" restart ts-server
-nmap <silent> <space>tr :CocCommand tsserver.restart<cr>
+" dehighlight find results
+nmap <silent> <esc><esc> :noh<cr>
 
 " yank line-block
 map Y yy
 
-" goto definition
+" coc goto definition
 nmap <silent>gd <Plug>(coc-definition)
-"      type-definition
+"					 type-definition
 nmap <silent>gy <Plug>(coc-type-definition)
-"      implementation
+"					 implementation
 nmap <silent>gi <Plug>(coc-implementation)
-"      references
+"					 references
 nmap <silent>gr <Plug>(coc-references)
+"			show hints
+nmap <leader>ch <Plug>(coc-codeaction)
+"			quick fix
+nmap <space>qf <Plug>(coc-fix-current)
+"			restart ts-server
+nmap <leader>tr :CocCommand tsserver.restart<cr>
+"			explorer
+nmap <space>en :CocCommand explorer --preset nvim<CR>
+nmap <space>ef :CocCommand explorer --preset floating<CR>
+nmap <space>eb :CocCommand explorer --preset buffer<CR>
+nmap <space>es :CocCommand explorer --preset scale<CR>
+nmap <space>el :CocList explPresets<CR>
 
 " comment line
 map ,, gcc

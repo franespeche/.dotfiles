@@ -22,7 +22,7 @@ HIST_STAMPS="mm/dd/yyyy"
 plugins=(git vi-mode)
 
 # omz
-source $ZSH/oh-my-zsh.sh
+[ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 
 autoload -Uz promptinit
 promptinit
@@ -134,4 +134,4 @@ if [ -f '/Users/franespeche/Downloads/google-cloud-sdk/completion.zsh.inc' ]; th
 export SCALE_HOME="$HOME/scaleapi"
 source "${SCALE_HOME}/bin/okta-helpers.bash"
 
-source $ZSH_CUSTOM/.scale.env
+[ -f $ZSH_CUSTOM/.scale.env ] && source $ZSH_CUSTOM/.scale.env
