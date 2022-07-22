@@ -2,6 +2,7 @@
 #         git         #
 # # # # # # # # # # # #
 
+alias gss='git status'
 alias ga='git add'
 alias gco='git checkout'
 alias lg="lazygit"
