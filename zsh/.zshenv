@@ -4,7 +4,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # alacritty
-export TERMINAL="alacritty"
+# export TERMINAL="alacritty"
 
 # Defines environment variables.
 #

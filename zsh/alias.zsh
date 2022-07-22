@@ -14,7 +14,6 @@ DARK_MODE_SCRIPT_EXEC=$CUSTOM_SCRIPTS/dark.sh
 ZSHC=$ZDOTDIR
 NVIM=$XDG_CONFIG_HOME/nvim/
 
-
 # # # # # # # # # # # #
 #       prompt        #
 # # # # # # # # # # # #
@@ -257,3 +256,6 @@ function gf() {
 alias lg="lazygit"
 
 alias glol='git log --graph --oneline --decorate'
+#
+# open all git modified files in vim
+alias vimgit="vim -O $(git status --porcelain | awk '{print $2}')"

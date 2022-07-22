@@ -1,6 +1,22 @@
 # # # # # # # # # # # #
+#         omz         #
+# # # # # # # # # # # #
+
+# path
+export ZSH="/Users/franespeche/.oh-my-zsh"
+
+# source omz
+source $ZSH/oh-my-zsh.sh
+
+# # # # # # # # # # # #
 #         zsh         #
 # # # # # # # # # # # #
+
+# set theme
+#ZSH_THEME="frean"
+
+# source local cfg
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # source plugins
 if [ -d $ZDOTDIR/plugins/ ]; then
@@ -40,6 +56,9 @@ if [[ `uname` == 'Linux' ]]; then
 		source $zsh_linux_file
 	done
 	unset zsh_linux_file
+	
+	# use .. instead of cd ..
+	setopt auto_cd
 
 	# set keyboard speed
 	set r rate 200 50
@@ -47,11 +66,6 @@ fi
 
 # fzf show hidden files
 export FZF_DEFAULT_COMMAND="find -L"
-
-# source alias
-
-# source local cfg
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -66,16 +80,19 @@ HIST_STAMPS="mm/dd/yyyy"
 # plugins
 plugins=(git vi-mode)
 
+
 autoload -Uz promptinit
 promptinit
+
+
+# # # # # # # # # # # #
+#       default       #
+# # # # # # # # # # # #
 
 export PATH=$HOME/.local/bin:$PATH
 
 # pyenv init
 eval "$(pyenv init -)"
-
-# use .. instead of cd ..
-setopt auto_cd
 
 # # # # # # # # # # # #
 #         nvm         #
@@ -86,6 +103,39 @@ export NVM_DIR="$HOME/.nvm" # path
 # bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+
+# # # # # # # # # # # #
+#       cursor        #
+# # # # # # # # # # # #
+
+cursor_mode() {
+    # cursor shapes: https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html
+    cursor_block='\e[2 q'
+    cursor_beam='\e[6 q'
+
+    function zle-keymap-select {
+        if [[ ${KEYMAP} == vicmd ]] ||
+            [[ $1 = 'block' ]]; then
+            echo -ne $cursor_block
+        elif [[ ${KEYMAP} == main ]] ||
+            [[ ${KEYMAP} == viins ]] ||
+            [[ ${KEYMAP} = '' ]] ||
+            [[ $1 = 'beam' ]]; then
+            echo -ne $cursor_beam
+        fi
+    }
+
+    zle-line-init() {
+        echo -ne $cursor_beam
+    }
+
+    zle -N zle-keymap-select
+    zle -N zle-line-init
+
+    # makes changing btwn modes faster
+    export KEYTIMEOUT=1
+}
+cursor_mode
 
 # # # # # # # # # # # #
 #         vim         #
@@ -108,3 +158,6 @@ if [ -f '/Users/franespeche/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/franespeche/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/franespeche/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# prompt
+PROMPT='%B%m%~%b$(git_super_status) %# '
