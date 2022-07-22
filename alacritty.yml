@@ -1,0 +1,79 @@
+cursor:
+  unfocused_hollow: true
+  style: Beam
+
+shell:
+  program: /bin/zsh
+
+env:
+  WINIT_X11_SCALE_FACTOR: "1.0"
+
+window:
+  dimensions:
+    columns: 0
+    lines: 0
+  decorations: full
+  startup_mode: Fullscreen
+scrolling:
+  history: 10000
+  multiplier: 1
+font:
+  normal:
+    family: Iosevka Nerd Font
+  bold:
+    family: Iosevka Nerd Font
+  italic:
+    family: Iosevka Nerd Font
+  size: 16
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: -1
+  use_thin_strokes: true
+
+draw_bold_text_with_bright_colors: false
+
+schemes:
+one_light: &light
+  primary:
+    background: '#fafafa'
+    foreground: '#383a42'
+  cursor:
+    text:       CellBackground
+    cursor:     '#526eff' # syntax-cursor-color
+  selection:
+    text:       CellForeground
+    background: '#e5e5e6' # syntax-selection-color
+  normal:
+    black:      '#696c77' # mono-2
+    red:        '#e45649' # red 1
+    green:      '#50a14f'
+    yellow:     '#c18401' # orange 2
+    blue:       '#4078f2'
+    magenta:    '#a626a4'
+    cyan:       '#0184bc'
+    white:      '#a0a1a7' # mono-3
+one-dark: &dark
+  primary:
+    background: '#282c34'
+    foreground: '#abb2bf'
+  cursor:
+    text:       CellBackground
+    cursor:     '#528bff' # syntax-cursor-color
+  selection:
+    text:       CellForeground
+    background: '#3e4451' # syntax-selection-color
+  normal:
+    black:      '#5c6370' # mono-3
+    red:        '#e06c75' # red 1
+    green:      '#98c379'
+    yellow:     '#e5c07b' # orange 2
+    blue:       '#61afef'
+    magenta:    '#c678dd'
+    cyan:       '#56b6c2'
+
+colors: *dark

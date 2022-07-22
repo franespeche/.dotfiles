@@ -39,6 +39,9 @@ set sidescrolloff=8
 
 highlight Comment cterm=italic  	" italic comments
 
+set termguicolors                 " set colors
+set t_Co=256                      " set colors
+
 " set shortmess+=c             		" Do not show 'match xx of xx' and other messages during auto-completion
 set noswapfile
 

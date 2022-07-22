@@ -1,12 +1,11 @@
-# ! this file goes in root dir
-
 # found at https://thevaluable.dev/zsh-install-configure-mouseless/
 # store config files at ~/.config
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
-# not mine:
-#
+# alacritty
+# export TERMINAL="alacritty"
+
 # Defines environment variables.
 #
 # Authors:
@@ -16,5 +15,9 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+# rust
 . "$HOME/.cargo/env"
 
+# env
+[ -f $XDG_CONFIG_HOME/.env ] && source $XDG_CONFIG_HOME/.env

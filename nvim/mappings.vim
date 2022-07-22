@@ -10,7 +10,7 @@ noremap <silent> <leader>im :ToggleDarkMode()<cr>
 
 " cd cwd
 " # see :help expand
-noremap  <leader>cd :cd %:h<cr> :pwd<cr>
+noremap <leader>cd :cd %:h<cr> :pwd<cr>
 
 " motion
 noremap H ^
@@ -27,10 +27,10 @@ noremap <silent> <C-k> :wincmd k<cr>
 "	      resize
 noremap <silent> <leader>wb :wincmd _<cr>
 noremap <silent> <leader>wn :wincmd =<cr>
-noremap <silent> <silent> <C-<> :vertical resize -3<cr>
-noremap <silent> <silent> <C->> :vertical resize +3<cr>
+" noremap <silent> < :vertical resize -3<cr>
+" noremap <silent> > :vertical resize +3<cr>
 "       rotate
-noremap <silent> <leader>ws :wincmd r<cr>
+noremap <silent> <leader>wr :wincmd r<cr>
 noremap <silent> <leader>wh :wincmd H<cr>
 noremap <silent> <leader>wv :wincmd J<cr>
 "				swap
@@ -39,21 +39,17 @@ noremap <silent> <leader>sp :call DoWindowSwap()<CR>
 "				fullscreen
 nnoremap <silent> <leader>zo :ZoomToggle<CR>
 
+" open floating terminal
+noremap <silent> <leader>tt :FloatermNew<cr>
+"      bottom terminal
+" noremap <silent> <leader>tj :split | resize 10 | terminal<cr>
+" exit terminal
+"tnoremap <Esc><Esc> <C-\><C-n> 
+
 " explorer
 nmap <space>en :CocCommand explorer --preset nvim<CR>
 nmap <space>ef :CocCommand explorer --preset floating<CR>
 nmap <space>eb :CocCommand explorer --preset buffer<CR>
-nmap <space>es :CocCommand explorer --preset scale<CR>
-nmap <space>el :CocList explPresets<CR>
-
-" tabs
-noremap <silent> <space>tp :tabprev<cr>
-noremap <silent> <space>tn :tabnext<cr>
-noremap <silent> <space>t1 gt1<cr>
-noremap <silent> <space>t2 gt2<cr>
-noremap <silent> <space>t3 gt3<cr>
-noremap <silent> <space>t4 gt4<cr>
-noremap <silent> <space>t5 gt5<cr>
 
 " scroll window
 map <C-y> <C-y>k
@@ -63,7 +59,6 @@ map <C-e> <C-e>j
 " nmap <space>nn :b#<cr>
 nmap <leader>bp :bp<cr>
 nmap <leader>bn :bn<cr>
-nmap <leader>bd :bd!<cr>
 
 " substitute
 nmap <leader>ss :%s/\v
@@ -75,16 +70,16 @@ nmap <silent> <esc><esc> :noh<cr>
 " find cword
 nmap <leader>fw /<C-r>=expand("<cword>")<cr><cr>
 
-" show hints
-nmap <space>ch <Plug>(coc-codeaction)
-" quick fix
-nmap <space>qf <Plug>(coc-fix-current)
-
 " restart ts-server
 nmap <silent> <space>tr :CocCommand tsserver.restart<cr>
 
 " yank line-block
 map Y yy
+
+" show hints
+nmap <leader>ch <Plug>(coc-codeaction)
+" quick fix
+nmap <leader>qf <Plug>(coc-fix-current)
 
 " goto definition
 nmap <silent>gd <Plug>(coc-definition)
@@ -98,3 +93,9 @@ nmap <silent>gr <Plug>(coc-references)
 " comment line
 map ,, gcc
 vmap ,, gc
+
+" telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
