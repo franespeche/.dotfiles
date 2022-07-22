@@ -1,9 +1,13 @@
-# msg
-# source $ZDOTDIR/msg.zsh
-
 # # # # # # # # # # # #
 #         git         #
 # # # # # # # # # # # #
+
+alias ga='git add'
+alias gco='git checkout'
+alias lg="lazygit"
+alias glol='git log --graph --oneline --decorate'
+# open all git modified files in vim
+alias vimgit="vim -O $(git status --porcelain | awk '{print $2}')"
 
 # restore file from staging area
 function grs() {
@@ -126,9 +130,3 @@ function gf() {
   msg "git fetch"
   git fetch
 }
-alias lg="lazygit"
-
-alias glol='git log --graph --oneline --decorate'
-#
-# open all git modified files in vim
-alias vimgit="vim -O $(git status --porcelain | awk '{print $2}')"

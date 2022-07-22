@@ -18,102 +18,16 @@ NVIM=$XDG_CONFIG_HOME/nvim/
 #         omz         #
 # # # # # # # # # # # #
 
+# # TODO: remove omz
 # path
-export ZSH="/Users/franespeche/.oh-my-zsh"
+# export ZSH="/Users/franespeche/.oh-my-zsh"
 
-# source omz
-# TODO: remove omz
-source $ZSH/oh-my-zsh.sh
+# # source omz
+# source $ZSH/oh-my-zsh.sh
 
-# # # # # # # # # # # #
-#         zsh         #
-# # # # # # # # # # # #
 
-# set theme
-#ZSH_THEME="frean"
-
-# source local cfg
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
-# source alias
-if [ -d $ZDOTDIR/alias/ ]; then
-	# exit if empty
-	if [ -z "$(ls $ZDOTDIR/alias/)" ]; then
-		echo "No files in $ZDOTDIR/alias/"
-			return
-	fi
-
-	for file ($ZDOTDIR/alias/*.zsh(D)); do
-	if [[ $1 == "-v" ]]; then
-		# verbose
-		echo "sourcing $file"
-	fi
-	source $file
-	done
-fi
-
-# source functions
-if [ -d $ZDOTDIR/functions/ ]; then
-	# exit if empty
-	if [ -z "$(ls $ZDOTDIR/functions/)" ]; then
-		echo "No files in $ZDOTDIR/functions/"
-			return
-	fi
-
-	for file ($ZDOTDIR/functions/*.zsh(D)); do
-	if [[ $1 == "-v" ]]; then
-		# verbose
-		echo "sourcing $file"
-	fi
-	source $file
-	done
-fi
-
-# source plugins
-if [ -d $ZDOTDIR/plugins/ ]; then
-	# exit if empty
-	if [ -z "$(ls $ZDOTDIR/plugins/)" ]; then
-		echo "No files in $ZDOTDIR/plugins/"
-			return
-	fi
-
-	for file ($ZDOTDIR/plugins/*(D)); do
-	if [[ $1 == "-v" ]]; then
-		# verbose
-		echo "sourcing $file"
-	fi
-	source $file
-	done
-fi
-
-# source .zsh files
-for zsh_file ($ZDOTDIR/*.zsh(D)); do
-	if [[ $1 == "-v" ]]; then
-		# verbose
-		echo "sourcing $zsh_file"
-	fi
-	source $zsh_file
-	unset zsh_file
-done
-
-# linux only
-if [[ `uname` == 'Linux' ]]; then
-	# source .zsh files
-	for zsh_linux_file ($ZDOTDIR/linux/*.zsh(D)); do
-		if [[ $1 == "-v" ]]; then
-			# verbose
-			echo "sourcing $zsh_linux_file"
-		fi
-		source $zsh_linux_file
-	done
-	unset zsh_linux_file
-	
-	# use .. instead of cd ..
-	setopt auto_cd
-
-	# set keyboard speed
-	set r rate 200 50
-fi
+# plugins
+# plugins=(git vi-mode)
 
 # fzf show hidden files
 export FZF_DEFAULT_COMMAND="find -L"
@@ -127,10 +41,6 @@ DISABLE_AUTO_TITLE="true"
 
 # history timestamp
 HIST_STAMPS="mm/dd/yyyy"
-
-# plugins
-plugins=(git vi-mode)
-
 
 autoload -Uz promptinit
 promptinit
@@ -209,4 +119,169 @@ if [ -f '/Users/franespeche/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/franespeche/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/franespeche/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# # # # # # # # # # # #
+#         zsh         #
+# # # # # # # # # # # #
+
+# set theme
+#ZSH_THEME="frean"
+
+# source local cfg
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# Load all of the plugins that were defined in ~/.zshrc
+for plugin ($plugins); do
+  if [ -f $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh ]; then
+    source $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh
+  elif [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
+    source $ZSH/plugins/$plugin/$plugin.plugin.zsh
+  fi
+done
+
+# source plugins
+if [ -d $ZDOTDIR/plugins/ ]; then
+	# exit if empty
+	if [ -z "$(ls $ZDOTDIR/plugins/)" ]; then
+		echo "No files in $ZDOTDIR/plugins/"
+			return
+	fi
+
+	for file ($ZDOTDIR/plugins/*(D)); do
+	if [[ $1 == "-v" ]]; then
+		# verbose
+		echo "sourcing $file"
+	fi
+	source $file
+	done
+fi
+
+# source .zsh files
+for zsh_file ($ZDOTDIR/*.zsh(D)); do
+	if [[ $1 == "-v" ]]; then
+		# verbose
+		echo "sourcing $zsh_file"
+	fi
+	source $zsh_file
+	unset zsh_file
+done
+
+# source alias
+if [ -d $ZDOTDIR/alias/ ]; then
+	# exit if empty
+	if [ -z "$(ls $ZDOTDIR/alias/)" ]; then
+		echo "No files in $ZDOTDIR/alias/"
+			return
+	fi
+
+	for file ($ZDOTDIR/alias/*.zsh(D)); do
+	if [[ $1 == "-v" ]]; then
+		# verbose
+		echo "sourcing $file"
+	fi
+	source $file
+	done
+fi
+
+# source functions
+if [ -d $ZDOTDIR/functions/ ]; then
+	# exit if empty
+	if [ -z "$(ls $ZDOTDIR/functions/)" ]; then
+		echo "No files in $ZDOTDIR/functions/"
+			return
+	fi
+
+	for file ($ZDOTDIR/functions/*.zsh(D)); do
+	if [[ $1 == "-v" ]]; then
+		# verbose
+		echo "sourcing $file"
+	fi
+	source $file
+	done
+fi
+
+# use .. instead of cd ..
+setopt auto_cd
+
+# linux only
+if [[ `uname` == 'Linux' ]]; then
+	# source .zsh files
+	for zsh_linux_file ($ZDOTDIR/linux/*.zsh(D)); do
+		if [[ $1 == "-v" ]]; then
+			# verbose
+			echo "sourcing $zsh_linux_file"
+		fi
+		source $zsh_linux_file
+	done
+	unset zsh_linux_file
+
+	# set keyboard speed
+	set r rate 200 50
+fi
+
+
+# Set ZSH_CACHE_DIR to the path where cache files should be created
+# or else we will use the default cache/
+if [[ -z "$ZSH_CACHE_DIR" ]]; then
+  ZSH_CACHE_DIR="$ZSH/cache"
+fi
+
+# from omz ------------------------------------------------------------------------------------
+
+# add a function path
+# fpath=("$ZSH/functions" "$ZSH/completions" $fpath)
+
+# Create cache and completions dir and add to $fpath
+# mkdir -p "$ZSH_CACHE_DIR/completions"
+# (( ${fpath[(Ie)"$ZSH_CACHE_DIR/completions"]} )) || fpath=("$ZSH_CACHE_DIR/completions" $fpath)
+
+# Load all stock functions (from $fpath files) called below.
+autoload -U compaudit compinit
+
+
+# URL-decode a string
+#
+# Decodes a RFC 2396 URL-encoded (%-escaped) string.
+# This decodes the '+' and '%' escapes in the input string, and leaves
+# other characters unchanged. Does not enforce that the input is a
+# valid URL-encoded string. This is a convenience to allow callers to
+# pass in a full URL or similar strings and decode them for human
+# presentation.
+#
+# Outputs the encoded string on stdout.
+# Returns nonzero if encoding failed.
+#
+# Usage:
+#   omz_urldecode <urlstring>  - prints decoded string followed by a newline
+# function decodeurl {
+#   emulate -L zsh
+#   local encoded_url=$1
+
+#   # Work bytewise, since URLs escape UTF-8 octets
+#   local caller_encoding=$langinfo[CODESET]
+#   local LC_ALL=C
+#   export LC_ALL
+
+#   # Change + back to ' '
+#   local tmp=${encoded_url:gs/+/ /}
+#   # Protect other escapes to pass through the printf unchanged
+#   tmp=${tmp:gs/\\/\\\\/}
+#   # Handle %-escapes by turning them into `\xXX` printf escapes
+#   tmp=${tmp:gs/%/\\x/}
+#   local decoded="$(printf -- "$tmp")"
+
+#   # Now we have a UTF-8 encoded string in the variable. We need to re-encode
+#   # it if caller is in a non-UTF-8 locale.
+#   local -a safe_encodings
+#   safe_encodings=(UTF-8 utf8 US-ASCII)
+#   if [[ -z ${safe_encodings[(r)$caller_encoding]} ]]; then
+#     decoded=$(echo -E "$decoded" | iconv -f UTF-8 -t $caller_encoding)
+#     if [[ $? != 0 ]]; then
+#       echo "Error converting string from UTF-8 to $caller_encoding" >&2
+#       return 1
+#     fi
+#   fi
+
+#   echo -E "$decoded"
+# }
 
