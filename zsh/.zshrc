@@ -1,3 +1,19 @@
+#!/bin/zsh
+# $COLUMNS = n of columns in terminal
+# pwd=$(echo "${PWD/$HOME/}" | wc -c)
+# branch=$(git branch --show-current | wc -c)
+
+# # # # # # # # # # # #
+#         env         #
+# # # # # # # # # # # #
+
+CUSTOM_SCRIPTS=$ZDOTDIR/custom/scripts
+MUSIC_BOT_DIRECTORY=$CUSTOM_SCRIPTS/voice/examples/music-bot
+CHROME_EXTENSION_DIRECTORY=/Users/franespeche/ecommerce-catalog
+DARK_MODE_SCRIPT_EXEC=$XDG_CONFIG_HOME/scripts/dark.sh
+ZSHC=$ZDOTDIR
+NVIM=$XDG_CONFIG_HOME/nvim/
+
 # # # # # # # # # # # #
 #         omz         #
 # # # # # # # # # # # #
@@ -6,6 +22,7 @@
 export ZSH="/Users/franespeche/.oh-my-zsh"
 
 # source omz
+# TODO: remove omz
 source $ZSH/oh-my-zsh.sh
 
 # # # # # # # # # # # #
@@ -17,6 +34,40 @@ source $ZSH/oh-my-zsh.sh
 
 # source local cfg
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# source alias
+if [ -d $ZDOTDIR/alias/ ]; then
+	# exit if empty
+	if [ -z "$(ls $ZDOTDIR/alias/)" ]; then
+		echo "No files in $ZDOTDIR/alias/"
+			return
+	fi
+
+	for file ($ZDOTDIR/alias/*.zsh(D)); do
+	if [[ $1 == "-v" ]]; then
+		# verbose
+		echo "sourcing $file"
+	fi
+	source $file
+	done
+fi
+
+# source functions
+if [ -d $ZDOTDIR/functions/ ]; then
+	# exit if empty
+	if [ -z "$(ls $ZDOTDIR/functions/)" ]; then
+		echo "No files in $ZDOTDIR/functions/"
+			return
+	fi
+
+	for file ($ZDOTDIR/functions/*.zsh(D)); do
+	if [[ $1 == "-v" ]]; then
+		# verbose
+		echo "sourcing $file"
+	fi
+	source $file
+	done
+fi
 
 # source plugins
 if [ -d $ZDOTDIR/plugins/ ]; then
@@ -159,5 +210,3 @@ if [ -f '/Users/franespeche/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/franespeche/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/franespeche/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-# prompt
-PROMPT='%B%m%~%b$(git_super_status) %# '
