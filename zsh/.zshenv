@@ -17,6 +17,7 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
 fi
 
 # rust
+# TODO: make directory if it doesn't exist
 . "$HOME/.cargo/env"
 
 # env
