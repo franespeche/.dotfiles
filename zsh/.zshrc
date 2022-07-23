@@ -45,7 +45,6 @@ HIST_STAMPS="mm/dd/yyyy"
 autoload -Uz promptinit
 promptinit
 
-
 # # # # # # # # # # # #
 #       default       #
 # # # # # # # # # # # #
@@ -236,9 +235,7 @@ fi
 # (( ${fpath[(Ie)"$ZSH_CACHE_DIR/completions"]} )) || fpath=("$ZSH_CACHE_DIR/completions" $fpath)
 
 # Load all stock functions (from $fpath files) called below.
-autoload -U compaudit compinit
-
-
+# autoload -U compaudit compinit
 # URL-decode a string
 #
 # Decodes a RFC 2396 URL-encoded (%-escaped) string.
@@ -285,3 +282,9 @@ autoload -U compaudit compinit
 #   echo -E "$decoded"
 # }
 
+autoload -U compinit; compinit
+_comp_options+=(globdots) # With hidden files
+source $ZDOTDIR/completion.zsh
+
+fpath=($ZDIR/plugins/zsh-completions/src $fpath)
+# if this doesnt work, try running  rm -f ~/.zcompdump; compinit

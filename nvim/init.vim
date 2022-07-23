@@ -28,7 +28,8 @@ Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder
 Plug 'mfussenegger/nvim-dap'																													" dap
 Plug 'rcarriga/nvim-dap-ui'																														" dap ui
 Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
-" Plug 'norcalli/nvim-colorizer.lua'																										" highlight hex colors
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }																		" go
+" Plug 'norcalli/nvim-colorizer.lua'																									" highlight hex colors
 call plug#end()
 
 " configs
@@ -36,7 +37,6 @@ source ~/.config/nvim/coc-explorer.vim
 source ~/.config/nvim/settings.vim
 source ~/.config/nvim/coc.vim
 source ~/.config/nvim/mappings.vim
-source ~/.config/nvim/scale.vim
 source ~/.config/nvim/plugs.vim
 source ~/.config/nvim/theme.vim
 source ~/.config/nvim/lightline.vim
