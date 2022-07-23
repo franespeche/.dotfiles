@@ -1,3 +1,11 @@
+# install cargo
+# install pyenv
+# install exa
+# install neovim
+# install lazygit
+# make symlink (or copy) .zshenv to ~
+# sudo pacman -S cargo
+# ln -s ~/.dotfiles/zsh/.zshenv ~
 # creates symlinks
 # TODO: make these dynamic
 
