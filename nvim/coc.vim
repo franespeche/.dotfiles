@@ -59,8 +59,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -124,3 +124,29 @@ nnoremap <silent> <space>tb :<C-u>CocCommand metals.tvp metalsBuild<CR>
 nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsPackages<CR>
 
 highlight link CocHighlightText Visual
+
+
+" restart ts-server
+nmap <silent> <space>tr :CocCommand tsserver.restart<cr>
+
+" show hints
+nmap <leader>ch <Plug>(coc-codeaction)
+" quick fix
+nmap <leader>qf <Plug>(coc-fix-current)
+
+" goto definition
+nmap <silent>gd <Plug>(coc-definition)
+"      type-definition
+nmap <silent>gy <Plug>(coc-type-definition)
+"      implementation
+nmap <silent>gi <Plug>(coc-implementation)
+"      references
+nmap <silent>gr <Plug>(coc-references)
+
+" explorer
+nmap <space>en :CocCommand explorer --preset nvim<CR>
+nmap <space>ef :CocCommand explorer --preset floating<CR>
+nmap <space>eb :CocCommand explorer --preset buffer<CR>
+
+" highlight symbol under cursoron CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
