@@ -34,22 +34,17 @@ noremap <silent> <leader>wr :wincmd r<cr>
 noremap <silent> <leader>wh :wincmd H<cr>
 noremap <silent> <leader>wv :wincmd J<cr>
 "				swap
-noremap <silent> <leader>mw :call MarkWindowSwap()<CR>
-noremap <silent> <leader>sp :call DoWindowSwap()<CR>
+noremap <silent> <leader>wm :call MarkWindowSwap()<CR>
+noremap <silent> <leader>wc :call DoWindowSwap()<CR>
 "				fullscreen
 nnoremap <silent> <leader>zo :ZoomToggle<CR>
 
 " open floating terminal
 noremap <silent> <leader>tt :FloatermNew<cr>
 "      bottom terminal
-" noremap <silent> <leader>tj :split | resize 10 | terminal<cr>
+" noremap <silent> <leader>tj <cmd>split | resize 10 | terminal<cr>
 " exit terminal
 "tnoremap <Esc><Esc> <C-\><C-n> 
-
-" explorer
-nmap <space>en :CocCommand explorer --preset nvim<CR>
-nmap <space>ef :CocCommand explorer --preset floating<CR>
-nmap <space>eb :CocCommand explorer --preset buffer<CR>
 
 " scroll window
 map <C-y> <C-y>k
@@ -70,25 +65,8 @@ nmap <silent> <esc><esc> :noh<cr>
 " find cword
 nmap <leader>fw /<C-r>=expand("<cword>")<cr><cr>
 
-" restart ts-server
-nmap <silent> <space>tr :CocCommand tsserver.restart<cr>
-
 " yank line-block
 map Y yy
-
-" show hints
-nmap <leader>ch <Plug>(coc-codeaction)
-" quick fix
-nmap <leader>qf <Plug>(coc-fix-current)
-
-" goto definition
-nmap <silent>gd <Plug>(coc-definition)
-"      type-definition
-nmap <silent>gy <Plug>(coc-type-definition)
-"      implementation
-nmap <silent>gi <Plug>(coc-implementation)
-"      references
-nmap <silent>gr <Plug>(coc-references)
 
 " comment line
 map ,, gcc
@@ -99,3 +77,6 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" vim fuvitive
+nnoremap <leader>gb <cmd>Git blame<cr>
