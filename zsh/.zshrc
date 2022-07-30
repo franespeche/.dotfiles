@@ -36,11 +36,16 @@ export FZF_DEFAULT_COMMAND="find -L"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
+# case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
 # terminal title.
 DISABLE_AUTO_TITLE="true"
 
 # history timestamp
 HIST_STAMPS="mm/dd/yyyy"
+# ignoreboth: ignoredups => ignore previous duplicated entries; ignorespace => ignores entries starting with an empty space
+export HISTCONTROL=ignoreboth
 
 autoload -Uz promptinit
 promptinit

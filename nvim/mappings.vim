@@ -1,5 +1,5 @@
 " source vim
-noremap <silent> <leader>rr :so %<cr>
+noremap <silent> <leader>rr :so ~/.dotfiles/nvim/init.vim<cr>
 
 " change background
 noremap <silent> <leader>bd :set background=dark<cr>
@@ -80,3 +80,6 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " vim fuvitive
 nnoremap <leader>gb <cmd>Git blame<cr>
+
+" toggle wrap
+nnoremap <leader>zz <cmd>set wrap<cr>

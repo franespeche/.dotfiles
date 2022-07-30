@@ -90,3 +90,10 @@ function msg() {
   # reset terminal attributes
   tput sgr0
 }
+
+# kill
+function ka() {
+	killall -9 node
+	killall -9 java
+	killall -9 firebase
+}
