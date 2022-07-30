@@ -11,7 +11,7 @@
     "json",
     "rust"
   ],
-	"codeLens.enable": true,
+	"codeLens.enable": false,
 "explorer.keyMappings.global": {
     "i": false, // cancel default mapkey
     "*": "toggleSelection",

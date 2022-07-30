@@ -5,7 +5,7 @@
 alias gss='git status'
 alias ga='git add'
 alias gco='git checkout'
-alias lg="lazygit"
+alias gg="lazygit"
 alias glol='git log --graph --oneline --decorate'
 # open all git modified files in vim
 alias vimgit="vim -O $(git status --porcelain | awk '{print $2}')"

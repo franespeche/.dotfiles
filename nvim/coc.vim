@@ -127,7 +127,7 @@ highlight link CocHighlightText Visual
 
 
 " restart ts-server
-nmap <silent> <space>tr :CocCommand tsserver.restart<cr>
+nmap <space>tr :CocCommand tsserver.restart<cr>
 
 " show hints
 nmap <leader>ch <Plug>(coc-codeaction)

@@ -9,7 +9,7 @@ set cmdheight=2										" cmd height
 set shortmess+=c									" dont pass messages to |ins-completion-menu|
 
 set tabstop=2											" indentation
-set softtabstop=2 noexpandtab
+set softtabstop=2 expandtab
 set shiftwidth=2
 
 set autoread											" read files upon being changed from outside vim
