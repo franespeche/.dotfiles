@@ -42,4 +42,6 @@ source ~/.config/nvim/plugs.vim
 source ~/.config/nvim/theme.vim
 source ~/.config/nvim/lightline.vim
 source ~/.config/nvim/prettier.vim
+source ~/.config/nvim/prettier.vim
+source ~/.config/nvim/init.local.vim
 " source ~/.config/nvim/fzf.vim
