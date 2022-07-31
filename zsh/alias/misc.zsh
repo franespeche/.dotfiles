@@ -17,4 +17,3 @@ alias va='vim $ZDOTDIR/alias/misc.zsh'
 alias vz='vim $ZDOTDIR/.zshrc'
 alias kan='killall -9 node'
 alias vm='vim $NVIM/mappings.vim'
-

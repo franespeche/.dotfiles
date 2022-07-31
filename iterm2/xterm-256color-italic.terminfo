@@ -1,0 +1,7 @@
+# tell iTerm what 'italics' actually means in its Text's settings
+# more info: https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
+
+# A xterm-256color based TERMINFO that adds the escape sequences for italic.
+xterm-256color-italic|xterm with 256 colors and italic,
+  sitm=\E[3m, ritm=\E[23m,
+  use=xterm-256color,

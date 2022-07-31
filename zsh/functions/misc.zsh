@@ -12,7 +12,6 @@ function setItermProfile(){
 function dark() {
   # check current mode and set to opposite
   # prevent stdout and stderr
-
   if [[ $(defaults read -g AppleInterfaceStyle) == 'Dark' ]]; then
     setItermProfile light &&
     msg "switched to light mode" &&
