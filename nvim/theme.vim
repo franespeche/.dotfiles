@@ -1,20 +1,39 @@
 syntax on
+
 let g:one_allow_italics = 1
-colorscheme one
+let g:catppuccin_flavour = "macchiato"
+" let g:catppuccin_flavour = "latte"
+" let g:catppuccin_flavour = "frappe"
+" let g:catppuccin_flavour = "mocha"
+
+
+lua << EOF
+require("catppuccin").setup()
+vim.api.nvim_create_autocmd("OptionSet", {
+	pattern = "background",
+	callback = function()
+		vim.cmd("Catppuccin " .. (vim.v.option_new == "light" and "latte" or "macchiato"))
+	end,
+})
+EOF
+
+colorscheme catppuccin
 
 " function! ToggleDarkMode()
-	let iterm_profile = $ITERM_PROFILE
-	if iterm_profile == "dark"
-		set background=dark
-	else
-		set background=light
-	endif
+
+	" let iterm_profile = $ITERM_PROFILE
+	" if iterm_profile == "dark"
+	" 	set background=dark
+	" else
+	" 	set background=light
+	" endif
+
 " endfunction
 
 " command! ToggleDarkMode call ToggleDarkMode()
 " noremap <silent> <leader>dm :call ToggleDarkMode()<cr>
 
-call one#highlight('Normal', '', '#252525', 'none')
+" call one#highlight('Normal', '', '#252525', 'none')
 
 
 let g:terminal_color_0 = '#F2E0DE'
@@ -40,4 +59,3 @@ let g:terminal_color_14 = '#CEFF61'
 
 let g:terminal_color_7 = '#575279'
 let g:terminal_color_15 = '#EDECEE'
-
