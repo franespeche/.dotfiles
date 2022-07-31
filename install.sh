@@ -4,6 +4,9 @@
 # install neovim
 # install lazygit
 # install tldr
+# install nodejs
+# install npm
+# install yarn
 # make symlink (or copy) .zshenv to ~
 # sudo pacman -S cargo
 # ln -s ~/.dotfiles/zsh/.zshenv ~
@@ -12,13 +15,13 @@
 # creates symlinks
 # TODO: make these dynamic
 
-ln -sf alacritty.yml $XDG_CONFIG_HOME/alacritty.yml &&
+ln -sf ~/.dotfiles/alacritty.yml $XDG_CONFIG_HOME &&
 echo "created symlink: alacritty.yml"
 
-ln -sf zsh $XDG_CONFIG_HOME/zsh &&
+ln -sf ~/.dotfiles/zsh $XDG_CONFIG_HOME &&
 echo "created symlink: zsh/"
 
-ln -sf nvim $XDG_CONFIG_HOME/nvim &&
+ln -sf ~/.dotfiles/nvim $XDG_CONFIG_HOME &&
 echo "created symlink: nvim/"
 
 
