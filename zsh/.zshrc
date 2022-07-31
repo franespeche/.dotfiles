@@ -220,7 +220,7 @@ if [[ `uname` == 'Linux' ]]; then
 	unset zsh_linux_file
 
 	# set keyboard speed
-	set r rate 200 50
+	xset r rate 200 50
 fi
 
 
