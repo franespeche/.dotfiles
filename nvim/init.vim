@@ -34,14 +34,16 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }																		" go
 call plug#end()
 
 " configs
-source ~/.config/nvim/coc-explorer.vim
-source ~/.config/nvim/settings.vim
-source ~/.config/nvim/coc.vim
-source ~/.config/nvim/mappings.vim
-source ~/.config/nvim/plugs.vim
-source ~/.config/nvim/theme.vim
-source ~/.config/nvim/lightline.vim
-source ~/.config/nvim/prettier.vim
-source ~/.config/nvim/prettier.vim
-source ~/.config/nvim/init.local.vim
+source ~/.dotfiles/nvim/coc-explorer.vim
+source ~/.dotfiles/nvim/settings.vim
+source ~/.dotfiles/nvim/coc.vim
+source ~/.dotfiles/nvim/mappings.vim
+source ~/.dotfiles/nvim/plugs.vim:
+source ~/.dotfiles/nvim/theme.vim
+source ~/.dotfiles/nvim/lightline.vim
+source ~/.dotfiles/nvim/prettier.vim
+source ~/.dotfiles/nvim/prettier.vim
+if filereadable('init.local.vim')
+  source ~/.dotfiles/nvim/init.local.vim
+endif
 " source ~/.config/nvim/fzf.vim
