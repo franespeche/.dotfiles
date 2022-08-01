@@ -83,3 +83,7 @@ nnoremap <leader>gb <cmd>Git blame<cr>
 
 " toggle wrap
 nnoremap <leader>zz <cmd>set wrap<cr>
+
+" vim-plug
+nnoremap <leader>pi <cmd>PlugInstall<cr>
+nnoremap <leader>pc <cmd>PlugClean<cr>

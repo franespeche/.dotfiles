@@ -1,6 +1,6 @@
 " plugins
 call plug#begin(stdpath('data') . '/plugged')
-" Plug 'machakann/vim-sandwich'																													" wrap words with a given character
+Plug 'machakann/vim-sandwich'																													" wrap words with a given character
 Plug 'neoclide/coc.nvim', { 'branch': 'release' } 																		" coc nodejs host
 Plug 'tjdevries/coc-zsh'																															" coc zsh support
 Plug 'antoinemadec/coc-fzf'																														" coc fzf support
