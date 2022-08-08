@@ -9,7 +9,7 @@ noremap <silent> <leader>bl :set background=light<cr>
 noremap <silent> <leader>im :ToggleDarkMode()<cr>
 
 " cd cwd
-" # see :help expand
+" see :help expand
 noremap <leader>cd :cd %:h<cr> :pwd<cr>
 
 " motion
@@ -47,10 +47,10 @@ nnoremap <silent> <leader>zo :ZoomToggle<CR>
 noremap <silent> <leader>tt :FloatermNew<cr>
 
 " scroll window
-map <C-y> <C-y>k
-map <C-e> <C-e>j
-map <S-j> 3j
-map <S-k> 3k
+" map <C-y> <C-y>k
+" map <C-e> <C-e>j
+map <S-j> <C-e>
+map <S-k> <C-y>
 
 " buffers
 " nmap <space>nn :b#<cr>
@@ -93,7 +93,8 @@ nnoremap <leader>zz <cmd>set wrap!<cr>
 nnoremap <leader>pi <cmd>PlugInstall<cr>
 nnoremap <leader>pc <cmd>PlugClean<cr>
 
-map Q :q<cr>
+" quit
+map Q :q!<cr>
 
 " change directory
 nnoremap <leader>cdm <cmd>cd ~/.dotfiles/nvim<cr>
