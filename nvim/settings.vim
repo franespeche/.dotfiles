@@ -52,3 +52,13 @@ set gdefault											" s///g default
 
 set splitbelow										" open split lanes to right and bottom
 set splitright
+
+" jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
+" https://github.com/neoclide/coc.nvim/wiki/Using-the-configuration-file
+" To get correct comment highlighting, you can install vim-jsonc (which has built-in support for coc-settings.json), or even simply add:
+autocmd FileType json stntax match Comment +\/\/.\+$+

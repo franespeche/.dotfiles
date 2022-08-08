@@ -49,8 +49,8 @@ noremap <silent> <leader>tt :FloatermNew<cr>
 " scroll window
 " map <C-y> <C-y>k
 " map <C-e> <C-e>j
-map <S-j> <C-e>
-map <S-k> <C-y>
+map <S-j> 2<C-e>2j
+map <S-k> 2<C-y>2k
 
 " buffers
 " nmap <space>nn :b#<cr>
@@ -103,6 +103,7 @@ nnoremap <leader>cdm <cmd>cd ~/.dotfiles/nvim<cr>
 map <space> <Nop>
 
 " move to first WORD befor current opening bracket
+nnoremap <space>b F(b
 nnoremap <space><S-b> F(B
 
 " indenting behavior
