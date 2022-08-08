@@ -12,11 +12,15 @@ let g:lightline = {
       \     'right': [
       \       [ 'lineinfo' ],
       \       [ 'percent'  ],
-      \       [ 'absolutepath' ],
+      \       [ 'dynamicpath', 'ho' ],
       \     ],
       \   },
+      \   'component': {
+      \     'ho': '%3l:%-2v%<',
+      \   },
       \   'component_function': {
-      \     'gitbranch': 'FugitiveHead'
+      \     'gitbranch': 'FugitiveHead',
+      \     'dynamicpath': 'FilePath'
       \   },
       \   'mode_map': {
       \     'n' : 'N',
@@ -32,8 +36,32 @@ let g:lightline = {
       \     't': 'T',
       \   }
       \ }
+set noshowmode										" -- MODE -- displays as M
+                                  " eg: INSERT -> I
 
-set noshowmode										" do not show -- INSERT -- when on insert mode
+function! FilePath()
+  return winwidth(0) > 80 ? expand('%h') : ''
+endfunction
 
 " register compoments:
 call lightline#coc#register()
+
+augroup LightlineColorscheme
+  autocmd!
+  autocmd ColorScheme * echo 'holis'
+augroup END
+function! s:lightline_update()
+  if !exists('g:loaded_lightline')
+    return
+  endif
+  try
+    if g:colors_name =~# 'wombat\|solarized\|landscape\|jellybeans\|seoul256\|Tomorrow|catppuccin'
+      let g:lightline.colorscheme =
+            \ substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '')
+      call lightline#init()
+      call lightline#colorscheme()
+      call lightline#update()
+    endif
+  catch
+  endtry
+endfunction

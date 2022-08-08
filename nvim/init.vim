@@ -16,6 +16,7 @@ Plug 'jremmen/vim-ripgrep'																														" ripgrep	(dependency)
 " Plug 'junegunn/fzf.vim'                           																		" fuzzy finder
 Plug 'pangloss/vim-javascript'                    																		" javascript support
 Plug 'leafgarland/typescript-vim'																											" typescript support
+Plug 'mxw/vim-jsx'
 Plug 'maxmellon/vim-jsx-pretty'																												" jsx support
 Plug 'tpope/vim-vinegar'																															" simpler netrw
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' } " prettier
@@ -28,9 +29,11 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }  														" telesc
 Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder/review
 Plug 'mfussenegger/nvim-dap'																													" dap
 Plug 'rcarriga/nvim-dap-ui'																														" dap ui
+Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
 Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }																		" go
-" Plug 'norcalli/nvim-colorizer.lua'																									" highlight hex colors
+Plug 'norcalli/nvim-colorizer.lua'																									  " highlight hex colors
+Plug 'vimwiki/vimwiki'                                                                " vimwiki
 call plug#end()
 
 " configs
@@ -43,7 +46,6 @@ source ~/.dotfiles/nvim/theme.vim
 source ~/.dotfiles/nvim/lightline.vim
 source ~/.dotfiles/nvim/prettier.vim
 source ~/.dotfiles/nvim/prettier.vim
-if filereadable('init.local.vim')
-  source ~/.dotfiles/nvim/init.local.vim
-endif
-" source ~/.config/nvim/fzf.vim
+source ~/.dotfiles/nvim/dap.vim
+source ~/.dotfiles/nvim/init.local.vim
+source ~/.dotfiles/nvim/vimwiki.vim

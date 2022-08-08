@@ -24,6 +24,10 @@ noremap <silent> <C-l> :wincmd l<cr>
 noremap <silent> <C-h> :wincmd h<cr>
 noremap <silent> <C-j> :wincmd j<cr>
 noremap <silent> <C-k> :wincmd k<cr>
+inoremap <silent> <C-l> <Esc>:wincmd l<cr>
+inoremap <silent> <C-h> <Esc>:wincmd h<cr>
+inoremap <silent> <C-j> <Esc>:wincmd j<cr>
+inoremap <silent> <C-k> <Esc>:wincmd k<cr>
 "	      resize
 noremap <silent> <leader>wb :wincmd _<cr>
 noremap <silent> <leader>wn :wincmd =<cr>
@@ -41,14 +45,12 @@ nnoremap <silent> <leader>zo :ZoomToggle<CR>
 
 " open floating terminal
 noremap <silent> <leader>tt :FloatermNew<cr>
-"      bottom terminal
-" noremap <silent> <leader>tj <cmd>split | resize 10 | terminal<cr>
-" exit terminal
-"tnoremap <Esc><Esc> <C-\><C-n> 
 
 " scroll window
 map <C-y> <C-y>k
 map <C-e> <C-e>j
+map <S-j> 3j
+map <S-k> 3k
 
 " buffers
 " nmap <space>nn :b#<cr>
@@ -57,8 +59,11 @@ nmap <leader>bn :bn<cr>
 
 " substitute
 nmap <leader>ss :%s/\v
-" substitute word
+"            word
 nmap <leader>sw :%s#<C-r>=expand("<cword>")<cr>#
+nmap <leader>iw :'<,'>s#<C-r>=expand("<cword>")<cr>#
+"            selection
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " dehighlight find results
 nmap <silent> <esc><esc> :noh<cr>
@@ -82,8 +87,23 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>gb <cmd>Git blame<cr>
 
 " toggle wrap
-nnoremap <leader>zz <cmd>set wrap<cr>
+nnoremap <leader>zz <cmd>set wrap!<cr>
 
 " vim-plug
 nnoremap <leader>pi <cmd>PlugInstall<cr>
 nnoremap <leader>pc <cmd>PlugClean<cr>
+
+map Q :q<cr>
+
+" change directory
+nnoremap <leader>cdm <cmd>cd ~/.dotfiles/nvim<cr>
+
+" unbind space
+map <space> <Nop>
+
+" move to first WORD befor current opening bracket
+nnoremap <space><S-b> F(B
+
+" indenting behavior
+vnoremap < <V
+vnoremap > >V

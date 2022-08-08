@@ -135,7 +135,7 @@ nmap <leader>ch <Plug>(coc-codeaction)
 nmap <leader>qf <Plug>(coc-fix-current)
 
 " goto definition
-nmap <silent>gd <Plug>(coc-definition)
+nmap <silent>gd <Plug>(coc-definition)zz
 "      type-definition
 nmap <silent>gy <Plug>(coc-type-definition)
 "      implementation
