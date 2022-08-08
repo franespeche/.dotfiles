@@ -150,3 +150,6 @@ nmap <space>eb :CocCommand explorer --preset buffer<CR>
 
 " highlight symbol under cursoron CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" enable JSX syntax highlighing in javascript files
+let g:jsx_ext_required = 0 
