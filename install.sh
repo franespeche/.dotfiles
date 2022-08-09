@@ -7,6 +7,7 @@
 # install nodejs
 # install npm
 # install yarn
+# install used font in terminal
 # make symlink (or copy) .zshenv to ~
 # sudo pacman -S cargo
 # ln -s ~/.dotfiles/zsh/.zshenv ~
