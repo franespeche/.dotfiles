@@ -49,3 +49,7 @@ source ~/.dotfiles/nvim/prettier.vim
 source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/init.local.vim
 source ~/.dotfiles/nvim/vimwiki.vim
+if filereadable('init.local.vim')
+  source ~/.dotfiles/nvim/init.local.vim
+endif
+" source ~/.config/nvim/fzf.vim
