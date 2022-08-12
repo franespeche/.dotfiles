@@ -58,14 +58,15 @@ nmap <leader>bp :bp<cr>
 nmap <leader>bn :bn<cr>
 
 " substitute
-nmap <leader>ss :%s/\v
+nnoremap <leader>ss :%s/\v
+vnoremap <leader>ss :%s/\v
 "            word
-nmap <leader>sw :%s#<C-r>=expand("<cword>")<cr>#
-nmap <leader>iw :'<,'>s#<C-r>=expand("<cword>")<cr>#
+nmap <leader>sw :%s/<C-r>=expand("<cword>")<cr>/
+nmap <leader>iw :'<,'>s/<C-r>=expand("<cword>")<cr>/
 "            selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-" dehighlight find results
+" unhighlight find results
 nmap <silent> <esc><esc> :noh<cr>
 " find cword
 nmap <leader>fw /<C-r>=expand("<cword>")<cr><cr>
@@ -109,3 +110,12 @@ nnoremap <space><S-b> F(B
 " indenting behavior
 vnoremap < <V
 vnoremap > >V
+
+" autopairs toggle
+noremap <leader>' :call AutoPairsToggle()<cr>
+
+" do not insert comment after pressing "o"
+nnoremap <leader>o o<C-u>
+
+" open this file
+nnoremap <space>em :e ~/.dotfiles/nvim/mappings.vim<cr>

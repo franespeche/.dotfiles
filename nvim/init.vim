@@ -26,14 +26,16 @@ Plug 'voldikss/vim-floaterm'																													" floating terminal
 Plug 'jiangmiao/auto-pairs'																														" auto close things
 Plug 'nvim-lua/plenary.nvim'																													" (telescope dependenvy)
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }  														" telescope
-Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder/review
+Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder/preview
 Plug 'mfussenegger/nvim-dap'																													" dap
 Plug 'rcarriga/nvim-dap-ui'																														" dap ui
 Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
 Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }																		" go
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }																		" go
 Plug 'norcalli/nvim-colorizer.lua'																									  " highlight hex colors
 Plug 'vimwiki/vimwiki'                                                                " vimwiki
+Plug 'terryma/vim-multiple-cursors'                                                   " multiple cursors
+Plug 'chrisbra/csv.vim'                                                               " csv support
 call plug#end()
 
 " configs

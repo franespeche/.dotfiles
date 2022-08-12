@@ -1,8 +1,8 @@
 syntax on
 
 let g:one_allow_italics = 1
-let g:catppuccin_flavour = "macchiato"
-" let g:catppuccin_flavour = "latte"
+" let g:catppuccin_flavour = "macchiato"
+let g:catppuccin_flavour = "latte"
 " let g:catppuccin_flavour = "frappe"
 " let g:catppuccin_flavour = "mocha"
 

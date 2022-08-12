@@ -7,11 +7,10 @@
 #         env         #
 # # # # # # # # # # # #
 
-CUSTOM_SCRIPTS=$ZDOTDIR/custom/scripts
+CUSTOM_SCRIPTS=$ZDOTDIR/scripts
 MUSIC_BOT_DIRECTORY=$CUSTOM_SCRIPTS/voice/examples/music-bot
 CHROME_EXTENSION_DIRECTORY=/Users/franespeche/ecommerce-catalog
 DARK_MODE_SCRIPT_EXEC=$XDG_CONFIG_HOME/scripts/dark.sh
-ZSHC=$ZDOTDIR
 NVIM=$XDG_CONFIG_HOME/nvim/
 
 # # # # # # # # # # # #
@@ -24,7 +23,6 @@ NVIM=$XDG_CONFIG_HOME/nvim/
 
 # # source omz
 # source $ZSH/oh-my-zsh.sh
-
 
 # plugins
 # plugins=(git vi-mode)
@@ -118,15 +116,15 @@ bindkey -M vicmd ds delete-surround
 bindkey -M vicmd ys add-surround
 bindkey -M visual S add-surround
 
+# # # # # # # # # # # #
+#         zsh         #
+# # # # # # # # # # # #
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/franespeche/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/franespeche/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/franespeche/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/franespeche/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-# # # # # # # # # # # #
-#         zsh         #
-# # # # # # # # # # # #
 
 # set theme
 #ZSH_THEME="frean"

@@ -97,7 +97,7 @@ nnoremap <silent> <leader>cc  :<C-u>CocFzfList diagnostics<cr>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocFzfList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocFzfList outline<cr>
+" nnoremap <silent> <leader>o  :<C-u>CocFzfList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocFzfList symbols<cr>
 " Do default action for next item.
@@ -135,7 +135,7 @@ nmap <leader>ch <Plug>(coc-codeaction)
 nmap <leader>qf <Plug>(coc-fix-current)
 
 " goto definition
-nmap <silent>gd <Plug>(coc-definition)zz
+nmap gd <Plug>(coc-definition)
 "      type-definition
 nmap <silent>gy <Plug>(coc-type-definition)
 "      implementation
@@ -153,3 +153,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " enable JSX syntax highlighing in javascript files
 let g:jsx_ext_required = 0 
+
+let g:node_client_debug = 1
+let $NODE_CLIENT_LOG_FILE = '~/.dotfiles/nvim/coc.nvim.logs'
