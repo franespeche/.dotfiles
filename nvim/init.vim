@@ -36,6 +36,9 @@ Plug 'norcalli/nvim-colorizer.lua'																									  " highlight hex col
 Plug 'vimwiki/vimwiki'                                                                " vimwiki
 Plug 'terryma/vim-multiple-cursors'                                                   " multiple cursors
 Plug 'chrisbra/csv.vim'                                                               " csv support
+Plug 'SirVer/ultisnips'                                                               " track snippets engine
+Plug 'honza/vim-snippets'                                                             " adding this because snippets are separated from the engine 
+
 call plug#end()
 
 " configs
@@ -51,6 +54,7 @@ source ~/.dotfiles/nvim/prettier.vim
 source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/init.local.vim
 source ~/.dotfiles/nvim/vimwiki.vim
+source ~/.dotfiles/nvim/ultisnips.vim
 if filereadable('init.local.vim')
   source ~/.dotfiles/nvim/init.local.vim
 endif

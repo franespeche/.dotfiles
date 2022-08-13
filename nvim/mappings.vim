@@ -59,17 +59,22 @@ nmap <leader>bn :bn<cr>
 
 " substitute
 nnoremap <leader>ss :%s/\v
-vnoremap <leader>ss :%s/\v
+vnoremap <leader>ss :s/\v
 "            word
 nmap <leader>sw :%s/<C-r>=expand("<cword>")<cr>/
 nmap <leader>iw :'<,'>s/<C-r>=expand("<cword>")<cr>/
 "            selection
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+" search selected text
+vnoremap // y/<C-R>=escape(@",'/\')<CR>
+" search within selection
+vnoremap / <ESC>/\%V
 
 " unhighlight find results
 nmap <silent> <esc><esc> :noh<cr>
+
 " find cword
-nmap <leader>fw /<C-r>=expand("<cword>")<cr><cr>
+" nmap <leader>fw /<C-r>=expand("<cword>")<cr><cr>
 
 " yank line-block
 map Y yy
@@ -95,27 +100,25 @@ nnoremap <leader>pi <cmd>PlugInstall<cr>
 nnoremap <leader>pc <cmd>PlugClean<cr>
 
 " quit
-map Q :q!<cr>
-
-" change directory
-nnoremap <leader>cdm <cmd>cd ~/.dotfiles/nvim<cr>
+map Q :q<cr>
+map <space>Q :q!<cr>
 
 " unbind space
 map <space> <Nop>
 
-" move to first WORD befor current opening bracket
+" move to first WORD before current opening bracket
 nnoremap <space>b F(b
 nnoremap <space><S-b> F(B
 
 " indenting behavior
-vnoremap < <V
-vnoremap > >V
+vnoremap < <gv
+vnoremap > >gv
 
 " autopairs toggle
 noremap <leader>' :call AutoPairsToggle()<cr>
 
 " do not insert comment after pressing "o"
-nnoremap <leader>o o<C-u>
+nnoremap <space>o o<C-u>
 
 " open this file
-nnoremap <space>em :e ~/.dotfiles/nvim/mappings.vim<cr>
+nnoremap <space>em :vs ~/.dotfiles/nvim/mappings.vim<cr>
