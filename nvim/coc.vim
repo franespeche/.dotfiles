@@ -83,21 +83,21 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 nnoremap <leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>
 " the above was specified differently in coc's documentation
 " Run the Code Lens action on the current line.
-" nmap <leader>cl  <Plug>(coc-codelens-action)
+nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Use `:Prettier` to format current buffer
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Show all diagnostics
 nnoremap <silent> <leader>cc  :<C-u>CocFzfList diagnostics<cr>
 
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocFzfList commands<cr>
+" nnoremap <silent> <space>c  :<C-u>CocFzfList commands<cr>
 " Find symbol of current document
-" nnoremap <silent> <leader>o  :<C-u>CocFzfList outline<cr>
+nnoremap <silent> <leader>o  :<C-u>CocFzfList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocFzfList symbols<cr>
 " Do default action for next item.
@@ -111,17 +111,6 @@ nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 " Currently used for the formatOnType feature.
 " inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 "      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Toggle panel with Tree Views
-nnoremap <silent> <space>t :<C-u>CocCommand metals.tvp<CR>
-" Toggle Tree View 'metalsPackages'
-nnoremap <silent> <space>tp :<C-u>CocCommand metals.tvp metalsPackages<CR>
-" Toggle Tree View 'metalsCompile'
-nnoremap <silent> <space>tc :<C-u>CocCommand metals.tvp metalsCompile<CR>
-" Toggle Tree View 'metalsBuild'
-nnoremap <silent> <space>tb :<C-u>CocCommand metals.tvp metalsBuild<CR>
-" Reveal current current class (trait or object) in Tree View 'metalsPackages'
-nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsPackages<CR>
 
 highlight link CocHighlightText Visual
 

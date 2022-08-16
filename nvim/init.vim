@@ -12,8 +12,8 @@ Plug 'tpope/vim-commentary'																														" comment text
 Plug 'kdheepak/lazygit.nvim'																													" git console
 Plug 'tpope/vim-fugitive'																															" git
 Plug 'jremmen/vim-ripgrep'																														" ripgrep	(dependency)
-" Plug 'junegunn/fzf'																																		" fuzzy finder (dependency)
-" Plug 'junegunn/fzf.vim'                           																		" fuzzy finder
+Plug 'junegunn/fzf'																																		" fuzzy finder (dependency)
+Plug 'junegunn/fzf.vim'                           																		" fuzzy finder
 Plug 'pangloss/vim-javascript'                    																		" javascript support
 Plug 'leafgarland/typescript-vim'																											" typescript support
 Plug 'mxw/vim-jsx'
@@ -30,14 +30,14 @@ Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder
 Plug 'mfussenegger/nvim-dap'																													" dap
 Plug 'rcarriga/nvim-dap-ui'																														" dap ui
 Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
-Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
+" Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }																		" go
-Plug 'norcalli/nvim-colorizer.lua'																									  " highlight hex colors
+" Plug 'norcalli/nvim-colorizer.lua'																									  " highlight hex colors
 Plug 'vimwiki/vimwiki'                                                                " vimwiki
 Plug 'terryma/vim-multiple-cursors'                                                   " multiple cursors
-Plug 'chrisbra/csv.vim'                                                               " csv support
-Plug 'SirVer/ultisnips'                                                               " track snippets engine
-Plug 'honza/vim-snippets'                                                             " adding this because snippets are separated from the engine 
+" Plug 'chrisbra/csv.vim'                                                               " csv support
+" Plug 'SirVer/ultisnips'                                                               " track snippets engine
+" Plug 'honza/vim-snippets'                                                             " adding this because snippets are separated from the engine 
 
 call plug#end()
 

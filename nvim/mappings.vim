@@ -19,7 +19,7 @@ noremap L $
 " splits create
 noremap <silent> <leader>l :vsp<cr>
 noremap <silent> <leader>j :sp<cr>
-" 	     navigate
+" splits navigate
 noremap <silent> <C-l> :wincmd l<cr>
 noremap <silent> <C-h> :wincmd h<cr>
 noremap <silent> <C-j> :wincmd j<cr>
@@ -28,19 +28,19 @@ inoremap <silent> <C-l> <Esc>:wincmd l<cr>
 inoremap <silent> <C-h> <Esc>:wincmd h<cr>
 inoremap <silent> <C-j> <Esc>:wincmd j<cr>
 inoremap <silent> <C-k> <Esc>:wincmd k<cr>
-"	      resize
-noremap <silent> <leader>wb :wincmd _<cr>
-noremap <silent> <leader>wn :wincmd =<cr>
+"	splits resize
+" noremap <silent> <leader>wb :wincmd _<cr>
+" noremap <silent> <leader>wn :wincmd =<cr>
 " noremap <silent> < :vertical resize -3<cr>
 " noremap <silent> > :vertical resize +3<cr>
-"       rotate
+" splits rotate
 noremap <silent> <leader>wr :wincmd r<cr>
 noremap <silent> <leader>wh :wincmd H<cr>
 noremap <silent> <leader>wv :wincmd J<cr>
-"				swap
+"	splits swap
 noremap <silent> <leader>wm :call MarkWindowSwap()<CR>
 noremap <silent> <leader>wc :call DoWindowSwap()<CR>
-"				fullscreen
+"	splits fullscreen
 nnoremap <silent> <leader>zo :ZoomToggle<CR>
 
 " open floating terminal
@@ -49,32 +49,35 @@ noremap <silent> <leader>tt :FloatermNew<cr>
 " scroll window
 " map <C-y> <C-y>k
 " map <C-e> <C-e>j
-map <S-j> 2<C-e>2j
-map <S-k> 2<C-y>2k
+nnoremap <S-j> 2<C-e>2j
+nnoremap <S-k> 2<C-y>2k
 
 " buffers
 " nmap <space>nn :b#<cr>
 nmap <leader>bp :bp<cr>
 nmap <leader>bn :bn<cr>
 
-" substitute
-nnoremap <leader>ss :%s/\v
-vnoremap <leader>ss :s/\v
-"            word
-nmap <leader>sw :%s/<C-r>=expand("<cword>")<cr>/
-nmap <leader>iw :'<,'>s/<C-r>=expand("<cword>")<cr>/
-"            selection
+" start a substitute
+nnoremap <leader>ss :%s#\v
+" start a substitute inside the selected range only
+vnoremap <leader>ss :<C-u>%s#\%V\v
+" subsitute word under " register
+nnoremap <leader><space>s :<C-u>%s#<C-r>"#
+" subsitute word under " register inside the selected range
+vnoremap <leader><space>s :<C-u>%s#\%V\v<C-r>"#
+" substitute cword
+nnoremap <leader>sw :%s#<C-r>=expand("<cword>")<cr>#
+" nnoremap <leader>iw :'<,'>s#<C-r>=expand("<cword>")<cr>#
 
-" search selected text
-vnoremap // y/<C-R>=escape(@",'/\')<CR>
 " search within selection
 vnoremap / <ESC>/\%V
+" search selected text
+" vnoremap // y/<C-R>=escape(@",'/\')<CR>
+" find cword
+" nmap <leader>fw /<C-r>=expand("<cword>")<cr><cr>
 
 " unhighlight find results
 nmap <silent> <esc><esc> :noh<cr>
-
-" find cword
-" nmap <leader>fw /<C-r>=expand("<cword>")<cr><cr>
 
 " yank line-block
 map Y yy
@@ -111,14 +114,27 @@ nnoremap <space>b F(b
 nnoremap <space><S-b> F(B
 
 " indenting behavior
-vnoremap < <gv
-vnoremap > >gv
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
 " autopairs toggle
 noremap <leader>' :call AutoPairsToggle()<cr>
 
-" do not insert comment after pressing "o"
+" do not insert comment after pressing 'o'
 nnoremap <space>o o<C-u>
 
 " open this file
 nnoremap <space>em :vs ~/.dotfiles/nvim/mappings.vim<cr>
+
+" exec current line
+nnoremap <leader>e :exe getline(line('.'))<cr>
+
+" try/catch snippet
+inoremap ;tc try {} catch (err) {}<ESC>^f{a<cr><cr><esc>k
+
+" repeat last substitution
+nnoremap <leader>. :&&<cr>
+
+" yank into custom register
+vnoremap <space>y "ay
+vnoremap <space>p "ap
