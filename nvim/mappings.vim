@@ -84,7 +84,6 @@ map Y yy
 
 " comment line
 map ,, gcc
-vmap ,, gc
 
 " telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -104,14 +103,14 @@ nnoremap <leader>pc <cmd>PlugClean<cr>
 
 " quit
 map Q :q<cr>
-map <space>Q :q!<cr>
+map <leader>Q :q!<cr>
 
 " unbind space
 map <space> <Nop>
 
 " move to first WORD before current opening bracket
-noremap <space>b F(b
 noremap <space><S-b> F(B
+noremap <space>b F(b
 
 " indenting behavior
 vnoremap <Tab> >gv
