@@ -105,7 +105,7 @@ nnoremap <silent> <leader>cn  :<C-u>CocNext<CR>
 " Do default action for previous item.
 " nnoremap <silent> <leader>cp  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
+" nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 
 " Notify coc.nvim that <enter> has been pressed.
 " Currently used for the formatOnType feature.

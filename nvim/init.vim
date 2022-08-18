@@ -4,7 +4,6 @@ Plug 'machakann/vim-sandwich'																													" wrap words with a gi
 Plug 'neoclide/coc.nvim', { 'branch': 'release' } 																		" coc nodejs host
 Plug 'tjdevries/coc-zsh'																															" coc zsh support
 Plug 'antoinemadec/coc-fzf'																														" coc fzf support
-" Plug 'rakr/vim-one'																																		" colorscheme
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}                                          " colorscheme
 Plug 'itchyny/lightline.vim'																													" statusline
 Plug 'josa42/vim-lightline-coc'                   																		" coc statusline support
@@ -21,7 +20,6 @@ Plug 'maxmellon/vim-jsx-pretty'																												" jsx support
 Plug 'tpope/vim-vinegar'																															" simpler netrw
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' } " prettier
 Plug 'wellle/targets.vim'																															" change words between delimiters
-" Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}  																		" terminal
 Plug 'voldikss/vim-floaterm'																													" floating terminal
 Plug 'jiangmiao/auto-pairs'																														" auto close things
 Plug 'nvim-lua/plenary.nvim'																													" (telescope dependenvy)
@@ -30,11 +28,13 @@ Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder
 Plug 'mfussenegger/nvim-dap'																													" dap
 Plug 'rcarriga/nvim-dap-ui'																														" dap ui
 Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
+Plug 'vimwiki/vimwiki'                                                                " vimwiki
+Plug 'terryma/vim-multiple-cursors'                                                   " multiple cursors
+" Plug 'rakr/vim-one'																																		" colorscheme
+" Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}  																		" terminal
 " Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }																		" go
 " Plug 'norcalli/nvim-colorizer.lua'																									  " highlight hex colors
-Plug 'vimwiki/vimwiki'                                                                " vimwiki
-Plug 'terryma/vim-multiple-cursors'                                                   " multiple cursors
 " Plug 'chrisbra/csv.vim'                                                               " csv support
 " Plug 'SirVer/ultisnips'                                                               " track snippets engine
 " Plug 'honza/vim-snippets'                                                             " adding this because snippets are separated from the engine 

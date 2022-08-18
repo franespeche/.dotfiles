@@ -110,8 +110,8 @@ map <space>Q :q!<cr>
 map <space> <Nop>
 
 " move to first WORD before current opening bracket
-nnoremap <space>b F(b
-nnoremap <space><S-b> F(B
+noremap <space>b F(b
+noremap <space><S-b> F(B
 
 " indenting behavior
 vnoremap <Tab> >gv
@@ -137,4 +137,15 @@ nnoremap <leader>. :&&<cr>
 
 " yank into custom register
 vnoremap <space>y "ay
-vnoremap <space>p "ap
+" vnoremap <space>p "ap
+noremap <space>p "ap
+
+vnoremap <S-j> %
+vnoremap <S-k> %
+
+" got from @ornicar
+" expand current filed dir in console mode
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" toggle line numbers
+nnoremap <leader>sn :set relativenumber!<cr>
