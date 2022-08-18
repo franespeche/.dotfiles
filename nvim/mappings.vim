@@ -135,9 +135,8 @@ inoremap ;tc try {} catch (err) {}<ESC>^f{a<cr><cr><esc>k
 " repeat last substitution
 nnoremap <leader>. :&&<cr>
 
-" yank into custom register
-vnoremap <space>y "ay
-" vnoremap <space>p "ap
+" yank into custom ("a") register
+noremap <space>y "ay
 noremap <space>p "ap
 
 vnoremap <S-j> %
