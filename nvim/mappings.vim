@@ -123,14 +123,14 @@ noremap <leader>' :call AutoPairsToggle()<cr>
 " do not insert comment after pressing 'o'
 nnoremap <space>o o<C-u>
 
-" open this file
+" open this file in a new split
 nnoremap <space>em :vs ~/.dotfiles/nvim/mappings.vim<cr>
 
-" exec current line
+" exec current line (helpful for debugging)
 nnoremap <leader>e :exe getline(line('.'))<cr>
 
 " try/catch snippet
-inoremap ;tc try {} catch (err) {}<ESC>^f{a<cr><cr><esc>k
+inoremap ;tc try {} catch (err: any) {}<ESC>^f{a<cr><cr><esc>k
 
 " repeat last substitution
 nnoremap <leader>. :&&<cr>
