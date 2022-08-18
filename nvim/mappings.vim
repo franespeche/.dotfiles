@@ -139,6 +139,7 @@ nnoremap <leader>. :&&<cr>
 noremap <space>y "ay
 noremap <space>p "ap
 
+" move to start or end of block in visual mode
 vnoremap <S-j> %
 vnoremap <S-k> %
 
