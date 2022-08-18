@@ -101,6 +101,10 @@ nnoremap <leader>zz <cmd>set wrap!<cr>
 nnoremap <leader>pi <cmd>PlugInstall<cr>
 nnoremap <leader>pc <cmd>PlugClean<cr>
 
+" fold everything but selection
+" got from https://stackoverflow.com/questions/674613/vim-folds-for-everything-except-something
+vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`<
+
 " quit
 map Q :q<cr>
 map <leader>Q :q!<cr>
