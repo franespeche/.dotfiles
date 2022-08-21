@@ -54,6 +54,7 @@ source ~/.dotfiles/nvim/prettier.vim
 source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/init.local.vim
 source ~/.dotfiles/nvim/vimwiki.vim
+source ~/.dotfiles/nvim/telescope.vim
 source ~/.dotfiles/nvim/ultisnips.vim
 if filereadable('init.local.vim')
   source ~/.dotfiles/nvim/init.local.vim
