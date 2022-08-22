@@ -1,0 +1,29 @@
+snippet afn "() => { ... }"
+($1) => {
+	$2
+}
+endsnippet
+
+snippet tryc "try { ... } catch (err: any) { // fail }"
+try {
+	$1
+} catch (err: any) {
+	// fail
+}
+endsnippet
+
+snippet uef "useEffect(()=>{ ... }, [])"
+useEffect(()=>{
+	$1
+}, [$2])
+endsnippet
+
+snippet cafn "const $0 = ($1) => { ... }"
+const $1 = ($2) => {
+  $3
+}
+endsnippet
+
+snippet clg "console.log('$1', $1)"
+console.log("$1", $1)
+endsnippet
