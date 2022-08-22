@@ -6,7 +6,7 @@ noremap <silent> <leader>bd :set background=dark<cr>
 noremap <silent> <leader>bl :set background=light<cr>
 
 " toggle dark mode
-noremap <silent> <leader>im :ToggleDarkMode()<cr>
+" noremap <silent> <leader>im :ToggleDarkMode()<cr>
 
 " cd cwd
 " see :help expand
@@ -47,8 +47,6 @@ nnoremap <silent> <leader>zo :ZoomToggle<CR>
 noremap <silent> <leader>tt :FloatermNew<cr>
 
 " scroll window
-" map <C-y> <C-y>k
-" map <C-e> <C-e>j
 nnoremap <S-j> 2<C-e>2j
 nnoremap <S-k> 2<C-y>2k
 
@@ -85,12 +83,6 @@ map Y yy
 " comment line
 map ,, gcc
 
-" telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
 " vim fuvitive
 nnoremap <leader>gb <cmd>Git blame<cr>
 
@@ -120,9 +112,6 @@ noremap <space>b F(b
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
-" autopairs toggle
-noremap <leader>' :call AutoPairsToggle()<cr>
-
 " do not insert comment after pressing 'o'
 nnoremap <space>o o<C-u>
 
@@ -143,13 +132,15 @@ noremap <space>p "ap
 vnoremap <S-j> %
 vnoremap <S-k> %
 
-" got from @ornicar
-" expand current filed dir in console mode
+" expand current dir
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " toggle line numbers
 nnoremap <leader>sn :set relativenumber!<cr>
 
+" toggle auto-pairs
+noremap <C-n> <Esc>:call AutoPairsToggle()<cr>
+inoremap <C-n> <Esc>:call AutoPairsToggle()<cr>a
 
 " go to first function in main column
 " see :h [[
@@ -157,3 +148,5 @@ map [[ ?{<CR>w99[{
 map ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] k$][%?}<CR>
+
+inoremap <C-o> <Esc>o
