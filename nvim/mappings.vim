@@ -132,9 +132,6 @@ nnoremap <space>em :vs ~/.dotfiles/nvim/mappings.vim<cr>
 " exec current line (helpful for debugging)
 nnoremap <leader>e :exe getline(line('.'))<cr>
 
-" try/catch snippet
-inoremap ;tc try {} catch (err: any) {}<ESC>^f{a<cr><cr><esc>k
-
 " repeat last substitution
 nnoremap <leader>. :&&<cr>
 
@@ -152,3 +149,11 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " toggle line numbers
 nnoremap <leader>sn :set relativenumber!<cr>
+
+
+" go to first function in main column
+" see :h [[
+map [[ ?{<CR>w99[{
+map ][ /}<CR>b99]}
+map ]] j0[[%/{<CR>
+map [] k$][%?}<CR>
