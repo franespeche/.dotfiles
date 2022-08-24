@@ -19,6 +19,8 @@ EOF
 
 colorscheme catppuccin
 
+highlight CocHighlightText guifg=#CAD3F5 guibg=#455C6D
+
 " function! ToggleDarkMode()
 
 	" let iterm_profile = $ITERM_PROFILE
