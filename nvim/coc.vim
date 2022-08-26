@@ -143,5 +143,5 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " enable JSX syntax highlighing in javascript files
 let g:jsx_ext_required = 0 
 
-let g:node_client_debug = 1
-let $NODE_CLIENT_LOG_FILE = "$HOME/.dotfiles/nvim/coc.nvim.logs"
+" let g:node_client_debug = 1
+" let $NODE_CLIENT_LOG_FILE = "$/.dotfiles/nvim/coc.nvim.logs"
