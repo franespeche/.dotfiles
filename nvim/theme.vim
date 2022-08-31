@@ -19,7 +19,10 @@ EOF
 
 colorscheme catppuccin
 
-highlight CocHighlightText guifg=#CAD3F5 guibg=#455C6D
+" dark mode
+" highlight CocHighlightText guifg=#CAD3F5 guibg=#455C6D
+" light mode
+highlight CocHighlightText guifg=#4C4F69 guibg=#A8DAF0
 
 " function! ToggleDarkMode()
 
