@@ -30,6 +30,7 @@ Plug 'rcarriga/nvim-dap-ui'																														" dap ui
 Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
 Plug 'vimwiki/vimwiki'                                                                " vimwiki
 Plug 'terryma/vim-multiple-cursors'                                                   " multiple cursors
+Plug 'morhetz/gruvbox' " colorscheme
 " Plug 'rakr/vim-one'																																		" colorscheme
 " Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}  																		" terminal
 " Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
