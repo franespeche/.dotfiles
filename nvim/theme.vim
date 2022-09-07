@@ -7,7 +7,6 @@ let g:one_allow_italics = 1
 " let g:catppuccin_flavour = "frappe"
 " let g:catppuccin_flavour = "mocha"
 
-
 " lua << EOF
 " require("catppuccin").setup()
 " vim.api.nvim_create_autocmd("OptionSet", {
@@ -17,7 +16,6 @@ let g:one_allow_italics = 1
 " 	end,
 " })
 " EOF
-
 " colorscheme catppuccin
 
 " dark mode
@@ -25,21 +23,13 @@ let g:one_allow_italics = 1
 " light mode
 " highlight CocHighlightText guifg=#4C4F69 guibg=#A8DAF0
 
+
+" highlight CursorColumn guibg=#1E2030
+
 colorscheme gruvbox
 
-" function! ToggleDarkMode()
-
-	" let iterm_profile = $ITERM_PROFILE
-	" if iterm_profile == "dark"
-	" 	set background=dark
-	" else
-	" 	set background=light
-	" endif
-
-" endfunction
-
-" command! ToggleDarkMode call ToggleDarkMode()
-" noremap <silent> <leader>dm :call ToggleDarkMode()<cr>
+set background=light
+highlight CocHighlightText guibg=Grey40
 
 
 " let g:terminal_color_0 = '#F2E0DE'

@@ -1,5 +1,5 @@
 let g:lightline = {
-      \   'colorscheme': 'catppuccin',
+      \   'colorscheme': 'gruvbox',
 			\   'subseparator': {
 			\			'left': '|',
 			\		},
@@ -46,22 +46,23 @@ endfunction
 " register compoments:
 call lightline#coc#register()
 
-augroup LightlineColorscheme
-  autocmd!
-  autocmd ColorScheme * echo 'holis'
-augroup END
-function! s:lightline_update()
-  if !exists('g:loaded_lightline')
-    return
-  endif
-  try
-    if g:colors_name =~# 'wombat\|solarized\|landscape\|jellybeans\|seoul256\|Tomorrow|catppuccin'
-      let g:lightline.colorscheme =
-            \ substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '')
-      call lightline#init()
-      call lightline#colorscheme()
-      call lightline#update()
-    endif
-  catch
-  endtry
-endfunction
+" this was commented out when migrating from catppuccin to gruvbox
+" augroup LightlineColorscheme
+"   autocmd!
+"   " autocmd ColorScheme * echo 'holis'
+" augroup END
+" function! s:lightline_update()
+"   if !exists('g:loaded_lightline')
+"     return
+"   endif
+"   try
+"     if g:colors_name =~# 'wombat\|solarized\|landscape\|jellybeans\|seoul256\|Tomorrow|catppuccin'
+"       let g:lightline.colorscheme =
+"             \ substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '')
+"       call lightline#init()
+"       call lightline#colorscheme()
+"       call lightline#update()
+"     endif
+"   catch
+"   endtry
+" endfunction
