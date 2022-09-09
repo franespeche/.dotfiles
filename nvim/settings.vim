@@ -34,10 +34,9 @@ set showmatch											" show matching char (like {})
 set wrapscan											" cycle search
 
 set nowrap												" no line wrapping
-set scrolloff=15                 	" Show 7 lines of context around the cursor.
-set sidescrolloff=15
+set scrolloff=13                 	" Show 13 lines of context around the cursor.
+set sidescrolloff=13
 
-highlight Comment cterm=italic  	" italic comments
 
 set termguicolors                 " set colors
 set t_Co=256                      " set colors

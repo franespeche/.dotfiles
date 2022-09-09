@@ -46,10 +46,20 @@ nnoremap <silent> <leader>zo :ZoomToggle<CR>
 " open floating terminal
 noremap <silent> <leader>tt :FloatermNew<cr>
 
-" scroll window
-nnoremap <S-j> 2<C-e>2j
-nnoremap <S-k> 2<C-y>2k
+" conditionally scroll window
+nnoremap <expr> <S-j> g:flag==0 ? '2<C-e>' : '2<C-e>2j'
+nnoremap <expr> <S-k> g:flag==0 ? '2<C-y>' : '2<C-y>2k'
 
+" faster selection
+vnoremap <S-j> 2j
+vnoremap <S-k> 2k
+
+" move to start or end of block in visual mode
+" vnoremap <S-j> %
+" vnoremap <S-k> %
+
+nnoremap <leader><S-j> :call ChangeScrollMode()<cr>
+nnoremap <leader><S-k> :call ChangeScrollMode()<cr>
 
 " start a substitute
 nnoremap <leader>ss :%s#\v
@@ -66,7 +76,7 @@ nnoremap <leader>sw :%s#<C-r>=expand("<cword>")<cr>#
 " search within selection
 vnoremap / <ESC>/\%V
 " search selected text
-" vnoremap // y/<C-R>=escape(@",'/\')<CR>
+vnoremap // y/<C-R>=escape(@",'/\')<CR>
 " find cword
 " nmap <leader>fw /<C-r>=expand("<cword>")<cr><cr>
 
@@ -123,10 +133,6 @@ nnoremap <leader>. :&&<cr>
 " yank into custom ("a") register
 noremap <space>y "ay
 noremap <space>p "ap
-
-" move to start or end of block in visual mode
-vnoremap <S-j> %
-vnoremap <S-k> %
 
 " expand current dir
 cnoremap %% <C-R>=expand('%:h').'/'<cr>

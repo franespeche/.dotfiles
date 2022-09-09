@@ -1,3 +1,4 @@
+" 'gitbranch'
 let g:lightline = {
       \   'colorscheme': 'gruvbox',
 			\   'subseparator': {
@@ -7,7 +8,7 @@ let g:lightline = {
       \     'left': [
       \       [ 'mode', 'paste'],
       \       [ 'coc_errors', 'coc_warnings', 'coc_ok' ],
-      \       [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+      \       [ 'readonly', 'filename', 'modified' ],
       \     ],
       \     'right': [
       \       [ 'lineinfo' ],

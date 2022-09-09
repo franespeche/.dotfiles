@@ -46,13 +46,14 @@ call plug#end()
 source ~/.dotfiles/nvim/coc-explorer.vim
 source ~/.dotfiles/nvim/settings.vim
 source ~/.dotfiles/nvim/coc.vim
+source ~/.dotfiles/nvim/plugin/scroll-mode.vim
+source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/mappings.vim
 source ~/.dotfiles/nvim/plugs.vim
 source ~/.dotfiles/nvim/theme.vim
 source ~/.dotfiles/nvim/lightline.vim
 source ~/.dotfiles/nvim/prettier.vim
 source ~/.dotfiles/nvim/prettier.vim
-source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/init.local.vim
 source ~/.dotfiles/nvim/vimwiki.vim
 source ~/.dotfiles/nvim/telescope.vim

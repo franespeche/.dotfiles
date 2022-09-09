@@ -18,6 +18,7 @@ let g:one_allow_italics = 1
 " EOF
 " colorscheme catppuccin
 
+" catppuccin
 " dark mode
 " highlight CocHighlightText guifg=#CAD3F5 guibg=#455C6D
 " light mode
@@ -26,10 +27,13 @@ let g:one_allow_italics = 1
 
 " highlight CursorColumn guibg=#1E2030
 
+" gruvbox
 colorscheme gruvbox
-
-set background=light
+" dark mode
 highlight CocHighlightText guibg=Grey40
+" light mode
+" 
+" set background=dark
 
 
 " let g:terminal_color_0 = '#F2E0DE'
@@ -55,3 +59,6 @@ highlight CocHighlightText guibg=Grey40
 
 " let g:terminal_color_7 = '#575279'
 " let g:terminal_color_15 = '#EDECEE'
+
+" Italics Comment 
+highlight Comment cterm=italic  	" italic comments
