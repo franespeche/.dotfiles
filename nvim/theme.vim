@@ -30,10 +30,10 @@ let g:one_allow_italics = 1
 " gruvbox
 colorscheme gruvbox
 " dark mode
-highlight CocHighlightText guibg=Grey40
+" highlight CocHighlightText guibg=Grey40
 " light mode
 " 
-" set background=dark
+set background=light
 
 
 " let g:terminal_color_0 = '#F2E0DE'

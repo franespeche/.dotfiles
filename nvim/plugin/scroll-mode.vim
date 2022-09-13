@@ -5,22 +5,22 @@
 "   1. Pressing <S-j> OR <S-k> will scroll the page AND the cursor line
 
 " set default scroll mode to "0"
-if !exists("g:flag")
+if !exists("g:scrollMode")
   let g:scrollMode=0
 endif
 
 " function to change scroll mode to "1"
-function ChangeScrollMode()
+function SetNormalScrollMode()
   let g:scrollMode=1
 endfunction
 
 " Mappings:
 " Toggle scroll mode
-nnoremap <leader><S-j> :call ChangeScrollMode()<cr>
-nnoremap <leader><S-k> :call ChangeScrollMode()<cr>
+nnoremap <silent> <leader><S-j> :call SetNormalScrollMode()<cr>
+nnoremap <silent> <leader><S-k> :call SetNormalScrollMode()<cr>
 " scroll window based on mode
-nnoremap <expr> <S-j> g:scrollMode==0 ? '2<C-e>2j' : '2<C-e>'
-nnoremap <expr> <S-k> g:scrollMode==0 ? '2<C-y>2k' : '2<C-y>'
+nnoremap <expr> <S-j> g:scrollMode==0 ? '3<C-e>3j' : '3<C-e>'
+nnoremap <expr> <S-k> g:scrollMode==0 ? '3<C-y>3k' : '3<C-y>'
 
 " reset mode on CursorHold
 autocmd CursorHold * silent let g:scrollMode=0

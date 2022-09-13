@@ -21,7 +21,6 @@ require('telescope').setup{
         ["<S-k>"] = "preview_scrolling_up",
         ["<C-j>"] = "move_selection_next",
         ["<C-k>"] = "move_selection_previous",
-        ["<Esc>"] = require('telescope.actions').close
       }
     }
   }

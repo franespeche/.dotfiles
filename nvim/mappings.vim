@@ -46,10 +46,6 @@ nnoremap <silent> <leader>zo :ZoomToggle<CR>
 " open floating terminal
 noremap <silent> <leader>tt :FloatermNew<cr>
 
-" conditionally scroll window
-nnoremap <expr> <S-j> g:flag==0 ? '2<C-e>' : '2<C-e>2j'
-nnoremap <expr> <S-k> g:flag==0 ? '2<C-y>' : '2<C-y>2k'
-
 " faster selection
 vnoremap <S-j> 2j
 vnoremap <S-k> 2k
@@ -154,8 +150,8 @@ map [] k$][%?}<CR>
 inoremap <C-o> <Esc>o
 
 " Bufstop
-" nnoremap <leader>b :Bufstop<cr>
-nnoremap <leader>b :BufstopFast<cr>
+nnoremap <leader>b :Bufstop<cr>
+" nnoremap <leader>b :BufstopFast<cr>
 nnoremap <leader><Tab> :BufstopBack<cr>
 nnoremap <leader><Space><Tab> :BufstopForward<cr>
 " buffers
