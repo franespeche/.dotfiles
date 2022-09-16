@@ -1,18 +1,18 @@
 let g:coc_explorer_global_presets = {
 \   'nvim': {
 \     'root-uri': '~/.config/nvim/',
-\     'position': 'floating',
+\     'position': 'left',
 \			'floating-width': 120,
 \			'open-action-strategy': 'sourceWindow',
 \   },
 \   'floating': {
-\     'position': 'floating',
+\     'position': 'left',
 \			'floating-width': 120,
 \     'open-action-strategy': 'sourceWindow',
 \     'quit-on-open': v:false,
 \   },
 \   'buffer': {
-\     'position': 'floating',
+\     'position': 'left',
 \			'floating-width': 120,
 \     'open-action-strategy': 'sourceWindow',
 \     'quit-on-open': v:false,

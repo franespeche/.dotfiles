@@ -2,6 +2,10 @@ lua << EOF
 require('telescope').setup{
   defaults = {
     layout_strategy = 'horizontal',
+    prompt_title = "holis",
+    file_ignore_patterns = {
+      "node_modules", "build", "dist", "yarn.lock"
+      },
     layout_config = {
       scroll_speed = 3,
        horizontal = {

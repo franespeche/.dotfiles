@@ -16,6 +16,10 @@ noremap <leader>cd :cd %:h<cr> :pwd<cr>
 noremap H ^
 noremap L $
 
+" open new tab
+nnoremap <silent> <leader>tn :tabnew<cr>
+nnoremap <silent> <leader>tc :tabclose<cr>
+
 " splits create
 noremap <silent> <leader>l :vsp<cr>
 noremap <silent> <leader>j :sp<cr>
@@ -62,9 +66,9 @@ nnoremap <leader>ss :%s#\v
 " start a substitute inside the selected range only
 vnoremap <leader>ss :<C-u>%s#\%V\v
 " subsitute word under " register
-nnoremap <leader><space>s :<C-u>%s#<C-r>"#
+nnoremap <leader><leader>s :<C-u>%s#<C-r>"#
 " subsitute word under " register inside the selected range
-vnoremap <leader><space>s :<C-u>%s#\%V\v<C-r>"#
+vnoremap <leader><leader>s :<C-u>%s#\%V\v<C-r>"#
 " substitute cword
 nnoremap <leader>sw :%s#<C-r>=expand("<cword>")<cr>#
 " nnoremap <leader>iw :'<,'>s#<C-r>=expand("<cword>")<cr>#
@@ -146,6 +150,8 @@ map [[ ?{<CR>w99[{
 map ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] k$][%?}<CR>
+
+xnoremap <silent> <space>J %
 
 inoremap <C-o> <Esc>o
 

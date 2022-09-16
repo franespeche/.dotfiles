@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "coc-eslint": ">=1.5.8",
-    "coc-explorer": ">=0.24.3",
-    "coc-tsserver": ">=1.10.5"
-  }
-}

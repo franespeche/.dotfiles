@@ -120,6 +120,12 @@ bindkey -M visual S add-surround
 #         zsh         #
 # # # # # # # # # # # #
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/franespeche/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/franespeche/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/franespeche/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/franespeche/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
 # set theme
 #ZSH_THEME="frean"
 
@@ -285,9 +291,3 @@ source $ZDOTDIR/completion.zsh
 
 fpath=($ZDIR/plugins/zsh-completions/src $fpath)
 # if this doesnt work, try running  rm -f ~/.zcompdump; compinit
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/franespeche/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/franespeche/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/franespeche/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/franespeche/google-cloud-sdk/completion.zsh.inc'; fi
