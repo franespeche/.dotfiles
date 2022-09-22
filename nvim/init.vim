@@ -25,16 +25,14 @@ Plug 'jiangmiao/auto-pairs'																														" auto close things
 Plug 'nvim-lua/plenary.nvim'																													" (telescope dependenvy)
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }  														" telescope
 Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder/preview
-Plug 'mfussenegger/nvim-dap'																													" dap
-Plug 'rcarriga/nvim-dap-ui'																														" dap ui
-Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
 Plug 'vimwiki/vimwiki'                                                                " vimwiki
-Plug 'terryma/vim-multiple-cursors'                                                   " multiple cursors
-Plug 'morhetz/gruvbox' " colorscheme
-" Plug 'rakr/vim-one'																																		" colorscheme
-" Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}  																		" terminal
+Plug 'morhetz/gruvbox'                                                                " colorscheme
+Plug 'lukas-reineke/indent-blankline.nvim'                                            " indent lines
+" Plug 'terryma/vim-multiple-cursors'                                                   " multiple cursors
+" Plug 'mfussenegger/nvim-dap'																													" dap
+" Plug 'rcarriga/nvim-dap-ui'																														" dap ui
+" Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
 " Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }																		" go
 " Plug 'norcalli/nvim-colorizer.lua'																									  " highlight hex colors
 " Plug 'chrisbra/csv.vim'                                                               " csv support
 " Plug 'SirVer/ultisnips'                                                               " track snippets engine
@@ -47,17 +45,15 @@ source ~/.dotfiles/nvim/coc-explorer.vim
 source ~/.dotfiles/nvim/settings.vim
 source ~/.dotfiles/nvim/coc.vim
 source ~/.dotfiles/nvim/plugin/scroll-mode.vim
-source ~/.dotfiles/nvim/dap.vim
+" source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/mappings.vim
 source ~/.dotfiles/nvim/plugs.vim
 source ~/.dotfiles/nvim/theme.vim
 source ~/.dotfiles/nvim/lightline.vim
 source ~/.dotfiles/nvim/prettier.vim
-source ~/.dotfiles/nvim/prettier.vim
-source ~/.dotfiles/nvim/init.local.vim
 source ~/.dotfiles/nvim/vimwiki.vim
 source ~/.dotfiles/nvim/telescope.vim
-source ~/.dotfiles/nvim/ultisnips.vim
+" source ~/.dotfiles/nvim/ultisnips.vim
 if filereadable('init.local.vim')
   source ~/.dotfiles/nvim/init.local.vim
 endif

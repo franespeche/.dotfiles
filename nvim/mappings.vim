@@ -151,6 +151,10 @@ map ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] k$][%?}<CR>
 
+" cycle through methods or keys in an object
+map [m [mzt
+map ]m ]mzt
+
 xnoremap <silent> <space>J %
 
 inoremap <C-o> <Esc>o
