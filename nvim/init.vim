@@ -28,6 +28,7 @@ Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder
 Plug 'vimwiki/vimwiki'                                                                " vimwiki
 Plug 'morhetz/gruvbox'                                                                " colorscheme
 Plug 'lukas-reineke/indent-blankline.nvim'                                            " indent lines
+Plug 'SirVer/ultisnips'                                                               " track snippets engine
 " Plug 'terryma/vim-multiple-cursors'                                                   " multiple cursors
 " Plug 'mfussenegger/nvim-dap'																													" dap
 " Plug 'rcarriga/nvim-dap-ui'																														" dap ui
@@ -35,12 +36,10 @@ Plug 'lukas-reineke/indent-blankline.nvim'                                      
 " Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
 " Plug 'norcalli/nvim-colorizer.lua'																									  " highlight hex colors
 " Plug 'chrisbra/csv.vim'                                                               " csv support
-" Plug 'SirVer/ultisnips'                                                               " track snippets engine
 " Plug 'honza/vim-snippets'                                                             " adding this because snippets are separated from the engine 
-
 call plug#end()
 
-" configs
+" source configs
 source ~/.dotfiles/nvim/coc-explorer.vim
 source ~/.dotfiles/nvim/settings.vim
 source ~/.dotfiles/nvim/coc.vim
@@ -53,7 +52,7 @@ source ~/.dotfiles/nvim/lightline.vim
 source ~/.dotfiles/nvim/prettier.vim
 source ~/.dotfiles/nvim/vimwiki.vim
 source ~/.dotfiles/nvim/telescope.vim
-" source ~/.dotfiles/nvim/ultisnips.vim
+source ~/.dotfiles/nvim/ultisnips.vim
 if filereadable(expand('~/.dotfiles/nvim/init.local.vim'))
   source ~/.dotfiles/nvim/init.local.vim
 endif

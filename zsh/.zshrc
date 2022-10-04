@@ -1,7 +1,4 @@
 #!/bin/zsh
-# $COLUMNS = n of columns in terminal
-# pwd=$(echo "${PWD/$HOME/}" | wc -c)
-# branch=$(git branch --show-current | wc -c)
 
 # # # # # # # # # # # #
 #         env         #
@@ -16,16 +13,6 @@ NVIM=$XDG_CONFIG_HOME/nvim/
 # # # # # # # # # # # #
 #         omz         #
 # # # # # # # # # # # #
-
-# # TODO: remove omz
-# path
-# export ZSH="/Users/franespeche/.oh-my-zsh"
-
-# # source omz
-# source $ZSH/oh-my-zsh.sh
-
-# plugins
-# plugins=(git vi-mode)
 
 # fzf show hidden files
 export FZF_DEFAULT_COMMAND="find -L"
@@ -119,9 +106,6 @@ bindkey -M visual S add-surround
 # # # # # # # # # # # #
 #         zsh         #
 # # # # # # # # # # # #
-
-# set theme
-#ZSH_THEME="frean"
 
 # source local cfg
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
@@ -221,63 +205,6 @@ fi
 if [[ -z "$ZSH_CACHE_DIR" ]]; then
   ZSH_CACHE_DIR="$ZSH/cache"
 fi
-
-# from omz ------------------------------------------------------------------------------------
-
-# add a function path
-# fpath=("$ZSH/functions" "$ZSH/completions" $fpath)
-
-# Create cache and completions dir and add to $fpath
-# mkdir -p "$ZSH_CACHE_DIR/completions"
-# (( ${fpath[(Ie)"$ZSH_CACHE_DIR/completions"]} )) || fpath=("$ZSH_CACHE_DIR/completions" $fpath)
-
-# Load all stock functions (from $fpath files) called below.
-# autoload -U compaudit compinit
-# URL-decode a string
-#
-# Decodes a RFC 2396 URL-encoded (%-escaped) string.
-# This decodes the '+' and '%' escapes in the input string, and leaves
-# other characters unchanged. Does not enforce that the input is a
-# valid URL-encoded string. This is a convenience to allow callers to
-# pass in a full URL or similar strings and decode them for human
-# presentation.
-#
-# Outputs the encoded string on stdout.
-# Returns nonzero if encoding failed.
-#
-# Usage:
-#   omz_urldecode <urlstring>  - prints decoded string followed by a newline
-# function decodeurl {
-#   emulate -L zsh
-#   local encoded_url=$1
-
-#   # Work bytewise, since URLs escape UTF-8 octets
-#   local caller_encoding=$langinfo[CODESET]
-#   local LC_ALL=C
-#   export LC_ALL
-
-#   # Change + back to ' '
-#   local tmp=${encoded_url:gs/+/ /}
-#   # Protect other escapes to pass through the printf unchanged
-#   tmp=${tmp:gs/\\/\\\\/}
-#   # Handle %-escapes by turning them into `\xXX` printf escapes
-#   tmp=${tmp:gs/%/\\x/}
-#   local decoded="$(printf -- "$tmp")"
-
-#   # Now we have a UTF-8 encoded string in the variable. We need to re-encode
-#   # it if caller is in a non-UTF-8 locale.
-#   local -a safe_encodings
-#   safe_encodings=(UTF-8 utf8 US-ASCII)
-#   if [[ -z ${safe_encodings[(r)$caller_encoding]} ]]; then
-#     decoded=$(echo -E "$decoded" | iconv -f UTF-8 -t $caller_encoding)
-#     if [[ $? != 0 ]]; then
-#       echo "Error converting string from UTF-8 to $caller_encoding" >&2
-#       return 1
-#     fi
-#   fi
-
-#   echo -E "$decoded"
-# }
 
 autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files

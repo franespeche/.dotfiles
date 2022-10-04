@@ -133,9 +133,10 @@ nmap <silent>gi <Plug>(coc-implementation)
 nmap <silent>gr <Plug>(coc-references)
 
 " explorer
-nmap <space>en :CocCommand explorer --preset nvim<CR>
+nmap <space>ei :CocCommand explorer --preset nvim<CR>
 nmap <space>ef :CocCommand explorer --preset floating<CR>
-nmap <space>eb :CocCommand explorer --preset buffer<CR>
+" nmap <space>ei :CocCommand explorer --preset init_vim<CR>
+" nmap <space>eb :CocCommand explorer --preset buffer<CR>
 
 " highlight symbol under cursoron CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')

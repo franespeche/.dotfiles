@@ -20,6 +20,9 @@ noremap L $
 nnoremap <silent> <leader>tn :tabnew<cr>
 nnoremap <silent> <leader>tc :tabclose<cr>
 
+" execute :norm command
+xnoremap <leader>n :norm 
+
 " splits create
 noremap <silent> <leader>l :vsp<cr>
 noremap <silent> <leader>j :sp<cr>
@@ -55,8 +58,8 @@ vnoremap <S-j> 2j
 vnoremap <S-k> 2k
 
 " move to start or end of block in visual mode
-" vnoremap <S-j> %
-" vnoremap <S-k> %
+xnoremap <space>j %
+xnoremap <space><S-k> %
 
 nnoremap <leader><S-j> :call ChangeScrollMode()<cr>
 nnoremap <leader><S-k> :call ChangeScrollMode()<cr>
@@ -66,9 +69,9 @@ nnoremap <leader>ss :%s#\v
 " start a substitute inside the selected range only
 vnoremap <leader>ss :<C-u>%s#\%V\v
 " subsitute word under " register
-nnoremap <leader><leader>s :<C-u>%s#<C-r>"#
+nnoremap <leader><space>s :<C-u>%s#<C-r>"#
 " subsitute word under " register inside the selected range
-vnoremap <leader><leader>s :<C-u>%s#\%V\v<C-r>"#
+vnoremap <leader><space>s :<C-u>%s#\%V\v<C-r>"#
 " substitute cword
 nnoremap <leader>sw :%s#<C-r>=expand("<cword>")<cr>#
 " nnoremap <leader>iw :'<,'>s#<C-r>=expand("<cword>")<cr>#
@@ -120,6 +123,7 @@ vnoremap <S-Tab> <gv
 
 " do not insert comment after pressing 'o'
 nnoremap <space>o o<C-u>
+nnoremap <space>O O<C-u>
 
 " open this file in a new split
 nnoremap <space>em :vs ~/.dotfiles/nvim/mappings.vim<cr>
@@ -151,6 +155,10 @@ map ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] k$][%?}<CR>
 
+nmap vi/ :1,.v?^\s*/?<cr>jV:<C-u>.,18v#^\s*/#<cr>k
+nnoremap vi/ <Nop>
+nnoremap vi/ V
+
 " cycle through methods or keys in an object
 map [m [mzt
 map ]m ]mzt
@@ -166,5 +174,5 @@ nnoremap <leader><Tab> :BufstopBack<cr>
 nnoremap <leader><Space><Tab> :BufstopForward<cr>
 " buffers
 " nmap <space>nn :b#<cr>
-" nmap <leader>bp :bp<cr>
-" nmap <leader>bn :bn<cr>
+nnoremap <space>{ :bp<cr>
+nnoremap <space>} :bn<cr>

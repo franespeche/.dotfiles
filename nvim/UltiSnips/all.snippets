@@ -1,21 +1,31 @@
+snippet "())" "() => { ... }"
+($1) => {
+	$2
+}
+
+endsnippet
+
 snippet afn "() => { ... }"
 ($1) => {
 	$2
 }
+
 endsnippet
 
-snippet tryc "try { ... } catch (err: any) { // fail }"
+snippet "try|try catch" r
 try {
 	$1
 } catch (err: any) {
 	// fail
 }
+
 endsnippet
 
 snippet uef "useEffect(()=>{ ... }, [])"
 useEffect(()=>{
-	$1
-}, [$2])
+	$2
+}, [$1])
+
 endsnippet
 
 snippet cafn "const $0 = ($1) => { ... }"
@@ -26,4 +36,12 @@ endsnippet
 
 snippet clg "console.log('$1', $1)"
 console.log("$1", $1)
+endsnippet
+
+snippet "if ?el?s?e?" "if else" r
+if ($1) {
+  $2
+} else {
+  $3
+}
 endsnippet
