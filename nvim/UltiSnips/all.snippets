@@ -1,11 +1,16 @@
-snippet "())" "() => { ... }"
+snippet "\(\)\)" "() => { ... }"
 ($1) => {
 	$2
 }
-
 endsnippet
 
-snippet afn "() => { ... }"
+snippet "\\(\\)\\)" "() => { ... }"
+($1) => {
+	$2
+}
+endsnippet
+
+snippet ".*(afn).*" "() => { ... }"
 ($1) => {
 	$2
 }
@@ -16,7 +21,7 @@ snippet "try|try catch" r
 try {
 	$1
 } catch (err: any) {
-	// fail
+	
 }
 
 endsnippet

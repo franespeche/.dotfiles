@@ -74,6 +74,7 @@ nnoremap <leader><space>s :<C-u>%s#<C-r>"#
 vnoremap <leader><space>s :<C-u>%s#\%V\v<C-r>"#
 " substitute cword
 nnoremap <leader>sw :%s#<C-r>=expand("<cword>")<cr>#
+vnoremap <leader>sw :<C-u>%s#\%V<C-r>=expand("<cword>")<cr>#
 " nnoremap <leader>iw :'<,'>s#<C-r>=expand("<cword>")<cr>#
 
 " search within selection
@@ -106,9 +107,10 @@ nnoremap <leader>pc <cmd>PlugClean<cr>
 " got from https://stackoverflow.com/questions/674613/vim-folds-for-everything-except-something
 vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`<
 
-" quit
-map Q :q<cr>
-map <leader>Q :q!<cr>
+" save, quit
+map ;q :q<cr>
+map ;<C-q> :q!<cr>
+map ;w :w<cr>
 
 " unbind space
 map <space> <Nop>
@@ -163,8 +165,7 @@ nnoremap vi/ V
 map [m [mzt
 map ]m ]mzt
 
-xnoremap <silent> <space>J %
-
+nnoremap <space>J J
 inoremap <C-o> <Esc>o
 
 " Bufstop
@@ -176,3 +177,29 @@ nnoremap <leader><Space><Tab> :BufstopForward<cr>
 " nmap <space>nn :b#<cr>
 nnoremap <space>{ :bp<cr>
 nnoremap <space>} :bn<cr>
+
+
+imap <C-h> <Esc>ha
+imap <C-l> <Esc>la
+imap <C-j> <Esc>ja
+imap <C-k> <Esc>ka
+
+
+" function! s:explorer_is_opened()
+"   " let node_info = CocAction('runCommand', 'explorer.getNodeInfo', 'closest')
+"   return CocAction('runCommand', 'explorer.getNodeInfo', 'closest')
+
+" function! s:explorer_cur_dir()
+"   let node_info = CocAction('runCommand', 'explorer.getNodeInfo', 0)
+"   return fnamemodify(node_info['fullpath'], ':h')
+" endfunction
+
+" function! s:exec_cur_dir(cmd)
+"   let dir = s:explorer_cur_dir()
+"   execute 'cd ' . dir
+"   execute a:cmd
+" endfunction
+" augroup CocExplorerRefreshDir
+"   autocmd!
+"   autocmd BufEnter * call <SID>explorer_refresh_dir()
+" echo node_info

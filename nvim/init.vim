@@ -25,7 +25,6 @@ Plug 'jiangmiao/auto-pairs'																														" auto close things
 Plug 'nvim-lua/plenary.nvim'																													" (telescope dependenvy)
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }  														" telescope
 Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder/preview
-Plug 'vimwiki/vimwiki'                                                                " vimwiki
 Plug 'morhetz/gruvbox'                                                                " colorscheme
 Plug 'lukas-reineke/indent-blankline.nvim'                                            " indent lines
 Plug 'SirVer/ultisnips'                                                               " track snippets engine
@@ -50,7 +49,6 @@ source ~/.dotfiles/nvim/plugs.vim
 source ~/.dotfiles/nvim/theme.vim
 source ~/.dotfiles/nvim/lightline.vim
 source ~/.dotfiles/nvim/prettier.vim
-source ~/.dotfiles/nvim/vimwiki.vim
 source ~/.dotfiles/nvim/telescope.vim
 source ~/.dotfiles/nvim/ultisnips.vim
 if filereadable(expand('~/.dotfiles/nvim/init.local.vim'))
