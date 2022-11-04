@@ -133,7 +133,7 @@ nmap <silent>gi <Plug>(coc-implementation)
 nmap <silent>gr <Plug>(coc-references)
 
 " explorer
-nmap <space>ei :CocCommand explorer --preset nvim<CR>
+nmap <space>en :CocCommand explorer --preset nvim<CR>
 nmap <space>ef :CocCommand explorer --preset floating<CR>
 " nmap <space>ei :CocCommand explorer --preset init_vim<CR>
 " nmap <space>eb :CocCommand explorer --preset buffer<CR>
@@ -146,3 +146,13 @@ let g:jsx_ext_required = 0
 
 " let g:node_client_debug = 1
 " let $NODE_CLIENT_LOG_FILE = "$/.dotfiles/nvim/coc.nvim.logs"
+
+
+" Sure the following script is called after CocExplorerOpenPost
+function s:explorer_inited()
+	autocmd BufEnter * if (&filetype != 'coc-explorer') | exe 'silent! let dir = getcwd()'
+	autocmd BufEnter * call CocAction("runCommand", "explorer.doAction", "closest", {"name": "cd", "args": [dir]})
+  autocmd BufEnter echo 'hola'<cr>
+endfunction
+
+autocmd User CocExplorerOpenPost call s:explorer_inited()

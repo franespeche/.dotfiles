@@ -27,12 +27,12 @@ let g:one_allow_italics = 1
 
 " highlight CursorColumn guibg=#1E2030
 
-" gruvbox
 colorscheme gruvbox
 " dark mode
 highlight CocHighlightText guibg=Grey40
 " light mode
 " set background=light
+" highlight CocHighlightText ctermbg=7 guibg=Grey90
 
-" Italics Comment 
+" Italics
 highlight Comment cterm=italic  	" italic comments

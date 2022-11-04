@@ -28,8 +28,9 @@ Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder
 Plug 'morhetz/gruvbox'                                                                " colorscheme
 Plug 'lukas-reineke/indent-blankline.nvim'                                            " indent lines
 Plug 'SirVer/ultisnips'                                                               " track snippets engine
-" Plug 'terryma/vim-multiple-cursors'                                                   " multiple cursors
-" Plug 'mfussenegger/nvim-dap'																													" dap
+Plug 'mfussenegger/nvim-dap'																													" dap
+" NOT WORKING - Plug 'Pocco81/DAPInstall.nvim'                                                        " dap languages installer
+" Plug 'terryma/vim-multiple-cursors'                                                  " multiple cursors
 " Plug 'rcarriga/nvim-dap-ui'																														" dap ui
 " Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
 " Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
@@ -43,7 +44,7 @@ source ~/.dotfiles/nvim/coc-explorer.vim
 source ~/.dotfiles/nvim/settings.vim
 source ~/.dotfiles/nvim/coc.vim
 source ~/.dotfiles/nvim/plugin/scroll-mode.vim
-" source ~/.dotfiles/nvim/dap.vim
+source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/mappings.vim
 source ~/.dotfiles/nvim/plugs.vim
 source ~/.dotfiles/nvim/theme.vim

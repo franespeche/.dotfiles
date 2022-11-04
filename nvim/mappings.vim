@@ -128,7 +128,7 @@ nnoremap <space>o o<C-u>
 nnoremap <space>O O<C-u>
 
 " open this file in a new split
-nnoremap <space>em :vs ~/.dotfiles/nvim/mappings.vim<cr>
+nnoremap <space>em :e ~/.dotfiles/nvim/mappings.vim<cr>
 
 " exec current line (helpful for debugging)
 nnoremap <leader>e :exe getline(line('.'))<cr>
