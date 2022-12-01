@@ -169,10 +169,10 @@ nnoremap <space>J J
 inoremap <C-o> <Esc>o
 
 " Bufstop
-nnoremap <leader>b :Bufstop<cr>
-" nnoremap <leader>b :BufstopFast<cr>
-nnoremap <leader><Tab> :BufstopBack<cr>
-nnoremap <leader><Space><Tab> :BufstopForward<cr>
+" nnoremap <leader>b :Bufstop<cr>
+nnoremap <leader>b :BufstopFast<cr>
+nnoremap <leader><C-o> :BufstopBack<cr>
+nnoremap <leader><C-i> :BufstopForward<cr>
 " buffers
 " nmap <space>nn :b#<cr>
 nnoremap <space>{ :bp<cr>
@@ -203,3 +203,6 @@ imap <C-k> <Esc>ka
 "   autocmd!
 "   autocmd BufEnter * call <SID>explorer_refresh_dir()
 " echo node_info
+
+" copy current buffer's file path to clipboard
+nnoremap <leader>cp :let @" = expand("%")<cr>

@@ -36,3 +36,10 @@ highlight CocHighlightText guibg=Grey40
 
 " Italics
 highlight Comment cterm=italic  	" italic comments
+
+
+" format "check!" comments
+:hi jsCommentCheck guifg=white guibg=red
+:syntax match jsCommentCheck /^\s*[\/\/|"]\s*check!.*/
+
+" check! holas

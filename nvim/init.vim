@@ -8,6 +8,7 @@ Plug 'catppuccin/nvim', {'as': 'catppuccin'}                                    
 Plug 'itchyny/lightline.vim'																													" statusline
 Plug 'josa42/vim-lightline-coc'                   																		" coc statusline support
 Plug 'tpope/vim-commentary'																														" comment text
+" Plug 'numToStr/Comment.nvim'																														" comment text
 Plug 'kdheepak/lazygit.nvim'																													" git console
 Plug 'tpope/vim-fugitive'																															" git
 Plug 'jremmen/vim-ripgrep'																														" ripgrep	(dependency)
@@ -29,10 +30,9 @@ Plug 'morhetz/gruvbox'                                                          
 Plug 'lukas-reineke/indent-blankline.nvim'                                            " indent lines
 Plug 'SirVer/ultisnips'                                                               " track snippets engine
 Plug 'mfussenegger/nvim-dap'																													" dap
-" NOT WORKING - Plug 'Pocco81/DAPInstall.nvim'                                                        " dap languages installer
+Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
 " Plug 'terryma/vim-multiple-cursors'                                                  " multiple cursors
 " Plug 'rcarriga/nvim-dap-ui'																														" dap ui
-" Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
 " Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
 " Plug 'norcalli/nvim-colorizer.lua'																									  " highlight hex colors
 " Plug 'chrisbra/csv.vim'                                                               " csv support
@@ -52,6 +52,7 @@ source ~/.dotfiles/nvim/lightline.vim
 source ~/.dotfiles/nvim/prettier.vim
 source ~/.dotfiles/nvim/telescope.vim
 source ~/.dotfiles/nvim/ultisnips.vim
+source ~/.dotfiles/nvim/comment.vim
 if filereadable(expand('~/.dotfiles/nvim/init.local.vim'))
   source ~/.dotfiles/nvim/init.local.vim
 endif
