@@ -9,7 +9,7 @@ require('telescope').setup{
     layout_config = {
       scroll_speed = 3,
        horizontal = {
-         preview_width = 0.6
+         preview_width = 0.4
        },
     },
     mappings = {
