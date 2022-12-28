@@ -38,7 +38,6 @@ set scrolloff=11                 	" Show 11 lines of context around the cursor.
 set sidescrolloff=11
 
 
-set termguicolors                 " set colors
 set t_Co=256                      " set colors
 
 " set shortmess+=c             		" Do not show 'match xx of xx' and other messages during auto-completion
@@ -60,4 +59,4 @@ endif
 
 " https://github.com/neoclide/coc.nvim/wiki/Using-the-configuration-file
 " To get correct comment highlighting, you can install vim-jsonc (which has built-in support for coc-settings.json), or even simply add:
-autocmd FileType json stntax match Comment +\/\/.\+$+
+autocmd FileType json syntax match Comment +\/\/.\+$+

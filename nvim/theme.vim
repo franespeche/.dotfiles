@@ -1,4 +1,7 @@
-syntax on
+if !exists('g:syntax_on')
+  syntax on
+  let g:syntax_on = 1
+endif
 
 let g:one_allow_italics = 1
 
@@ -27,16 +30,27 @@ let g:one_allow_italics = 1
 
 " highlight CursorColumn guibg=#1E2030
 
-colorscheme gruvbox
+" colorscheme gruvbox
 " dark mode
 " highlight CocHighlightText guibg=Grey40
 " light mode
-set background=light
-highlight CocHighlightText ctermbg=7 guibg=Grey90
+" set background=light
+" highlight CocHighlightText ctermbg=7 guibg=Grey90
+
+" if &background!=dark
+"   set background=dark
+"   endif
+if !exists('g:colors_name')
+  silent! colorscheme nordfox
+endif
+" colorscheme nordfox
+
+if !&termguicolors
+  set termguicolors
+endif
 
 " Italics
 highlight Comment cterm=italic  	" italic comments
-
 
 " format "check!" comments
 :hi jsCommentCheck guifg=white guibg=red

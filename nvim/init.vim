@@ -24,9 +24,12 @@ Plug 'wellle/targets.vim'																															" change words between d
 Plug 'voldikss/vim-floaterm'																													" floating terminal
 Plug 'jiangmiao/auto-pairs'																														" auto close things
 Plug 'nvim-lua/plenary.nvim'																													" (telescope dependenvy)
+Plug 'sharkdp/fd'                                                                     " (telescope dependency)"
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }  														" telescope
 Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder/preview
-Plug 'morhetz/gruvbox'                                                                " colorscheme
+Plug 'nvim-tree/nvim-web-devicons'
+" Plug 'morhetz/gruvbox'                                                                " colorscheme
+Plug 'EdenEast/nightfox.nvim'                                                                " colorscheme
 Plug 'lukas-reineke/indent-blankline.nvim'                                            " indent lines
 Plug 'SirVer/ultisnips'                                                               " track snippets engine
 Plug 'mfussenegger/nvim-dap'																													" dap
@@ -43,7 +46,7 @@ call plug#end()
 source ~/.dotfiles/nvim/coc-explorer.vim
 source ~/.dotfiles/nvim/settings.vim
 source ~/.dotfiles/nvim/coc.vim
-source ~/.dotfiles/nvim/plugin/scroll-mode.vim
+" source ~/.dotfiles/nvim/plugin/scroll-mode.vim
 source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/mappings.vim
 source ~/.dotfiles/nvim/plugs.vim

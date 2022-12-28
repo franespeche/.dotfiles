@@ -1,6 +1,6 @@
 " 'gitbranch'
 let g:lightline = {
-      \   'colorscheme': 'gruvbox',
+      \   'colorscheme': 'dayfox',
 			\   'subseparator': {
 			\			'left': '|',
 			\		},
