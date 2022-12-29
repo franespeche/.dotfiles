@@ -147,8 +147,8 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap <leader>sn :set relativenumber!<cr>
 
 " toggle auto-pairs
-noremap <C-n> <Esc>:call AutoPairsToggle()<cr>
-inoremap <C-n> <Esc>:call AutoPairsToggle()<cr>a
+" noremap <C-n> <Esc>:call AutoPairsToggle()<cr>
+" inoremap <C-n> <Esc>:call AutoPairsToggle()<cr>a
 
 " go to first function in main column
 " see :h [[
@@ -178,12 +178,14 @@ nnoremap <leader><C-i> :BufstopForward<cr>
 nnoremap <space>{ :bp<cr>
 nnoremap <space>} :bn<cr>
 
-
 imap <C-h> <Esc>ha
 imap <C-l> <Esc>la
 imap <C-j> <Esc>ja
 imap <C-k> <Esc>ka
 
+" redir output to 'a' register
+nnoremap <leader>ra <silent> :redir @a<cr>
+nnoremap <leader>re <silent> :redir END<cr>
 
 " function! s:explorer_is_opened()
 "   " let node_info = CocAction('runCommand', 'explorer.getNodeInfo', 'closest')

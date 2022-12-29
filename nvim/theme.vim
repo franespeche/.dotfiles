@@ -41,7 +41,8 @@ let g:one_allow_italics = 1
 "   set background=dark
 "   endif
 if !exists('g:colors_name')
-  silent! colorscheme nordfox
+  " silent! colorscheme nordfox
+  silent! colorscheme dayfox
 endif
 " colorscheme nordfox
 

@@ -25,7 +25,6 @@ echo "created symlink: zsh/"
 ln -sf ~/.dotfiles/nvim $XDG_CONFIG_HOME &&
 echo "created symlink: nvim/"
 
-
 # GIT ONCE
 
 # https://spin.atomicobject.com/2020/05/05/git-configurations-default/
@@ -35,6 +34,6 @@ echo "created symlink: nvim/"
 # vim
 # install vim-plug:
 # sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-#       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' 
+# install prettier globally to avoid bugs in neovim 
+# npm install -g prettier
