@@ -38,7 +38,7 @@ promptinit
 # # # # # # # # # # # #
 #       default       #
 # # # # # # # # # # # #
-
+eval $(/opt/homebrew/bin/brew shellenv)
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.rd/bin:$PATH
 # pyenv init

@@ -18,7 +18,7 @@ fi
 
 # rust
 # TODO: make directory if it doesn't exist
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
 
 # env
 [ -f $XDG_CONFIG_HOME/.env ] && source $XDG_CONFIG_HOME/.env
