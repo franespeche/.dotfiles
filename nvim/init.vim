@@ -27,13 +27,14 @@ Plug 'nvim-lua/plenary.nvim'																													" (telescope dependenvy
 Plug 'sharkdp/fd'                                                                     " (telescope dependency)"
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }  														" telescope
 Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder/preview
-Plug 'nvim-tree/nvim-web-devicons'
 " Plug 'morhetz/gruvbox'                                                                " colorscheme
 Plug 'EdenEast/nightfox.nvim'                                                                " colorscheme
 Plug 'lukas-reineke/indent-blankline.nvim'                                            " indent lines
 Plug 'SirVer/ultisnips'                                                               " track snippets engine
 Plug 'mfussenegger/nvim-dap'																													" dap
 Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
+" Plug 'ryanoasis/vim-devicons'                                                         " devicons
+" Plug 'nvim-tree/nvim-web-devicons'
 " Plug 'terryma/vim-multiple-cursors'                                                  " multiple cursors
 " Plug 'rcarriga/nvim-dap-ui'																														" dap ui
 " Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
