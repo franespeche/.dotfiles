@@ -43,6 +43,7 @@ Plug 'mxsdev/nvim-dap-vscode-js'                                                
 " Plug 'honza/vim-snippets'                                                             " adding this because snippets are separated from the engine 
 call plug#end()
 
+
 " source configs
 source ~/.dotfiles/nvim/coc-explorer.vim
 source ~/.dotfiles/nvim/settings.vim
