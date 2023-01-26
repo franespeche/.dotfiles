@@ -20,9 +20,6 @@ noremap L $
 nnoremap <silent> <leader>tn :tabnew<cr>
 nnoremap <silent> <leader>tc :tabclose<cr>
 
-" execute :norm command
-xnoremap <leader>n :norm 
-
 " splits create
 noremap <silent> <leader>l :vsp<cr>
 noremap <silent> <leader>j :sp<cr>
@@ -208,3 +205,6 @@ nnoremap <leader>re <silent> :redir END<cr>
 
 " copy current buffer's file path to clipboard
 nnoremap <leader>cp :let @" = expand("%")<cr>
+
+" search yanked workd
+nnoremap <leader>n /<c-r>"<cr>

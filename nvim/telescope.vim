@@ -28,6 +28,7 @@ require('telescope').setup{
     }
   }
 }
+
 EOF
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
