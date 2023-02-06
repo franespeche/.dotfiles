@@ -1,5 +1,6 @@
 {
   "tsserver.trace.server": "verbose",
+  "tsserver.disableAutomaticTypeAcquisition": true,
   "list.source.files.excludePatterns": ["**/node_modules/**", "**/node_modules/**/.*", "**/node_modules/**/.*/**"],
   "coc.source.file.ignorePatterns": ["**/node_modules/**", "**/node_modules/**/.*", "**/node_modules/**/.*/**"],
   "coc.preferences.formatOnSaveFiletypes": [

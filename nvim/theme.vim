@@ -1,6 +1,6 @@
 " colorscheme gruvbox
 " dark mode
-" highlight CocHighlightText guibg=Grey40
+highlight CocHighlightText guibg=Grey40
 " light mode
 " set background=light
 " highlight CocHighlightText ctermbg=7 guibg=Grey90
@@ -17,10 +17,10 @@ endif
 
 " colorscheme
 if !exists('g:colors_name')
-  " dark
+  silent! colorscheme gruvbox
+  " silent! colorscheme dayfox
+
   " silent! colorscheme nordfox
-  " light
-  silent! colorscheme dayfox
 endif
 
 " termguicolors

@@ -144,8 +144,8 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap <leader>sn :set relativenumber!<cr>
 
 " toggle auto-pairs
-" noremap <C-n> <Esc>:call AutoPairsToggle()<cr>
-" inoremap <C-n> <Esc>:call AutoPairsToggle()<cr>a
+inoremap <C-a> <Esc>:call AutoPairsToggle()<cr>
+noremap <leader>ap <Esc>:call AutoPairsToggle()<cr>
 
 " go to first function in main column
 " see :h [[
@@ -207,4 +207,7 @@ nnoremap <leader>re <silent> :redir END<cr>
 nnoremap <leader>cp :let @" = expand("%")<cr>
 
 " search yanked workd
-nnoremap <leader>n /<c-r>"<cr>
+nnoremap <space>n /<c-r>"<cr>
+
+" JSON stringify
+vnoremap <leader>js "adiJSON.stringify(, null, 2)<ESC>F("ap

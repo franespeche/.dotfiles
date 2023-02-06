@@ -78,6 +78,8 @@ nmap <leader>ca  <Plug>(coc-codeaction-selected)
 " apply autofix to problem on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+nmap <leader>cr :CocRestart<cr> 
+
 " Trigger for code actions
 " Make sure `"codeLens.enable": true` is set in your coc config
 nnoremap <leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>

@@ -107,6 +107,14 @@ bindkey -M visual S add-surround
 #         zsh         #
 # # # # # # # # # # # #
 
+# avoid duplicates
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+
 # source local cfg
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 

@@ -24,15 +24,16 @@ Plug 'wellle/targets.vim'																															" change words between d
 Plug 'voldikss/vim-floaterm'																													" floating terminal
 Plug 'jiangmiao/auto-pairs'																														" auto close things
 Plug 'nvim-lua/plenary.nvim'																													" (telescope dependenvy)
-Plug 'sharkdp/fd'                                                                     " (telescope dependency)"
+Plug 'sharkdp/fd'                                                                     " (telescope dependency)
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }  														" telescope
 Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder/preview
-" Plug 'morhetz/gruvbox'                                                                " colorscheme
-Plug 'EdenEast/nightfox.nvim'                                                                " colorscheme
+Plug 'morhetz/gruvbox'                                                                " colorscheme
+" Plug 'EdenEast/nightfox.nvim'                                                                " colorscheme
 Plug 'lukas-reineke/indent-blankline.nvim'                                            " indent lines
 Plug 'SirVer/ultisnips'                                                               " track snippets engine
 Plug 'mfussenegger/nvim-dap'																													" dap
 Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
+Plug 'sudar/vim-arduino-syntax'                                                       " arduino
 " Plug 'ryanoasis/vim-devicons'                                                         " devicons
 " Plug 'nvim-tree/nvim-web-devicons'
 " Plug 'terryma/vim-multiple-cursors'                                                  " multiple cursors
@@ -58,6 +59,7 @@ source ~/.dotfiles/nvim/prettier.vim
 source ~/.dotfiles/nvim/telescope.vim
 source ~/.dotfiles/nvim/ultisnips.vim
 source ~/.dotfiles/nvim/comment.vim
+source ~/.dotfiles/nvim/tests.vim
 if filereadable(expand('~/.dotfiles/nvim/init.local.vim'))
   source ~/.dotfiles/nvim/init.local.vim
 endif

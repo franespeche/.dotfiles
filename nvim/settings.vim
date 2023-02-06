@@ -57,6 +57,11 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
+set foldenable
+set foldmethod=syntax
+set foldlevel=99                  " don't fold by default when first opening a file
+
+let g:typescript_ignore_typescriptdoc=1
 " https://github.com/neoclide/coc.nvim/wiki/Using-the-configuration-file
 " To get correct comment highlighting, you can install vim-jsonc (which has built-in support for coc-settings.json), or even simply add:
 autocmd FileType json syntax match Comment +\/\/.\+$+
