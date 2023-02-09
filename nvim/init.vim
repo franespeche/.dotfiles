@@ -60,6 +60,7 @@ source ~/.dotfiles/nvim/telescope.vim
 source ~/.dotfiles/nvim/ultisnips.vim
 source ~/.dotfiles/nvim/comment.vim
 source ~/.dotfiles/nvim/tests.vim
+source ~/.dotfiles/nvim/debug.vim
 if filereadable(expand('~/.dotfiles/nvim/init.local.vim'))
   source ~/.dotfiles/nvim/init.local.vim
 endif

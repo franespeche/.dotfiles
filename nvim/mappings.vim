@@ -211,3 +211,6 @@ nnoremap <space>n /<c-r>"<cr>
 
 " JSON stringify
 vnoremap <leader>js "adiJSON.stringify(, null, 2)<ESC>F("ap
+" console.log
+nnoremap <space>cl viw"adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>
+vnoremap <space>cl "adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>

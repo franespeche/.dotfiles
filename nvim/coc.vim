@@ -138,7 +138,7 @@ nmap <silent>gr <Plug>(coc-references)
 nmap <space>en :CocCommand explorer --preset nvim<CR>
 nmap <space>ef :CocCommand explorer --preset floating<CR>
 " refresh
-nmap <Leader>er <Cmd>call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
+" nmap <Leader>er <Cmd>call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
 " nmap <space>ei :CocCommand explorer --preset init_vim<CR>
 " nmap <space>eb :CocCommand explorer --preset buffer<CR>
 
