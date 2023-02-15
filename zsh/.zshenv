@@ -2,6 +2,7 @@
 # store config files at ~/.config
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export DOTFILES="$HOME/.dotfiles"
 
 # alacritty
 # export TERMINAL="alacritty"

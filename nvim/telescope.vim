@@ -15,18 +15,34 @@ require('telescope').setup{
       n = {
         ["<C-j>"] = "preview_scrolling_down",
         ["<C-k>"] = "preview_scrolling_up",
-        ["<S-j>"] = "preview_scrolling_down",
-        ["<S-k>"] = "preview_scrolling_up",
-        ["<C-c>"] = require('telescope.actions').close
+        ["<C-c>"] = require('telescope.actions').close,
+        ["<C-m>"] = send_selected_to_qflist,
       },
       i = {
-        ["<S-j>"] = "preview_scrolling_down",
-        ["<S-k>"] = "preview_scrolling_up",
         ["<C-j>"] = "move_selection_next",
         ["<C-k>"] = "move_selection_previous",
+        ["<C-m>"] = "send_selected_to_qflist",
+        ["<Cr>"] = "select_default",
       }
     }
-  }
+  },
+  pickers = {
+    find_files = { 
+      theme = "dropdown",
+      results_title = false
+      },
+    live_grep = { 
+      theme = "dropdown"
+      },
+    buffers = { 
+      theme = "dropdown",
+      results_title = false
+      },
+    help_tags = { 
+      theme = "dropdown",
+      results_title = false
+      },
+    }
 }
 
 EOF
@@ -39,4 +55,8 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" scroll.speed
+" autocommands"
+nnoremap <Leader>fa :lua require'telescope.builtin'.autocommands{}<cr>
+nnoremap <Leader>fy :lua require'telescope.builtin'.highlights{}<cr>
+
+

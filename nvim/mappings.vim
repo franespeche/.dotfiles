@@ -90,9 +90,6 @@ map Y yy
 " comment line
 map ,, gcc
 
-" vim fuvitive
-nnoremap <leader>gb <cmd>Git blame<cr>
-
 " toggle wrap
 nnoremap <leader>zz <cmd>set wrap!<cr>
 
@@ -171,7 +168,6 @@ nnoremap <leader>b :BufstopFast<cr>
 nnoremap <leader><C-o> :BufstopBack<cr>
 nnoremap <leader><C-i> :BufstopForward<cr>
 " buffers
-" nmap <space>nn :b#<cr>
 nnoremap <space>{ :bp<cr>
 nnoremap <space>} :bn<cr>
 
@@ -184,33 +180,29 @@ imap <C-k> <Esc>ka
 nnoremap <leader>ra <silent> :redir @a<cr>
 nnoremap <leader>re <silent> :redir END<cr>
 
-" function! s:explorer_is_opened()
-"   " let node_info = CocAction('runCommand', 'explorer.getNodeInfo', 'closest')
-"   return CocAction('runCommand', 'explorer.getNodeInfo', 'closest')
-
-" function! s:explorer_cur_dir()
-"   let node_info = CocAction('runCommand', 'explorer.getNodeInfo', 0)
-"   return fnamemodify(node_info['fullpath'], ':h')
-" endfunction
-
-" function! s:exec_cur_dir(cmd)
-"   let dir = s:explorer_cur_dir()
-"   execute 'cd ' . dir
-"   execute a:cmd
-" endfunction
-" augroup CocExplorerRefreshDir
-"   autocmd!
-"   autocmd BufEnter * call <SID>explorer_refresh_dir()
-" echo node_info
-
 " copy current buffer's file path to clipboard
 nnoremap <leader>cp :let @" = expand("%")<cr>
 
-" search yanked workd
-nnoremap <space>n /<c-r>"<cr>
+" search yanked word
+nnoremap <leader>n /<c-r>"<cr>
 
-" JSON stringify
+" JSON stringify cword
 vnoremap <leader>js "adiJSON.stringify(, null, 2)<ESC>F("ap
-" console.log
+
+" console.log("cword", cword)
 nnoremap <space>cl viw"adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>
 vnoremap <space>cl "adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>
+
+nnoremap gE gEa
+
+" 
+" Git
+"
+" open tooltip with commit info
+nnoremap <silent> <leader>gm :GitMessenger<cr>
+" get link with the selected range (in visual mode) or to the file (in normal mode)
+xnoremap <silent> <leader>gl :GBrowse<cr>
+" git blame [vim fuvitive]
+nnoremap <leader>gb <cmd>Git blame<cr>
+" open lazygit
+nnoremap <silent> <leader>gg :cd %:h<cr> :LazyGit<cr>

@@ -4,19 +4,21 @@ Plug 'machakann/vim-sandwich'																													" wrap words with a gi
 Plug 'neoclide/coc.nvim', { 'branch': 'release' } 																		" coc nodejs host
 Plug 'tjdevries/coc-zsh'																															" coc zsh support
 Plug 'antoinemadec/coc-fzf'																														" coc fzf support
-Plug 'catppuccin/nvim', {'as': 'catppuccin'}                                          " colorscheme
 Plug 'itchyny/lightline.vim'																													" statusline
 Plug 'josa42/vim-lightline-coc'                   																		" coc statusline support
 Plug 'tpope/vim-commentary'																														" comment text
-" Plug 'numToStr/Comment.nvim'																														" comment text
 Plug 'kdheepak/lazygit.nvim'																													" git console
-Plug 'tpope/vim-fugitive'																															" git
+Plug 'tpope/vim-fugitive'																															" fugitive
+Plug 'tpope/vim-rhubarb'																															" fugitive's hub
+Plug 'rhysd/git-messenger.vim'                                                        " pop-up blame
 Plug 'jremmen/vim-ripgrep'																														" ripgrep	(dependency)
+Plug 'morhetz/gruvbox'                                                                " colorscheme
 Plug 'junegunn/fzf'																																		" fuzzy finder (dependency)
 Plug 'junegunn/fzf.vim'                           																		" fuzzy finder
 Plug 'pangloss/vim-javascript'                    																		" javascript support
 Plug 'leafgarland/typescript-vim'																											" typescript support
-Plug 'mxw/vim-jsx'
+Plug 'HerringtonDarkholme/yats.vim'																										" typescript highlighting (for better folding)
+Plug 'mxw/vim-jsx'                                                                    " jsx support
 Plug 'maxmellon/vim-jsx-pretty'																												" jsx support
 Plug 'tpope/vim-vinegar'																															" simpler netrw
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' } " prettier
@@ -26,14 +28,16 @@ Plug 'jiangmiao/auto-pairs'																														" auto close things
 Plug 'nvim-lua/plenary.nvim'																													" (telescope dependenvy)
 Plug 'sharkdp/fd'                                                                     " (telescope dependency)
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }  														" telescope
+Plug 'nvim-telescope/telescope-file-browser.nvim'                                     " telescope file browser
 Plug 'nvim-treesitter/nvim-treesitter'																								" telescope finder/preview
-Plug 'morhetz/gruvbox'                                                                " colorscheme
-" Plug 'EdenEast/nightfox.nvim'                                                                " colorscheme
 Plug 'lukas-reineke/indent-blankline.nvim'                                            " indent lines
 Plug 'SirVer/ultisnips'                                                               " track snippets engine
 Plug 'mfussenegger/nvim-dap'																													" dap
 Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
 Plug 'sudar/vim-arduino-syntax'                                                       " arduino
+
+" Plug 'catppuccin/nvim', {'as': 'catppuccin'}                                          " colorscheme
+" Plug 'EdenEast/nightfox.nvim'                                                         " colorscheme
 " Plug 'ryanoasis/vim-devicons'                                                         " devicons
 " Plug 'nvim-tree/nvim-web-devicons'
 " Plug 'terryma/vim-multiple-cursors'                                                  " multiple cursors
@@ -42,6 +46,7 @@ Plug 'sudar/vim-arduino-syntax'                                                 
 " Plug 'norcalli/nvim-colorizer.lua'																									  " highlight hex colors
 " Plug 'chrisbra/csv.vim'                                                               " csv support
 " Plug 'honza/vim-snippets'                                                             " adding this because snippets are separated from the engine 
+" Plug 'numToStr/Comment.nvim'																												  " comment text
 call plug#end()
 
 
@@ -49,10 +54,9 @@ call plug#end()
 source ~/.dotfiles/nvim/coc-explorer.vim
 source ~/.dotfiles/nvim/settings.vim
 source ~/.dotfiles/nvim/coc.vim
-" source ~/.dotfiles/nvim/plugin/scroll-mode.vim
 source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/mappings.vim
-source ~/.dotfiles/nvim/plugs.vim
+source ~/.dotfiles/nvim/git.vim
 source ~/.dotfiles/nvim/theme.vim
 source ~/.dotfiles/nvim/lightline.vim
 source ~/.dotfiles/nvim/prettier.vim
@@ -64,4 +68,3 @@ source ~/.dotfiles/nvim/debug.vim
 if filereadable(expand('~/.dotfiles/nvim/init.local.vim'))
   source ~/.dotfiles/nvim/init.local.vim
 endif
-" source ~/.config/nvim/fzf.vim
