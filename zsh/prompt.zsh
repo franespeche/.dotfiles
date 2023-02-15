@@ -7,3 +7,4 @@ setopt PROMPT_SUBST
 
 # PROMPT='%F{white}[%*]%f %F{blue}%1~%f·%F{green}${vcs_info_msg_0_}%f '
 PROMPT='%F{blue}%1~%f·%F{green}${vcs_info_msg_0_}%f%F{blue}➜%f '
+

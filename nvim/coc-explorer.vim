@@ -1,6 +1,6 @@
 let g:coc_explorer_global_presets = {
 \   'nvim': {
-\     'root-uri': '~/.config/nvim/',
+\     'root-uri': '~/.dotfiles/nvim/',
 \     'position': 'left',
 \			'floating-width': 120,
 \			'open-action-strategy': 'sourceWindow',

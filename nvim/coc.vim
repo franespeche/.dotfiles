@@ -137,6 +137,7 @@ nmap <silent>gr <Plug>(coc-references)
 " explorer
 nmap <space>en :CocCommand explorer --preset nvim<CR>
 nmap <space>ef :CocCommand explorer --preset floating<CR>
+
 " refresh
 " nmap <Leader>er <Cmd>call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
 " nmap <space>ei :CocCommand explorer --preset init_vim<CR>
@@ -148,15 +149,12 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " enable JSX syntax highlighing in javascript files
 let g:jsx_ext_required = 0 
 
-" let g:node_client_debug = 1
-" let $NODE_CLIENT_LOG_FILE = "$/.dotfiles/nvim/coc.nvim.logs"
-
-
+" commented out 02/15/23
 " attempt to refresh coc-explorer on BufEnter
 " Sure the following script is called after CocExplorerOpenPost
-function s:explorer_inited()
-	autocmd BufEnter * if (&filetype != 'coc-explorer') | exe 'silent! let dir = getcwd()'
-  autocmd BufEnter call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
-	" autocmd BufEnter * call CocAction("runCommand", "explorer.doAction", "closest", {"name": "cd", "args": [dir]})
-endfunction
-autocmd User CocExplorerOpenPost call s:explorer_inited()
+" function s:explorer_inited()
+" 	autocmd BufEnter * if (&filetype != 'coc-explorer') | exe 'silent! let dir = getcwd()'
+"   autocmd BufEnter call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
+"	" autocmd BufEnter * call CocAction("runCommand", "explorer.doAction", "closest", {"name": "cd", "args": [dir]})
+" endfunction
+" autocmd User CocExplorerOpenPost call s:explorer_inited()

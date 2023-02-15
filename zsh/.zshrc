@@ -115,9 +115,6 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 
-# source local cfg
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
 # Load all of the plugins that were defined in ~/.zshrc
 for plugin ($plugins); do
   if [ -f $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh ]; then
@@ -154,6 +151,7 @@ for zsh_file ($ZDOTDIR/*.zsh(D)); do
 	unset zsh_file
 done
 
+
 # source alias
 if [ -d $ZDOTDIR/alias/ ]; then
 	# exit if empty
@@ -170,6 +168,7 @@ if [ -d $ZDOTDIR/alias/ ]; then
 	source $file
 	done
 fi
+
 
 # source functions
 if [ -d $ZDOTDIR/functions/ ]; then
@@ -207,6 +206,8 @@ if [[ `uname` == 'Linux' ]]; then
 	xset r rate 200 50
 fi
 
+# source local cfg
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # Set ZSH_CACHE_DIR to the path where cache files should be created
 # or else we will use the default cache/
@@ -226,3 +227,16 @@ if [ -f '/Users/franespeche/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/fra
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/franespeche/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/franespeche/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Ctrl+Z = fg
+fancy-ctrl-z () {
+    if [[ $#BUFFER -eq 0 ]]; then
+        BUFFER="fg"
+        zle accept-line
+    else
+        zle push-input
+        zle clear-screen
+    fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z

@@ -17,6 +17,8 @@
 
 " Use :call coc#client#open_log() to open a log file, or use :echo $NODE_CLIENT_LOG_FILE to get file path of log.
 let g:node_client_debug = 1
+let $NODE_CLIENT_LOG_FILE = "$/.dotfiles/nvim/coc.nvim.logs"
+
 
 function! IsLeftMostWindow()
     let curNr = winnr()

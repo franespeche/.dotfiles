@@ -13,6 +13,7 @@ Plug 'tpope/vim-rhubarb'																															" fugitive's hub
 Plug 'rhysd/git-messenger.vim'                                                        " pop-up blame
 Plug 'jremmen/vim-ripgrep'																														" ripgrep	(dependency)
 Plug 'morhetz/gruvbox'                                                                " colorscheme
+Plug 'EdenEast/nightfox.nvim'                                                         " colorscheme (used in light mode)
 Plug 'junegunn/fzf'																																		" fuzzy finder (dependency)
 Plug 'junegunn/fzf.vim'                           																		" fuzzy finder
 Plug 'pangloss/vim-javascript'                    																		" javascript support
@@ -24,7 +25,6 @@ Plug 'tpope/vim-vinegar'																															" simpler netrw
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' } " prettier
 Plug 'wellle/targets.vim'																															" change words between delimiters
 Plug 'voldikss/vim-floaterm'																													" floating terminal
-Plug 'jiangmiao/auto-pairs'																														" auto close things
 Plug 'nvim-lua/plenary.nvim'																													" (telescope dependenvy)
 Plug 'sharkdp/fd'                                                                     " (telescope dependency)
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }  														" telescope
@@ -35,11 +35,13 @@ Plug 'SirVer/ultisnips'                                                         
 Plug 'mfussenegger/nvim-dap'																													" dap
 Plug 'mxsdev/nvim-dap-vscode-js'                                                      " vscode js dap
 Plug 'sudar/vim-arduino-syntax'                                                       " arduino
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'github/copilot.vim'                                                             " copilot
 
+
+" Plug 'jiangmiao/auto-pairs'																														" auto close things
 " Plug 'catppuccin/nvim', {'as': 'catppuccin'}                                          " colorscheme
-" Plug 'EdenEast/nightfox.nvim'                                                         " colorscheme
 " Plug 'ryanoasis/vim-devicons'                                                         " devicons
-" Plug 'nvim-tree/nvim-web-devicons'
 " Plug 'terryma/vim-multiple-cursors'                                                  " multiple cursors
 " Plug 'rcarriga/nvim-dap-ui'																														" dap ui
 " Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
@@ -63,7 +65,6 @@ source ~/.dotfiles/nvim/prettier.vim
 source ~/.dotfiles/nvim/telescope.vim
 source ~/.dotfiles/nvim/ultisnips.vim
 source ~/.dotfiles/nvim/comment.vim
-source ~/.dotfiles/nvim/tests.vim
 source ~/.dotfiles/nvim/debug.vim
 if filereadable(expand('~/.dotfiles/nvim/init.local.vim'))
   source ~/.dotfiles/nvim/init.local.vim

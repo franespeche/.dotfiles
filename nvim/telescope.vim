@@ -29,18 +29,26 @@ require('telescope').setup{
   pickers = {
     find_files = { 
       theme = "dropdown",
-      results_title = false
+      results_title = false,
+      path_display = { "absolute" },
+      wrap_results = true
       },
     live_grep = { 
-      theme = "dropdown"
+      theme = "dropdown",
+      path_display = { "absolute" },
+      wrap_results = true
       },
     buffers = { 
       theme = "dropdown",
-      results_title = false
+      results_title = false,
+      path_display = { "absolute" },
+      wrap_results = true
       },
     help_tags = { 
       theme = "dropdown",
-      results_title = false
+      results_title = false,
+      path_display = { "absolute" },
+      wrap_results = true
       },
     }
 }
