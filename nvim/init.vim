@@ -24,7 +24,7 @@ Plug 'maxmellon/vim-jsx-pretty'																												" jsx support
 Plug 'tpope/vim-vinegar'																															" simpler netrw
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' } " prettier
 Plug 'wellle/targets.vim'																															" change words between delimiters
-Plug 'voldikss/vim-floaterm'																													" floating terminal
+" Plug 'voldikss/vim-floaterm'																													" floating terminal
 Plug 'nvim-lua/plenary.nvim'																													" (telescope dependenvy)
 Plug 'sharkdp/fd'                                                                     " (telescope dependency)
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }  														" telescope

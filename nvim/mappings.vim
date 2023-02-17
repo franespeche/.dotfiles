@@ -20,6 +20,7 @@ noremap L $
 nnoremap <silent> <leader>tn :tabnew<cr>
 nnoremap <silent> <leader>tc :tabclose<cr>
 
+
 " splits create
 noremap <silent> <leader>l :vsp<cr>
 noremap <silent> <leader>j :sp<cr>
@@ -151,9 +152,9 @@ map ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] k$][%?}<CR>
 
-nmap vi/ :1,.v?^\s*/?<cr>jV:<C-u>.,18v#^\s*/#<cr>k
-nnoremap vi/ <Nop>
-nnoremap vi/ V
+" nmap vi/ :1,.v?^\s*/?<cr>jV:<C-u>.,18v#^\s*/#<cr>k
+" nnoremap vi/ <Nop>
+" nnoremap vi/ V
 
 " cycle through methods or keys in an object
 map [m [mzt
