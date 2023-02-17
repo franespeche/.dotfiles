@@ -45,8 +45,11 @@ nnoremap <silent> <leader>zo :ZoomToggle<CR>
 vnoremap <S-j> 2j
 vnoremap <S-k> 2k
 
-" nnoremap <leader><S-j> :call ChangeScrollMode()<cr>
-" nnoremap <leader><S-k> :call ChangeScrollMode()<cr>
+" alternative to J, as J's default behaviour was mapped to 2j (just above this line)
+nnoremap <space>J J
+
+" insert line in INSERT mode
+inoremap <C-o> <Esc>o
 
 " start a substitute
 nnoremap <leader>ss :%s#\v
@@ -108,9 +111,6 @@ vnoremap <S-Tab> <gv
 nnoremap <space>o o<C-u>
 nnoremap <space>O O<C-u>
 
-" open this file in a new split
-nnoremap <space>em :e ~/.dotfiles/nvim/mappings.vim<cr>
-
 " exec current line (helpful for debugging)
 nnoremap <leader>e :exe getline(line('.'))<cr>
 
@@ -128,8 +128,8 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap <leader>sn :set relativenumber!<cr>
 
 " toggle auto-pairs
-inoremap <C-a> <Esc>:call AutoPairsToggle()<cr>
-noremap <leader>ap <Esc>:call AutoPairsToggle()<cr>
+" inoremap <C-a> <Esc>:call AutoPairsToggle()<cr>
+" noremap <leader>ap <Esc>:call AutoPairsToggle()<cr>
 
 " go to first function in main column
 " see :h [[
@@ -142,18 +142,16 @@ map [] k$][%?}<CR>
 " nnoremap vi/ <Nop>
 " nnoremap vi/ V
 
-" cycle through methods or keys in an object
+" cycle through methods or keys within an object
 map [m [mzt
 map ]m ]mzt
-
-nnoremap <space>J J
-inoremap <C-o> <Esc>o
 
 " Bufstop
 " nnoremap <leader>b :Bufstop<cr>
 nnoremap <leader>b :BufstopFast<cr>
 nnoremap <leader><C-o> :BufstopBack<cr>
 nnoremap <leader><C-i> :BufstopForward<cr>
+
 " buffers
 nnoremap <space>{ :bp<cr>
 nnoremap <space>} :bn<cr>
@@ -180,6 +178,7 @@ vnoremap <leader>js "adiJSON.stringify(, null, 2)<ESC>F("ap
 nnoremap <space>cl viw"adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>
 vnoremap <space>cl "adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>
 
+" go to end of previows word and enter insert mode
 nnoremap gE gEa
 
 " 
