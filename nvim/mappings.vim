@@ -38,29 +38,15 @@ inoremap <silent> <C-k> <Esc>:wincmd k<cr>
 " noremap <silent> <leader>wn :wincmd =<cr>
 " noremap <silent> < :vertical resize -3<cr>
 " noremap <silent> > :vertical resize +3<cr>
-" splits rotate
-noremap <silent> <leader>wr :wincmd r<cr>
-noremap <silent> <leader>wh :wincmd H<cr>
-noremap <silent> <leader>wv :wincmd J<cr>
-"	splits swap
-noremap <silent> <leader>wm :call MarkWindowSwap()<CR>
-noremap <silent> <leader>wc :call DoWindowSwap()<CR>
 "	splits fullscreen
 nnoremap <silent> <leader>zo :ZoomToggle<CR>
-
-" open floating terminal
-noremap <silent> <leader>tt :FloatermNew<cr>
 
 " faster selection
 vnoremap <S-j> 2j
 vnoremap <S-k> 2k
 
-" move to start or end of block in visual mode
-xnoremap <space>j %
-xnoremap <space><S-k> %
-
-nnoremap <leader><S-j> :call ChangeScrollMode()<cr>
-nnoremap <leader><S-k> :call ChangeScrollMode()<cr>
+" nnoremap <leader><S-j> :call ChangeScrollMode()<cr>
+" nnoremap <leader><S-k> :call ChangeScrollMode()<cr>
 
 " start a substitute
 nnoremap <leader>ss :%s#\v
