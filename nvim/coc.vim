@@ -1,4 +1,4 @@
-let g:coc_global_extensions = ['coc-tsserver']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-lua', 'coc-yaml', 'coc-explorer']
 
 set updatetime=300
 set shortmess+=c				" dont pass messages to ins-completion-menu
@@ -38,9 +38,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 "nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Used to expand decorations in worksheets
-nmap <leader>ws <Plug>(coc-metals-expand-decoration)
-
 " either doHover or show documentation in preview window
 nnoremap <silent><leader>ck :call <SID>show_documentation()<CR>
 
@@ -57,10 +54,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -109,11 +102,6 @@ nnoremap <silent> <leader>cn  :<C-u>CocNext<CR>
 " Resume latest coc list
 " nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 
-" Notify coc.nvim that <enter> has been pressed.
-" Currently used for the formatOnType feature.
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-"      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 highlight link CocHighlightText Visual
 
 
@@ -158,3 +146,6 @@ let g:jsx_ext_required = 0
 "	" autocmd BufEnter * call CocAction("runCommand", "explorer.doAction", "closest", {"name": "cd", "args": [dir]})
 " endfunction
 " autocmd User CocExplorerOpenPost call s:explorer_inited()
+"
+"
+
