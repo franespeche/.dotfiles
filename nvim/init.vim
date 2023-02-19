@@ -53,9 +53,9 @@ call plug#end()
 
 
 " source configs
-source ~/.dotfiles/nvim/coc-explorer.vim
 source ~/.dotfiles/nvim/settings.vim
 source ~/.dotfiles/nvim/coc.vim
+source ~/.dotfiles/nvim/coc-explorer.vim
 source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/mappings.vim
 source ~/.dotfiles/nvim/git.vim

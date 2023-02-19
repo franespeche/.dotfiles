@@ -1,4 +1,6 @@
-let g:coc_explorer_global_presets = {
+let g:coc_explorer_global_presets = {}
+" extending here just to remember that extend() exists 
+let g:coc_explorer_global_presets = extend(g:coc_explorer_global_presets, {
 \   'nvim': {
 \     'root-uri': '~/.dotfiles/nvim/',
 \     'position': 'left',
@@ -18,5 +20,5 @@ let g:coc_explorer_global_presets = {
 \     'quit-on-open': v:false,
 \     'sources': [{'name': 'buffer', 'expand': v:true}]
 \   },
-\ }
+\ })
 

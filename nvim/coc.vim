@@ -7,36 +7,26 @@ set signcolumn=yes			" always show the sign column, otherwise it would shift the
 "let g:coc_fzf_preview = ''
 "let g:coc_fzf_opts = []
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[g` and `]g` to navigate diagnostics
+" Show all diagnostics
+nnoremap <silent> <leader>cc  :<C-u>CocFzfList diagnostics<cr>
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+" nnoremap <silent> <leader>ce  :<C-u>CocDiagnostics<cr>
+" Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)zz
 nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+"nmap <silent> gi <Plug>(coc-implementation)
 
 " either doHover or show documentation in preview window
 nnoremap <silent><leader>ck :call <SID>show_documentation()<CR>
@@ -78,16 +68,13 @@ nmap <leader>cr :CocRestart<cr>
 nnoremap <leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>
 " the above was specified differently in coc's documentation
 " Run the Code Lens action on the current line.
-nmap <leader>cl  <Plug>(coc-codelens-action)
+" nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Use `:Prettier` to format current buffer
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Use `:Fold` to fold current buffer
 " command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Show all diagnostics
-nnoremap <silent> <leader>cc  :<C-u>CocFzfList diagnostics<cr>
 
 " Show commands
 " nnoremap <silent> <space>c  :<C-u>CocFzfList commands<cr>
@@ -123,8 +110,8 @@ nmap <silent>gi <Plug>(coc-implementation)
 nmap <silent>gr <Plug>(coc-references)
 
 " explorer
-nmap <space>en :CocCommand explorer --preset nvim<CR>
-nmap <space>ef :CocCommand explorer --preset floating<CR>
+nmap <silent> <space>en :CocCommand explorer --preset nvim<CR>
+nmap <silent> <space>ef :CocCommand explorer --preset floating<CR>
 
 " refresh
 " nmap <Leader>er <Cmd>call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
@@ -146,6 +133,7 @@ let g:jsx_ext_required = 0
 "	" autocmd BufEnter * call CocAction("runCommand", "explorer.doAction", "closest", {"name": "cd", "args": [dir]})
 " endfunction
 " autocmd User CocExplorerOpenPost call s:explorer_inited()
+"
 "
 "
 

@@ -99,6 +99,8 @@ map ;w :w<cr>
 " unbind space
 map <space> <Nop>
 
+
+
 " move to first WORD before current opening bracket
 noremap <space><S-b> F(B
 noremap <space>b F(b
@@ -177,9 +179,6 @@ vnoremap <leader>js "adiJSON.stringify(, null, 2)<ESC>F("ap
 " console.log("cword", cword)
 nnoremap <space>cl viw"adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>
 vnoremap <space>cl "adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>
-
-" go to end of previows word and enter insert mode
-nnoremap gE gEa
 
 " 
 " Git
