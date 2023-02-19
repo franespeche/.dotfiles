@@ -42,7 +42,7 @@ Plug 'github/copilot.vim'                                                       
 " Plug 'ryanoasis/vim-devicons'                                                         " devicons
 " Plug 'jiangmiao/auto-pairs'																														" auto close things
 " Plug 'catppuccin/nvim', {'as': 'catppuccin'}                                          " colorscheme
-" Plug 'terryma/vim-multiple-cursors'                                                  " multiple cursors
+" Plug 'terryma/vim-multiple-cursors'                                                   " multiple cursors
 " Plug 'rcarriga/nvim-dap-ui'																														" dap ui
 " Plug 'nvim-telescope/telescope-dap.nvim'																							" telescope dap
 " Plug 'norcalli/nvim-colorizer.lua'																									  " highlight hex colors
