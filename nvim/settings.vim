@@ -12,11 +12,11 @@ set tabstop=2                     " indentation
 set softtabstop=2 expandtab
 set shiftwidth=2
 
-" change tabulation spacing for init.vim to match the one used in GitHub
-augroup GitHub
+augroup VimFiles
   autocmd!
-  autocmd BufEnter init.vim,settings.vim setlocal shiftwidth=4 softtabstop=4
-  autocmd BufLeave init.vim,settings.vim setlocal shiftwidth=2 softtabstop=2
+  " match github's tabulation's width
+  autocmd FileType vim setlocal shiftwidth=4 softtabstop=4
+
 augroup end
 
 set autoread                      " read files upon being changed from outside vim
