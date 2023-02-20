@@ -16,8 +16,8 @@
 " :profile file *
 
 " Use :call coc#client#open_log() to open a log file, or use :echo $NODE_CLIENT_LOG_FILE to get file path of log.
-" let g:node_client_debug = 1
-" let $NODE_CLIENT_LOG_FILE = "$/.dotfiles/nvim/coc.nvim.logs"
+let g:node_client_debug = 1
+let $NODE_CLIENT_LOG_FILE = "coc.nvim.logs"
 
 " When using `dd` in the quickfix list, remove the item from the quickfix list.
 function! RemoveQFItem()
