@@ -1,3 +1,7 @@
+nnoremap <silent> <space>ef :Neotree left toggle main reveal_force_cwd git_base=main<cr>
+nnoremap <silent> <space>en :Neotree left toggle ~/.dotfiles/nvim main reveal_force_cwd git_base=main<cr>
+nnoremap <silent> <space>ez :Neotree left toggle ~/.dotfiles/zsh main reveal_force_cwd git_base=main<cr>
+
 lua << END
 -- Unless you are still migrating, remove the deprecated commands from v1.x
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
@@ -84,9 +88,10 @@ require("neo-tree").setup({
             },
             ["<2-LeftMouse>"] = "open",
             ["<cr>"] = "open",
+            ["l"] = "open",
             ["<esc>"] = "revert_preview",
             ["P"] = { "toggle_preview", config = { use_float = true } },
-            ["l"] = "focus_preview",
+            -- ["l"] = "focus_preview", -- focuses the preview window
             ["S"] = "open_split",
             ["s"] = "open_vsplit",
             -- ["S"] = "split_with_window_picker",
@@ -94,10 +99,11 @@ require("neo-tree").setup({
             ["t"] = "open_tabnew",
             -- ["<cr>"] = "open_drop",
             -- ["t"] = "open_tab_drop",
-            ["w"] = "open_with_window_picker",
-            --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
-            ["C"] = "close_node",
-            ["z"] = "close_all_nodes",
+            -- ["w"] = "open_with_window_picker",
+            ["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
+            -- ["C"] = "close_node",
+            ["h"] = "close_node", -- enter preview mode, which shows the current node without focusing
+            ["C"] = "close_all_nodes",
             --["Z"] = "expand_all_nodes",
             ["a"] = { 
               "add",
@@ -132,9 +138,9 @@ require("neo-tree").setup({
         filesystem = {
           filtered_items = {
             visible = false, -- when true, they will just be displayed differently than normal items
-            hide_dotfiles = true,
+            hide_dotfiles = false,
             hide_gitignored = true,
-            hide_hidden = true, -- only works on Windows for hidden files/directories
+            hide_hidden = false, -- only works on Windows for hidden files/directories
             hide_by_name = {
               --"node_modules"
             },
@@ -153,15 +159,15 @@ require("neo-tree").setup({
               --".null-ls_*",
             },
           },
-          follow_current_file = false, -- This will find and focus the file in the active buffer every
+          follow_current_file = true, -- This will find and focus the file in the active buffer every
                                        -- time the current file is changed while the tree is open.
-          group_empty_dirs = false, -- when true, empty folders will be grouped together
+          group_empty_dirs = true, -- when true, empty folders will be grouped together
           hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
                                                   -- in whatever position is specified in window.position
                                 -- "open_current",  -- netrw disabled, opening a directory opens within the
                                                   -- window like netrw would, regardless of window.position
                                 -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
-          use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+          use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
                                           -- instead of relying on nvim autocmd events.
           window = {
             mappings = {
@@ -206,3 +212,4 @@ require("neo-tree").setup({
         }
       })
 END
+
