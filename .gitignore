@@ -1,1 +1,4 @@
 nvim/init.local.vim
+
+zsh/.zcompdump  
+zsh/.zsh_history  
