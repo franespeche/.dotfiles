@@ -1,4 +1,10 @@
+*.logs
+
+nvim/TODO.txt
 nvim/init.local.vim
+nvim/debug.vim
 
 zsh/.zcompdump  
 zsh/.zsh_history  
+
+.DS_Store
