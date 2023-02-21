@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # # # # # # # # # # # #
 #        misc         #
 # # # # # # # # # # # #
@@ -10,19 +12,17 @@ function setItermProfile(){
 
 # toggle dark mode
 function dark() {
-  # check current mode and set to opposite
-  # prevent stdout and stderr
-  if [[ $(defaults read -g AppleInterfaceStyle) == 'Dark' ]]; then
+  CURRENT_MODE=$(defaults read -g AppleInterfaceStyle 2> /dev/null)
+  if [[ "$CURRENT_MODE" == "Dark" ]]; then
     setItermProfile light &&
-    msg "switched to light mode" &&
     -
-   else
+  else
     setItermProfile dark &&
-    msg "switched to dark mode" &&
     -
-   fi
+  fi
   # change os mode
-  $DARK_MODE_SCRIPT_EXEC
+  osascript -e \
+  'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
 }
 
 # upload screenshot from mouse selection and store url on the clipboard
@@ -41,7 +41,7 @@ function makegif(){
 }
 
 # get dollar blue
-function dolar() {
+function dollar() {
   DOLAR=$(curl -s https://api.bluelytics.com.ar/v2/latest)
   DOLAR_COMPRA=$(echo $DOLAR | jq -r .blue.value_buy)
   DOLAR_VENTA=$(echo $DOLAR | jq -r .blue.value_sell)
