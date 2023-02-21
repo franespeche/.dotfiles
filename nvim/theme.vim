@@ -20,7 +20,6 @@ if !exists('g:colors_name')
   silent! colorscheme gruvbox
   " silent! colorscheme dayfox
 
-  " silent! colorscheme nordfox
 endif
 
 " termguicolors
