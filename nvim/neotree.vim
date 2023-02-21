@@ -1,12 +1,34 @@
-nnoremap <silent> <space>ef :Neotree left toggle main reveal_force_cwd git_base=main<cr>
+nnoremap <silent> <space>ef :Neotree left main reveal_force_cwd git_base=main<cr>
+nnoremap <silent> <space>eg :Neotree left toggle git_status main reveal_force_cwd git_base=main<cr>
 nnoremap <silent> <space>en :Neotree left toggle ~/.dotfiles/nvim main reveal_force_cwd git_base=main<cr>
 nnoremap <silent> <space>ez :Neotree left toggle ~/.dotfiles/zsh main reveal_force_cwd git_base=main<cr>
-
+nnoremap <silent> <leader>rl :lua package.loaded["neotree"] = nil<cr>
 lua << END
 -- Unless you are still migrating, remove the deprecated commands from v1.x
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 -- require("neo-tree").paste_default_config()
+  
+--:l
+local function get_keys(t)
+  local keys={}
+  for key,_ in pairs(t) do
+    table.insert(keys, key)
+  end
+  return keys
+end
+
+local selected_nodes = {}
+local select_node = function(state)
+    local node = state.tree:get_node()
+
+   print(get_keys(node))
+
+    -- for i, n in ipairs(selected_nodes) do
+    --     print(n.name)
+    -- end
+end
+
 
 require("neo-tree").setup({
         close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -82,10 +104,7 @@ require("neo-tree").setup({
             nowait = true,
           },
           mappings = {
-            ["<space>"] = { 
-                "toggle_node", 
-                nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
-            },
+            ["<space>"] = "toggle_node",
             ["<2-LeftMouse>"] = "open",
             ["<cr>"] = "open",
             ["l"] = "open",
@@ -103,7 +122,7 @@ require("neo-tree").setup({
             ["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
             -- ["C"] = "close_node",
             ["h"] = "close_node", -- enter preview mode, which shows the current node without focusing
-            ["C"] = "close_all_nodes",
+            ["H"] = "close_all_nodes",
             --["Z"] = "expand_all_nodes",
             ["a"] = { 
               "add",
@@ -139,20 +158,20 @@ require("neo-tree").setup({
           filtered_items = {
             visible = false, -- when true, they will just be displayed differently than normal items
             hide_dotfiles = false,
-            hide_gitignored = true,
+            hide_gitignored = false,
             hide_hidden = false, -- only works on Windows for hidden files/directories
             hide_by_name = {
-              --"node_modules"
+              "node_modules"
             },
             hide_by_pattern = { -- uses glob style patterns
               --"*.meta",
               --"*/src/*/tsconfig.json",
             },
             always_show = { -- remains visible even if other settings would normally hide it
-              --".gitignored",
+              ".gitignored",
             },
             never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-              --".DS_Store",
+              ".DS_Store",
               --"thumbs.db"
             },
             never_show_by_pattern = { -- uses glob style patterns
@@ -171,15 +190,16 @@ require("neo-tree").setup({
                                           -- instead of relying on nvim autocmd events.
           window = {
             mappings = {
-              ["<bs>"] = "navigate_up",
+              ["-"] = "navigate_up",
               ["."] = "set_root",
-              ["H"] = "toggle_hidden",
+              -- ["H"] = "toggle_hidden",
               ["/"] = "fuzzy_finder",
               ["D"] = "fuzzy_finder_directory",
               ["f"] = "filter_on_submit",
               ["<c-x>"] = "clear_filter",
               ["[g"] = "prev_git_modified",
               ["]g"] = "next_git_modified",
+              ["<tab>"] = select_node
             }
           }
         },
