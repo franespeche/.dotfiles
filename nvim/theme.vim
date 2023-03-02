@@ -3,7 +3,7 @@
 highlight CocHighlightText guibg=Grey40
 " light mode
 " set background=light
-" highlight CocHighlightText ctermbg=7 guibg=Grey90
+highlight Directory guifg=#549699
 
 " if &background!=dark
 "   set background=dark

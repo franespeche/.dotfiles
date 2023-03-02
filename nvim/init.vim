@@ -35,7 +35,8 @@ Plug 'mxsdev/nvim-dap-vscode-js'                                                
 Plug 'sudar/vim-arduino-syntax'                                                         " arduino
 Plug 'nvim-tree/nvim-web-devicons'                                                      " devicons
 Plug 'github/copilot.vim'                                                               " copilot
-
+Plug 'MunifTanjim/nui.nvim'                                                             " [neotree] (dependency)
+Plug 'nvim-neo-tree/neo-tree.nvim'                                                      " [neotree] file explorer
 
 " Plug 'SirVer/ultisnips'                                                               " track snippets engine
 " Plug 'voldikss/vim-floaterm'																													" floating terminal
@@ -52,10 +53,11 @@ Plug 'github/copilot.vim'                                                       
 call plug#end()
 
 
+
 " source configs
 source ~/.dotfiles/nvim/settings.vim
 source ~/.dotfiles/nvim/coc.vim
-source ~/.dotfiles/nvim/coc-explorer.vim
+source ~/.dotfiles/nvim/neotree.vim
 source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/mappings.vim
 source ~/.dotfiles/nvim/git.vim

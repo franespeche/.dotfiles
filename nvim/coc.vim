@@ -1,4 +1,5 @@
-let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-lua', 'coc-yaml', 'coc-explorer']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-lua', 'coc-yaml']
+" let g:coc_global_extensions = extend(g:coc_global_extensions, ['coc-explorer'])
 
 set updatetime=300
 set shortmess+=c				" dont pass messages to ins-completion-menu
