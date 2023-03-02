@@ -68,8 +68,8 @@ vnoremap <leader>sw :<C-u>%s#\%V<C-r>=expand("<cword>")<cr>#
 vnoremap / <ESC>/\%V
 " search selected text
 vnoremap // y/<C-R>=escape(@",'/\')<CR>
-" find cword
-" nmap <leader>fw /<C-r>=expand("<cword>")<cr><cr>
+" substitute selected text
+vnoremap <leader>sw "hy:%s/<C-r>h//g<left><left>
 
 " unhighlight find results
 nmap <silent> <esc><esc> :noh<cr>
@@ -92,9 +92,9 @@ nnoremap <leader>pc <cmd>PlugClean<cr>
 vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`<
 
 " save, quit
-map ;q :q<cr>
-map ;<C-q> :q!<cr>
-map ;w :w<cr>
+nnoremap ;q :q<cr>
+nnoremap <space>;q :qa!<cr>
+nnoremap ;w :w<cr>
 
 " unbind space
 map <space> <Nop>
@@ -168,7 +168,7 @@ nnoremap <leader>ra <silent> :redir @a<cr>
 nnoremap <leader>re <silent> :redir END<cr>
 
 " copy current buffer's file path to clipboard
-nnoremap <leader>cp :let @" = expand("%")<cr>
+nnoremap <silent> <leader>cp :let @* = expand("%")<cr>
 
 " search yanked word
 nnoremap <leader>n /<c-r>"<cr>
