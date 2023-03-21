@@ -1,19 +1,10 @@
-function! CheckPwd()
-    if expand('%:p:h') =~# 'crawler'
-        return 1
-    else 
-        return 0
-    endif
-endfunction
-
-
 nnoremap <silent> <space>ef :Neotree left toggle reveal_force_cwd<cr>
-nnoremap <silent> <space>eg :Neotree left toggle git_status main reveal_force_cwd git_base=main<cr>
+nnoremap <silent> <space>eg :Neotree left toggle git_status main reveal_force_cwd git_base=ref<cr>
 nnoremap <silent> <space>en :Neotree left toggle ~/.dotfiles/nvim reveal_force_cwd<cr>
 nnoremap <silent> <space>ez :Neotree left toggle ~/.dotfiles/zsh reveal_force_cwd<cr>
 nnoremap <silent> <leader>rl :lua package.loaded["neotree"] = nil<cr>
 
-:hi Directory ctermfg=109 guifg=Cyan
+hi Directory ctermfg=109 guifg=Cyan
 
 lua << END
 -- Unless you are still migrating, remove the deprecated commands from v1.x
@@ -201,7 +192,7 @@ require("neo-tree").setup({
               ".gitignored",
             },
             never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-              ".DS_Store",
+              --" .DS_Store",
               --"thumbs.db"
             },
             never_show_by_pattern = { -- uses glob style patterns

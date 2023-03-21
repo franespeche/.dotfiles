@@ -1,10 +1,7 @@
-"
-" env
-"
 " lazygit
 let g:lazygit_floating_window_scaling_factor = 1
 
-"
+
 " mappings
 "
 " open tooltip with commit info

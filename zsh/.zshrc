@@ -231,7 +231,8 @@ if [ -f '/Users/franespeche/google-cloud-sdk/completion.zsh.inc' ]; then . '/Use
 # Ctrl+Z = fg
 fancy-ctrl-z () {
     if [[ $#BUFFER -eq 0 ]]; then
-        BUFFER="fg"
+        # initial space prevents the command from being added to history
+        BUFFER=" fg"
         zle accept-line
     else
         zle push-input

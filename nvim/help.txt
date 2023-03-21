@@ -1,6 +1,0 @@
-:help 
-key-notation
-internal-variables
-
-vim-plug
-:PlugStatus

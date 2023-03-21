@@ -93,7 +93,7 @@ vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`<
 
 " save, quit
 nnoremap ;q :q<cr>
-nnoremap <space>;q :qa!<cr>
+nnoremap ,q :qa!<cr>
 nnoremap ;w :w<cr>
 
 " unbind space

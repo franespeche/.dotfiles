@@ -3,7 +3,6 @@
 highlight CocHighlightText guibg=Grey40
 " light mode
 " set background=light
-highlight Directory guifg=#549699
 
 " if &background!=dark
 "   set background=dark
@@ -32,7 +31,19 @@ let g:one_allow_italics = 1
 highlight Comment cterm=italic  	
 
 " format "check!" comments
-:syntax match jsCommentCheck /^\s*[\/\/|"]\s*check!.*/
-:hi jsCommentCheck guifg=white guibg=#b95d76
+syntax match jsCommentCheck /^\s*[\/\/|"]\s*check!.*/
+hi jsCommentCheck guifg=white guibg=#b95d76
 
-" check! holas
+" note: this was in settings.vim
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+highlight Directory guifg=#549699
+" hi Directory ctermfg=109 guifg=Cyan
+
+" custom
+syntax match fbCollections /collection/
+hi fbCollections guifg=#E9BD15
+syntax match fbSubCollections /sub-collection/
+hi fbSubCollections guifg=#E9BD15
+syntax match fbDocuments /document/
+hi fbDocuments guifg=#FA8072

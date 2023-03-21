@@ -1,5 +1,4 @@
 {
-  "tsserver.trace.server": "verbose",
   "tsserver.disableAutomaticTypeAcquisition": true,
   "list.source.files.excludePatterns": [
     "**/node_modules/**",

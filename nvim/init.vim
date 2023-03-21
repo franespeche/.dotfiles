@@ -2,6 +2,7 @@
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'machakann/vim-sandwich'                                                           " wrap words with a given character
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }                                       " coc nodejs host
+" Plug 'prabirshrestha/vim-lsp'                                                           " lsp
 Plug 'tjdevries/coc-zsh'                                                                " coc zsh support
 Plug 'antoinemadec/coc-fzf'                                                             " coc fzf support
 Plug 'josa42/vim-lightline-coc'                                                         " coc statusline support
@@ -21,7 +22,6 @@ Plug 'leafgarland/typescript-vim'                                               
 Plug 'HerringtonDarkholme/yats.vim'                                                     " typescript highlighting (for better folding)
 Plug 'mxw/vim-jsx'                                                                      " jsx support
 Plug 'maxmellon/vim-jsx-pretty'                                                         " jsx support
-Plug 'tpope/vim-vinegar'                                                                " simpler netrw
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }   " prettier
 Plug 'wellle/targets.vim'                                                               " change words between delimiters
 Plug 'nvim-lua/plenary.nvim'                                                            " [telescope] (dependenvy)
@@ -37,7 +37,11 @@ Plug 'nvim-tree/nvim-web-devicons'                                              
 Plug 'github/copilot.vim'                                                               " copilot
 Plug 'MunifTanjim/nui.nvim'                                                             " [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                      " [neotree] file explorer
+Plug 'liuchengxu/vista.vim'                                                             " show symbols
 
+" Plug 'nvim-neorg/neorg'                                                                 " notes
+" Plug 'sindrets/diffview.nvim'                                                           " diff view
+" Plug 'tpope/vim-vinegar'                                                                " simpler netrw
 " Plug 'SirVer/ultisnips'                                                               " track snippets engine
 " Plug 'voldikss/vim-floaterm'																													" floating terminal
 " Plug 'ryanoasis/vim-devicons'                                                         " devicons
@@ -65,9 +69,8 @@ source ~/.dotfiles/nvim/theme.vim
 source ~/.dotfiles/nvim/lightline.vim
 source ~/.dotfiles/nvim/prettier.vim
 source ~/.dotfiles/nvim/telescope.vim
-source ~/.dotfiles/nvim/ultisnips.vim
-source ~/.dotfiles/nvim/comment.vim
-source ~/.dotfiles/nvim/debug.vim
+" source ~/.dotfiles/nvim/ultisnips.vim
+source ~/.dotfiles/nvim/temp.vim
 if filereadable(expand('~/.dotfiles/nvim/init.local.vim'))
   source ~/.dotfiles/nvim/init.local.vim
 endif

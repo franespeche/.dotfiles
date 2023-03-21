@@ -5,6 +5,7 @@
 alias rmrf='rm -rf $1'
 alias cdz="changeDirectory $DOTFILES/zsh"
 alias cdn="changeDirectory $DOTFILES/nvim"
+alias cdv=cdn
 alias cdd="changeDirectory $DOTFILES"
 alias realvim="vim"
 alias vim="nvim"

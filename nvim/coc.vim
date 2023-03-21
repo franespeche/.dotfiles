@@ -59,9 +59,6 @@ augroup end
 xmap <leader>ca  <Plug>(coc-codeaction-selected)
 nmap <leader>ca  <Plug>(coc-codeaction-selected)
 
-" apply autofix to problem on the current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
 nmap <leader>cr :CocRestart<cr> 
 
 " Trigger for code actions
@@ -99,7 +96,7 @@ nmap <leader>tr :CocCommand tsserver.restart<cr>
 " show hints
 nmap <leader>ch <Plug>(coc-codeaction)
 " quick fix
-nmap <leader>qf <Plug>(coc-fix-current)
+" nmap <leader>qf <Plug>(coc-fix-current)
 
 " goto definition
 nmap gd <Plug>(coc-definition)
