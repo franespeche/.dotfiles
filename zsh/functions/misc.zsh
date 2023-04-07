@@ -6,7 +6,8 @@
 
 # change iterm profile
 function setItermProfile(){
-	export ITERM_PROFILE="$1"
+  #	might be safe to remove
+  #	export ITERM_PROFILE="$1"
   echo -e "\033]50;SetProfile=$1\a"
 }
 

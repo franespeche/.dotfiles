@@ -69,7 +69,7 @@ vnoremap / <ESC>/\%V
 " search selected text
 vnoremap // y/<C-R>=escape(@",'/\')<CR>
 " substitute selected text
-vnoremap <leader>sw "hy:%s/<C-r>h//g<left><left>
+vnoremap <leader>sw "hy:%s#\V<C-r>h##g<left><left>
 
 " unhighlight find results
 nmap <silent> <esc><esc> :noh<cr>

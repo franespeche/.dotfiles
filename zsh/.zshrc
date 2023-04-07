@@ -1,6 +1,22 @@
 #!/bin/zsh
 
 # # # # # # # # # # # #
+#    dark mode        #
+# # # # # # # # # # # #
+
+local MODE
+if [ "$(defaults read -g AppleInterfaceStyle)" = "Dark" ]; then
+  MODE="dark"
+  export ITERM_PROFILE="dark"
+  echo -e "\033]50;SetProfile=dark\a"
+else
+  MODE="light" 
+  export ITERM_PROFILE="light"
+  echo -e "\033]50;SetProfile=light\a"
+fi
+unset MODE
+
+# # # # # # # # # # # #
 #         env         #
 # # # # # # # # # # # #
 

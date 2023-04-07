@@ -1,5 +1,9 @@
 {
-  "tsserver.disableAutomaticTypeAcquisition": true,
+  "eslint.probe": [
+    "typescript",
+    "typescriptreact"
+  ],
+  "tsserver.disableAutomaticTtypescriptreactypeAcquisition": true,
   "list.source.files.excludePatterns": [
     "**/node_modules/**",
     "**/node_modules/**/.*",
