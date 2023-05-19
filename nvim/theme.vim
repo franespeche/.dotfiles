@@ -1,6 +1,6 @@
 " colorscheme gruvbox
 " dark mode
-highlight CocHighlightText guibg=Grey40
+" highlight CocHighlightText guibg=Grey40
 " light mode
 " set background=light
 

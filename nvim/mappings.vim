@@ -18,7 +18,10 @@ noremap L $
 
 " open new tab
 nnoremap <silent> <leader>tn :tabnew<cr>
-nnoremap <silent> <leader>tc :tabclose<cr>
+nnoremap <silent> <leader>tq :tabclose<cr>
+
+" normal J behavior
+nnoremap <leader>J J
 
 
 " splits create
