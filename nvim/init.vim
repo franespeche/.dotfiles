@@ -1,11 +1,11 @@
 " plugins
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'machakann/vim-sandwich'                                                           " wrap words with a given character
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }                                       " coc nodejs host
+" Plug 'neoclide/coc.nvim', { 'branch': 'release' }                                       " coc nodejs host
 " Plug 'prabirshrestha/vim-lsp'                                                           " lsp
-Plug 'tjdevries/coc-zsh'                                                                " coc zsh support
-Plug 'antoinemadec/coc-fzf'                                                             " coc fzf support
-Plug 'josa42/vim-lightline-coc'                                                         " coc statusline support
+" Plug 'tjdevries/coc-zsh'                                                                " coc zsh support
+" Plug 'antoinemadec/coc-fzf'                                                             " coc fzf support
+" Plug 'josa42/vim-lightline-coc'                                                         " coc statusline support
 Plug 'itchyny/lightline.vim'                                                            " statusline
 Plug 'tpope/vim-commentary'                                                             " comment text
 Plug 'kdheepak/lazygit.nvim'                                                            " [git] lazygit
@@ -38,6 +38,12 @@ Plug 'github/copilot.vim'                                                       
 Plug 'MunifTanjim/nui.nvim'                                                             " [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                      " [neotree] file explorer
 Plug 'liuchengxu/vista.vim'                                                             " show symbols
+Plug 'neovim/nvim-lspconfig'                                                            " lsp config
+Plug 'hrsh7th/cmp-nvim-lsp'                                                             " completion
+Plug 'hrsh7th/cmp-buffer'                                                               " completion
+Plug 'hrsh7th/cmp-path'                                                                 " completion
+Plug 'hrsh7th/cmp-cmdline'                                                              " completion
+Plug 'hrsh7th/nvim-cmp'                                                                 " completion
 
 " Plug 'nvim-neorg/neorg'                                                                 " notes
 " Plug 'sindrets/diffview.nvim'                                                           " diff view
@@ -60,7 +66,7 @@ call plug#end()
 
 " source configs
 source ~/.dotfiles/nvim/settings.vim
-source ~/.dotfiles/nvim/coc.vim
+" source ~/.dotfiles/nvim/coc.vim
 source ~/.dotfiles/nvim/neotree.vim
 source ~/.dotfiles/nvim/dap.vim
 source ~/.dotfiles/nvim/mappings.vim

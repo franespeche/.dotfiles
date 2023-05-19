@@ -43,6 +43,3 @@ set noshowmode                  " -- MODE -- displays as M
 function! FilePath()
   return winwidth(0) > 80 ? expand('%h') : ''
 endfunction
-
-" register compoments:
-call lightline#coc#register()
