@@ -194,3 +194,8 @@ xnoremap <silent> <leader>gl :GBrowse<cr>
 nnoremap <leader>gb <cmd>Git blame<cr>
 " open lazygit
 nnoremap <silent> <leader>gg :cd %:h<cr> :LazyGit<cr>
+
+" toggle copilot on and off
+" TODO: make this toggle
+" consider moving to lua :please:
+" nnoremap <leader>ct :call CopilotToggle()<cr>
