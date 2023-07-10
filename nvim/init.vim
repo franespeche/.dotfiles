@@ -34,11 +34,11 @@ Plug 'mfussenegger/nvim-dap'                                                    
 Plug 'mxsdev/nvim-dap-vscode-js'                                                        " vscode js dap
 Plug 'sudar/vim-arduino-syntax'                                                         " arduino
 Plug 'nvim-tree/nvim-web-devicons'                                                      " devicons
-Plug 'github/copilot.vim'                                                               " copilot
 Plug 'MunifTanjim/nui.nvim'                                                             " [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                      " [neotree] file explorer
 Plug 'liuchengxu/vista.vim'                                                             " show symbols
 
+" Plug 'github/copilot.vim'                                                               " copilot
 " Plug 'nvim-neorg/neorg'                                                                 " notes
 " Plug 'sindrets/diffview.nvim'                                                           " diff view
 " Plug 'tpope/vim-vinegar'                                                                " simpler netrw

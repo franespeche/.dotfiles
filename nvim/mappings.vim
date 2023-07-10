@@ -195,7 +195,6 @@ nnoremap <leader>gb <cmd>Git blame<cr>
 " open lazygit
 nnoremap <silent> <leader>gg :cd %:h<cr> :LazyGit<cr>
 
-" toggle copilot on and off
-" TODO: make this toggle
-" consider moving to lua :please:
-" nnoremap <leader>ct :call CopilotToggle()<cr>
+" go to the last cursor position before going into Visual mode
+noremap go gvo<ESC>
+
