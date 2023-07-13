@@ -20,10 +20,6 @@ noremap L $
 nnoremap <silent> <leader>tn :tabnew<cr>
 nnoremap <silent> <leader>tq :tabclose<cr>
 
-" normal J behavior
-nnoremap <leader>J J
-
-
 " splits create
 noremap <silent> <leader>l :vsp<cr>
 noremap <silent> <leader>j :sp<cr>
@@ -48,8 +44,7 @@ nnoremap <silent> <leader>zo :ZoomToggle<CR>
 vnoremap <S-j> 2j
 vnoremap <S-k> 2k
 
-" alternative to J, as J's default behaviour was mapped to 2j (just above this line)
-nnoremap <space>J J
+nnoremap <space>j J
 
 " insert line in INSERT mode
 inoremap <C-o> <Esc>o
@@ -196,5 +191,5 @@ nnoremap <leader>gb <cmd>Git blame<cr>
 nnoremap <silent> <leader>gg :cd %:h<cr> :LazyGit<cr>
 
 " go to the last cursor position before going into Visual mode
-noremap go gvo<ESC>
+noremap go gvogvo<ESC>
 

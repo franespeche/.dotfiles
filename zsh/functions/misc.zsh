@@ -57,7 +57,7 @@ function py3install() {
 }
 
 # relaod zsh
-function ra() {
+function rr() {
   msg "reload .zshrc"
 	source $ZDOTDIR/.zshrc $1
   # omz reload

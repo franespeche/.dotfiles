@@ -17,10 +17,11 @@ alias c=clear
 alias ls='exa --icons --tree --level 1'
 alias ll='ls -la'
 alias lld="ll | grep \"^\.\""
+alias v='nvim'
 alias va='nvim $ZDOTDIR/alias/misc.zsh'
 alias vz='nvim $ZDOTDIR/.zshrc'
 alias kan='killall -9 node'
-alias ac="arduino-cli"
+alias ac='arduino-cli'
 alias meteo="curl wttr.in/Buenos%20Aires"
 
 # vi git
