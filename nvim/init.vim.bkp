@@ -1,8 +1,6 @@
 " plugins
 call plug#begin(stdpath('data') . '/plugged')
-Plug 'machakann/vim-sandwich'                                                           " wrap words with a given character
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }                                       " coc nodejs host
-" Plug 'prabirshrestha/vim-lsp'                                                           " lsp
 Plug 'tjdevries/coc-zsh'                                                                " coc zsh support
 Plug 'antoinemadec/coc-fzf'                                                             " coc fzf support
 Plug 'josa42/vim-lightline-coc'                                                         " coc statusline support
@@ -24,6 +22,7 @@ Plug 'mxw/vim-jsx'                                                              
 Plug 'maxmellon/vim-jsx-pretty'                                                         " jsx support
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }   " prettier
 Plug 'wellle/targets.vim'                                                               " change words between delimiters
+Plug 'machakann/vim-sandwich'                                                           " wrap words with a given character
 Plug 'nvim-lua/plenary.nvim'                                                            " [telescope] (dependenvy)
 Plug 'sharkdp/fd'                                                                       " [telescope] (dependency)
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }  												  		" [telescope] chore
@@ -32,18 +31,18 @@ Plug 'nvim-treesitter/nvim-treesitter'                                          
 Plug 'lukas-reineke/indent-blankline.nvim'                                              " indent lines
 Plug 'mfussenegger/nvim-dap'                                                            " dap
 Plug 'mxsdev/nvim-dap-vscode-js'                                                        " vscode js dap
-Plug 'sudar/vim-arduino-syntax'                                                         " arduino
 Plug 'nvim-tree/nvim-web-devicons'                                                      " devicons
 Plug 'MunifTanjim/nui.nvim'                                                             " [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                      " [neotree] file explorer
 Plug 'liuchengxu/vista.vim'                                                             " show symbols
 
+" Plug 'sudar/vim-arduino-syntax'                                                         " arduino
+" Plug 'prabirshrestha/vim-lsp'                                                           " lsp
 " Plug 'github/copilot.vim'                                                               " copilot
 " Plug 'nvim-neorg/neorg'                                                                 " notes
 " Plug 'sindrets/diffview.nvim'                                                           " diff view
 " Plug 'tpope/vim-vinegar'                                                                " simpler netrw
 " Plug 'SirVer/ultisnips'                                                               " track snippets engine
-" Plug 'voldikss/vim-floaterm'																													" floating terminal
 " Plug 'ryanoasis/vim-devicons'                                                         " devicons
 " Plug 'jiangmiao/auto-pairs'																														" auto close things
 " Plug 'catppuccin/nvim', {'as': 'catppuccin'}                                          " colorscheme
@@ -56,8 +55,6 @@ Plug 'liuchengxu/vista.vim'                                                     
 " Plug 'numToStr/Comment.nvim'																												  " comment text
 call plug#end()
 
-
-
 " source configs
 source ~/.dotfiles/nvim/settings.vim
 source ~/.dotfiles/nvim/coc.vim
@@ -69,8 +66,8 @@ source ~/.dotfiles/nvim/theme.vim
 source ~/.dotfiles/nvim/lightline.vim
 source ~/.dotfiles/nvim/prettier.vim
 source ~/.dotfiles/nvim/telescope.vim
-" source ~/.dotfiles/nvim/ultisnips.vim
 source ~/.dotfiles/nvim/temp.vim
 if filereadable(expand('~/.dotfiles/nvim/init.local.vim'))
   source ~/.dotfiles/nvim/init.local.vim
+" source ~/.dotfiles/nvim/ultisnips.vim
 endif
