@@ -3,6 +3,7 @@
 nvim/TODO.txt
 nvim/init.local.vim
 nvim/debug.vim
+nvim/lazy-lock.json
 
 zsh/.zcompdump  
 zsh/.zsh_history  
