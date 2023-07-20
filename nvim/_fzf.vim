@@ -14,11 +14,3 @@ function! RipgrepFzf(query, fullscreen)
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 command! -nargs=* -bang RgFzf call RipgrepFzf(<q-args>, <bang>1)
-
-" nnoremap <leader>fF :<C-u>Files<cr>
-" nnoremap <leader>fb :Buffers<cr>
-" nnoremap <leader>ff :Files <C-R>=expand('%:h')<CR><CR>
-" nnoremap <leader>aa :RgFzf<cr>
-" nnoremap <leader>za mA:RgFzf <C-r>=expand("<cword>")<cr><cr>
-" nnoremap <leader>zr mA:Rg <C-r>=expand("<cword>")<cr><space>
-
