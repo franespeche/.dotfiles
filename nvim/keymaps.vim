@@ -1,5 +1,5 @@
 " source vim
-noremap <silent> <leader>rr :so ~/.dotfiles/nvim/init.lua<cr>
+noremap <silent> <leader>rr :so ~/.dotfiles/nvim/init.vim<cr>
 
 " change background
 " noremap <silent> <leader>bd :set background=dark<cr>

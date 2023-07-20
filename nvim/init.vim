@@ -63,7 +63,7 @@ source ~/.dotfiles/nvim/settings.vim
 source ~/.dotfiles/nvim/coc.vim
 source ~/.dotfiles/nvim/neotree.vim
 source ~/.dotfiles/nvim/dap.vim
-source ~/.dotfiles/nvim/mappings.vim
+source ~/.dotfiles/nvim/keymaps.vim
 source ~/.dotfiles/nvim/git.vim
 source ~/.dotfiles/nvim/theme.vim
 source ~/.dotfiles/nvim/lightline.vim
