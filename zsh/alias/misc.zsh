@@ -20,6 +20,7 @@ alias lld="ll | grep \"^\.\""
 alias v='nvim'
 alias va='nvim $ZDOTDIR/alias/misc.zsh'
 alias vz='nvim $ZDOTDIR/.zshrc'
+alias vn='nvim $ZDOTDIR/nvim'
 alias kan='killall -9 node'
 alias ac='arduino-cli'
 alias meteo="curl wttr.in/Buenos%20Aires"

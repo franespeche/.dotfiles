@@ -57,10 +57,13 @@ promptinit
 # # # # # # # # # # # #
 #       default       #
 # # # # # # # # # # # #
+# TODO: eval this only in osx
 eval $(/opt/homebrew/bin/brew shellenv)
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.rd/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 # pyenv init
+# TODO: execute only if pyenv is installed
 eval "$(pyenv init -)"
 
 # # # # # # # # # # # #

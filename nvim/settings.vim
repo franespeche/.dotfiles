@@ -31,7 +31,7 @@ set hidden                        " don't prompt for save when leaving an unsave
 set wildmode=list:full            " autocomplete first occurence
 set wildignore=.git,.hg,*.o,*.a,*.class,*.jar,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo,**/cache/*,**/logs/*,**/target/*,*.hi,tags,**/dist/*,**/public/**/vendor/**,**/public/vendor/**,**/node_modules/**
 
-set number                        " show line numbers
+set relativenumber number         " show line numbers
 set ruler                         " show cursor position
 set cursorline
 
@@ -73,3 +73,6 @@ let g:typescript_ignore_typescriptdoc=1
 " To get correct comment highlighting, you can install vim-jsonc (which has built-in support for coc-settings.json), or even simply add:
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
+" got from vim's rust plugin docs
+syntax enable
+filetype plugin indent on
