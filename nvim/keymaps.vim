@@ -1,5 +1,5 @@
 " source vim
-noremap <silent> <leader>rr :so ~/.dotfiles/nvim/init.vim<cr>
+noremap <silent> <leader>rr :so ~/.dotfiles/nvim/init.lua<cr>
 
 " change background
 " noremap <silent> <leader>bd :set background=dark<cr>
@@ -32,11 +32,13 @@ inoremap <silent> <C-l> <Esc>:wincmd l<cr>
 inoremap <silent> <C-h> <Esc>:wincmd h<cr>
 inoremap <silent> <C-j> <Esc>:wincmd j<cr>
 inoremap <silent> <C-k> <Esc>:wincmd k<cr>
+
 "	splits resize
-" noremap <silent> <leader>wb :wincmd _<cr>
-" noremap <silent> <leader>wn :wincmd =<cr>
-" noremap <silent> < :vertical resize -3<cr>
-" noremap <silent> > :vertical resize +3<cr>
+" TODO: duplicated code: define mapping
+noremap + :vertical resize +3<cr>
+noremap = :vertical resize +3<cr>
+noremap - :vertical resize -3<cr>
+
 "	splits fullscreen
 nnoremap <silent> <leader>zo :ZoomToggle<CR>
 
@@ -113,7 +115,8 @@ nnoremap <space>o o<C-u>
 nnoremap <space>O O<C-u>
 
 " exec current line (helpful for debugging)
-nnoremap <leader>e :exe getline(line('.'))<cr>
+" nnoremap <leader>e :exe getline(line('.'))<cr>
+nnoremap <leader>e :luafile %<cr>
 
 " repeat last substitution
 nnoremap <leader>. :&&<cr>
