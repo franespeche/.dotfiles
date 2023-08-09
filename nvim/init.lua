@@ -56,7 +56,6 @@ vim.cmd [[
   source ~/.dotfiles/nvim/prettier.vim
   source ~/.dotfiles/nvim/telescope.vim
   source ~/.dotfiles/nvim/temp.vim
-  source ~/.dotfiles/nvim/navic.lua
 ]]
 
 -- private files
