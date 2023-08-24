@@ -76,3 +76,6 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 " got from vim's rust plugin docs
 syntax enable
 filetype plugin indent on
+" this is for clipboard to work on arch
+set clipboard+=unnamedplus
+
