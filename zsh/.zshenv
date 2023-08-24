@@ -36,4 +36,6 @@ fi
 #
 #   export TERM=xterm-256color-italic
 #
-export TERM=xterm-256color-italic
+if [[ `uname` != 'Linux' ]]; then
+  export TERM=xterm-256color-italic
+fi
