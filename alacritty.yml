@@ -7,6 +7,7 @@ shell:
 
 env:
   WINIT_X11_SCALE_FACTOR: "1.0"
+  TERM: xterm-256color-italic
 
 window:
   dimensions:
@@ -36,7 +37,7 @@ font:
   use_thin_strokes: true
 
 draw_bold_text_with_bright_colors: false
-
+  
 schemes:
 # colors: *dark
   latte: &latte
@@ -406,4 +407,4 @@ schemes:
 #     blue:       '#61afef'
 #     magenta:    '#c678dd'
 #     cyan:       '#56b6c2'
-colors: *macchiato
+colors: *latte

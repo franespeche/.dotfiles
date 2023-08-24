@@ -57,8 +57,7 @@ promptinit
 # # # # # # # # # # # #
 #       default       #
 # # # # # # # # # # # #
-# TODO: eval this only in osx
-eval $(/opt/homebrew/bin/brew shellenv)
+# MAC ONLY:
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.rd/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
@@ -226,6 +225,9 @@ if [[ `uname` == 'Linux' ]]; then
 
 	# set keyboard speed
 	xset r rate 200 50
+# mac only  
+  else
+    eval $(/opt/homebrew/bin/brew shellenv)
 fi
 
 # source local cfg
