@@ -1,5 +1,5 @@
 nnoremap <silent> <space>ef :Neotree left toggle reveal_force_cwd<cr>
-nnoremap <silent> <space>eg :Neotree left toggle git_status main reveal_force_cwd git_base=main<cr>
+nnoremap <silent> <space>eg :Neotree left toggle git_status master reveal_force_cwd git_base=master<cr>
 nnoremap <silent> <space>en :Neotree left toggle ~/.dotfiles/nvim reveal_force_cwd<cr>
 nnoremap <silent> <space>ez :Neotree left toggle ~/.dotfiles/zsh reveal_force_cwd<cr>
 nnoremap <silent> <leader>rl :lua package.loaded["neotree"] = nil<cr>
