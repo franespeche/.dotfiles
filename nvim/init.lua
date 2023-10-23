@@ -40,11 +40,14 @@ Plug 'liuchengxu/vista.vim'                                                     
 Plug 'rust-lang/rust.vim'                                                                 -- rust
 Plug "neovim/nvim-lspconfig"                                                              -- navic dependency
 Plug "SmiteshP/nvim-navic"                                                                -- breadcrumbs
+Plug "kevinhwang91/nvim-ufo"                                                              -- folds
+Plug "kevinhwang91/promise-async"                                                         -- [folds] (dependency)
 
 vim.call('plug#end')
 
 -- source configs
 vim.cmd [[
+  source ~/.dotfiles/nvim/navic.lua
   source ~/.dotfiles/nvim/settings.vim
   source ~/.dotfiles/nvim/coc.vim
   source ~/.dotfiles/nvim/neotree.vim
@@ -55,6 +58,7 @@ vim.cmd [[
   source ~/.dotfiles/nvim/lightline.vim
   source ~/.dotfiles/nvim/prettier.vim
   source ~/.dotfiles/nvim/telescope.vim
+  source ~/.dotfiles/nvim/ufo.lua
   source ~/.dotfiles/nvim/temp.vim
 ]]
 
