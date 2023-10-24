@@ -27,7 +27,7 @@ Plug 'wellle/targets.vim'                                                       
 Plug 'machakann/vim-sandwich'                                                             -- wrap words with a given character
 Plug 'nvim-lua/plenary.nvim'                                                              -- [telescope] (dependenvy)
 Plug 'sharkdp/fd'                                                                         -- [telescope] (dependency)
-Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.0' })                              -- [telescope] chore
+Plug('nvim-telescope/telescope.nvim')                                                     -- [telescope] chore
 Plug 'nvim-telescope/telescope-file-browser.nvim'                                         -- [telescope] file browser
 Plug 'nvim-treesitter/nvim-treesitter'                                                    -- [telescope] finder/preview
 Plug 'lukas-reineke/indent-blankline.nvim'                                                -- indent lines
