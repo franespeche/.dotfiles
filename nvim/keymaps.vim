@@ -84,6 +84,7 @@ nnoremap <leader>zz <cmd>set wrap!<cr>
 " vim-plug
 nnoremap <leader>pi <cmd>PlugInstall<cr>
 nnoremap <leader>pc <cmd>PlugClean<cr>
+nnoremap <leader>pu <cmd>PlugUpdate<cr>
 
 " fold everything but selection
 " got from https://stackoverflow.com/questions/674613/vim-folds-for-everything-except-something
@@ -117,7 +118,7 @@ nnoremap <leader>e :exe getline(line('.'))<cr>
 " repeat last substitution
 nnoremap <leader>. :&&<cr>
 
-" yank into custom ("a") register
+" yank into "a
 noremap <space>y "ay
 noremap <space>p "ap
 
@@ -169,7 +170,7 @@ nnoremap <leader>re <silent> :redir END<cr>
 nnoremap <silent> <leader>cp :let @* = expand("%")<cr>
 
 " search yanked word
-nnoremap <leader>n /<c-r>"<cr>
+" nnoremap <leader>n /<c-r>"<cr>
 
 " JSON stringify cword
 vnoremap <leader>js "adiJSON.stringify(, null, 2)<ESC>F("ap
@@ -177,6 +178,8 @@ vnoremap <leader>js "adiJSON.stringify(, null, 2)<ESC>F("ap
 " console.log("cword", cword)
 nnoremap <space>cl viw"adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>
 vnoremap <space>cl "adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>
+
+vnoremap <leader>n :norm
 
 " 
 " Git
