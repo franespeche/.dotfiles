@@ -31,8 +31,6 @@ Plug('nvim-telescope/telescope.nvim')                                           
 Plug 'nvim-telescope/telescope-file-browser.nvim'                                         -- [telescope] file browser
 Plug 'nvim-treesitter/nvim-treesitter'                                                    -- [telescope] finder/preview
 Plug 'lukas-reineke/indent-blankline.nvim'                                                -- indent lines
-Plug 'mfussenegger/nvim-dap'                                                              -- dap
-Plug 'mxsdev/nvim-dap-vscode-js'                                                          -- vscode js dap
 Plug 'nvim-tree/nvim-web-devicons'                                                        -- devicons
 Plug 'MunifTanjim/nui.nvim'                                                               -- [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                        -- [neotree] file explorer
@@ -42,6 +40,10 @@ Plug "neovim/nvim-lspconfig"                                                    
 Plug "SmiteshP/nvim-navic"                                                                -- breadcrumbs
 Plug "kevinhwang91/nvim-ufo"                                                              -- folds
 Plug "kevinhwang91/promise-async"                                                         -- [folds] (dependency)
+Plug 'vim-scripts/indentpython.vim'                                                       -- python
+Plug 'vim-syntastic/syntastic'
+-- Plug 'mfussenegger/nvim-dap'                                                              -- dap
+-- Plug 'mxsdev/nvim-dap-vscode-js'                                                          -- vscode js dap
 
 vim.call('plug#end')
 
@@ -51,7 +53,6 @@ vim.cmd [[
   source ~/.dotfiles/nvim/settings.vim
   source ~/.dotfiles/nvim/coc.vim
   source ~/.dotfiles/nvim/neotree.vim
-  source ~/.dotfiles/nvim/dap.vim
   source ~/.dotfiles/nvim/keymaps.vim
   source ~/.dotfiles/nvim/git.vim
   source ~/.dotfiles/nvim/theme.vim
