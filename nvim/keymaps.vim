@@ -91,8 +91,8 @@ nnoremap <leader>pu <cmd>PlugUpdate<cr>
 vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`<
 
 " save, quit
-nnoremap ;q :q<cr>
 nnoremap ,q :qa!<cr>
+nnoremap ;q :q!<cr>
 nnoremap ;w :w<cr>
 
 " unbind space
