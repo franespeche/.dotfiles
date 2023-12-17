@@ -1,5 +1,5 @@
 let g:lightline = {
-      \   'colorscheme': 'dayfox',
+      \   'colorscheme': IsDarkMode() ? 'gruvbox' : 'dayfox',
 			\   'subseparator': {
 			\			'left': '|',
 			\		},

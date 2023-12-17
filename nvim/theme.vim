@@ -1,12 +1,13 @@
-" colorscheme gruvbox
-" dark mode
-" highlight CocHighlightText guibg=Grey40
-" light mode
-" set background=light
-
-" if &background!=dark
-"   set background=dark
-"   endif
+function! IsDarkMode()
+    let os_name = system("uname")
+    if match(os_name, 'Darwin') >= 0
+        let result = system("defaults read -g AppleInterfaceStyle 2>/dev/null | tr -d '\n'")
+        return result ==# 'Dark'
+    else
+        " Unsupported platform
+        return 0
+    endif
+endfunction
 
 " syntax
 if !exists('g:syntax_on')
@@ -16,29 +17,31 @@ endif
 
 " colorscheme
 if !exists('g:colors_name')
-  " silent! colorscheme gruvbox
-  silent! colorscheme dayfox
-
+    if IsDarkMode()
+      " silent! colorscheme g:dark_theme
+      silent! colorscheme gruvbox
+    else
+      " silent! colorscheme g:light_theme
+      silent! colorscheme dayfox
+    endif
 endif
+
 
 " termguicolors
 if !&termguicolors
   set termguicolors
 endif
 
+
+
 " Italics
 let g:one_allow_italics = 1
 highlight Comment cterm=italic  	
-
-" format "check!" comments
-syntax match jsCommentCheck /^\s*[\/\/|"]\s*check!.*/
-hi jsCommentCheck guifg=white guibg=#b95d76
 
 " note: this was in settings.vim
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 highlight Directory guifg=#549699
-" hi Directory ctermfg=109 guifg=Cyan
 
 " custom
 syntax match fbCollections /collection/
