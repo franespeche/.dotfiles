@@ -14,16 +14,17 @@
     "**/node_modules/**/.*",
     "**/node_modules/**/.*/**"
   ],
-  "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "markdown",
-    "scss",
-    "javascript",
-    "typescript",
-    "yaml",
-    "json",
-    "rust"
-  ],
+  "coc.preferences.formatOnSave": false,
+  //  "coc.preferences.formatOnSaveFiletypes": [
+  //    "css",
+  //    "markdown",
+  //    "scss",
+  //    "javascript",
+  //    "typescript",
+  //    "yaml",
+  //    "json",
+  //    "rust"
+  //  ],
   "codeLens.enable": false,
   "explorer.autoExpandRoot": true,
   "explorer.debug": true,
