@@ -1,5 +1,7 @@
+
 #!/bin/zsh
 
+# defaults write -g ApplePressAndHoldEnabled -bool false
 # # # # # # # # # # # #
 #    dark mode        #
 # # # # # # # # # # # #
