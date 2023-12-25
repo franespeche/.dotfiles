@@ -31,7 +31,7 @@ set hidden                        " don't prompt for save when leaving an unsave
 set wildmode=list:full            " autocomplete first occurence
 set wildignore=.git,.hg,*.o,*.a,*.class,*.jar,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo,**/cache/*,**/logs/*,**/target/*,*.hi,tags,**/dist/*,**/public/**/vendor/**,**/public/vendor/**,**/node_modules/**
 
-set relativenumber number         " show line numbers
+set norelativenumber number       " show line numbers
 set ruler                         " show cursor position
 set cursorline
 
