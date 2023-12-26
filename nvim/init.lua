@@ -49,6 +49,7 @@ vim.call('plug#end')
 
 require('config.settings')
 require('navic')
+require('ufo')
 -- source configs
 vim.cmd [[
   source ~/.dotfiles/nvim/coc.vim
@@ -59,7 +60,6 @@ vim.cmd [[
   source ~/.dotfiles/nvim/lightline.vim
   source ~/.dotfiles/nvim/prettier.vim
   source ~/.dotfiles/nvim/telescope.vim
-  source ~/.dotfiles/nvim/ufo.lua
   source ~/.dotfiles/nvim/temp.vim
 ]]
 
