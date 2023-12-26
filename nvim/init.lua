@@ -38,7 +38,6 @@ Plug 'liuchengxu/vista.vim'                                                     
 Plug 'rust-lang/rust.vim'                                                                 -- rust
 Plug "neovim/nvim-lspconfig"                                                              -- navic dependency
 Plug "SmiteshP/nvim-navic"                                                                -- breadcrumbs
-Plug "kevinhwang91/nvim-ufo"                                                              -- folds
 Plug "kevinhwang91/promise-async"                                                         -- [folds] (dependency)
 Plug 'vim-scripts/indentpython.vim'                                                       -- python
 Plug 'vim-syntastic/syntastic'
@@ -47,10 +46,10 @@ Plug 'vim-syntastic/syntastic'
 
 vim.call('plug#end')
 
+-- source configs
 require('config.settings')
 require('navic')
-require('ufo')
--- source configs
+
 vim.cmd [[
   source ~/.dotfiles/nvim/coc.vim
   source ~/.dotfiles/nvim/neotree.vim
