@@ -48,9 +48,9 @@ Plug 'vim-syntastic/syntastic'
 vim.call('plug#end')
 
 require('config.settings')
+require('navic')
 -- source configs
 vim.cmd [[
-  source ~/.dotfiles/nvim/navic.lua
   source ~/.dotfiles/nvim/coc.vim
   source ~/.dotfiles/nvim/neotree.vim
   source ~/.dotfiles/nvim/keymaps.vim
