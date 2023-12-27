@@ -48,7 +48,6 @@ vim.call('plug#end')
 
 -- source configs
 require('config.settings')
-require('navic')
 
 vim.cmd [[
   source ~/.dotfiles/nvim/coc.vim
@@ -61,6 +60,8 @@ vim.cmd [[
   source ~/.dotfiles/nvim/telescope.vim
   source ~/.dotfiles/nvim/temp.vim
 ]]
+
+require('navic')
 
 -- private files
 if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/init.local.vim')))

@@ -1,5 +1,3 @@
-local set = vim.opt
-
 -- Globals
 vim.g.mapleader=","
 vim.g.typescript_ignore_typescriptdoc=1
@@ -19,26 +17,61 @@ vim.api.nvim_create_autocmd('FileType', {
   command = "syntax match Comment +\\/\\/.\\+$+"
 })
 
--- python
+-- Python
 vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
   pattern = {"*.py"},
   command = "set tabstop=4 set softtabstop=4 set shiftwidth=4 set textwidth=79 set expandtab=true set autoindent=true set fileformat='unixiletype plugin indent on'" 
 })
 
--- jump to the last position when reopening a file
-if vim.fn.has('--autocmd--') == 1 then
-  print('has --append-- (settings.lua)')
-  vim.api.nvim_create_autocmd({"BufReadPost" }, {
-    callback = function()
-      if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
-        print('found line (settings.lua)')
-        vim.cmd [[
-          norm! g'\""
-        ]]
-      end
+-- Jump to the last position when reopening a file
+-- Autocmd commands
+-- -- Persistent Folds
+local augroup = vim.api.nvim_create_augroup
+local save_fold = augroup("Persistent Folds", { clear = true })
+vim.api.nvim_create_autocmd("BufWinLeave", {
+	pattern = "*.*",
+	callback = function()
+		vim.cmd.mkview()
+	end,
+	group = save_fold,
+})
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	pattern = "*.*",
+	callback = function()
+		vim.cmd.loadview({ mods = { emsg_silent = true } })
+	end,
+	group = save_fold,
+})
+-- Persistent Cursor
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
-  })
-end
+  end,
+})
+
+-- Cursor Line on each window
+vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+  callback = function()
+    local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
+    if ok and cl then
+      vim.wo.cursorline = true
+      vim.api.nvim_win_del_var(0, "auto-cursorline")
+    end
+  end,
+})
+vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
+  callback = function()
+    local cl = vim.wo.cursorline
+    if cl then
+      vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
+      vim.wo.cursorline = false
+    end
+  end,
+})
 
 -- Commands
 vim.cmd [[
@@ -61,6 +94,7 @@ vim.opt.hidden=true                        -- don't prompt for save when leaving
 vim.opt.ignorecase=true                    -- case-insensitive search
 vim.opt.mouse="a"                          -- enable mouse scroll
 vim.opt.relativenumber=true
+vim.opt.number=true
 vim.opt.ruler=true                         -- show cursor position
 vim.opt.scrolloff=11                       -- Show 11 lines of context around the cursor.
 vim.opt.shiftwidth=2
@@ -79,5 +113,3 @@ vim.opt.wildignore=".git,.hg,*.o,*.a,*.class,*.jar,*.mo,*.la,*.so,*.obj,*.swp,*.
 vim.opt.wildmode={ list='full' }            -- autocomplete first occurrence
 vim.opt.wrapscan=true                      -- cycle search
 vim.wo.wrap=false                          -- no line wrapping
-
-
