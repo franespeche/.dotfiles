@@ -51,15 +51,14 @@ Plug 'brenoprata10/nvim-highlight-colors'
 
 vim.call('plug#end')
 
+-- source
 require('config')
 require('plugins')
 
 -- legacy
 vim.cmd [[
   source ~/.dotfiles/nvim/keymaps.vim
-  source ~/.dotfiles/nvim/theme.vim
 ]]
-
 
 -- private files
 if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/init.local.vim')))

@@ -1,3 +1,7 @@
+-- system locals
+local vim = vim
+local g = vim.g
+
 local colors = {
   bg = "#262626",
   darker_grey = "#2f2f2f",
@@ -14,7 +18,6 @@ local colors = {
   search_bg_color = vim.fn.synIDattr(vim.fn.hlID('Search'), 'bg'),
   search_fg_color = vim.fn.synIDattr(vim.fn.hlID('Search'), 'fg')
 }
-
 
 local function DynamicPath()
     return vim.fn.winwidth(0) > 60 and vim.fn.expand('%:h') or ''
@@ -111,7 +114,7 @@ end
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = vim.g.is_dark_mode and 'gruvbox-material' or 'dayfox',
+    theme = vim.g.is_dark_mode and g.dark_theme or g.light_theme,
     section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "·" },
     disabled_filetypes = {
@@ -152,8 +155,6 @@ winbar = {},
   inactive_winbar = {},
   extensions = {}
 }
-
-local custom_gruvbox = require'lualine.themes.gruvbox'
 
 local function printTable(tbl, indent)
     indent = indent or 0
