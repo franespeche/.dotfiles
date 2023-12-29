@@ -25,10 +25,10 @@ vim.cmd [[
 
 -- Settings
 opt.autoread = true                      -- read files upon being changed from outside vim
-opt.clipboard="unnamedplus"            -- use all clipboards
+opt.clipboard="unnamedplus"              -- use all clipboards
 opt.cmdheight = 2                        -- cmd height
 opt.cursorline = true
-opt.encoding="UTF-8"                   -- encoding
+opt.encoding="UTF-8"                     -- encoding
 opt.expandtab = true
 opt.fillchars={ fold="/", diff="-" }
 opt.foldenable = true
@@ -38,13 +38,13 @@ opt.gdefault = true                      -- s///g default
 opt.hidden = true                        -- don't prompt for save when leaving an unsaved buffer
 opt.ignorecase = true                    -- smartcase
 opt.smartcase = true                     -- smartcase
-opt.mouse="a"                          -- enable mouse scroll
+opt.mouse="a"                            -- enable mouse scroll
 opt.relativenumber = true
 opt.number = true
 opt.ruler = true                         -- show cursor position
 opt.scrolloff = 11                       -- Show 11 lines of context around the cursor.
 opt.shiftwidth = 2
-opt.shortmess:append("c")              -- dont pass messages to |ins-completion-menu|
+opt.shortmess:append("c")                -- dont pass messages to |ins-completion-menu|
 opt.showmatch = true                     -- show matching char (like {})
 opt.sidescrolloff = 11
 opt.smartcase = true                     -- case = sensitive if expression contains a capital letter
@@ -56,9 +56,9 @@ opt.tabstop = 2                          -- indentation
 opt.undofile = true                      -- persist undo
 opt.undolevels = 2000                    -- numbers of undo
 opt.wildignore=".git,.hg,*.o,*.a,*.class,*.jar,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo,**/cache/*,**/logs/*,**/target/*,*.hi,tags,**/dist/*,**/public/**/vendor/**,**/public/vendor/**,**/node_modules/**"
-opt.wildmode={ list='full' }            -- autocomplete first occurrence
+opt.wildmode={ list='full' }             -- autocomplete first occurrence
 opt.wrapscan = true                      -- cycle search
 opt.showcmd = false
-vim.wo.wrap = false                          -- no line wrapping
+vim.wo.wrap = false                      -- no line wrapping
 
 
