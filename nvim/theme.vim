@@ -1,14 +1,3 @@
-function! IsDarkMode()
-    let os_name = system("uname")
-    if match(os_name, 'Darwin') >= 0
-        let result = system("defaults read -g AppleInterfaceStyle 2>/dev/null | tr -d '\n'")
-        return result ==# 'Dark'
-    else
-        " Unsupported platform
-        return 0
-    endif
-endfunction
-
 " syntax
 if !exists('g:syntax_on')
   syntax on
@@ -17,9 +6,12 @@ endif
 
 " colorscheme
 if !exists('g:colors_name')
-    if IsDarkMode()
+    if g:is_dark_mode
+    echo "dark"
       " silent! colorscheme g:dark_theme
       silent! colorscheme gruvbox
+      highlight Search cterm=None ctermfg=214 ctermbg=235 gui=None guifg=#2f2f2f guibg=#abb66f
+
     else
       " silent! colorscheme g:light_theme
       silent! colorscheme dayfox
@@ -31,8 +23,6 @@ endif
 if !&termguicolors
   set termguicolors
 endif
-
-
 
 " Italics
 let g:one_allow_italics = 1

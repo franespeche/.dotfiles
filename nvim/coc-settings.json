@@ -2,10 +2,6 @@
   "Lua.diagnostics.globals": [
     "vim"
   ],
-  "eslint.probe": [
-    "typescript",
-    "typescriptreact"
-  ],
   "workspace.ignoredFolders": [
     "$HOME",
     "$HOME/.cargo/**",

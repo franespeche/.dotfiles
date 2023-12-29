@@ -1,37 +1,16 @@
-nnoremap <silent> <space>ef :Neotree left toggle reveal_force_cwd<cr>
-nnoremap <silent> <space>eg :Neotree left toggle git_status master reveal_force_cwd git_base=master<cr>
-nnoremap <silent> <space>en :Neotree left toggle ~/.dotfiles/nvim reveal_force_cwd<cr>
-nnoremap <silent> <space>ez :Neotree left toggle ~/.dotfiles/zsh reveal_force_cwd<cr>
-nnoremap <silent> <leader>rl :lua package.loaded["neotree"] = nil<cr>
+-- local opts = { noremap = true, silent = true }
+-- local keymap = vim.keymap.set
 
-hi Directory ctermfg=109 guifg=Cyan
+Keymap("n", "<space>ef", ":Neotree left toggle reveal_force_cwd<cr>", Opts)
+Keymap("n", "<space>eg", "Neotree left toggle git_status master reveal_force_cwd git_base=master<cr>", Opts)
+Keymap("n", "<space>en", ":Neotree left toggle ~/.dotfiles/nvim reveal_force_cwd<cr>", Opts)
+Keymap("n", "<space>ez", ":Neotree left toggle ~/.dotfiles/zsh reveal_force_cwd<cr>", Opts)
+-- nnoremap <silent> <leader>rl :lua package.loaded["neotree"] = nil<cr>
 
-lua << END
--- Unless you are still migrating, remove the deprecated commands from v1.x
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+-- hi Directory ctermfg=109 guifg=Cyan
 
--- require("neo-tree").paste_default_config()
-  
---:l
-local function get_keys(t)
-  local keys={}
-  for key,_ in pairs(t) do
-    table.insert(keys, key)
-  end
-  return keys
-end
-
-local selected_nodes = {}
-local select_node = function(state)
-    local node = state.tree:get_node()
-
-   print(get_keys(node))
-
-    -- for i, n in ipairs(selected_nodes) do
-    --     print(n.name)
-    -- end
-end
-
+-- vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+vim.g.neo_tree_remove_legacy_commands=1
 
 require("neo-tree").setup({
         close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -42,7 +21,7 @@ require("neo-tree").setup({
         event_handlers = {
           {
             event = "file_opened",
-            handler = function(file_path)
+            handler = function()
                 -- auto close
                 require("neo-tree").close_all()
               end
@@ -51,13 +30,6 @@ require("neo-tree").setup({
         enable_diagnostics = true,
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
         sort_function = nil , -- use a custom function for sorting files and directories in the tree 
-        -- sort_function = function (a,b)
-        --       if a.type == b.type then
-        --           return a.path > b.path
-        --       else
-        --           return a.type > b.type
-        --       end
-        --   end , -- this sorts files and directories descendantly
         default_component_configs = {
           container = {
             enable_character_fade = true
@@ -79,7 +51,7 @@ require("neo-tree").setup({
           icon = {
             folder_closed = "",
             folder_open = "",
-            folder_empty = "ﰊ",
+            folder_empty = "[]",
             -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
             -- then these will never be used.
             default = "*",
@@ -139,12 +111,11 @@ require("neo-tree").setup({
             -- ["<cr>"] = "open_drop",
             -- ["t"] = "open_tab_drop",
             -- ["w"] = "open_with_window_picker",
-            ["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
             -- ["C"] = "close_node",
             ["h"] = "close_node", -- enter preview mode, which shows the current node without focusing
             ["H"] = "close_all_nodes",
             --["Z"] = "expand_all_nodes",
-            ["a"] = { 
+            ["a"] = {
               "add",
               -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
               -- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -199,7 +170,7 @@ require("neo-tree").setup({
               --".null-ls_*",
             },
           },
-          follow_current_file = true, -- This will find and focus the file in the active buffer every
+          follow_current_file = { enabled = true }, -- This will find and focus the file in the active buffer every
                                        -- time the current file is changed while the tree is open.
           use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
                                           -- instead of relying on nvim autocmd events.
@@ -225,9 +196,10 @@ require("neo-tree").setup({
           }
         },
         buffers = {
-          follow_current_file = true, -- This will find and focus the file in the active buffer every
-                                      -- time the current file is changed while the tree is open.
-          group_empty_dirs = true,    -- when true, empty folders will be grouped together
+          follow_current_file = {
+              enabled = true
+            },
+          group_empty_dirs = false,
           show_unloaded = true,
           window = {
             mappings = {
@@ -252,5 +224,3 @@ require("neo-tree").setup({
           }
         }
       })
-END
-

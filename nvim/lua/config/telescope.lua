@@ -1,4 +1,3 @@
-lua << EOF
 require('telescope').setup{
   defaults = {
     layout_strategy = 'horizontal',
@@ -56,19 +55,21 @@ require('telescope').setup{
       -- theme = "dropdown", 
       -- wrap_results = true
       },
+    -- highlights = {
+    --   path_display = { "truncate" },
+    --   results_title = false,
+    --   -- theme = "dropdown", 
+    --   -- wrap_results = true
+    --   },
     }
 }
 
-EOF
-
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fn <cmd>lua require('telescope.builtin').find_files{ cwd = '~/.dotfiles/nvim/' }<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fq <cmd>Telescope quickfix<cr>
-nnoremap <leader>fz :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
-nnoremap <Leader>fa :lua require'telescope.builtin'.autocommands{}<cr>
-nnoremap <Leader>fi :lua require'telescope.builtin'.highlights{}<cr>
-
-
+Keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", Opts)
+Keymap("n", "<leader>fn", "<cmd>lua require('telescope.builtin').find_files{ cwd = '~/.dotfiles/nvim/' }<cr>", Opts)
+Keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", Opts)
+Keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", Opts)
+Keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", Opts)
+Keymap("n", "<leader>fq", "<cmd>Telescope quickfix<cr>", Opts)
+Keymap("n", "<leader>fz", ":lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>", Opts)
+Keymap("n", "<Leader>fa", ":lua require'telescope.builtin'.autocommands{}<cr>", Opts)
+Keymap("n", "<Leader>fi", ":lua require'telescope.builtin'.highlights{}<cr>", Opts)
