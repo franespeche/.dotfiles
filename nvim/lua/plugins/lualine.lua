@@ -108,22 +108,6 @@ local progress = function()
 	end
 end
 
-
--- Function to get color value for a highlight group
-local function get_highlight_color(group, attr)
-    local cterm = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group)), 'ctermfg', attr)
-    local guifg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group)), 'guifg', attr)
-    return cterm ~= '' and cterm or guifg
-end
-
-local s = "#a4c1c2"
-
--- Example usage
-local background_color = get_highlight_color('Normal', 'bg')
-local statusline_fg_color = get_highlight_color('StatusLine', 'fg')
-
--- print("Background color:", background_color)
--- print("Statusline foreground color:", statusline_fg_color)
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -148,7 +132,7 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = { mode },
-    lualine_b = { branch, diff, diagnostics  },
+    lualine_b = { branch, diff, diagnostics },
     lualine_c = { filetype, filename, },
 
     lualine_x = { DynamicPath },
@@ -186,4 +170,5 @@ local function printTable(tbl, indent)
 end
 --printTable(custom_gruvbox)
 -- Change the background of lualine_c section for normal mode
+
 

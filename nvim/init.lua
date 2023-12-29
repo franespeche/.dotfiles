@@ -52,6 +52,7 @@ Plug 'brenoprata10/nvim-highlight-colors'
 vim.call('plug#end')
 
 require('config')
+require('plugins')
 
 -- legacy
 vim.cmd [[
@@ -59,7 +60,6 @@ vim.cmd [[
   source ~/.dotfiles/nvim/theme.vim
 ]]
 
-require('plugins')
 
 -- private files
 if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/init.local.vim')))
