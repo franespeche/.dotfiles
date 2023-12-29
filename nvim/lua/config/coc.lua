@@ -52,8 +52,8 @@ au('BufEnter', {
 })
 
 -- restart
-Keymap("n", "<leader>cl",  ":CocRestart<cr> ", Opts)
-Keymap("n", "<leader>tr",  ":CocCommand tsserver.restart", Opts)
+Keymap("n", "<leader>cr",  ":CocRestart<cr> ", Opts)
+Keymap("n", "<leader>tr",  ":CocCommand tsserver.restart<cr>", Opts)
 
 -- either doHover or show documentation in preview window
 Keymap("n",  "<leader>ck", function() show_documentation() end, Opts)
