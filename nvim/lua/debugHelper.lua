@@ -2,7 +2,7 @@ local dap = require('dap')
 dap.adapters.node2 = {
   type = 'server',
   command = 'node',
-  port: 9229,
+  port= 9229,
   args = {os.getenv('HOME') .. '/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js'},
 }
 dap.configurations.typescript = {

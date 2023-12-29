@@ -5,13 +5,11 @@ vim.call('plug#begin', dataPath)
 Plug('neoclide/coc.nvim', { ['branch'] = 'release' })                                     -- coc nodejs host
 Plug 'tjdevries/coc-zsh'                                                                  -- coc zsh support
 Plug 'antoinemadec/coc-fzf'                                                               -- coc fzf support
-Plug 'josa42/vim-lightline-coc'                                                           -- coc statusline support
-Plug 'itchyny/lightline.vim'                                                              -- statusline
+Plug 'nvim-lualine/lualine.nvim'                                                          -- statusline
 Plug 'tpope/vim-commentary'                                                               -- comment text
 Plug 'kdheepak/lazygit.nvim'                                                              -- [git] lazygit
 Plug 'tpope/vim-fugitive'                                                                 -- [git] fugitive
 Plug 'tpope/vim-rhubarb'                                                                  -- [git] fugitive's hub
-Plug 'rhysd/git-messenger.vim'                                                            -- [git] pop-up git blame
 Plug 'jremmen/vim-ripgrep'                                                                -- ripgrep	(dependency)
 Plug 'morhetz/gruvbox'                                                                    -- colorscheme
 Plug 'EdenEast/nightfox.nvim'                                                             -- colorscheme (used in light mode)
@@ -35,33 +33,33 @@ Plug 'nvim-tree/nvim-web-devicons'                                              
 Plug 'MunifTanjim/nui.nvim'                                                               -- [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                        -- [neotree] file explorer
 Plug 'liuchengxu/vista.vim'                                                               -- show symbols
-Plug 'rust-lang/rust.vim'                                                                 -- rust
 Plug "neovim/nvim-lspconfig"                                                              -- navic dependency
 Plug "SmiteshP/nvim-navic"                                                                -- breadcrumbs
 Plug "kevinhwang91/promise-async"                                                         -- [folds] (dependency)
 Plug 'vim-scripts/indentpython.vim'                                                       -- python
-Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'                                                            -- check !
+Plug 'cameron-wags/rainbow_csv.nvim'                                                      -- easily read csv
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'folke/trouble.nvim' -- cool diagnostics
+Plug 'm-demare/hlargs.nvim'                                                               -- highlight arguments
+Plug 'brenoprata10/nvim-highlight-colors'
+
+-- on hold
+-- Plug 'rcarriga/nvim-notify'    -- plugins notifications toasts
 -- Plug 'mfussenegger/nvim-dap'                                                              -- dap
 -- Plug 'mxsdev/nvim-dap-vscode-js'                                                          -- vscode js dap
 
 vim.call('plug#end')
 
--- source configs
-require('config.settings')
+require('config')
+require('plugins')
 
+-- legacy
 vim.cmd [[
-  source ~/.dotfiles/nvim/coc.vim
-  source ~/.dotfiles/nvim/neotree.vim
   source ~/.dotfiles/nvim/keymaps.vim
-  source ~/.dotfiles/nvim/git.vim
   source ~/.dotfiles/nvim/theme.vim
-  source ~/.dotfiles/nvim/lightline.vim
-  source ~/.dotfiles/nvim/prettier.vim
-  source ~/.dotfiles/nvim/telescope.vim
-  source ~/.dotfiles/nvim/temp.vim
 ]]
 
-require('navic')
 
 -- private files
 if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/init.local.vim')))
