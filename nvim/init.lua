@@ -12,7 +12,7 @@ Plug 'tpope/vim-fugitive'                                                       
 Plug 'tpope/vim-rhubarb'                                                                  -- [git] fugitive's hub
 Plug 'jremmen/vim-ripgrep'                                                                -- ripgrep	(dependency)
 Plug 'morhetz/gruvbox'                                                                    -- colorscheme
-Plug 'EdenEast/nightfox.nvim'                                                             -- colorscheme (used in light mode)
+Plug 'EdenEast/nightfox.nvim'                                                             -- colorscheme
 Plug 'junegunn/fzf'                                                                       -- fuzzy finder (dependency)
 Plug 'junegunn/fzf.vim'                                                                   -- fuzzy finder
 Plug 'pangloss/vim-javascript'                                                            -- javascript support
@@ -43,8 +43,11 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'folke/trouble.nvim' -- cool diagnostics
 Plug 'm-demare/hlargs.nvim'                                                               -- highlight arguments
 Plug 'brenoprata10/nvim-highlight-colors'
+Plug 'folke/neodev.nvim'                                                                  -- lua types
+Plug 'andrejlevkovitch/vim-lua-format'
 
 -- on hold
+
 -- Plug 'rcarriga/nvim-notify'    -- plugins notifications toasts
 -- Plug 'mfussenegger/nvim-dap'                                                              -- dap
 -- Plug 'mxsdev/nvim-dap-vscode-js'                                                          -- vscode js dap

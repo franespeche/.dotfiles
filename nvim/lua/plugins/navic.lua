@@ -1,53 +1,41 @@
-local navic = require("nvim-navic")
-local lspconfig = require('lspconfig')
+local navic = require('nvim-navic')
 
-lspconfig.tsserver.setup {
-  icons = {
-    File          = "󰈙 ",
-    Module        = " ",
-    Namespace     = "󰌗 ",
-    Package       = " ",
-    Class         = "󰌗 ",
-    Method        = "󰆧 ",
-    Property      = " ",
-    Field         = " ",
-    Constructor   = " ",
-    Enum          = "󰕘",
-    Interface     = "󰕘",
-    Function      = "󰊕 ",
-    Variable      = "󰆧 ",
-    Constant      = "󰏿 ",
-    String        = "󰀬 ",
-    Number        = "󰎠 ",
-    Boolean       = "◩ ",
-    Array         = "󰅪 ",
-    Object        = "󰅩 ",
-    Key           = "󰌋 ",
-    Null          = "󰟢 ",
-    EnumMember    = " ",
-    Struct        = "󰌗 ",
-    Event         = " ",
-    Operator      = "󰆕 ",
-    TypeParameter = "󰊄 ",
-  },
-  lsp = {
-    auto_attach = false,
-    preference = nil,
-  },
-  highlight = true,
-  separator = " > ",
-  depth_limit = 0,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
-  depth_limit_indicator = "..",
-  safe_output = true,
-  lazy_update_context = false,
-  click = false,
-  on_attach = function(client, bufnr)
-    navic.attach(client, bufnr)
-    client.server_capabilities.semanticTokensProvider = nil
-    print("navic attached")
-  end
+local icons = {
+    File = ' ',
+    Module = ' ',
+    Namespace = ' ',
+    Package = ' ',
+    Class = ' ',
+    Method = ' ',
+    Property = ' ',
+    Field = ' ',
+    Constructor = ' ',
+    Enum = ' ',
+    Interface = ' ',
+    Function = ' ',
+    Variable = ' ',
+    Constant = ' ',
+    String = ' ',
+    Number = ' ',
+    Boolean = ' ',
+    Array = ' ',
+    Object = ' ',
+    Key = ' ',
+    Null = ' ',
+    EnumMember = ' ',
+    Struct = ' ',
+    Event = ' ',
+    Operator = ' ',
+    TypeParameter = ' '
+  }
+
+navic.setup {
+  icons,
+  highlight = true,             -- add colors to icons and text as defined by highlight groups NavicIcons*
+  separator = '  ',
+  click = false,                -- single click to goto element, double click to open nvim-navbuddy on the clicked element
+  depth_limit = 0,              -- maximum depth of context to be shown. If the context hits this depth limit, it is truncated
+  depth_limit_indicator = '..', -- icon to indicate that depth_limit was hit and the shown context is truncated
+  lazy_update_context = true,   -- if true, turns off context updates for the "CursorMoved" event
+  safe_output = true, -- sanitize the output for use in statusline and winbar
 }
-vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-
-

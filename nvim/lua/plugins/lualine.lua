@@ -1,26 +1,21 @@
+-- imports
+local navic = require('nvim-navic')
+
 -- system locals
 local vim = vim
 local g = vim.g
 
-local colors = {
-  bg = "#262626",
-  darker_grey = "#2f2f2f",
-  dark_grey = "#6a6a6a",
-  bg_light = "#404040",
-  red = "#b66467",
-  green = "#",
-  orange = "#d9bc8c",
-  blue = "#8da3b9",
-  magenta = "#a988b0",
-  cyan = "#8ca3af",
-  white = "#e8e3e3",
-  gruvbox_aqua = "#abb66f",
-  search_bg_color = vim.fn.synIDattr(vim.fn.hlID('Search'), 'bg'),
-  search_fg_color = vim.fn.synIDattr(vim.fn.hlID('Search'), 'fg')
-}
-
-local function DynamicPath()
-    return vim.fn.winwidth(0) > 60 and vim.fn.expand('%:h') or ''
+-- helpers
+local progress = function()
+	local current_line = vim.fn.line(".")
+	local totalLines = vim.fn.line("$")
+	if current_line == 1 then
+		return "Top"
+	elseif current_line == totalLines then
+		return "Bot"
+	else
+		return "%p%%"
+	end
 end
 
 local conditions = {
@@ -42,11 +37,34 @@ local conditions = {
 	end,
 }
 
+local function DynamicPath()
+    return vim.fn.winwidth(0) > 60 and vim.fn.expand('%:h') or ''
+end
+
+local colors = {
+  bg = "#262626",
+  darker_grey = "#2f2f2f",
+  dark_grey = "#6a6a6a",
+  bg_light = "#404040",
+  red = "#b66467",
+  green = "#",
+  orange = "#d9bc8c",
+  blue = "#8da3b9",
+  magenta = "#a988b0",
+  cyan = "#8ca3af",
+  white = "#e8e3e3",
+  gruvbox_aqua = "#abb66f",
+  search_bg_color = vim.fn.synIDattr(vim.fn.hlID('Search'), 'bg'),
+  search_fg_color = vim.fn.synIDattr(vim.fn.hlID('Search'), 'fg')
+}
+
+-- safe check
 local status_ok = pcall(require, "lualine")
 if not status_ok then
 	return
 end
 
+-- components
 local searchcount = {
       'searchcount',
       maxcount = 999,
@@ -61,22 +79,24 @@ local diff = {
   cond = function() return conditions.hide_in_width(85) end
 }
 
+
 local diagnostics = {
-	"diagnostics",
-	sources = { "nvim_diagnostic", "coc" },
-	sections = { "error", "hint", "warn" },
-	symbols = { error = " ", warn = " ", info = "", hint = " " },
-	colored = false,
-	update_in_insert = true,
-	always_visible = false,
+    "diagnostics",
+    sources = { "nvim_diagnostic", "coc" },
+    sections = { "error", "hint", "warn" },
+    symbols = { error = " ", warn = " ", info = "", hint = " " },
+    colored = false,
+    update_in_insert = true,
+    always_visible = false,
   padding = { left = 1, right = 0 },
   cond = function() return conditions.hide_in_width(40) end
 }
 
 local mode = {
-  "mode", fmt = function(str) return str:sub(1,1) end,
+  "mode",
+  fmt = function(str) return str:sub(1,1) end,
   align = "right",
-	color = { gui = "bold" },
+  color = { gui = "bold" },
 }
 
 local filetype = {
@@ -99,18 +119,7 @@ local branch = {
   cond = function() return conditions.hide_in_width(85) end
 }
 
-local progress = function()
-	local current_line = vim.fn.line(".")
-	local totalLines = vim.fn.line("$")
-	if current_line == 1 then
-		return "Top"
-	elseif current_line == totalLines then
-		return "Bot"
-	else
-		return "%p%%"
-	end
-end
-
+-- setup
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -135,41 +144,34 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = { mode },
-    lualine_b = { branch, diff, diagnostics },
-    lualine_c = { filetype, filename, },
+    lualine_c = { branch, diff, diagnostics },
+    lualine_b = { filetype, filename, },
 
     lualine_x = { DynamicPath },
     lualine_y = { progress },
     lualine_z = { "location", searchcount, 'selectioncount' }
   },
   inactive_sections = {
-    lualine_a = {  },
+    lualine_a = {},
     lualine_b = {},
     lualine_c = { filename },
-    lualine_x = { },
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {}
   },
-tabline = {},
-winbar = {},
-  inactive_winbar = {},
-  extensions = {}
+    tabline = {},
+    winbar = {
+        lualine_c = {
+                {
+                  function()
+                      return navic.get_location()
+                  end,
+                  cond = function()
+                      return navic.is_available()
+                  end
+                },
+            },
+        },
+    inactive_winbar = {},
+    extensions = {}
 }
-
-local function printTable(tbl, indent)
-    indent = indent or 0
-    local padding = string.rep("  ", indent) -- Adjust the number of spaces for indentation
-
-    for key, value in pairs(tbl) do
-        if type(value) == "table" then
-            print(padding .. key .. ":")
-            printTable(value, indent + 1)
-        else
-            print(padding .. key .. ": " .. tostring(value))
-        end
-    end
-end
---printTable(custom_gruvbox)
--- Change the background of lualine_c section for normal mode
-
-

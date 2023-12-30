@@ -5,8 +5,8 @@ local o = vim.o
 local cmd = vim.cmd
 
 -- globals
-g.dark_theme = "gruvbox"
-g.light_theme = "dayfox"
+g.dark_theme = "nightfox"
+g.light_theme = "melange"
 
 -- avoid syntax inconsistencies
 if g.syntax_on == nil then
