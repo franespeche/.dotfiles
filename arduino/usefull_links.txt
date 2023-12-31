@@ -1,1 +1,0 @@
-https://wellys.com/posts/esp32_cli/
