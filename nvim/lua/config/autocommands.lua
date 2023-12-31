@@ -29,11 +29,19 @@ au('FileType', {
   command = "syntax match Comment +\\/\\/.\\+$+"
 })
 
--- python settings (not-checked)
+-- python settings
 au({"BufNewFile", "BufRead"}, {
   pattern = {"*.py"},
-  desc = "some python settings",
-  command = "set tabstop=4 set softtabstop=4 set shiftwidth=4 set textwidth=79 set expandtab=true set autoindent=true set fileformat='unixiletype plugin indent on'"
+  desc = "python settings",
+  callback = function()
+    vim.opt.tabstop = 4
+    vim.opt.softtabstop=4
+    vim.opt.shiftwidth=4
+    vim.opt.textwidth=79
+    vim.opt.expandtab=true
+    vim.opt.autoindent=true
+    vim.opt.fileformat='unix'
+  end
 })
 
 -- persist folds

@@ -17,7 +17,6 @@ Plug 'vim-scripts/indentpython.vim'                                             
 Plug 'jremmen/vim-ripgrep'                                                                -- ripgrep	(dependency)
 Plug 'junegunn/fzf'                                                                       -- fuzzy finder (dependency)
 Plug 'junegunn/fzf.vim'                                                                   -- fuzzy finder
-Plug 'chengzeyi/fzf-preview.vim'                                                          -- fzf utils
 Plug 'nvim-lualine/lualine.nvim'                                                          -- statusline
 Plug('prettier/vim-prettier', { ['do'] = 'yarn install --frozen-lockfile --production' }) -- prettier
 Plug 'wellle/targets.vim'                                                                 -- change words between delimiters
