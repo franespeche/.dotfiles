@@ -42,7 +42,7 @@ function makegif(){
 }
 
 # get dollar blue
-function dollar() {
+function dolar() {
   DOLAR=$(curl -s https://api.bluelytics.com.ar/v2/latest)
   DOLAR_COMPRA=$(echo $DOLAR | jq -r .blue.value_buy)
   DOLAR_VENTA=$(echo $DOLAR | jq -r .blue.value_sell)
@@ -67,19 +67,6 @@ function rr() {
 function changeDirectory() {
   msg "cd $1"
   cd "$1"
-}
-
-# music bot
-function bot() {
-  START="start"
-  if [[ "$1" = "start" ]]
-  then
-    cd $MUSIC_BOT_DIRECTORY
-    msg "start music bot"
-    yarn start
-  else
-    msg "uknown command \"$1\""
-  fi
 }
 
 # print formated message
