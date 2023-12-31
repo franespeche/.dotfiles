@@ -25,7 +25,7 @@ Plug 'wellle/targets.vim'                                                       
 Plug 'machakann/vim-sandwich'                                                             -- wrap words with a given character
 Plug 'nvim-lua/plenary.nvim'                                                              -- [telescope] (dependenvy)
 Plug 'sharkdp/fd'                                                                         -- [telescope] (dependency)
-Plug('nvim-telescope/telescope.nvim')                                                     -- [telescope] chore
+Plug('nvim-telescope/telescope.nvim', { ['branch'] = 'release' })                                                     -- [telescope] chore
 Plug 'nvim-telescope/telescope-file-browser.nvim'                                         -- [telescope] file browser
 Plug 'nvim-treesitter/nvim-treesitter'                                                    -- [telescope] finder/preview
 Plug 'lukas-reineke/indent-blankline.nvim'                                                -- indent lines
@@ -40,11 +40,13 @@ Plug 'vim-scripts/indentpython.vim'                                             
 Plug 'vim-syntastic/syntastic'                                                            -- check !
 Plug 'cameron-wags/rainbow_csv.nvim'                                                      -- easily read csv
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'folke/trouble.nvim' -- cool diagnostics
+Plug 'folke/trouble.nvim'                                                                 -- diagnostics
 Plug 'm-demare/hlargs.nvim'                                                               -- highlight arguments
 Plug 'brenoprata10/nvim-highlight-colors'
 Plug 'folke/neodev.nvim'                                                                  -- lua types
 Plug 'andrejlevkovitch/vim-lua-format'
+Plug 'rebelot/kanagawa.nvim' -- colorscheme
+Plug 'chengzeyi/fzf-preview.vim'
 
 -- on hold
 
@@ -55,8 +57,8 @@ Plug 'andrejlevkovitch/vim-lua-format'
 vim.call('plug#end')
 
 -- source
-require('config')
-require('plugins')
+require 'config'
+require 'plugins'
 
 -- legacy
 vim.cmd [[

@@ -1,3 +1,4 @@
+require('plugins.telescope')
 require('plugins.rainbow_csv')
 require('plugins.gitsigns')
 require('plugins.trouble')

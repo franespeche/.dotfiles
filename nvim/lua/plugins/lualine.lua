@@ -88,7 +88,7 @@ local diagnostics = {
     colored = false,
     update_in_insert = true,
     always_visible = false,
-  padding = { left = 1, right = 0 },
+  padding = { left = 2, right = 0 },
   cond = function() return conditions.hide_in_width(40) end
 }
 
@@ -108,7 +108,7 @@ local filetype = {
 
 local filename = {
 	"filename",
-	padding = { left = 1, right = 2 },
+	padding = { left = 1, right = 0 },
 }
 
 local branch = {
@@ -125,6 +125,7 @@ require('lualine').setup {
     icons_enabled = true,
     theme = vim.g.is_dark_mode and g.dark_theme or g.light_theme,
     section_separators = { left = "", right = "" },
+    -- section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "·" },
     disabled_filetypes = {
       "Trouble",
@@ -144,8 +145,8 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = { mode },
-    lualine_c = { branch, diff, diagnostics },
-    lualine_b = { filetype, filename, },
+    lualine_b = { filetype, filename, diagnostics },
+    lualine_c = { branch, diff  },
 
     lualine_x = { DynamicPath },
     lualine_y = { progress },
@@ -161,17 +162,24 @@ require('lualine').setup {
   },
     tabline = {},
     winbar = {
-        lualine_c = {
-                {
-                  function()
-                      return navic.get_location()
-                  end,
-                  cond = function()
-                      return navic.is_available()
-                  end
-                },
-            },
+      lualine_c = {
+          {
+            function()
+              if (navic.is_available()) then
+                local location = navic.get_location()
+                if (location == '') then
+                  return " [navic=on]"
+                else
+                  return location
+                end
+            else
+            return " [navic=off]"
+            end
+          end
+          },
         },
+      },
     inactive_winbar = {},
     extensions = {}
 }
+

@@ -5,8 +5,9 @@ local o = vim.o
 local cmd = vim.cmd
 
 -- globals
-g.dark_theme = "nightfox"
-g.light_theme = "melange"
+local color_scheme = "kanagawa"
+g.dark_theme = color_scheme
+g.light_theme = color_scheme
 
 -- avoid syntax inconsistencies
 if g.syntax_on == nil then
@@ -17,11 +18,15 @@ end
 -- dark/light themes
 if g.colors_name == nil then
     if g.is_dark_mode then
-      local yellow = "#fabd2f"
+      print('setting colorscheme: ' .. g.dark_theme)
       cmd("silent! colorscheme " .. g.dark_theme)
-      cmd("silent! set background=dark")
-      cmd("highlight Search cterm=None ctermfg=214 ctermbg=235 gui=None guifg=#1d2021 guibg=" .. yellow)
+      -- cmd("silent! set background=dark")
+      if(color_scheme == "gruvbox") then
+        local yellow = "#fabd2f"
+        cmd("highlight Search cterm=None ctermfg=214 ctermbg=235 gui=None guifg=#1d2021 guibg=" .. yellow)
+      end
     else
+      print('asas')
       cmd("silent! colorscheme " .. g.light_theme)
       g.gruvbox_contrast_light="soft"
       cmd("silent! set background=light")

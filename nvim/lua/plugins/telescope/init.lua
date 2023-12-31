@@ -12,8 +12,8 @@ require('telescope').setup{
     },
     mappings = {
       n = {
-        ["<C-j>"] = "preview_scrolling_down",
-        ["<C-k>"] = "preview_scrolling_up",
+        ["<S-j>"] = "preview_scrolling_down",
+        ["<S-k>"] = "preview_scrolling_up",
         ["<C-c>"] = require('telescope.actions').close,
         ["<C-q>"] = "send_selected_to_qflist",
         ["<Cr>"] = "select_default",
@@ -38,13 +38,21 @@ require('telescope').setup{
       -- wrap_results = true
       },
     buffers = {
-      path_display = { "truncate" },
+      theme = "dropdown",
+      path_display = function(opts, path)
+        local filename = require("telescope.utils").path_tail(path)
+        local filepath = string.gsub(path, "/" .. filename, "")
+        return string.format("%s (%s)", filename, filepath)
+      end,
       results_title = false,
       -- theme = "dropdown", 
       -- wrap_results = true
       },
     quickfix = {
-      path_display = { "truncate" },
+      path_display = function(opts, path)
+        local tail = require("telescope.utils").path_tail(path)
+        return string.format("%s (%s)", tail, path)
+      end,
       results_title = false,
       -- theme = "dropdown", 
       -- wrap_results = true
@@ -52,6 +60,7 @@ require('telescope').setup{
     help_tags = {
       path_display = { "truncate" },
       results_title = false,
+      theme = "dropdown"
       -- theme = "dropdown", 
       -- wrap_results = true
       },
