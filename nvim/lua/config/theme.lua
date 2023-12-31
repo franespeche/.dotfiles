@@ -6,8 +6,13 @@ local cmd = vim.cmd
 
 -- globals
 local color_scheme = "kanagawa"
-g.dark_theme = color_scheme
-g.light_theme = color_scheme
+
+if g.dark_theme == nil then
+  g.dark_theme = color_scheme
+end
+if g.light_theme == nil then
+  g.light_theme = color_scheme
+end
 
 -- avoid syntax inconsistencies
 if g.syntax_on == nil then
@@ -18,7 +23,6 @@ end
 -- dark/light themes
 if g.colors_name == nil then
     if g.is_dark_mode then
-      print('setting colorscheme: ' .. g.dark_theme)
       cmd("silent! colorscheme " .. g.dark_theme)
       -- cmd("silent! set background=dark")
       if(color_scheme == "gruvbox") then

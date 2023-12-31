@@ -100,3 +100,21 @@ au({ "VimEnter", "DirChanged" }, {
 		end
 	end,
 })
+
+au({ "ColorScheme" }, {
+  callback = function()
+    local theme_name = vim.fn.expand("<amatch>")
+    local runtimepath = vim.api.nvim_list_runtime_paths()[1]
+    vim.schedule(function()
+      if (vim.g.dark_theme == nil) then
+        print('ssss')
+        return
+      end
+      vim.g.dark_theme = theme_name
+      vim.g.light_theme = theme_name
+      vim.cmd( 'source ' .. runtimepath .. '/lua/config/theme.lua')
+      vim.cmd( 'source ' .. runtimepath .. '/lua/plugins/lualine.lua')
+    end)
+  end
+})
+

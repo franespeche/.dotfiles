@@ -1,0 +1,2 @@
+- create a switch in telescope that toggles btw find_files and file_grep
+- add a picker that finds a pattern in the <afile>
