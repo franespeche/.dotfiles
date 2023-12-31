@@ -16,14 +16,14 @@
 # creates symlinks
 # TODO: make these dynamic
 
-ln -sf ~/.dotfiles/alacritty.yml $XDG_CONFIG_HOME &&
-echo "created symlink: alacritty.yml"
+# ln -sf ~/.dotfiles/alacritty.yml $XDG_CONFIG_HOME &&
+# echo "created symlink: alacritty.yml"
 
-ln -sf ~/.dotfiles/zsh $XDG_CONFIG_HOME &&
-echo "created symlink: zsh/"
+# ln -sf ~/.dotfiles/zsh $XDG_CONFIG_HOME &&
+# echo "created symlink: zsh/"
 
-ln -sf ~/.dotfiles/nvim $XDG_CONFIG_HOME &&
-echo "created symlink: nvim/"
+# ln -sf ~/.dotfiles/nvim $XDG_CONFIG_HOME &&
+# echo "created symlink: nvim/"
 
 # GIT ONCE
 
