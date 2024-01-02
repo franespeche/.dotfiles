@@ -1,3 +1,4 @@
+--  local status_icon = navic.is_available() and "  "  or "  "
 -- imports
 local navic = require('nvim-navic')
 
@@ -124,8 +125,8 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = vim.g.is_dark_mode and g.dark_theme or g.light_theme,
-    section_separators = { left = "", right = "" },
     -- section_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "·" },
     disabled_filetypes = {
       "Trouble",
@@ -164,21 +165,21 @@ require('lualine').setup {
     winbar = {
       lualine_c = {
           {
-            function()
-              if (navic.is_available()) then
-                local location = navic.get_location()
-                if (location == '') then
-                  return " [navic=on]"
-                else
-                  return location
-                end
-            else
-            return " [navic=off]"
-            end
-          end
+            function() return navic.get_location() end,
+            cond = function() return navic.is_available() end,
           },
         },
+        lualine_y = {
+          {
+            function()
+              local status_icon = navic.is_available() and "󰗠 "  or " "
+              return status_icon .. "navic"
+            end,
+          },
+
+        }
       },
+
     inactive_winbar = {},
     extensions = {}
 }

@@ -29,6 +29,7 @@ Plug 'tpope/vim-commentary'                                                     
 Plug 'morhetz/gruvbox'                                                                    -- colorscheme
 Plug 'EdenEast/nightfox.nvim'                                                             -- colorscheme
 Plug 'rebelot/kanagawa.nvim'                                                              -- colorscheme
+Plug 'catppuccin/nvim'                                                                    -- colorscheme
 Plug 'nvim-lua/plenary.nvim'                                                              -- [telescope] (dependenvy)
 Plug 'sharkdp/fd'                                                                         -- [telescope] (dependency)
 Plug('nvim-telescope/telescope.nvim', { ['branch'] = 'release' })                         -- [telescope] chore

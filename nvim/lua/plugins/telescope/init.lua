@@ -42,6 +42,7 @@ require('telescope').setup{
       path_display = function(opts, path)
         local filename = require("telescope.utils").path_tail(path)
         local filepath = string.gsub(path, "/" .. filename, "")
+        P(path)
         return string.format("%s (%s)", filename, filepath)
       end,
       results_title = false,
@@ -60,7 +61,11 @@ require('telescope').setup{
     help_tags = {
       path_display = { "truncate" },
       results_title = false,
-      theme = "dropdown"
+      -- theme = "dropdown",
+      layout_strategy = "vertical",
+      layout_config = { height = 0.99, width = 0.99, preview_height = 0.75 }
+
+
       -- theme = "dropdown", 
       -- wrap_results = true
       },
@@ -79,7 +84,8 @@ Keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", Opts)
 Keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", Opts)
 Keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", Opts)
 Keymap("n", "<leader>fq", "<cmd>Telescope quickfix<cr>", Opts)
-Keymap("n", "<leader>fc", ":lua require 'telescope.builtin'.current_buffer_fuzzy_find{}<CR>", Opts)
-Keymap("n", "<leader>fz", ":lua require 'telescope.builtin'.live_grep({grep_open_files=true})<CR>", Opts)
+Keymap("n", "<leader>fp", ":lua require 'telescope.builtin'.current_buffer_fuzzy_find {}<CR>", Opts)
+Keymap("n", "<leader>fz", ":lua require 'telescope.builtin'.live_grep({ grep_open_fies=true })<CR>", Opts)
+Keymap("n", "<leader>fc", ":lua require 'telescope.builtin'.colorscheme {}<CR>", Opts)
 Keymap("n", "<Leader>fa", ":lua require 'telescope.builtin'.autocommands{}<cr>", Opts)
 Keymap("n", "<Leader>fi", ":lua require 'telescope.builtin'.highlights{}<cr>", Opts)
