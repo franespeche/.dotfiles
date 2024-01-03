@@ -192,3 +192,6 @@ nnoremap <silent> <leader>gg :cd %:h<cr> :LazyGit<cr>
 " go to the last cursor position before going into Visual mode
 noremap go gvogvo<ESC>
 
+" goto prev/next occurrence and center buffer
+nnoremap # #zz
+nnoremap * *zz
