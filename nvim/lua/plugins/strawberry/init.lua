@@ -24,20 +24,18 @@ local C = {}
 C._content = {}
 
 C.add_content = function(content)
-  local lines_amount = #C._content
   if (type(content) == "string") then
-    C._content[lines_amount + 1] = content
+    C._content[#C._content + 1] = content
   else
     for i, line in ipairs(content) do
-      C._content[lines_amount + i] = line
+      C._content[#C._content + i] = line
     end
   end
 end
 
-C.add_v_spacer = function (spacing_amount)
-  local current_content_lines_amount = #C._content
+C.add_v_space = function (spacing_amount)
   for i=1, spacing_amount do
-    C._content[current_content_lines_amount + i] = ''
+    C._content[#C._content + i] = ''
   end
 end
 
@@ -64,14 +62,8 @@ M.config = {
 -- states
 M._sections = {}
 M._content = {}
-M._content_in_lines = {}
 
 -- methods
---
--- gets amount of lines in the content
-M.get_content_length = function()
-  return #M._content
-end
 
 -- merges a given config with the given Module's config and applies it to the Module
 -- @param: opt, config override
@@ -88,13 +80,6 @@ end
 
 M.add_content = function (content)
   M._content = content
-end
-
-M.insert_v_spacer = function (spacing_amount)
-  local current_content_lines_amount = #M.content_in_lines
-  for i=1, spacing_amount do
-    M.content_in_lines[current_content_lines_amount + i] = ''
-  end
 end
 
 M.get_content = function()
@@ -125,12 +110,12 @@ M.setup = function (opts)
   for i, section in pairs(sections) do
     -- add section's title
     C.add_content(section.title)
-    C.add_v_spacer(1)
+    C.add_v_space(1)
 
     -- add section's content
     C.add_content(section.get_content())
     if (i ~= #sections) then
-      C.add_v_spacer(2)
+      C.add_v_space(2)
     end
   end
 
