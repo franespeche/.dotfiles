@@ -7,5 +7,9 @@ describe("Display list of recent files (:h oldfiles)", function()
     assert.is_not_nil(vim.v.oldfiles)
   end)
 
+  it("Updates default_config with the given config", function()
+    assert.is_true(false)
+  end)
+
 end
 )

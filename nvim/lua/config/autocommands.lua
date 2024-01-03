@@ -25,6 +25,22 @@ au('TextYankPost', {
   desc = "briefly highlight yanked text"
 })
 
+-- execute() function to be used by vim/lua
+aug("ExecuteBehavior", { clear = true})
+au("FileType", {
+  pattern = "vim",
+  group = "ExecuteBehavior",
+  command = "nnoremap <silent> ,e Y:@\"<cr>"
+})
+
+au("FileType", {
+  pattern = "lua",
+  group = "ExecuteBehavior",
+  callback = function()
+    vim.keymap.set("n", ",e", ":luafile %<cr>", Opts)
+  end,
+})
+
 -- mimic github's tabulation
 aug('TabulationConfig', { clear = true })
 au('FileType', {
