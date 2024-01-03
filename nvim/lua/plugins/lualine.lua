@@ -146,8 +146,8 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = { mode },
-    lualine_b = { filetype, filename, diagnostics },
-    lualine_c = { branch, diff  },
+    lualine_b = { branch, diff  },
+    lualine_c = { filetype, filename, diagnostics },
 
     lualine_x = { DynamicPath },
     lualine_y = { progress },
