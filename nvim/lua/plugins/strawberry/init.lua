@@ -24,11 +24,13 @@ local C = {}
 C._content = {}
 
 C.add_content = function(content)
+  local length = #C._content
+
   if (type(content) == "string") then
-    C._content[#C._content + 1] = content
+    C._content[length + 1] = content
   else
-    for i, line in ipairs(content) do
-      C._content[#C._content + i] = line
+    for i, line in pairs(content) do
+      C._content[length + i] = line
     end
   end
 end
