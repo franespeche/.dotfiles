@@ -37,7 +37,7 @@ U.get_recent_files = function(source)
 local M = {
   name = "recent_files",
   title = "Recent Files",
-  items = {},
+  _items = {},
   config = {
     items_amount = 5,
     source = RecentFilesSource.ALL,
@@ -50,14 +50,21 @@ local M = {
 -- @returns: Module
 M.apply_config = function (opts) return apply_config(opts, M) end
 
+M.set_items = function(items)
+  M._items = vim.list_slice(items, 0, M.config.items_amount)
+end
+
+M.get_items = function()
+  return M._items
+end
+
 M.setup = function (opts)
-  P(opts)
   -- apply config
   local config = M.apply_config(opts)
 
-  -- get recent items
+  -- set recent files
   local items = U.get_recent_files(config.source)
-  M.items = vim.list_slice(items, 0, M.config.items_amount)
+  M.set_items(items)
 
   -- publish
   return M.publish()
@@ -76,7 +83,7 @@ end
 -- returns array of lines
 M.get_content = function(opts)
   local lines = {}
-  table.foreach(M.items, function(i, v)
+  table.foreach(M.get_items(), function(i, v)
     lines[i] = v
   end)
   return lines
