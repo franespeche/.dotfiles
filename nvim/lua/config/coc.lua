@@ -15,10 +15,13 @@ local function show_documentation()
   local filetype = vim.bo.filetype
   local cword = vim.fn.expand("<cword>")
 
-  if vim.fn.index({'vim', 'help'}, filetype) >= 0 then
+  if vim.fn.index({'help'}, filetype) >= 0 then
     vim.cmd('h ' .. cword)
+  else if vim.fn.index({'lua'}, filetype) >= 0 then
+    vim.lsp.buf.hover()
   else
     vim.fn.CocAction('doHover')
+  end
   end
 end
 
