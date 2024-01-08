@@ -7,4 +7,4 @@ require('plugins.navic')
 require('plugins.lualine')
 require('plugins.nvim-highlight-colors')
 require('plugins.prettier')
-
+require('plugins.strawberry')
