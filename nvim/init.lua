@@ -3,6 +3,15 @@ local dataPath = vim.fn['stdpath']('data') .. '/plugged'
 
 vim.call('plug#begin', dataPath)
 Plug "neovim/nvim-lspconfig"                                                              -- lsp (also navic dependency)
+Plug 'hrsh7th/cmp-nvim-lsp'                                                               -- completions
+Plug 'hrsh7th/cmp-buffer'                                                                 -- completions
+Plug 'hrsh7th/cmp-path'                                                                   -- completions
+Plug 'hrsh7th/cmp-cmdline'                                                                -- completions
+Plug 'hrsh7th/nvim-cmp'                                                                   -- completions
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+-- Plug 'L3MON4D3/LuaSnip'
+-- Plug 'saadparwaiz1/cmp_luasnip'                                                        -- completions
 Plug 'MunifTanjim/nui.nvim'                                                               -- [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                        -- [neotree] file explorer
 Plug('neoclide/coc.nvim', { ['branch'] = 'release' })                                     -- completion, lsp, ...
@@ -32,7 +41,7 @@ Plug 'rebelot/kanagawa.nvim'                                                    
 Plug 'catppuccin/nvim'                                                                    -- colorscheme
 Plug 'nvim-lua/plenary.nvim'                                                              -- [telescope] (dependenvy)
 Plug 'sharkdp/fd'                                                                         -- [telescope] (dependency)
-Plug('nvim-telescope/telescope.nvim', { ['branch'] = 'release' })                         -- [telescope] chore
+Plug 'nvim-telescope/telescope.nvim'                         -- [telescope] chore
 Plug 'nvim-telescope/telescope-file-browser.nvim'                                         -- [telescope] file browser
 Plug 'nvim-treesitter/nvim-treesitter'                                                    -- [telescope] finder/preview
 Plug 'lukas-reineke/indent-blankline.nvim'                                                -- indent lines
@@ -47,6 +56,10 @@ Plug 'm-demare/hlargs.nvim'                                                     
 Plug 'brenoprata10/nvim-highlight-colors'                                                 -- highlight colors
 Plug 'folke/neodev.nvim'                                                                  -- lua types (?)
 Plug 'andrejlevkovitch/vim-lua-format'                                                    -- lua formatter (?)
+Plug 'milisims/nvim-luaref'
+Plug ('franespeche/strawberry', { ['branch'] = 'develop' })
+-- Plug 'folke/lua-dev.nvim'
+Plug 'rafcamlet/nvim-luapad'
 vim.call('plug#end')
 
 -- source
