@@ -93,8 +93,6 @@ nnoremap ;w :w<cr>
 " unbind space
 map <space> <Nop>
 
-
-
 " move to first WORD before current opening bracket
 noremap <space><S-b> F(B
 noremap <space>b F(b
