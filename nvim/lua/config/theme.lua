@@ -5,7 +5,7 @@ local o = vim.o
 local cmd = vim.cmd
 
 -- globals
-local color_scheme = "kanagawa"
+local color_scheme = "gruvbox"
 
 if g.dark_theme == nil then
   g.dark_theme = color_scheme
@@ -30,7 +30,6 @@ if g.colors_name == nil then
         cmd("highlight Search cterm=None ctermfg=214 ctermbg=235 gui=None guifg=#1d2021 guibg=" .. yellow)
       end
     else
-      print('asas')
       cmd("silent! colorscheme " .. g.light_theme)
       g.gruvbox_contrast_light="soft"
       cmd("silent! set background=light")
