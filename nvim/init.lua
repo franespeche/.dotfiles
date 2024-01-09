@@ -57,7 +57,7 @@ Plug 'brenoprata10/nvim-highlight-colors'                                       
 Plug 'folke/neodev.nvim'                                                                  -- lua types (?)
 Plug 'andrejlevkovitch/vim-lua-format'                                                    -- lua formatter (?)
 Plug 'milisims/nvim-luaref'
-Plug ('franespeche/strawberry', { ['branch'] = 'develop' })
+Plug ('franespeche/strawberry', { ['branch'] = 'main' })
 -- Plug 'folke/lua-dev.nvim'
 Plug 'rafcamlet/nvim-luapad'
 vim.call('plug#end')

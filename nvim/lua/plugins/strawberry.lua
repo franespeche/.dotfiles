@@ -1,5 +1,11 @@
 local create_seed = require('strawberry').create_seed
 
+-- helpers
+local function get_filename(path)
+  local pattern = "/(.+%..+)"
+  return path:match(pattern) or "-"
+end
+
 local get_recent_files = {
   name = "get_recent_files",
   callback = function(limit)
@@ -12,7 +18,7 @@ local get_recent_files = {
     while(i <= #oldfiles and (#seeds < limit or i < 10)) do
       local file = oldfiles[i]
       if(vim.fn.filereadable(file) == 1) then
-        local seed = create_seed( #seeds + 1, file, nil, true)
+        local seed = create_seed( #seeds + 1, file, get_filename(file), true)
         table.insert(seeds, seed)
       end
       i = i + 1
