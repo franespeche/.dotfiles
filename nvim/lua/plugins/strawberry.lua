@@ -2,7 +2,7 @@ local create_seed = require('strawberry').create_seed
 
 -- helpers
 local function get_filename(path)
-  local pattern = "/-(%w+%.%w+)$"
+  local pattern = "/([^/]+)$"
   return path:match(pattern) or "-"
 end
 
