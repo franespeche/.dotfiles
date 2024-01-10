@@ -1,3 +1,9 @@
+- remove $HOME path from lualine location
+
+- cycle through not committed lines
+
+- add custom highlights to lines
+
 - create a switch in telescope that toggles btw find_files and file_grep
 
 - for each git root dir, display the last modified files at startup
