@@ -6,8 +6,8 @@ Keymap("n",  "<leader>rr", ":so ~/.dotfiles/nvim/init.lua<cr>", Opts)
 Keymap("n", "<leader>cd", ":cd %:h<cr> :pwd<cr>")
 
 -- motion
-Keymap("x", "<S-h>", "^")
-Keymap("x", "<S-l>", "$")
+Keymap({ "v", "n" }, "<S-h>", "^")
+Keymap({ "v", "n" }, "<S-l>", "$")
 
 -- open new tab
 Keymap("n",  "<leader>tn", ":tabnew<cr>", Opts)
@@ -16,6 +16,7 @@ Keymap("n",  "<leader>tq", ":tabclose<cr>", Opts)
 -- splits create
 Keymap("n",  "<leader>l", ":vsp<cr>", Opts)
 Keymap("n",  "<leader>j", ":sp<cr>", Opts)
+
 -- splits navigate
 Keymap("n",  "<C-l>", ":wincmd l<cr>", Opts)
 Keymap("n",  "<C-h>", ":wincmd h<cr>", Opts)
@@ -27,9 +28,7 @@ Keymap("i",  "<C-j>", "<Esc>:wincmd j<cr>", Opts)
 Keymap("i",  "<C-k>", "<Esc>:wincmd k<cr>", Opts)
 
 --	splits resize
--- TODO: duplicated code: define mapping
 Keymap("n", "+", ":vertical resize +3<cr>")
-Keymap("n", "=", ":vertical resize +3<cr>")
 Keymap("n", "-", ":vertical resize -3<cr>")
 
 --	splits fullscreen
