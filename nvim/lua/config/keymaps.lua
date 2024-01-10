@@ -6,8 +6,8 @@ Keymap("n",  "<leader>rr", ":so ~/.dotfiles/nvim/init.lua<cr>", Opts)
 Keymap("n", "<leader>cd", ":cd %:h<cr> :pwd<cr>")
 
 -- motion
-Keymap("n", "H", "^")
-Keymap("n", "L", "$")
+Keymap("n", "<S-h>", "^")
+Keymap("n", "<S-l>", "$")
 
 -- open new tab
 Keymap("n",  "<leader>tn", ":tabnew<cr>", Opts)
@@ -49,7 +49,7 @@ Keymap("n", "<leader>ss", ":%s#\\v")
 -- start a substitute inside the selected range only
 Keymap("v", "<leader>ss", ":<C-u>%s#\\%V\\v")
 -- subsitute word under " register
-Keymap("n", "<leader><space>s", ":<C-u>%s#<C-r>\"#")
+Keymap("n", "<lmmmmm><space>s", ":<C-u>%s#<C-r>\"#")
 -- subsitute word under " register inside the selected range
 Keymap("v", "<leader><space>s", ":<C-u>%s#\\%V\\v<C-r>\"#")
 -- substitute cword
@@ -107,7 +107,7 @@ Keymap("n", "<space>O", "O<C-u>")
 
 -- exec current line (helpful for debugging)
 -- nnoremap <leader>e :exe getline(line('.'))<cr>
-Keymap("n", "<leader>e", ":luafile %<cr>")
+Keymap("n", "<leader>e", function() vim.cmd([[luafile %]]) end)
 
 -- repeat last substitution
 Keymap("n", "<leader>.", ":&&<cr>")
