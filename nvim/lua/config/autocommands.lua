@@ -2,14 +2,6 @@ local au = vim.api.nvim_create_autocmd
 local aug = vim.api.nvim_create_augroup
 
 -- helpers
-local function is_file_in_git_workspace(f)
-  local git_root_dir = vim.fn.system('git rev-parse --show-toplevel')
-  local trim = vim.trim
-  if vim.startswith(trim(f), trim(git_root_dir)) then
-    return true
-  end
-end
-
 -- autocommands
 aug('VimFiles', { clear = true })
 
