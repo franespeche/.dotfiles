@@ -26,7 +26,7 @@ local show_git_worktree_recent_files = {
       error("Not inside a git working tree")
     end
 
-    limit = limit or 5
+    limit = limit or 15
 
     local oldfiles = vim.v.oldfiles
     local seeds = {}
@@ -47,7 +47,7 @@ end
 local show_recent_files = {
   name = "show_recent_files",
   callback = function(limit)
-    limit = limit or 5
+    limit = limit or 15
 
     local oldfiles = vim.v.oldfiles
     local seeds = {}
@@ -68,7 +68,7 @@ end
 local show_active_buffers = {
   name = "show_active_buffers",
   callback = function()
-    local limit = 5
+    local limit = 15
 
     local bufs = vim.fn.buffers('ah')
     local seeds = {}
