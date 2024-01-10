@@ -2,7 +2,7 @@ local create_seed = require('strawberry').create_seed
 
 -- helpers
 local function get_filename(path)
-  local pattern = "/(.+%..+)"
+  local pattern = "/-(%w+%.%w+)$"
   return path:match(pattern) or "-"
 end
 
@@ -27,8 +27,31 @@ local get_recent_files = {
 end
 }
 
+local get_buffers = {
+  name = "get_buffers",
+  callback = function()
+    local limit = 5
+
+    local bufs = vim.api.nvim_list_bufs()
+    local seeds = {}
+
+    local i = 1
+    while(i <= #bufs and (#seeds < limit or i < 10)) do
+      local buf = bufs[i]
+      if(vim.api.nvim_buf_is_loaded(buf)) then
+        local name = vim.api.nvim_buf_get_name(buf)
+        local seed = create_seed(#seeds + 1, name, name, false)
+        P(buf)
+        P(name)
+        table.insert(seeds, seed)
+      end
+      i = i + 1
+    end
+  end
+}
+
 require('strawberry'):setup({
-  actions = { get_recent_files },
+  actions = { get_recent_files, get_buffers },
   config = {
     window_height = 5
   }
