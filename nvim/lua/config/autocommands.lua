@@ -128,22 +128,6 @@ au({ "VimEnter", "DirChanged" }, {
 	end,
 })
 
-au({ "VimEnter" }, {
-  pattern = "*",
-  desc = "if vim was opened inside a git work tree, filter oldfiles",
-  callback = function()
-      -- TODO: consider moving this to a global variable
-      local FILES_AMOUNT = 10
-      -- TODO: make this a helper
-		  local is_git = vim.api.nvim_exec("!git rev-parse --is-inside-work-tree", true)
-      if (is_git) then
-        vim.v.oldfiles = vim.tbl_filter(is_file_in_git_workspace,  vim.v.oldfiles )
-      end
-      vim.v.oldfiles = vim.tbl_filter(function(f) return vim.fn.filereadable(f) == 1 end,  vim.v.oldfiles )
-    end
-
-})
-
 au({ "ColorScheme" }, {
   callback = function()
     local theme_name = vim.fn.expand("<amatch>")
