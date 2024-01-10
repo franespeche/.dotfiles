@@ -12,6 +12,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug ('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'})           -- snipets
 Plug 'saadparwaiz1/cmp_luasnip'                                                           -- snipets completions
+Plug 'saadparwaiz1/cmp_luasnip'                                                           -- snipets completions
 Plug 'MunifTanjim/nui.nvim'                                                               -- [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                        -- [neotree] file explorer
 Plug('neoclide/coc.nvim', { ['branch'] = 'release' })                                     -- completion, lsp, ...
@@ -65,10 +66,7 @@ vim.call('plug#end')
 -- source
 require 'config'
 require 'plugins'
--- legacy
-vim.cmd [[
-  source ~/.dotfiles/nvim/keymaps.vim
-]]
+require 'config.keymaps'
 
 -- private
 if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/init.local.vim')))
