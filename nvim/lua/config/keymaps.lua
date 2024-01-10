@@ -6,8 +6,8 @@ Keymap("n",  "<leader>rr", ":so ~/.dotfiles/nvim/init.lua<cr>", Opts)
 Keymap("n", "<leader>cd", ":cd %:h<cr> :pwd<cr>")
 
 -- motion
-Keymap("n", "<S-h>", "^")
-Keymap("n", "<S-l>", "$")
+Keymap("x", "<S-h>", "^")
+Keymap("x", "<S-l>", "$")
 
 -- open new tab
 Keymap("n",  "<leader>tn", ":tabnew<cr>", Opts)
@@ -71,7 +71,7 @@ Keymap("n", "<esc><esc>", ":noh<cr>", Opts)
 Keymap("n", "Y", "yy")
 
 -- comment line
-Keymap("n", "<leader><leader>", "gcc")
+Keymap("x", ",,", "gcc")
 
 -- toggle wrap
 Keymap("n", "<leader>zz", "<cmd>set wrap!<cr>")
@@ -107,7 +107,7 @@ Keymap("n", "<space>O", "O<C-u>")
 
 -- exec current line (helpful for debugging)
 -- nnoremap <leader>e :exe getline(line('.'))<cr>
-Keymap("n", "<leader>e", function() vim.cmd([[luafile %]]) end)
+Keymap("n", "<leader>e", function() return vim.cmd([[luafile %]]) end)
 
 -- repeat last substitution
 Keymap("n", "<leader>.", ":&&<cr>")
@@ -161,7 +161,7 @@ Keymap("n",  "<leader>gm", ":GitMessenger<cr>", Opts)
 -- get link with the selected range (in visual mode) or to the file (in normal mode)
 Keymap("x",  "<leader>gl", ":GBrowse<cr>", Opts)
 -- git blame [vim fuvitive]
-Keymap("n",  "<leader>gb", ":Gitblame<cr>", Opts)
+Keymap("n",  "<leader>gb", ":Git blame<cr>", Opts)
 -- open lazygit
 Keymap("n",  "<leader>gg", ":cd %:h<cr> :LazyGit<cr>", Opts)
 
