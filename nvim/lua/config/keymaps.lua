@@ -150,9 +150,7 @@ Keymap("i", "<C-k>", "<Esc>ka")
 -- copy current buffer's file path to clipboard
 Keymap("n",  "<leader>cp", ":let @* = expand(\"%\")<cr>", Opts)
 
--- search yanked word
--- nnoremap <leader>n /<c-r>"<cr>
-
+-- console log snippet
 Keymap("n", "<space>cl", "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
 Keymap("v", "<space>cl", "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
 
@@ -163,7 +161,7 @@ Keymap("n",  "<leader>gm", ":GitMessenger<cr>", Opts)
 -- get link with the selected range (in visual mode) or to the file (in normal mode)
 Keymap("x",  "<leader>gl", ":GBrowse<cr>", Opts)
 -- git blame [vim fuvitive]
-Keymap("n",  "<cmd>Git", "blame<cr>", Opts)
+Keymap("n",  "<leader>gb", ":Gitblame<cr>", Opts)
 -- open lazygit
 Keymap("n",  "<leader>gg", ":cd %:h<cr> :LazyGit<cr>", Opts)
 
@@ -173,3 +171,6 @@ Keymap("n", "go", "gvogvo<ESC>")
 -- goto prev/next occurrence and center buffer
 Keymap("n", "#", "#zz")
 Keymap("n", "*", "*zz")
+
+-- fun
+Keymap("n", "<leader>mr", ":CellularAutomaton make_it_rain<cr>")
