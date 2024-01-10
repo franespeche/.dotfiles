@@ -6,8 +6,9 @@ local function get_filename(path)
   return path:match(pattern) or "-"
 end
 
-local get_recent_files = {
-  name = "get_recent_files",
+-- actions
+local show_recent_files = {
+  name = "show_recent_files",
   callback = function(limit)
     limit = limit or 5
 
@@ -27,12 +28,12 @@ local get_recent_files = {
 end
 }
 
-local get_buffers = {
-  name = "get_buffers",
+local show_active_buffers = {
+  name = "show_active_buffers",
   callback = function()
     local limit = 5
 
-    local bufs = vim.api.nvim_list_bufs()
+    local bufs = vim.fn.buffers('ah')
     local seeds = {}
 
     local i = 1
@@ -50,11 +51,13 @@ local get_buffers = {
   end
 }
 
+-- setup
 require('strawberry'):setup({
-  actions = { get_recent_files, get_buffers },
+  actions = { show_recent_files, show_active_buffers },
   config = {
     window_height = 5
   }
 })
 
-Keymap('n', '<leader>rf', ":Strawberry get_recent_files<cr>", Opts)
+-- keymaps
+Keymap('n', '<leader>rf', ":Strawberry show_recent_files<cr>", Opts)

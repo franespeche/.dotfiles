@@ -10,8 +10,8 @@ Plug 'hrsh7th/cmp-cmdline'                                                      
 Plug 'hrsh7th/nvim-cmp'                                                                   -- completions
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
--- Plug 'L3MON4D3/LuaSnip'
--- Plug 'saadparwaiz1/cmp_luasnip'                                                        -- completions
+Plug ('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'})           -- snipets
+Plug 'saadparwaiz1/cmp_luasnip'                                                           -- snipets completions
 Plug 'MunifTanjim/nui.nvim'                                                               -- [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                        -- [neotree] file explorer
 Plug('neoclide/coc.nvim', { ['branch'] = 'release' })                                     -- completion, lsp, ...
@@ -41,7 +41,7 @@ Plug 'rebelot/kanagawa.nvim'                                                    
 Plug 'catppuccin/nvim'                                                                    -- colorscheme
 Plug 'nvim-lua/plenary.nvim'                                                              -- [telescope] (dependenvy)
 Plug 'sharkdp/fd'                                                                         -- [telescope] (dependency)
-Plug 'nvim-telescope/telescope.nvim'                         -- [telescope] chore
+Plug 'nvim-telescope/telescope.nvim'                                                      -- [telescope] chore
 Plug 'nvim-telescope/telescope-file-browser.nvim'                                         -- [telescope] file browser
 Plug 'nvim-treesitter/nvim-treesitter'                                                    -- [telescope] finder/preview
 Plug 'lukas-reineke/indent-blankline.nvim'                                                -- indent lines

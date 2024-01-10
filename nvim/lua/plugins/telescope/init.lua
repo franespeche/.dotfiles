@@ -42,7 +42,6 @@ require('telescope').setup{
       path_display = function(opts, path)
         local filename = require("telescope.utils").path_tail(path)
         local filepath = string.gsub(path, "/" .. filename, "")
-        P(path)
         return string.format("%s (%s)", filename, filepath)
       end,
       results_title = false,
@@ -63,7 +62,7 @@ require('telescope').setup{
       results_title = false,
       -- theme = "dropdown",
       layout_strategy = "vertical",
-      layout_config = { height = 0.99, width = 0.99, preview_height = 0.75 }
+      layout_config = { height = 0.99, width = 0.99, preview_height = 0.68 }
 
 
       -- theme = "dropdown", 
