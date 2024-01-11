@@ -63,7 +63,8 @@ Plug 'eandrju/cellular-automaton.nvim'
 Plug 'giusgad/pets.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'giusgad/hologram.nvim'
--- Plug 'folke/lua-dev.nvim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'folke/lua-dev.nvim'
 Plug 'rafcamlet/nvim-luapad'
 vim.call('plug#end')
 
@@ -73,7 +74,7 @@ require 'plugins'
 require 'config.keymaps'
 
 -- private
-if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/init.local.vim')))
+if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/private.vim')))
 then
-  vim.cmd 'source ~/.dotfiles/nvim/init.local.vim'
+  vim.cmd 'source ~/.dotfiles/nvim/private.vim'
 end

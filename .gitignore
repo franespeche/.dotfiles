@@ -1,7 +1,7 @@
 *.logs
 
 nvim/TODO.txt
-nvim/init.local.vim
+nvim/private.vim
 nvim/debug.vim
 nvim/lazy-lock.json
 
