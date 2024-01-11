@@ -70,7 +70,7 @@ Keymap("n", "<esc><esc>", ":noh<cr>", Opts)
 Keymap("n", "Y", "yy")
 
 -- comment line
-Keymap("x", ",,", "gcc")
+Keymap("" , ",,", ":norm gcc<cr>")
 
 -- toggle wrap
 Keymap("n", "<leader>zz", "<cmd>set wrap!<cr>")
