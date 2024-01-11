@@ -1,10 +1,19 @@
 local create_seed = require('strawberry').create_seed
 
 -- helpers
+local function get_home_path()
+  return os.getenv("HOME")
+end
+local function remove_home_path(file)
+  local home = get_home_path()
+  return string.gsub(file, home .. "/", "")
+end
+
 local function get_filename(path)
   local pattern = "/([^/]+)$"
   return path:match(pattern) or "-"
 end
+
 
 local function is_file_in_git_workspace(f)
   local git_root_dir = vim.fn.system('git rev-parse --show-toplevel')
@@ -17,6 +26,7 @@ end
 local function is_git_directory() 
   return vim.api.nvim_exec("!git rev-parse --is-inside-work-tree", true) 
 end
+
 
 -- actions
 local show_git_worktree_recent_files = {
@@ -34,8 +44,8 @@ local show_git_worktree_recent_files = {
     local i = 1
     while(i <= #oldfiles and (#seeds < limit or i < 10)) do
       local file = oldfiles[i]
-      if(vim.fn.filereadable(file) == 1 and is_file_in_git_workspace(file)) then
-        local seed = create_seed( #seeds + 1, file, get_filename(file), true)
+      if(is_file_in_git_workspace(file)) then
+        local seed = create_seed( #seeds + 1, remove_home_path(file), get_filename(file), true)
         table.insert(seeds, seed)
       end
       i = i + 1
