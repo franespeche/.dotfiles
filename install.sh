@@ -10,20 +10,16 @@
 # install used font in terminal
 # make symlink (or copy) .zshenv to ~
 # sudo pacman -S cargo
+
+# symlinks
 # ln -s ~/.dotfiles/zsh/.zshenv ~
+# ln -s ~/.dotfiles/tmux/.tmux.conf ~
+# ln -sf ~/.dotfiles/alacritty.yml ~
+# ln -sf ~/.dotfiles/zsh ~
+# ln -sf ~/.dotfiles/nvim ~
+
 # change default shell: chsh -s $(which zsh)
 # may also need to comment out ~/.bashrc and exec zsh from there: $ exec zsh
-# creates symlinks
-# TODO: make these dynamic
-
-# ln -sf ~/.dotfiles/alacritty.yml $XDG_CONFIG_HOME &&
-# echo "created symlink: alacritty.yml"
-
-# ln -sf ~/.dotfiles/zsh $XDG_CONFIG_HOME &&
-# echo "created symlink: zsh/"
-
-# ln -sf ~/.dotfiles/nvim $XDG_CONFIG_HOME &&
-# echo "created symlink: nvim/"
 
 # GIT ONCE
 
