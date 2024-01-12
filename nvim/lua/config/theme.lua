@@ -5,7 +5,7 @@ local o = vim.o
 local cmd = vim.cmd
 
 -- globals
-local color_scheme = "gruvbox"
+local color_scheme = "dayfox"
 
 if g.dark_theme == nil then
   g.dark_theme = color_scheme

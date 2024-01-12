@@ -1,3 +1,5 @@
+- :Isolate scopes
+
 - remove $HOME path from lualine location
 
 - cycle through not committed lines
