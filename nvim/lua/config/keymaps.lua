@@ -18,14 +18,18 @@ Keymap("n",  "<leader>l", ":vsp<cr>", Opts)
 Keymap("n",  "<leader>j", ":sp<cr>", Opts)
 
 -- splits navigate
-Keymap("n",  "<C-l>", ":wincmd l<cr>", Opts)
-Keymap("n",  "<C-h>", ":wincmd h<cr>", Opts)
-Keymap("n",  "<C-j>", ":wincmd j<cr>", Opts)
-Keymap("n",  "<C-k>", ":wincmd k<cr>", Opts)
+Keymap("n",  "<C-l>", "<cmd> TmuxNavigateRight<CR>", Opts)
+Keymap("n",  "<C-h>", "<cmd> TmuxNavigateLeft<CR>", Opts)
+Keymap("n",  "<C-j>", "<cmd> TmuxNavigateDown<CR>", Opts)
+Keymap("n",  "<C-k>", "<cmd> TmuxNavigateUp<CR>", Opts)
 Keymap("i",  "<C-l>", "<Esc>:wincmd l<cr>", Opts)
 Keymap("i",  "<C-h>", "<Esc>:wincmd h<cr>", Opts)
 Keymap("i",  "<C-j>", "<Esc>:wincmd j<cr>", Opts)
 Keymap("i",  "<C-k>", "<Esc>:wincmd k<cr>", Opts)
+-- Keymap("n",  "<C-l>", ":wincmd l<cr>", Opts)
+-- Keymap("n",  "<C-h>", ":wincmd h<cr>", Opts)
+-- Keymap("n",  "<C-j>", ":wincmd j<cr>", Opts)
+-- Keymap("n",  "<C-k>", ":wincmd k<cr>", Opts)
 
 --	splits resize
 Keymap("n", "+", ":vertical resize +3<cr>")
