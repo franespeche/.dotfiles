@@ -59,8 +59,6 @@ Plug 'folke/neodev.nvim'                                                        
 Plug 'andrejlevkovitch/vim-lua-format'                                                    -- lua formatter (?)
 Plug 'milisims/nvim-luaref'
 Plug ('franespeche/strawberry', { ['branch'] = 'main' })
-Plug 'eandrju/cellular-automaton.nvim'
-Plug 'giusgad/pets.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'giusgad/hologram.nvim'
 Plug 'christoomey/vim-tmux-navigator'
