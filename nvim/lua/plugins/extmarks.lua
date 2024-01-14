@@ -20,25 +20,44 @@ local function wipe_extmarks(ns)
     vim.api.nvim_buf_del_extmark(buf, ns, mark[1])
   end
 end
--- Keymaps
--- toggle extmark
-vim.keymap.set({ "n", "v" }, "ms", function()
-  local mode = vim.api.nvim_get_mode().mode
-  if (mode:lower() == "v" or mode == "\22") then
-    -- local start_line = vim.fn.line("'<")
-    local end_line = vim.fn.line("'>")
-    -- local opts = vim.tbl_extend('force', DEFAULT_OPTS, { end_row = end_line + 1 })
-    P(end_line)
+
+-- TODO: replace this helper function once ```vim.tbl_contains(tl, function, { predicate = true })``` works
+local function get_extmark_id_if_exists(line, extmarks)
+  if (#extmarks == 0) then
+    return false
   else
-    local pos = vim.api.nvim_win_get_cursor(0)
-    local extmarks = vim.api.nvim_buf_get_extmarks(buf, namespace, { pos[1] - 1, 0 }, { pos[1] - 1, -1 }, {})
-    if (#extmarks > 0) then
-      for _, extmark in pairs(extmarks) do vim.api.nvim_buf_del_extmark(buf, namespace, extmark[1]) end
-    else
-      vim.api.nvim_buf_set_extmark(0, namespace, pos[1] - 1, 0, DEFAULT_OPTS)
+    for _, extmark in pairs(extmarks) do
+      local id = extmark[1]
+      local row = extmark[2]
+      if (line == row) then return id end
     end
   end
-end, { silent = true })
+end
 
--- wipe extmarks
-vim.keymap.set({ "n", "v" }, "md", function() wipe_extmarks(namespace) end, { silent = true })
+-- Toggles selected range or single line
+local toggle_highlights = function()
+  local edge1 = vim.fn.getpos("v")[2]
+  local edge2 = vim.fn.getcurpos(0)[2]
+  local start_line = math.min(edge1, edge2) - 1
+  local end_line = math.max(edge1, edge2) - 1
+
+  local existing_extmarks = vim.api.nvim_buf_get_extmarks(buf, namespace, { start_line, 0 }, { end_line, -1 }, {})
+  local lines_range = end_line - start_line
+  for line = start_line, start_line + lines_range, 1 do
+    local existing_extmark_id = get_extmark_id_if_exists(line, existing_extmarks)
+    if (existing_extmark_id) then
+      vim.api.nvim_buf_del_extmark(buf, namespace, existing_extmark_id)
+    else
+      vim.api.nvim_buf_set_extmark(0, namespace, line, 0, DEFAULT_OPTS)
+    end
+  end
+  -- exit visual mode
+  vim.api.nvim_input("<esc>")
+end
+
+-- Create autocommands
+vim.api.nvim_create_user_command("HighlightToggle", function() return toggle_highlights() end, { nargs = "?" })
+
+-- Keymaps
+vim.keymap.set({ "n", "v" }, "<leader>hs", function() vim.cmd(":HighlightToggle") end, { silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>hd", function() wipe_extmarks(namespace) end, { silent = true })
