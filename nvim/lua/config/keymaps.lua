@@ -56,16 +56,16 @@ Keymap("n", "<lmmmmm><space>s", ":<C-u>%s#<C-r>\"#")
 -- subsitute word under " register inside the selected range
 Keymap("v", "<leader><space>s", ":<C-u>%s#\\%V\\v<C-r>\"#")
 -- substitute cword
-Keymap("n", "<leader>sw", ":%s#<C-r>=expand(\"<cword>\")<cr>#")
-Keymap("v", "<leader>sw", ":<C-u>%s#\\%V<C-r>=expand(\"<cword>\")<cr>#")
--- nnoremap <leader>iw :'<,'>s#<C-r>=expand("<cword>")<cr>#
+-- (note that boundaries are being added "\\<" "\\>")
+Keymap("n", "<leader>sw", ":%s#\\<<C-r><C-w>\\>#")
+Keymap("v", "<leader>sw", ":<C-u>%s#\\%V\\<<C-r><C-w>\\>#") -- nnoremap <leader>iw :'<,'>s#<C-r>=expand("<cword>")<cr>#
 
 -- search within selection
 Keymap("v", "/", "<ESC>/\\%V")
 -- search selected text
 Keymap("v", "//", "y/<C-R>=escape(@\",'/\')<CR>")
 -- substitute selected text
-Keymap("v", "<leader>sw", "\"hy:%s#\\V<C-r>h##g<left><left>")
+-- Keymap("v", "<leader>sw", "\"hy:%s#\\V<C-r>h##g<left><left>")
 
 -- unhighlight find results
 Keymap("n", "<esc><esc>", ":noh<cr>", Opts)
