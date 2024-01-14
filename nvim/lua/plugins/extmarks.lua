@@ -21,29 +21,38 @@ local function wipe_extmarks(ns)
   end
 end
 
--- Toggles selected range in Visual mode or single line in Normal mode
-local toggle_highlights = function()
-  local mode = vim.api.nvim_get_mode().mode
-  if (mode:lower() == "v" or mode == "\22") then
-    local edge1 = vim.fn.getpos("v")[2]
-    local edge2 = vim.fn.getcurpos(0)[2]
-    local start_line = math.min(edge1, edge2)
-    local end_line = math.max(edge1, edge2)
-    local lines_range = end_line - start_line
-    for i = start_line, start_line + lines_range, 1 do
-      vim.api.nvim_buf_set_extmark(0, namespace, i - 1, 0, DEFAULT_OPTS)
-    end
-    -- exit Visual mode
-    vim.api.nvim_input("<esc>")
+-- TODO: replace this helper function once ```vim.tbl_contains(tl, function, { predicate = true })``` works
+local function get_extmark_id_if_exists(line, extmarks)
+  if (#extmarks == 0) then
+    return false
   else
-    local pos = vim.api.nvim_win_get_cursor(0)
-    local extmarks = vim.api.nvim_buf_get_extmarks(buf, namespace, { pos[1] - 1, 0 }, { pos[1] - 1, -1 }, {})
-    if (#extmarks > 0) then
-      for _, extmark in pairs(extmarks) do vim.api.nvim_buf_del_extmark(buf, namespace, extmark[1]) end
-    else
-      vim.api.nvim_buf_set_extmark(0, namespace, pos[1] - 1, 0, DEFAULT_OPTS)
+    for _, extmark in pairs(extmarks) do
+      local id = extmark[1]
+      local row = extmark[2]
+      if (line == row) then return id end
     end
   end
+end
+
+-- Toggles selected range or single line
+local toggle_highlights = function()
+  local edge1 = vim.fn.getpos("v")[2]
+  local edge2 = vim.fn.getcurpos(0)[2]
+  local start_line = math.min(edge1, edge2) - 1
+  local end_line = math.max(edge1, edge2) - 1
+
+  local existing_extmarks = vim.api.nvim_buf_get_extmarks(buf, namespace, { start_line, 0 }, { end_line, -1 }, {})
+  local lines_range = end_line - start_line
+  for line = start_line, start_line + lines_range, 1 do
+    local existing_extmark_id = get_extmark_id_if_exists(line, existing_extmarks)
+    if (existing_extmark_id) then
+      vim.api.nvim_buf_del_extmark(buf, namespace, existing_extmark_id)
+    else
+      vim.api.nvim_buf_set_extmark(0, namespace, line, 0, DEFAULT_OPTS)
+    end
+  end
+  -- exit visual mode
+  vim.api.nvim_input("<esc>")
 end
 
 -- Create autocommands
