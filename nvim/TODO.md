@@ -6,7 +6,7 @@
 
 - create a switch in telescope that toggles btw find_files and file_grep
 
-- when working with splits, need to remember last vertical/horizontal state, eg:
+- when working with splits, remember last vertical/horizontal state, eg:
 
 ```
      | a |   |

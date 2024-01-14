@@ -39,7 +39,7 @@ opt.hidden = true                        -- don't prompt for save when leaving a
 opt.ignorecase = true                    -- smartcase
 opt.smartcase = true                     -- smartcase
 opt.mouse="a"                            -- enable mouse scroll
-opt.relativenumber = true
+opt.relativenumber = false
 opt.number = true
 opt.ruler = true                         -- show cursor position
 opt.scrolloff = 11                       -- Show 11 lines of context around the cursor.
@@ -60,5 +60,3 @@ opt.wildmode={ list='full' }             -- autocomplete first occurrence
 opt.wrapscan = true                      -- cycle search
 opt.showcmd = false
 vim.wo.wrap = false                      -- no line wrapping
-
-

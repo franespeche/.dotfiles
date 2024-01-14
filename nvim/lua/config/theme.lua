@@ -5,7 +5,7 @@ local o = vim.o
 local cmd = vim.cmd
 
 -- globals
-local color_scheme = "dayfox"
+local color_scheme = "nightfox"
 
 if g.dark_theme == nil then
   g.dark_theme = color_scheme
@@ -16,7 +16,7 @@ end
 
 -- avoid syntax inconsistencies
 if g.syntax_on == nil then
-  vim.cmd("syntax on")
+  cmd("syntax on")
   g.syntax_on = 1
 end
 
@@ -40,15 +40,16 @@ if not o.termguicolors then
     o.termguicolors = true
 end
 
--- italic comments
+-- force italic comments
 g.one_allow_italics = 1
-cmd("highlight Comment cterm=italic")
+local hl_comment = vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name('Comment') })
+vim.api.nvim_set_hl(0, 'Comment', { italic=true, ctermfg = hl_comment.ctermfg, fg = hl_comment.fg })
 
 -- used in nerd-tree
-vim.cmd("highlight Directory guifg=#549699")
-vim.cmd("syntax match fbCollections /collection/")
-vim.cmd("highlight fbCollections guifg=#E9BD15")
-vim.cmd("syntax match fbSubCollections /sub-collection/")
-vim.cmd("highlight fbSubCollections guifg=#E9BD15")
-vim.cmd("syntax match fbDocuments /document/")
-vim.cmd("highlight fbDocuments guifg=#FA8072")
+cmd("highlight Directory guifg=#549699")
+cmd("syntax match fbCollections /collection/")
+cmd("highlight fbCollections guifg=#E9BD15")
+cmd("syntax match fbSubCollections /sub-collection/")
+cmd("highlight fbSubCollections guifg=#E9BD15")
+cmd("syntax match fbDocuments /document/")
+cmd("highlight fbDocuments guifg=#FA8072")

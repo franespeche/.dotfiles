@@ -63,8 +63,6 @@ require('telescope').setup{
       -- theme = "dropdown",
       layout_strategy = "vertical",
       layout_config = { height = 0.99, width = 0.99, preview_height = 0.68 }
-
-
       -- theme = "dropdown", 
       -- wrap_results = true
       },
@@ -79,6 +77,7 @@ require('telescope').setup{
 
 Keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", Opts)
 Keymap("n", "<leader>fn", "<cmd>lua require('telescope.builtin').find_files{ cwd = '~/.dotfiles/nvim/' }<cr>", Opts)
+Keymap("n", "<leader>fng", "<cmd>lua require('telescope.builtin').live_grep{ cwd = '~/.dotfiles/nvim/' }<cr>", Opts)
 Keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", Opts)
 Keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", Opts)
 Keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", Opts)

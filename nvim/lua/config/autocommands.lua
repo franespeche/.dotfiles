@@ -39,6 +39,7 @@ au('FileType', {
   command = "syntax match Comment +\\/\\/.\\+$+"
 })
 
+
 -- python settings
 au({"BufNewFile", "BufRead"}, {
   pattern = {"*.py"},
@@ -118,3 +119,19 @@ au({ "ColorScheme" }, {
   end
 })
 
+-- Lua formatter
+au('BufEnter', {
+  pattern = ".lua-format",
+  callback = function()
+    vim.cmd("syntax match LuaFormatConfig /^[^:]*:/")
+    vim.cmd("highlight link LuaFormatConfig String")
+  end
+})
+
+au({ "BufWrite" }, {
+pattern = "*.lua",
+  callback = function()
+    print('saving')
+    vim.cmd(":call LuaFormat()")
+  end
+})
