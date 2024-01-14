@@ -1,3 +1,4 @@
+-- LuaFormatter off
 local au = vim.api.nvim_create_autocmd
 local aug = vim.api.nvim_create_augroup
 
@@ -135,3 +136,4 @@ pattern = "*.lua",
     vim.cmd(":call LuaFormat()")
   end
 })
+-- LuaFormatter on

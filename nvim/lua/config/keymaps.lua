@@ -1,5 +1,5 @@
 -- source vim
-Keymap("n",  "<leader>rr", ":so ~/.dotfiles/nvim/init.lua<cr>", Opts)
+Keymap("n", "<leader>rr", ":so ~/.dotfiles/nvim/init.lua<cr>", Opts)
 
 -- cd cwd
 -- see :help expand
@@ -10,22 +10,22 @@ Keymap({ "v", "n" }, "<S-h>", "^")
 Keymap({ "v", "n" }, "<S-l>", "$")
 
 -- open new tab
-Keymap("n",  "<leader>tn", ":tabnew<cr>", Opts)
-Keymap("n",  "<leader>tq", ":tabclose<cr>", Opts)
+Keymap("n", "<leader>tn", ":tabnew<cr>", Opts)
+Keymap("n", "<leader>tq", ":tabclose<cr>", Opts)
 
 -- splits create
-Keymap("n",  "<leader>l", ":vsp<cr>", Opts)
-Keymap("n",  "<leader>j", ":sp<cr>", Opts)
+Keymap("n", "<leader>l", ":vsp<cr>", Opts)
+Keymap("n", "<leader>j", ":sp<cr>", Opts)
 
 -- splits navigate
-Keymap("n",  "<C-l>", "<cmd> TmuxNavigateRight<CR>", Opts)
-Keymap("n",  "<C-h>", "<cmd> TmuxNavigateLeft<CR>", Opts)
-Keymap("n",  "<C-j>", "<cmd> TmuxNavigateDown<CR>", Opts)
-Keymap("n",  "<C-k>", "<cmd> TmuxNavigateUp<CR>", Opts)
-Keymap("i",  "<C-l>", "<Esc>:wincmd l<cr>", Opts)
-Keymap("i",  "<C-h>", "<Esc>:wincmd h<cr>", Opts)
-Keymap("i",  "<C-j>", "<Esc>:wincmd j<cr>", Opts)
-Keymap("i",  "<C-k>", "<Esc>:wincmd k<cr>", Opts)
+Keymap("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", Opts)
+Keymap("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", Opts)
+Keymap("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", Opts)
+Keymap("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", Opts)
+Keymap("i", "<C-l>", "<Esc>:wincmd l<cr>", Opts)
+Keymap("i", "<C-h>", "<Esc>:wincmd h<cr>", Opts)
+Keymap("i", "<C-j>", "<Esc>:wincmd j<cr>", Opts)
+Keymap("i", "<C-k>", "<Esc>:wincmd k<cr>", Opts)
 -- Keymap("n",  "<C-l>", ":wincmd l<cr>", Opts)
 -- Keymap("n",  "<C-h>", ":wincmd h<cr>", Opts)
 -- Keymap("n",  "<C-j>", ":wincmd j<cr>", Opts)
@@ -36,7 +36,7 @@ Keymap("n", "+", ":vertical resize +3<cr>")
 Keymap("n", "-", ":vertical resize -3<cr>")
 
 --	splits fullscreen
-Keymap("n",  "<leader>zo", ":ZoomToggle<CR>", Opts)
+Keymap("n", "<leader>zo", ":ZoomToggle<CR>", Opts)
 
 -- faster selection
 Keymap("v", "<S-j>", "2j")
@@ -74,7 +74,7 @@ Keymap("n", "<esc><esc>", ":noh<cr>", Opts)
 Keymap("n", "Y", "yy")
 
 -- comment line
-Keymap("" , ",,", ":norm gcc<cr>")
+Keymap("", ",,", ":norm gcc<cr>")
 
 -- toggle wrap
 Keymap("n", "<leader>zz", "<cmd>set wrap!<cr>")
@@ -151,7 +151,7 @@ Keymap("i", "<C-j>", "<Esc>ja")
 Keymap("i", "<C-k>", "<Esc>ka")
 
 -- copy current buffer's file path to clipboard
-Keymap("n",  "<leader>cp", ":let @* = expand(\"%\")<cr>", Opts)
+Keymap("n", "<leader>cp", ":let @* = expand(\"%\")<cr>", Opts)
 
 -- console log snippet
 Keymap("n", "<space>cl", "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
@@ -160,13 +160,13 @@ Keymap("v", "<space>cl", "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>
 -- Git
 --
 -- open tooltip with commit info
-Keymap("n",  "<leader>gm", ":GitMessenger<cr>", Opts)
+Keymap("n", "<leader>gm", ":GitMessenger<cr>", Opts)
 -- get link with the selected range (in visual mode) or to the file (in normal mode)
-Keymap("x",  "<leader>gl", ":GBrowse<cr>", Opts)
+Keymap("x", "<leader>gl", ":GBrowse<cr>", Opts)
 -- git blame [vim fuvitive]
-Keymap("n",  "<leader>gb", ":Git blame<cr>", Opts)
+Keymap("n", "<leader>gb", ":Git blame<cr>", Opts)
 -- open lazygit
-Keymap("n",  "<leader>gg", ":cd %:h<cr> :LazyGit<cr>", Opts)
+Keymap("n", "<leader>gg", ":cd %:h<cr> :LazyGit<cr>", Opts)
 
 -- go to the last cursor position before going into Visual mode
 Keymap("n", "go", "gvogvo<ESC>")

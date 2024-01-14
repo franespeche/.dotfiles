@@ -1,6 +1,7 @@
 local Plug = vim.fn['plug#']
 local dataPath = vim.fn['stdpath']('data') .. '/plugged'
 
+-- LuaFormatter off
 vim.call('plug#begin', dataPath)
 Plug "neovim/nvim-lspconfig"                                                              -- lsp (also navic dependency)
 Plug 'hrsh7th/cmp-nvim-lsp'                                                               -- completions
@@ -52,7 +53,6 @@ Plug "SmiteshP/nvim-navic"                                                      
 Plug "kevinhwang91/promise-async"                                                         -- [folds] (dependency)
 Plug 'vim-syntastic/syntastic'                                                            -- check !
 Plug 'cameron-wags/rainbow_csv.nvim'                                                      -- easily read csv
-Plug 'folke/trouble.nvim'                                                                 -- diagnostics
 Plug 'm-demare/hlargs.nvim'                                                               -- highlight arguments
 Plug 'brenoprata10/nvim-highlight-colors'                                                 -- highlight colors
 Plug 'folke/neodev.nvim'                                                                  -- lua types (?)
@@ -65,6 +65,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/lua-dev.nvim'
 Plug 'rafcamlet/nvim-luapad'
 vim.call('plug#end')
+-- LuaFormatter on
 
 -- source
 require 'config'
@@ -72,7 +73,9 @@ require 'plugins'
 require 'config.keymaps'
 
 -- private
-if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/private.vim')))
-then
-  vim.cmd 'source ~/.dotfiles/nvim/private.vim'
+if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/private.vim')) == 1) then
+    vim.cmd 'source ~/.dotfiles/nvim/private.vim'
+end
+if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/init.local.vim')) == 1) then
+    vim.cmd 'source ~/.dotfiles/nvim/init.local.vim'
 end

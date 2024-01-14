@@ -1,20 +1,13 @@
-require('telescope').setup{
+require("telescope").setup {
   defaults = {
-    layout_strategy = 'horizontal',
-    file_ignore_patterns = {
-      "node_modules", "dist", "yarn.lock", "mongo_exports"
-      },
-    layout_config = {
-      scroll_speed = 3,
-       horizontal = {
-         preview_width = 0.4
-       },
-    },
+    layout_strategy = "horizontal",
+    file_ignore_patterns = { "node_modules", "dist", "yarn.lock", "mongo_exports" },
+    layout_config = { scroll_speed = 3, horizontal = { preview_width = 0.4 } },
     mappings = {
       n = {
         ["<S-j>"] = "preview_scrolling_down",
         ["<S-k>"] = "preview_scrolling_up",
-        ["<C-c>"] = require('telescope.actions').close,
+        ["<C-c>"] = require("telescope.actions").close,
         ["<C-q>"] = "send_selected_to_qflist",
         ["<Cr>"] = "select_default",
       },
@@ -23,20 +16,20 @@ require('telescope').setup{
         ["<C-k>"] = "move_selection_previous",
         ["<C-q>"] = "send_selected_to_qflist",
         ["<Cr>"] = "select_default",
-      }
-    }
+      },
+    },
   },
   pickers = {
     find_files = {
       path_display = { "truncate" },
       -- wrap_results = true
-      },
+    },
     live_grep = {
       results_title = false,
       path_display = { "truncate" },
       -- theme = "dropdown", 
       -- wrap_results = true
-      },
+    },
     buffers = {
       theme = "dropdown",
       path_display = function(opts, path)
@@ -47,7 +40,7 @@ require('telescope').setup{
       results_title = false,
       -- theme = "dropdown", 
       -- wrap_results = true
-      },
+    },
     quickfix = {
       path_display = function(opts, path)
         local tail = require("telescope.utils").path_tail(path)
@@ -56,23 +49,23 @@ require('telescope').setup{
       results_title = false,
       -- theme = "dropdown", 
       -- wrap_results = true
-      },
+    },
     help_tags = {
       path_display = { "truncate" },
       results_title = false,
       -- theme = "dropdown",
       layout_strategy = "vertical",
-      layout_config = { height = 0.99, width = 0.99, preview_height = 0.68 }
+      layout_config = { height = 0.99, width = 0.99, preview_height = 0.68 },
       -- theme = "dropdown", 
       -- wrap_results = true
-      },
+    },
     -- highlights = {
     --   path_display = { "truncate" },
     --   results_title = false,
     --   -- theme = "dropdown", 
     --   -- wrap_results = true
     --   },
-    }
+  },
 }
 
 Keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", Opts)

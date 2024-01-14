@@ -1,6 +1,6 @@
 --  local status_icon = navic.is_available() and "  "  or "  "
 -- imports
-local navic = require('nvim-navic')
+local navic = require("nvim-navic")
 
 -- system locals
 local vim = vim
@@ -8,39 +8,35 @@ local g = vim.g
 
 -- helpers
 local progress = function()
-	local current_line = vim.fn.line(".")
-	local totalLines = vim.fn.line("$")
-	if current_line == 1 then
-		return "Top"
-	elseif current_line == totalLines then
-		return "Bot"
-	else
-		return "%p%%"
-	end
+  local current_line = vim.fn.line(".")
+  local totalLines = vim.fn.line("$")
+  if current_line == 1 then
+    return "Top"
+  elseif current_line == totalLines then
+    return "Bot"
+  else
+    return "%p%%"
+  end
 end
 
 local conditions = {
-	buffer_not_empty = function()
-		return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
-	end,
-	hide_in_width = function(width)
+  buffer_not_empty = function() return vim.fn.empty(vim.fn.expand("%:t")) ~= 1 end,
+  hide_in_width = function(width)
     local w = width or 80
-		return vim.fn.winwidth(0) > w
-	end,
-	check_git_workspace = function()
-		local filepath = vim.fn.expand("%:p:h")
-		local gitdir = vim.fn.finddir(".git", filepath .. ";")
-		return gitdir and #gitdir > 0 and #gitdir < #filepath
-	end,
-	width_percent_below = function(n, thresh)
-		local winwidth = vim.api.nvim_win_get_width(0)
-		return n / winwidth <= thresh
-	end,
+    return vim.fn.winwidth(0) > w
+  end,
+  check_git_workspace = function()
+    local filepath = vim.fn.expand("%:p:h")
+    local gitdir = vim.fn.finddir(".git", filepath .. ";")
+    return gitdir and #gitdir > 0 and #gitdir < #filepath
+  end,
+  width_percent_below = function(n, thresh)
+    local winwidth = vim.api.nvim_win_get_width(0)
+    return n / winwidth <= thresh
+  end,
 }
 
-local function DynamicPath()
-    return vim.fn.winwidth(0) > 60 and vim.fn.expand('%:h') or ''
-end
+local function DynamicPath() return vim.fn.winwidth(0) > 60 and vim.fn.expand("%:h") or "" end
 
 local colors = {
   bg = "#262626",
@@ -55,103 +51,73 @@ local colors = {
   cyan = "#8ca3af",
   white = "#e8e3e3",
   gruvbox_aqua = "#abb66f",
-  search_bg_color = vim.fn.synIDattr(vim.fn.hlID('Search'), 'bg'),
-  search_fg_color = vim.fn.synIDattr(vim.fn.hlID('Search'), 'fg')
+  search_bg_color = vim.fn.synIDattr(vim.fn.hlID("Search"), "bg"),
+  search_fg_color = vim.fn.synIDattr(vim.fn.hlID("Search"), "fg"),
 }
 
 -- safe check
 local status_ok = pcall(require, "lualine")
-if not status_ok then
-	return
-end
+if not status_ok then return end
 
 -- components
 local searchcount = {
-      'searchcount',
-      maxcount = 999,
-      colored = true,
-      timeout = 500,
-	    color = { fg = colors.search_fg_color, bg = colors.search_bg_color },
-    }
-
-local diff = {
-  "diff",
-  padding = { left = 0, right = 0 },
-  cond = function() return conditions.hide_in_width(85) end
+  "searchcount",
+  maxcount = 999,
+  colored = true,
+  timeout = 500,
+  color = { fg = colors.search_fg_color, bg = colors.search_bg_color },
 }
 
+local diff = { "diff", padding = { left = 0, right = 0 }, cond = function() return conditions.hide_in_width(85) end }
 
 local diagnostics = {
-    "diagnostics",
-    sources = { "nvim_diagnostic", "coc" },
-    sections = { "error", "hint", "warn" },
-    symbols = { error = " ", warn = " ", info = "", hint = " " },
-    colored = false,
-    update_in_insert = true,
-    always_visible = false,
+  "diagnostics",
+  sources = { "nvim_diagnostic", "coc" },
+  sections = { "error", "hint", "warn" },
+  symbols = { error = " ", warn = " ", info = "", hint = " " },
+  colored = false,
+  update_in_insert = true,
+  always_visible = false,
   padding = { left = 2, right = 0 },
-  cond = function() return conditions.hide_in_width(40) end
+  cond = function() return conditions.hide_in_width(40) end,
 }
 
-local mode = {
-  "mode",
-  fmt = function(str) return str:sub(1,1) end,
-  align = "right",
-  color = { gui = "bold" },
-}
+local mode = { "mode", fmt = function(str) return str:sub(1, 1) end, align = "right", color = { gui = "bold" } }
 
-local filetype = {
-	"filetype",
-	colored = false,
-	icon_only = true,
-	padding = { left = 1, right = 0 },
-}
+local filetype = { "filetype", colored = false, icon_only = true, padding = { left = 1, right = 0 } }
 
-local filename = {
-	"filename",
-	padding = { left = 1, right = 0 },
-}
+local filename = { "filename", padding = { left = 1, right = 0 } }
 
 local branch = {
-	"branch",
-	icons_enabled = true,
-	icon = "",
-	padding = { left = 2, right = 1 },
-  cond = function() return conditions.hide_in_width(85) end
+  "branch",
+  icons_enabled = true,
+  icon = "",
+  padding = { left = 2, right = 1 },
+  cond = function() return conditions.hide_in_width(85) end,
 }
 
 -- setup
-require('lualine').setup {
+require("lualine").setup {
   options = {
     icons_enabled = true,
     theme = vim.g.is_dark_mode and g.dark_theme or g.light_theme,
     -- section_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "·" },
-    disabled_filetypes = {
-      "Trouble",
-      "neo-tree",
-      "quickfix",
-      statusline = {},
-      winbar = {}
-    },
-    ignore_focus = {  },
+    disabled_filetypes = { "Trouble", "neo-tree", "quickfix", statusline = {}, winbar = {} },
+    ignore_focus = {},
     always_divide_middle = true,
     globalstatus = false,
-    refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
-    },
+    refresh = { statusline = 1000, tabline = 1000, winbar = 1000 },
   },
   sections = {
     lualine_a = { mode },
-    lualine_b = { branch, diff  },
+    lualine_b = { branch, diff },
     lualine_c = { filetype, filename, diagnostics },
 
     lualine_x = { DynamicPath },
     lualine_y = { progress },
-    lualine_z = { "location", searchcount, 'selectioncount' }
+    lualine_z = { "location", searchcount, "selectioncount" },
   },
   inactive_sections = {
     lualine_a = {},
@@ -159,28 +125,22 @@ require('lualine').setup {
     lualine_c = { filename },
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {},
   },
-    tabline = {},
-    winbar = {
-      lualine_c = {
-          {
-            function() return navic.get_location() end,
-            cond = function() return navic.is_available() end,
-          },
-        },
-        lualine_y = {
-          {
-            function()
-              local status_icon = navic.is_available() and "󰗠 "  or " "
-              return status_icon .. "navic"
-            end,
-          },
-
-        }
+  tabline = {},
+  winbar = {
+    lualine_c = { { function() return navic.get_location() end, cond = function() return navic.is_available() end } },
+    lualine_y = {
+      {
+        function()
+          local status_icon = navic.is_available() and "󰗠 " or " "
+          return status_icon .. "navic"
+        end,
       },
 
-    inactive_winbar = {},
-    extensions = {}
-}
+    },
+  },
 
+  inactive_winbar = {},
+  extensions = {},
+}
