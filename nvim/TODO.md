@@ -1,3 +1,5 @@
+- install vimspector
+
 - :Isolate scopes
 
 - remove $HOME path from lualine location
