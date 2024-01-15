@@ -1,18 +1,10 @@
--- Highlights lines with <space><space>
--- Wipes highlights with <space>d<space>
 -- Defaults
 vim.api.nvim_command("hi def link ExtMark DiffChange")
 
 local namespace = vim.api.nvim_create_namespace("ExtMarks")
 local buf = 0
 
-local DEFAULT_OPTS = {
-  hl_group = "ExtMark",
-  line_hl_group = "ExtMark",
-  -- virt_text = { {'This is a text', 'TestExtMark'} },
-  -- virt_text_pos = 'overlay',
-  priority = 10000,
-}
+local DEFAULT_OPTS = { hl_group = "ExtMark", line_hl_group = "ExtMark", priority = 200 }
 
 -- Helpers
 local function wipe_extmarks(ns)
@@ -21,7 +13,6 @@ local function wipe_extmarks(ns)
   end
 end
 
--- TODO: replace this helper function once ```vim.tbl_contains(tl, function, { predicate = true })``` works
 local function get_extmark_id_if_exists(line, extmarks)
   if (#extmarks == 0) then
     return false
@@ -61,3 +52,5 @@ vim.api.nvim_create_user_command("HighlightToggle", function() return toggle_hig
 -- Keymaps
 vim.keymap.set({ "n", "v" }, "<leader>hs", function() vim.cmd(":HighlightToggle") end, { silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>hd", function() wipe_extmarks(namespace) end, { silent = true })
+
+P(vim.api.nvim_buf_get_extmarks(buf, namespace, 0, -1, {}))
