@@ -23,6 +23,7 @@ local function is_git_directory() return vim.api.nvim_exec("!git rev-parse --is-
 -- actions
 local show_git_worktree_recent_files = {
   name = "show_git_worktree_recent_files",
+  format_value = function(v) return (remove_home_path(v)) end,
   callback = function(limit)
     if (not is_git_directory()) then error("Not inside a git working tree") end
 
@@ -35,7 +36,7 @@ local show_git_worktree_recent_files = {
     while (i <= #oldfiles and (#seeds < limit or i < 10)) do
       local file = oldfiles[i]
       if (is_file_in_git_workspace(file)) then
-        local seed = create_seed(#seeds + 1, remove_home_path(file), get_filename(file), true)
+        local seed = create_seed(#seeds + 1, file, get_filename(file))
         table.insert(seeds, seed)
       end
       i = i + 1
@@ -46,6 +47,7 @@ local show_git_worktree_recent_files = {
 
 local show_recent_files = {
   name = "show_recent_files",
+  format_value = function(v) return (remove_home_path(v)) end,
   callback = function(limit)
     limit = limit or 15
 
@@ -79,8 +81,6 @@ local show_active_buffers = {
       if (vim.api.nvim_buf_is_loaded(buf)) then
         local name = vim.api.nvim_buf_get_name(buf)
         local seed = create_seed(#seeds + 1, name, name, false)
-        P(buf)
-        P(name)
         table.insert(seeds, seed)
       end
       i = i + 1
