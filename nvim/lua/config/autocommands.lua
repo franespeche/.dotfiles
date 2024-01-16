@@ -131,7 +131,6 @@ au('BufEnter', {
 au({ "BufWrite" }, {
 pattern = "*.lua",
   callback = function()
-    print('saving')
     vim.cmd(":call LuaFormat()")
   end
 })
