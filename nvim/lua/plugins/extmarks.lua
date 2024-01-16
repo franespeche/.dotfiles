@@ -52,5 +52,3 @@ vim.api.nvim_create_user_command("HighlightToggle", function() return toggle_hig
 -- Keymaps
 vim.keymap.set({ "n", "v" }, "<leader>hs", function() vim.cmd(":HighlightToggle") end, { silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>hd", function() wipe_extmarks(namespace) end, { silent = true })
-
-P(vim.api.nvim_buf_get_extmarks(buf, namespace, 0, -1, {}))
