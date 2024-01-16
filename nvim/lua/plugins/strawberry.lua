@@ -33,7 +33,8 @@ local show_git_worktree_recent_files = {
     local i = 1
     while (i <= #oldfiles and (#seeds < limit or i < 10)) do
       local file = oldfiles[i]
-      if (has_extension(file) and vim.startswith(vim.trim(file), vim.trim(git_root_dir))) then
+      if (has_extension(file) and vim.fn.filereadable(file) == 1 and
+          vim.startswith(vim.trim(file), vim.trim(git_root_dir))) then
         local seed = create_seed(#seeds + 1, file, get_filename(file))
         table.insert(seeds, seed)
       end
