@@ -68,8 +68,8 @@ vim.call('plug#end')
 
 -- source
 require 'config'
+-- require 'config.keymaps'
 require 'plugins'
-require 'config.keymaps'
 
 -- private
 if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/private.vim')) == 1) then
