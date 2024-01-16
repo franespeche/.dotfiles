@@ -40,7 +40,6 @@ au('FileType', {
   command = "syntax match Comment +\\/\\/.\\+$+"
 })
 
-
 -- python settings
 au({"BufNewFile", "BufRead"}, {
   pattern = {"*.py"},

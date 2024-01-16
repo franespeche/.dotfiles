@@ -5,7 +5,7 @@ local o = vim.o
 local cmd = vim.cmd
 
 -- globals
-local color_scheme = "nightfox"
+local color_scheme = "kanagawa"
 
 if g.dark_theme == nil then g.dark_theme = color_scheme end
 if g.light_theme == nil then g.light_theme = color_scheme end
