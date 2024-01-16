@@ -60,7 +60,6 @@ Plug 'andrejlevkovitch/vim-lua-format'                                          
 Plug 'milisims/nvim-luaref'
 Plug ('franespeche/strawberry', { ['branch'] = 'main' })
 Plug 'MunifTanjim/nui.nvim'
-Plug 'giusgad/hologram.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/lua-dev.nvim'
 Plug 'rafcamlet/nvim-luapad'
