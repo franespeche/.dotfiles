@@ -1,3 +1,5 @@
+- consider cd'ing to buffer's location on BufEnter
+
 - install vimspector
 
 - :Isolate scopes
@@ -19,3 +21,4 @@
      2. press <C-l> (go to c)
      3. press <C-h> (goes to a, when it should have went to b)
 ```
+
