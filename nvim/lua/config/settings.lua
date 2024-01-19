@@ -46,6 +46,7 @@ opt.ruler = true                         -- show cursor position
 opt.scrolloff = 11                       -- Show 11 lines of context around the cursor.
 opt.shiftwidth = 2
 opt.shortmess:append("c")                -- dont pass messages to |ins-completion-menu|
+opt.shortmess:append("I")                -- dont display introductory msg (:intro)
 opt.showmatch = true                     -- show matching char (like {})
 opt.sidescrolloff = 11
 opt.smartcase = true                     -- case = sensitive if expression contains a capital letter
@@ -59,6 +60,8 @@ opt.undolevels = 2000                    -- numbers of undo
 opt.wildignore=".git,.hg,*.o,*.a,*.class,*.jar,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo,**/cache/*,**/logs/*,**/target/*,*.hi,tags,**/dist/*,**/public/**/vendor/**,**/public/vendor/**,**/node_modules/**"
 opt.wildmode={ list='full' }             -- autocomplete first occurrence
 opt.wrapscan = true                      -- cycle search
-opt.showcmd = false
+opt.showcmd = true
 vim.wo.wrap = false                      -- no line wrapping
 -- LuaFormatter on
+
+-- see :bisect for debugigng
