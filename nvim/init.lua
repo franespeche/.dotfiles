@@ -63,6 +63,7 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/lua-dev.nvim'
 Plug 'rafcamlet/nvim-luapad'
+Plug 'hashivim/terraform'
 vim.call('plug#end')
 -- LuaFormatter on
 
