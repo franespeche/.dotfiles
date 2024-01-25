@@ -97,8 +97,12 @@ Keymap("n", ";w", ":w<cr>")
 Keymap("", "<space>", "<Nop>")
 
 -- move to first WORD before current opening bracket
+-- backwards
 Keymap("n", "<space><S-b>", "F(B")
 Keymap("n", "<space>b", "F(b")
+-- forwards
+Keymap("n", "<space><S-f>", "f(B")
+Keymap("n", "<space>f", "f(b")
 
 -- indenting behavior
 Keymap("v", "<Tab>", ">gv")
