@@ -101,8 +101,8 @@ Keymap("", "<space>", "<Nop>")
 Keymap("n", "<space><S-b>", "F(B")
 Keymap("n", "<space>b", "F(b")
 -- forwards
-Keymap("n", "<space><S-f>", "f(B")
-Keymap("n", "<space>f", "f(b")
+Keymap("n", "<space><S-f>", "f(b")
+Keymap("n", "<space>f", "f(B")
 
 -- indenting behavior
 Keymap("v", "<Tab>", ">gv")
