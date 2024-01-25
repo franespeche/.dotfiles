@@ -49,6 +49,7 @@ cmp.setup.cmdline(":", {
   sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
 })
 
+require "config.mason"
 require "config.utils"
 require "config.settings"
 require "config.autocommands"
