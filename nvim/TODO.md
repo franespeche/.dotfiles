@@ -12,6 +12,9 @@
 
 - when working with splits, remember last vertical/horizontal state, eg:
 
+- lualine: 
+    - show file path relative to path and not to current working directory
+
 ```
      | a |   |
      |---| c |
