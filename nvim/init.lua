@@ -64,6 +64,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/lua-dev.nvim'
 Plug 'rafcamlet/nvim-luapad'
 Plug 'hashivim/terraform'
+Plug 'rrethy/vim-illuminate'                                                              -- highlight symbol under cursor
 vim.call('plug#end')
 -- LuaFormatter on
 
