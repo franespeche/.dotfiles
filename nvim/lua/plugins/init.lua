@@ -32,3 +32,4 @@ require("mini.jump").setup(
       idle_stop = 10000000,
     },
 })
+require("plugins.harpoon")

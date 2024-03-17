@@ -66,6 +66,7 @@ Plug 'rafcamlet/nvim-luapad'
 Plug 'hashivim/terraform'
 Plug 'rrethy/vim-illuminate'                                                              -- highlight symbol under cursor
 Plug 'echasnovski/mini.nvim'
+Plug 'ThePrimeagen/harpoon'
 vim.call('plug#end')
 -- LuaFormatter on
 
