@@ -5,10 +5,10 @@ local o = vim.o
 local cmd = vim.cmd
 
 -- globals
-local color_scheme = "kanagawa"
+local color_scheme = "gruvbox"
 
 if g.dark_theme == nil then g.dark_theme = color_scheme end
-if g.light_theme == nil then g.light_theme = color_scheme end
+if g.light_theme == nil then g.light_theme = 'catppuccin-latte' end
 
 -- avoid syntax inconsistencies
 if g.syntax_on == nil then

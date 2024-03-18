@@ -38,9 +38,12 @@ Keymap("n", "-", ":vertical resize -3<cr>")
 --	splits fullscreen
 Keymap("n", "<leader>zo", ":ZoomToggle<CR>", Opts)
 
+Keymap("n", "J", "2j")
+Keymap("n", "K", "2k")
+
 -- faster selection
-Keymap("v", "<S-j>", "2j")
-Keymap("v", "<S-k>", "2k")
+Keymap("v", "J", "2j")
+Keymap("v", "K", "2k")
 
 Keymap("n", "<space>j", "J")
 

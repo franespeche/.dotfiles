@@ -9,8 +9,7 @@ require("plugins.prettier")
 require("plugins.strawberry")
 require("plugins.extmarks")
 
-require("mini.animate").setup()
-require("mini.map").setup()
+-- require("mini.animate").setup()
 require("mini.jump").setup(
   {
     -- Module mappings. Use `''` (empty string) to disable one.
