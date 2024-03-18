@@ -16,9 +16,9 @@ Plug 'saadparwaiz1/cmp_luasnip'                                                 
 Plug 'saadparwaiz1/cmp_luasnip'                                                           -- snipets completions
 Plug 'MunifTanjim/nui.nvim'                                                               -- [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                        -- [neotree] file explorer
--- Plug('neoclide/coc.nvim', { ['branch'] = 'release' })                                     -- completion, lsp, ...
--- Plug 'tjdevries/coc-zsh'                                                                  -- coc zsh support
--- Plug 'antoinemadec/coc-fzf'                                                               -- coc fzf support
+Plug('neoclide/coc.nvim', { ['branch'] = 'release' })                                     -- completion, lsp, ...
+Plug 'tjdevries/coc-zsh'                                                                  -- coc zsh support
+Plug 'antoinemadec/coc-fzf'                                                               -- coc fzf support
 Plug 'mxw/vim-jsx'                                                                        -- jsx support
 Plug 'maxmellon/vim-jsx-pretty'                                                           -- jsx support
 Plug 'pangloss/vim-javascript'                                                            -- javascript support
@@ -44,7 +44,8 @@ Plug 'catppuccin/nvim'                                                          
 Plug 'nvim-lua/plenary.nvim'                                                              -- [telescope] (dependenvy)
 Plug 'sharkdp/fd'                                                                         -- [telescope] (dependency)
 Plug 'nvim-telescope/telescope.nvim'                                                      -- [telescope] chore
-Plug 'nvim-telescope/telescope-file-browser.nvim'                                         -- [telescope] file browser
+-- Plug 'nvim-telescope/telescope-file-browser.nvim'                                         -- [telescope] file browser
+Plug 'nvim-telescope/telescope-live-grep-args.nvim'                                       -- [telescope] ripgrep
 Plug 'nvim-treesitter/nvim-treesitter'                                                    -- [telescope] finder/preview
 Plug 'lukas-reineke/indent-blankline.nvim'                                                -- indent lines
 Plug 'nvim-tree/nvim-web-devicons'                                                        -- devicons
@@ -63,7 +64,7 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/lua-dev.nvim'
 Plug 'rafcamlet/nvim-luapad'
-Plug 'hashivim/terraform'
+Plug 'hashivim/vim-terraform'
 Plug 'rrethy/vim-illuminate'                                                              -- highlight symbol under cursor
 Plug 'echasnovski/mini.nvim'
 Plug 'ThePrimeagen/harpoon'
