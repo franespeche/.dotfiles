@@ -8,7 +8,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'                                                     
 Plug 'hrsh7th/cmp-buffer'                                                                 -- completions
 Plug 'hrsh7th/cmp-path'                                                                   -- completions
 Plug 'hrsh7th/cmp-cmdline'                                                                -- completions
-Plug 'hrsh7th/nvim-cmp'                                                                   -- completions
+-- Plug 'hrsh7th/nvim-cmp'                                                                   -- completions
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug ('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'})           -- snipets

@@ -15,10 +15,12 @@
   //    "**/node_modules/**/.*/**"
   //  ],
   "coc.source.file.ignorePatterns": [
-    "**/node_modules/**",
-    "**/node_modules/**/.*",
-    "**/node_modules/**/.*/**"
+//    "**/node_modules/**",
+//    "**/node_modules/**/.*",
+//    "**/node_modules/**/.*/**"
   ],
+  "tsserver.maxTsServerMemory": 12000,
+  "tsserver.useLocalTsdk": true,
   "coc.preferences.formatOnSave": false,
   //  "coc.preferences.formatOnSaveFiletypes": [
   //    "css",

@@ -16,11 +16,12 @@ lspconfig.lua_ls.setup {
 }
 
 -- typescript
-lspconfig.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
-}
+-- lspconfig.tsserver.setup {
+  -- on_attach = on_attach,
+  -- filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
+-- }
 
+--[[
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, Opts)
 vim.keymap.set('n', '<leader>ch', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -56,3 +57,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end, opts)
   end,
 })
+]]--

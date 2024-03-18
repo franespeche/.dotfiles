@@ -1,8 +1,8 @@
 Opts = { noremap = true, silent = true }
 Keymap = vim.keymap.set
 
-local cmp = require "cmp"
-
+-- local cmp = require "cmp"
+--[[
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -48,12 +48,12 @@ cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
 })
-
+]]--
 require "config.utils"
 require "config.settings"
 require "config.autocommands"
 require "config.theme"
--- require "config.coc"
+require "config.coc"
 require "config.neodev"
 require "config.lspconfig"
 require "config.git"
