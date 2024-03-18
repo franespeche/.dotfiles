@@ -5,6 +5,7 @@ local navic = require("nvim-navic")
 -- system locals
 local vim = vim
 local g = vim.g
+local MINIMALISTIC_WIDTH = 100
 
 -- helpers
 local progress = function()
@@ -36,7 +37,7 @@ local conditions = {
   end,
 }
 
-local function DynamicPath() return vim.fn.winwidth(0) > 60 and vim.fn.expand("%:h") or "" end
+local function DynamicPath() return vim.fn.winwidth(0) > 100 and vim.fn.expand("%:h") or "" end
 
 local colors = {
   bg = "#262626",
@@ -68,7 +69,7 @@ local searchcount = {
   color = { fg = colors.search_fg_color, bg = colors.search_bg_color },
 }
 
-local diff = { "diff", padding = { left = 0, right = 0 }, cond = function() return conditions.hide_in_width(85) end }
+local diff = { "diff", padding = { left = 0, right = 0 }, cond = function() return conditions.hide_in_width(MINIMALISTIC_WIDTH) end }
 
 local diagnostics = {
   "diagnostics",
@@ -79,7 +80,7 @@ local diagnostics = {
   update_in_insert = true,
   always_visible = false,
   padding = { left = 2, right = 0 },
-  cond = function() return conditions.hide_in_width(40) end,
+  cond = function() return conditions.hide_in_width(MINIMALISTIC_WIDTH) end,
 }
 
 local mode = { "mode", fmt = function(str) return str:sub(1, 1) end, align = "right", color = { gui = "bold" } }
@@ -93,7 +94,7 @@ local branch = {
   icons_enabled = true,
   icon = "",
   padding = { left = 2, right = 1 },
-  cond = function() return conditions.hide_in_width(85) end,
+  cond = function() return conditions.hide_in_width(65) end,
 }
 
 -- setup
@@ -113,8 +114,11 @@ require("lualine").setup {
   sections = {
     lualine_a = { mode },
     lualine_b = { branch, diff },
-    lualine_c = { filetype, filename, diagnostics },
-
+    lualine_c = {
+        filetype,
+        filename ,
+        -- diagnostics 
+      },
     lualine_x = { DynamicPath },
     lualine_y = { progress },
     lualine_z = { "location", searchcount, "selectioncount" },
@@ -123,7 +127,7 @@ require("lualine").setup {
     lualine_a = {},
     lualine_b = {},
     lualine_c = { filename },
-    lualine_x = {},
+    lualine_x = {  },
     lualine_y = {},
     lualine_z = {},
   },
