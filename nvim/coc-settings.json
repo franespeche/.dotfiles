@@ -7,7 +7,7 @@
     "$HOME/.cargo/**",
     "$HOME/.rustup/**"
   ],
-  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.virtualTextCurrentLineOnly": true,
   //"tsserver.disableAutomaticTypescriptReacTypeAcquisition": true,
   //  "list.source.files.excludePatterns": [
   //    "**/node_modules/**",

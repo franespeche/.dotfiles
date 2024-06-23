@@ -3,17 +3,17 @@ local dataPath = vim.fn['stdpath']('data') .. '/plugged'
 
 -- LuaFormatter off
 vim.call('plug#begin', dataPath)
-Plug "neovim/nvim-lspconfig"                                                              -- lsp (also navic dependency)
-Plug 'hrsh7th/cmp-nvim-lsp'                                                               -- completions
-Plug 'hrsh7th/cmp-buffer'                                                                 -- completions
-Plug 'hrsh7th/cmp-path'                                                                   -- completions
-Plug 'hrsh7th/cmp-cmdline'                                                                -- completions
+-- Plug "neovim/nvim-lspconfig"                                                              -- lsp (also navic dependency)
+-- Plug 'hrsh7th/cmp-nvim-lsp'                                                               -- completions
+-- Plug 'hrsh7th/cmp-buffer'                                                                 -- completions
+-- Plug 'hrsh7th/cmp-path'                                                                   -- completions
+-- Plug 'hrsh7th/cmp-cmdline'                                                                -- completions
 -- Plug 'hrsh7th/nvim-cmp'                                                                   -- completions
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-Plug ('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'})           -- snipets
-Plug 'saadparwaiz1/cmp_luasnip'                                                           -- snipets completions
-Plug 'saadparwaiz1/cmp_luasnip'                                                           -- snipets completions
+-- Plug 'hrsh7th/cmp-vsnip'
+-- Plug 'hrsh7th/vim-vsnip'
+-- Plug ('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'})           -- snipets
+-- Plug 'saadparwaiz1/cmp_luasnip'                                                           -- snipets completions
+-- Plug 'saadparwaiz1/cmp_luasnip'                                                           -- snipets completions
 Plug 'MunifTanjim/nui.nvim'                                                               -- [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                        -- [neotree] file explorer
 Plug('neoclide/coc.nvim', { ['branch'] = 'release' })                                     -- completion, lsp, ...
@@ -38,6 +38,7 @@ Plug 'tpope/vim-fugitive'                                                       
 Plug 'tpope/vim-rhubarb'                                                                  -- [git] fugitive's hub
 Plug 'tpope/vim-commentary'                                                               -- comment text
 Plug 'morhetz/gruvbox'                                                                    -- colorscheme
+Plug 'sainnhe/gruvbox-material'                                                           -- colorscheme
 Plug 'EdenEast/nightfox.nvim'                                                             -- colorscheme
 Plug 'rebelot/kanagawa.nvim'                                                              -- colorscheme
 Plug 'catppuccin/nvim'                                                                    -- colorscheme
@@ -56,7 +57,7 @@ Plug 'vim-syntastic/syntastic'                                                  
 Plug 'cameron-wags/rainbow_csv.nvim'                                                      -- easily read csv
 Plug 'm-demare/hlargs.nvim'                                                               -- highlight arguments
 Plug 'brenoprata10/nvim-highlight-colors'                                                 -- highlight colors
-Plug 'folke/neodev.nvim'                                                                  -- lua types (?)
+-- Plug 'folke/neodev.nvim'                                                                  -- lua types (?)
 Plug 'andrejlevkovitch/vim-lua-format'                                                    -- lua formatter (?)
 Plug 'milisims/nvim-luaref'
 Plug ('franespeche/strawberry', { ['branch'] = 'main' })
@@ -66,8 +67,11 @@ Plug 'folke/lua-dev.nvim'
 Plug 'rafcamlet/nvim-luapad'
 Plug 'hashivim/vim-terraform'
 Plug 'rrethy/vim-illuminate'                                                              -- highlight symbol under cursor
-Plug 'echasnovski/mini.nvim'
-Plug 'ThePrimeagen/harpoon'
+Plug 'echasnovski/mini.jump'                                                              -- used for the "f" repeated functionality
+Plug 'ThePrimeagen/harpoon'                                                               -- anchor files for quick access
+Plug 'shellRaining/hlchunk.nvim'                                                          -- highlight chunks
+Plug 'karb94/neoscroll.nvim'                                                              -- highlight chunks
+Plug 'vimwiki/vimwiki/'                                                                   -- vim wiki
 vim.call('plug#end')
 -- LuaFormatter on
 
@@ -83,3 +87,5 @@ end
 if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/init.local.vim')) == 1) then
     vim.cmd 'source ~/.dotfiles/nvim/init.local.vim'
 end
+
+

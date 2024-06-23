@@ -8,8 +8,12 @@ require("plugins.nvim-highlight-colors")
 require("plugins.prettier")
 require("plugins.strawberry")
 require("plugins.extmarks")
+require("plugins.harpoon")
+require("plugins.hlchunk")
+require("plugins.neoscroll")
+require("plugins.vimwiki")
 
--- require("mini.animate").setup()
+-- TODO: setup this in its own file
 require("mini.jump").setup(
   {
     -- Module mappings. Use `''` (empty string) to disable one.
@@ -31,4 +35,3 @@ require("mini.jump").setup(
       idle_stop = 10000000,
     },
 })
-require("plugins.harpoon")

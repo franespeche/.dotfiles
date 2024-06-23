@@ -267,3 +267,6 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8

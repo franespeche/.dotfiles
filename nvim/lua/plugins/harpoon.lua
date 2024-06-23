@@ -27,6 +27,7 @@ require("harpoon").setup({
 require("telescope").load_extension("harpoon")
 
 Keymap("n", "<leader>hx", ":lua require(\"harpoon.mark\").add_file()<CR>", Opts)
+Keymap("n", "<leader>hm", ":lua require(\"harpoon.mark\").add_file()<CR>", Opts)
 Keymap("n", "<leader>ho", ":lua require(\"harpoon.ui\").toggle_quick_menu()<CR>", Opts)
 Keymap("n", "<leader>hh", ":Telescope harpoon marks<CR>", Opts)
 Keymap("n", "<leader>hn", ":lua require(\"harpoon.ui\").nav_next()<CR>", Opts)

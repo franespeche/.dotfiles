@@ -43,12 +43,12 @@ au("User", {
 })
 
 -- highlight symbol under cursor on CursorHold
-au("CursorHold", {
-  pattern = "*",
-  group = "coc-custom",
-  command = "call CocActionAsync('highlight')",
-  desc = "highlight symbol under cursor on CursorHold",
-})
+-- au("CursorHold", {
+  -- pattern = "*",
+  -- group = "coc-custom",
+  -- command = "call CocActionAsync('highlight')",
+  -- desc = "highlight symbol under cursor on CursorHold",
+-- })
 -- disable autocommenting
 au("BufEnter", { desc = "disables autocommenting", command = "set fp-=c fo-=r fo-=o" })
 
