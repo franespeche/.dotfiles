@@ -5,10 +5,11 @@ local o = vim.o
 local cmd = vim.cmd
 
 -- globals
-local color_scheme = "gruvbox-material"
+local color_scheme = "catppuccin"
 
 if g.dark_theme == nil then g.dark_theme = color_scheme end
-if g.light_theme == nil then g.light_theme = "dawnfox" end
+if g.light_theme == nil then g.light_theme = color_scheme end
+-- if g.light_theme == nil then g.light_theme = "dawnfox" end
 
 -- avoid syntax inconsistencies
 if g.syntax_on == nil then
@@ -20,7 +21,7 @@ end
 if g.colors_name == nil then
   if g.is_dark_mode then
     cmd("silent! colorscheme " .. g.dark_theme)
-    -- cmd("silent! set background=dark")
+    cmd("silent! set background=dark")
     if (color_scheme == "gruvbox") then
       local yellow = "#fabd2f"
       cmd("highlight Search cterm=None ctermfg=214 ctermbg=235 gui=None guifg=#1d2021 guibg=" .. yellow)
