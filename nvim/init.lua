@@ -1,19 +1,18 @@
-local Plug = vim.fn['plug#']
-local dataPath = vim.fn['stdpath']('data') .. '/plugged'
+local Plug = vim.fn["plug#"]
+local dataPath = vim.fn["stdpath"]("data") .. "/plugged"
 
 -- LuaFormatter off
 vim.call('plug#begin', dataPath)
--- Plug "neovim/nvim-lspconfig"                                                              -- lsp (also navic dependency)
--- Plug 'hrsh7th/cmp-nvim-lsp'                                                               -- completions
--- Plug 'hrsh7th/cmp-buffer'                                                                 -- completions
--- Plug 'hrsh7th/cmp-path'                                                                   -- completions
--- Plug 'hrsh7th/cmp-cmdline'                                                                -- completions
--- Plug 'hrsh7th/nvim-cmp'                                                                   -- completions
--- Plug 'hrsh7th/cmp-vsnip'
--- Plug 'hrsh7th/vim-vsnip'
--- Plug ('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'})           -- snipets
--- Plug 'saadparwaiz1/cmp_luasnip'                                                           -- snipets completions
--- Plug 'saadparwaiz1/cmp_luasnip'                                                           -- snipets completions
+Plug "neovim/nvim-lspconfig"                                                              -- lsp (also navic dependency)
+Plug 'hrsh7th/cmp-nvim-lsp'                                                               -- completions
+Plug 'hrsh7th/cmp-buffer'                                                                 -- completions
+Plug 'hrsh7th/cmp-path'                                                                   -- completions
+Plug 'hrsh7th/cmp-cmdline'                                                                -- completions
+Plug 'hrsh7th/nvim-cmp'                                                                   -- completions
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug ('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'})           -- snipets
+Plug 'saadparwaiz1/cmp_luasnip'                                                           -- snipets completions
 Plug 'MunifTanjim/nui.nvim'                                                               -- [neotree] (dependency)
 Plug 'nvim-neo-tree/neo-tree.nvim'                                                        -- [neotree] file explorer
 Plug('neoclide/coc.nvim', { ['branch'] = 'release' })                                     -- completion, lsp, ...
@@ -57,7 +56,7 @@ Plug 'vim-syntastic/syntastic'                                                  
 Plug 'cameron-wags/rainbow_csv.nvim'                                                      -- easily read csv
 Plug 'm-demare/hlargs.nvim'                                                               -- highlight arguments
 Plug 'brenoprata10/nvim-highlight-colors'                                                 -- highlight colors
--- Plug 'folke/neodev.nvim'                                                                  -- lua types (?)
+Plug 'folke/neodev.nvim'                                                                  -- lua types (?)
 Plug 'andrejlevkovitch/vim-lua-format'                                                    -- lua formatter (?)
 Plug 'milisims/nvim-luaref'
 Plug ('franespeche/strawberry', { ['branch'] = 'main' })
@@ -76,16 +75,14 @@ vim.call('plug#end')
 -- LuaFormatter on
 
 -- source
-require 'config'
+require "config"
 -- require 'config.keymaps'
-require 'plugins'
+require "plugins"
 
 -- private
-if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/private.vim')) == 1) then
-    vim.cmd 'source ~/.dotfiles/nvim/private.vim'
+if (vim.fn.filereadable(vim.fn.expand("~/.dotfiles/nvim/private.vim")) == 1) then
+    vim.cmd "source ~/.dotfiles/nvim/private.vim"
 end
-if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/init.local.vim')) == 1) then
-    vim.cmd 'source ~/.dotfiles/nvim/init.local.vim'
+if (vim.fn.filereadable(vim.fn.expand("~/.dotfiles/nvim/init.local.vim")) == 1) then
+    vim.cmd "source ~/.dotfiles/nvim/init.local.vim"
 end
-
-

@@ -48,13 +48,15 @@ cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
 })
-]]--
+]] --
+
 require "config.utils"
 require "config.settings"
 require "config.autocommands"
 require "config.theme"
 require "config.coc"
--- require "config.neodev"
--- require "config.lspconfig"
+-- make sure to setup neodev BEFORE lspconfig
+require "config.neodev"
+require "config.lspconfig"
 require "config.git"
 require "config.keymaps"
