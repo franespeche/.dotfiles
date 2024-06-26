@@ -41,6 +41,19 @@ local show_git_worktree_recent_files = {
   end,
 }
 
+local function toggle_copilot() print("holas") end
+
+local show_custom_menu = {
+  name = "show_custom_menu",
+  format_value = function(v) return v end,
+  callback = function(limit)
+    local seeds = {}
+    local menuItem = create_seed(1, "asd", "Toggle Copilot", toggle_copilot)
+    table.insert(seeds, menuItem)
+    return seeds
+  end,
+}
+
 local show_recent_files = {
   name = "show_recent_files",
   format_value = function(v) return (remove_home_path(v)) end,
@@ -87,9 +100,10 @@ local show_active_buffers = {
 
 -- setup
 require("strawberry"):setup({
-  actions = { show_git_worktree_recent_files, show_recent_files, show_active_buffers },
+  actions = { show_git_worktree_recent_files, show_recent_files, show_active_buffers, show_custom_menu },
   config = { window_height = 5 },
 })
 
 -- keymaps
 Keymap("n", "<leader>rf", ":Strawberry show_git_worktree_recent_files<cr>", Opts)
+Keymap("n", "<leader>rm", ":Strawberry show_custom_menu<cr>", Opts)
