@@ -41,14 +41,40 @@ local show_git_worktree_recent_files = {
   end,
 }
 
-local function toggle_copilot() print("holas") end
+local function is_copilot_enabled()
+  local status_output = vim.api.nvim_exec(":Copilot status", true)
+  local is_enabled = nil
+
+  -- this seems a little bit hacky <(-_-<)
+  if status_output:match("Copilot: Disabled globally by :Copilot disable") then
+    is_enabled = false
+  elseif status_output:match("Copilot: Ready") then
+    is_enabled = true
+  end
+
+  return is_enabled
+end
+
+local function toggle_copilot()
+  local is_enabled = is_copilot_enabled()
+  -- TODO: store this variable in a global variable and use it in lualine
+  if is_enabled == true then
+    print("Copilot enabled")
+    vim.api.nvim_command("Copilot disable")
+  else
+    print("Copilot disabled")
+    vim.api.nvim_command("Copilot enable")
+    return
+  end
+end
 
 local show_custom_menu = {
   name = "show_custom_menu",
   format_value = function(v) return v end,
-  callback = function(limit)
+  callback = function()
     local seeds = {}
-    local menuItem = create_seed(1, "asd", "Toggle Copilot", toggle_copilot)
+    -- TODO: pass in a function for the title which can dynamically change by reading a global variable, for example
+    local menuItem = create_seed(1, "", "copilot", toggle_copilot)
     table.insert(seeds, menuItem)
     return seeds
   end,
