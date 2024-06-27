@@ -1,7 +1,10 @@
 *.logs
 
 nvim/TODO.txt
+nvim/TODO.md
 nvim/private.vim
+nvim/pack/
+nvim/vimwiki/
 nvim/debug.vim
 nvim/lazy-lock.json
 
