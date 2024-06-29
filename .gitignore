@@ -3,8 +3,9 @@
 nvim/TODO.txt
 nvim/TODO.md
 nvim/private.vim
-nvim/pack/
-nvim/vimwiki/
+nvim/private.lua
+nvim/lua/playground.lua
+nvim/pack/github/start/copilot.vim
 nvim/debug.vim
 nvim/lazy-lock.json
 
