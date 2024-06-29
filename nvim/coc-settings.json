@@ -2,6 +2,16 @@
   "Lua.diagnostics.globals": [
     "vim"
   ],
+  "languageserver": {
+    "typescript": {
+      "command": "typescript-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"],
+      "initializationOptions": {
+        "host": "coc.nvim"
+      }
+    },
+  },
   "workspace.ignoredFolders": [
     "$HOME",
     "$HOME/.cargo/**",
