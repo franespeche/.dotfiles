@@ -1,4 +1,4 @@
-local create_seed = require("strawberry").create_seed
+local create_menu_item = require("strawberry").create_menu_item
 
 -- helpers
 local function get_home_path() return os.getenv("HOME") end
@@ -25,19 +25,19 @@ local show_git_worktree_recent_files = {
     limit = limit or 15
 
     local oldfiles = vim.v.oldfiles
-    local seeds = {}
+    local menu_items = {}
     local git_root_dir = vim.fn.system("git rev-parse --show-toplevel")
 
     local i = 1
-    while (i <= #oldfiles and (#seeds < limit or i < 10)) do
+    while (i <= #oldfiles and (#menu_items < limit or i < 10)) do
       local file = oldfiles[i]
       if (vim.fn.filereadable(file) == 1 and vim.startswith(vim.trim(file), vim.trim(git_root_dir))) then
-        local seed = create_seed(#seeds + 1, file, get_filename(file))
-        table.insert(seeds, seed)
+        local menu_item = create_menu_item(#menu_items + 1, file, get_filename(file))
+        table.insert(menu_items, menu_item)
       end
       i = i + 1
     end
-    return seeds
+    return menu_items
   end,
 }
 
@@ -72,11 +72,11 @@ local show_custom_menu = {
   name = "show_custom_menu",
   format_value = function(v) return v end,
   callback = function()
-    local seeds = {}
+    local menu_items = {}
     -- TODO: pass in a function for the title which can dynamically change by reading a global variable, for example
-    local menuItem = create_seed(1, "", "copilot", toggle_copilot)
-    table.insert(seeds, menuItem)
-    return seeds
+    local menuItem = create_menu_item(1, "", "copilot", toggle_copilot)
+    table.insert(menu_items, menuItem)
+    return menu_items
   end,
 }
 
@@ -87,40 +87,42 @@ local show_recent_files = {
     limit = limit or 15
 
     local oldfiles = vim.v.oldfiles
-    local seeds = {}
+    local menu_items = {}
 
     local i = 1
-    while (i <= #oldfiles and (#seeds < limit or i < 10)) do
+    while (i <= #oldfiles and (#menu_items < limit or i < 10)) do
       local file = oldfiles[i]
       if (vim.fn.filereadable(file) == 1) then
-        local seed = create_seed(#seeds + 1, file, get_filename(file))
-        table.insert(seeds, seed)
+        local menu_item = create_menu_item(#menu_items + 1, file, get_filename(file))
+        table.insert(menu_items, menu_item)
       end
       i = i + 1
     end
-    return seeds
+    return menu_items
   end,
 }
 
 local show_active_buffers = {
   name = "show_active_buffers",
   callback = function()
+    P("asdad")
+    return ""
 
-    local limit = 15
+    -- local limit = 15
 
-    local bufs = vim.fn.buffers("ah")
-    local seeds = {}
+    -- local bufs = vim.fn.buffers("ah")
+    -- local menu_items = {}
 
-    local i = 1
-    while (i <= #bufs and (#seeds < limit or i < 10)) do
-      local buf = bufs[i]
-      if (vim.api.nvim_buf_is_loaded(buf)) then
-        local name = vim.api.nvim_buf_get_name(buf)
-        local seed = create_seed(#seeds + 1, name, name, false)
-        table.insert(seeds, seed)
-      end
-      i = i + 1
-    end
+    -- local i = 1
+    -- while (i <= #bufs and (#menu_items < limit or i < 10)) do
+    -- local buf = bufs[i]
+    -- if (vim.api.nvim_buf_is_loaded(buf)) then
+    -- local name = vim.api.nvim_buf_get_name(buf)
+    -- local menu_item = create_menu_item(#menu_items + 1, name, name, false)
+    -- table.insert(menu_items, menu_item)
+    -- end
+    -- i = i + 1
+    -- end
   end,
 }
 
@@ -133,3 +135,4 @@ require("strawberry"):setup({
 -- keymaps
 Keymap("n", "<leader>rf", ":Strawberry show_git_worktree_recent_files<cr>", Opts)
 Keymap("n", "<leader>rm", ":Strawberry show_custom_menu<cr>", Opts)
+Keymap("n", "<leader>rb", ":Strawberry show_active_buffers<cr>", Opts)
