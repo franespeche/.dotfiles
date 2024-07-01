@@ -4,6 +4,7 @@ local git_worktree_recent_files = require(
                                       "plugins.strawberry.components.recent_files_git_worktree")
 local recent_files = require("plugins.strawberry.components.recent_files")
 local active_buffers = require("plugins.strawberry.components.active_buffers")
+
 -- Setup
 require("strawberry"):setup({
   pickers = {
@@ -23,4 +24,4 @@ require("strawberry"):setup({
 -- Keymaps
 Keymap("n", "<leader>rf", ":Strawberry git_worktree_recent_files<cr>", Opts)
 Keymap("n", "<leader>rm", ":Strawberry custom_menu<cr>", Opts)
-Keymap("n", "<leader>rb", ":Strawberry active_buffers<cr>", Opts)
+Keymap("n", "<beader>rb", ":Strawberry active_buffers<cr>", Opts)

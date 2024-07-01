@@ -42,7 +42,6 @@ end
 local picker = {
   name = "custom_menu",
   config = { close_on_leave = true, close_on_select = false },
-
   get_items = function()
     local items = {}
     for _, menu_item in ipairs(get_menu_items()) do
