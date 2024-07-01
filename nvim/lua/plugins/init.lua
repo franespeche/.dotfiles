@@ -6,6 +6,8 @@ require("plugins.navic")
 require("plugins.lualine")
 require("plugins.nvim-highlight-colors")
 require("plugins.prettier")
+-- this needs to be required before strawberry because it exports a helper
+require("plugins.copilot")
 require("plugins.strawberry")
 require("plugins.extmarks")
 require("plugins.harpoon")
