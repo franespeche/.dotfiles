@@ -17,7 +17,7 @@ Keymap("n", "<leader>tq", ":tabclose<cr>", Opts)
 Keymap("n", "<leader>l", ":vsp<cr>", Opts)
 Keymap("n", "<leader>j", ":sp<cr>", Opts)
 
--- splits navigate
+-- splits navigatekeymaps
 Keymap("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", Opts)
 Keymap("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", Opts)
 Keymap("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", Opts)
@@ -50,7 +50,6 @@ Keymap("n", "<space>j", "J")
 Keymap("n", "<space>o", "o<C-u>")
 
 Keymap("n", "<leader>C", ":Copilot disable<cr>")
-
 
 -- insert line in INSERT mode
 Keymap("i", "<C-o>", "<Esc>o")
@@ -109,8 +108,8 @@ Keymap("", "<space>", "<Nop>")
 Keymap("n", "<space><S-b>", "F(B")
 Keymap("n", "<space>b", "F(b")
 -- forwards
-Keymap("n", "<space><S-f>", "f(b")
-Keymap("n", "<space>f", "f(B")
+Keymap("n", "<space>F", "f(B")
+Keymap("n", "<space>f", "f(b")
 
 -- indenting behavior
 Keymap("v", "<Tab>", ">gv")
@@ -166,8 +165,10 @@ Keymap("i", "<C-k>", "<Esc>ka")
 Keymap("n", "<leader>cp", ":let @* = expand(\"%\")<cr>", Opts)
 
 -- console log snippet
-Keymap("n", "<space>cl", "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
-Keymap("v", "<space>cl", "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
+Keymap("n", "<space>cl",
+       "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
+Keymap("v", "<space>cl",
+       "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
 
 -- Git
 --
