@@ -1,23 +1,26 @@
--- actions
-local show_custom_menu = require("plugins.strawberry.components.custom_menu")
-local show_git_worktree_recent_files = require(
-                                           "plugins.strawberry.components.recent_files_git_worktree")
-local show_recent_files = require("plugins.strawberry.components.recent_files")
-local show_active_buffers = require(
-                                "plugins.strawberry.components.active_buffers")
-
--- setup
+-- Actions
+local custom_menu = require("plugins.strawberry.components.custom_menu")
+local git_worktree_recent_files = require(
+                                      "plugins.strawberry.components.recent_files_git_worktree")
+local recent_files = require("plugins.strawberry.components.recent_files")
+local active_buffers = require("plugins.strawberry.components.active_buffers")
+-- Setup
 require("strawberry"):setup({
-  actions = {
-    show_git_worktree_recent_files,
-    show_recent_files,
-    show_active_buffers,
-    show_custom_menu,
+  pickers = {
+    git_worktree_recent_files,
+    recent_files,
+    active_buffers,
+    custom_menu,
   },
-  config = { window_height = 5, auto_close = false },
+  config = {
+    window_height = 15, -- strawberry's window height
+    auto_close_on_leave = true, -- close on BufLeave
+    auto_close_on_select = true, -- close on item selection
+    keymaps = { close = { "<esc>" }, select_item = { "<cr>" } }, -- Not yet supported
+  },
 })
 
--- keymaps
-Keymap("n", "<leader>rf", ":Strawberry show_git_worktree_recent_files<cr>", Opts)
-Keymap("n", "<leader>rm", ":Strawberry show_custom_menu<cr>", Opts)
-Keymap("n", "<leader>rb", ":Strawberry show_active_buffers<cr>", Opts)
+-- Keymaps
+Keymap("n", "<leader>rf", ":Strawberry git_worktree_recent_files<cr>", Opts)
+Keymap("n", "<leader>rm", ":Strawberry custom_menu<cr>", Opts)
+Keymap("n", "<leader>rb", ":Strawberry active_buffers<cr>", Opts)

@@ -1,11 +1,12 @@
 local create_item = require("strawberry").create_item
 local get_filename = require("strawberry").utils.get_filename
 local remove_home_path = require("strawberry").utils.remove_home_path
+local open_file = require("strawberry").utils.open_file
 
-local show_recent_files = {
-  name = "show_recent_files",
-  format_value = function(v) return (remove_home_path(v)) end,
-  callback = function(limit)
+local picker = {
+  name = "recent_files",
+  config = { auto_close = true },
+  get_items = function(limit)
     limit = limit or 15
 
     local oldfiles = vim.v.oldfiles
@@ -16,9 +17,10 @@ local show_recent_files = {
       local file = oldfiles[i]
       if (vim.fn.filereadable(file) == 1) then
         local menu_item = create_item({
-          num = #menu_items + 1,
-          value = file,
           title = get_filename(file),
+          label = function(v) return (remove_home_path(v)) end,
+          value = file,
+          on_select = open_file,
         })
         table.insert(menu_items, menu_item)
       end
@@ -28,4 +30,4 @@ local show_recent_files = {
   end,
 }
 
-return show_recent_files
+return picker

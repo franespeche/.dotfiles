@@ -1,8 +1,12 @@
 local create_item = require("strawberry").create_item
+local get_filename = require("strawberry").utils.get_filename
+local remove_home_path = require("strawberry").utils.remove_home_path
+local open_file = require("strawberry").utils.open_file
 
-local show_active_buffers = {
-  name = "show_active_buffers",
-  callback = function()
+local picker = {
+  name = "active_buffers",
+  config = { auto_close = true },
+  get_items = function()
     local limit = 15
 
     local bufs = vim.api.nvim_list_bufs()
@@ -12,18 +16,24 @@ local show_active_buffers = {
     while (i <= #bufs and (#menu_items < limit or i < 10)) do
       local buf = bufs[i]
       if (vim.api.nvim_buf_is_loaded(buf)) then
-        local name = vim.api.nvim_buf_get_name(buf)
+        local file = vim.api.nvim_buf_get_name(buf)
+
+        if file == "" then goto continue end
+
         local item = create_item({
-          num = #menu_items + 1,
-          value = "asd",
-          title = "qwe",
+          title = get_filename(file),
+          label = remove_home_path(file),
+          value = file,
+          on_select = open_file,
         })
         table.insert(menu_items, item)
       end
+
+      ::continue::
       i = i + 1
     end
     return menu_items
   end,
 }
 
-return show_active_buffers
+return picker

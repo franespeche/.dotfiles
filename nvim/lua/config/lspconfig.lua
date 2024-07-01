@@ -1,6 +1,4 @@
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-require"neodev".setup {}
-
 local lspconfig = require "lspconfig"
 local navic = require "nvim-navic"
 
@@ -17,8 +15,8 @@ lspconfig.lua_ls.setup {
 
 -- typescript
 -- lspconfig.tsserver.setup {
-  -- on_attach = on_attach,
-  -- filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
+-- on_attach = on_attach,
+-- filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
 -- }
 
 --[[
@@ -57,4 +55,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end, opts)
   end,
 })
-]]--
+]] -- 

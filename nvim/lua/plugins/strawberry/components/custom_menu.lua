@@ -3,6 +3,7 @@ local create_item = require("strawberry").create_item
 -- Helpers
 local function is_copilot_enabled()
   local status_output = vim.api.nvim_exec(":Copilot status", true)
+
   local is_enabled = nil
 
   -- this seems a little bit hacky <(-_-<)
@@ -15,24 +16,41 @@ local function is_copilot_enabled()
   return is_enabled
 end
 
-local function toggle_copilot(v) return vim.api.nvim_command("Copilot " .. v()) end
+-- Enable/disable copilot
+local function toggle_copilot()
+  local is_enabled = is_copilot_enabled()
+  local value = is_enabled and "disable" or "enable"
+  local cmd = "Copilot " .. value
+  vim.api.nvim_command(cmd)
 
-local show_custom_menu = {
-  name = "show_custom_menu",
-  format_value = function(v) return v end,
-  callback = function()
-    local menu_items = {}
-    local menuItem = create_item({
-      num = 1,
-      value = function()
-        return is_copilot_enabled() and "disable" or "enable"
-      end,
-      title = "Copilot",
-      action = toggle_copilot,
-    })
-    table.insert(menu_items, menuItem)
-    return menu_items
+  print("Copilot " .. (is_enabled and "Disabled" or "Enabled"))
+end
+
+local function get_copilot_label()
+  local is_enabled = is_copilot_enabled()
+  return is_enabled and "Disable" or "Enable"
+end
+
+-- Custom menu items
+local function get_menu_items()
+  return {
+    { title = "Copilot", label = get_copilot_label(),
+      on_select = toggle_copilot },
+  }
+end
+
+local picker = {
+  name = "custom_menu",
+  config = { close_on_leave = true, close_on_select = false },
+
+  get_items = function()
+    local items = {}
+    for _, menu_item in ipairs(get_menu_items()) do
+      local item = create_item(menu_item)
+      table.insert(items, item)
+    end
+    return items
   end,
 }
 
-return show_custom_menu
+return picker
