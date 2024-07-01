@@ -50,7 +50,8 @@ Plug 'm-demare/hlargs.nvim'                                                     
 Plug 'brenoprata10/nvim-highlight-colors'                                                 -- highlight colors
 Plug 'andrejlevkovitch/vim-lua-format'                                                    -- lua formatter (?)
 Plug 'milisims/nvim-luaref'
-Plug ('franespeche/strawberry', { ['branch'] = 'develop' })
+-- Plug ('franespeche/strawberry', { ['branch'] = 'develop' })
+Plug '~/strbry'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/lua-dev.nvim'
