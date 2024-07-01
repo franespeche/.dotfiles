@@ -27,7 +27,6 @@ Plug 'tpope/vim-fugitive'                                                       
 Plug 'tpope/vim-rhubarb'                                                                  -- [git] fugitive's hub
 Plug 'tpope/vim-scriptease'                                                               -- vim debugging tools
 Plug 'tpope/vim-commentary'                                                               -- comment text
-Plug 'puremourning/vimspector'                                                            -- vim debugger
 Plug 'morhetz/gruvbox'                                                                    -- colorscheme
 Plug 'sainnhe/gruvbox-material'                                                           -- colorscheme
 Plug 'EdenEast/nightfox.nvim'                                                             -- colorscheme
@@ -42,6 +41,7 @@ Plug 'nvim-treesitter/nvim-treesitter'                                          
 Plug 'lukas-reineke/indent-blankline.nvim'                                                -- indent lines
 Plug 'nvim-tree/nvim-web-devicons'                                                        -- devicons
 Plug 'liuchengxu/vista.vim'                                                               -- show symbols
+Plug "neovim/nvim-lspconfig" -- lsp (also navic dependency)
 Plug "SmiteshP/nvim-navic"                                                                -- breadcrumbs
 Plug "kevinhwang91/promise-async"                                                         -- [folds] (dependency)
 Plug 'vim-syntastic/syntastic'                                                            -- check !
@@ -64,7 +64,7 @@ Plug 'karb94/neoscroll.nvim'                                                    
 Plug 'vimwiki/vimwiki/'                                                                   -- vim wiki
 
 -- Development
-Plug "neovim/nvim-lspconfig" -- lsp (also navic dependency)
+Plug 'folke/neodev.nvim' -- lua types (?)
 -- Plug 'hrsh7th/cmp-nvim-lsp' -- completions
 -- Plug 'hrsh7th/cmp-buffer' -- completions
 -- Plug 'hrsh7th/cmp-path' -- completions
@@ -74,7 +74,7 @@ Plug "neovim/nvim-lspconfig" -- lsp (also navic dependency)
 -- Plug 'hrsh7th/vim-vsnip'
 -- Plug('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'}) -- snipets
 -- Plug 'saadparwaiz1/cmp_luasnip' -- snipets completions
-Plug 'folke/neodev.nvim' -- lua types (?)
+-- Plug 'puremourning/vimspector'                                                            -- vim debugger
 vim.call('plug#end')
 -- LuaFormatter on
 
