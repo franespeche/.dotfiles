@@ -64,7 +64,7 @@ Plug 'karb94/neoscroll.nvim'                                                    
 Plug 'vimwiki/vimwiki/'                                                                   -- vim wiki
 
 -- Development
--- Plug "neovim/nvim-lspconfig" -- lsp (also navic dependency)
+Plug "neovim/nvim-lspconfig" -- lsp (also navic dependency)
 -- Plug 'hrsh7th/cmp-nvim-lsp' -- completions
 -- Plug 'hrsh7th/cmp-buffer' -- completions
 -- Plug 'hrsh7th/cmp-path' -- completions
