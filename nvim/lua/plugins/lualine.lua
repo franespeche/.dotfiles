@@ -151,7 +151,7 @@ require("lualine").setup {
   winbar = {
     lualine_c = { navic_path },
     lualine_y = {
-      copilot_status,
+      -- copilot_status,
       navic_status
 
     },
