@@ -22,8 +22,7 @@ local function toggle_copilot()
   local value = is_enabled and "disable" or "enable"
   local cmd = "Copilot " .. value
   vim.api.nvim_command(cmd)
-
-  print("Copilot " .. (is_enabled and "Disabled" or "Enabled"))
+  -- print("Copilot " .. (is_enabled and "Disabled" or "Enabled"))
 end
 
 local function get_copilot_label()
