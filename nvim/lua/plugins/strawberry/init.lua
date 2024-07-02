@@ -4,6 +4,7 @@ local git_worktree_recent_files = require(
                                       "plugins.strawberry.components.recent_files_git_worktree")
 local recent_files = require("plugins.strawberry.components.recent_files")
 local active_buffers = require("plugins.strawberry.components.active_buffers")
+
 -- Setup
 require("strawberry"):setup({
   pickers = {
@@ -14,9 +15,9 @@ require("strawberry"):setup({
   },
   config = {
     window_height = 15, -- strawberry's window height
-    auto_close_on_leave = true, -- close on BufLeave
+    auto_close_on_leave = true, -- close when leaving the picker
     auto_close_on_select = true, -- close on item selection
-    keymaps = { close = { "<esc>" }, select_item = { "<cr>" } }, -- Not yet supported
+    keymaps = { close = { "<esc>", "q" }, select_item = { "<cr>" } },
   },
 })
 
