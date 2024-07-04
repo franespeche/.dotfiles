@@ -20,9 +20,7 @@ end
 local function toggle_copilot()
   local is_enabled = is_copilot_enabled()
   local value = is_enabled and "disable" or "enable"
-  local cmd = "Copilot " .. value
-  vim.api.nvim_command(cmd)
-  -- print("Copilot " .. (is_enabled and "Disabled" or "Enabled"))
+  vim.api.nvim_command("Copilot " .. value)
 end
 
 local function get_copilot_label()
@@ -30,18 +28,22 @@ local function get_copilot_label()
   return is_enabled and "Disable" or "Enable"
 end
 
+local function toggle_gitblame()
+  vim.api.nvim_command("Gitsigns toggle_current_line_blame")
+end
+
 -- Custom menu items
 local function get_menu_items()
   return {
     { title = "Copilot", label = get_copilot_label(),
       on_select = toggle_copilot },
+    { title = "GitBlame", label = "Toggle", on_select = toggle_gitblame },
   }
 end
 
 local picker = {
   name = "custom_menu",
   config = { close_on_leave = true, close_on_select = false },
-
   get_items = function()
     local items = {}
     for _, menu_item in ipairs(get_menu_items()) do

@@ -42,6 +42,7 @@ Plug 'nvim-treesitter/nvim-treesitter'                                          
 Plug 'lukas-reineke/indent-blankline.nvim'                                                -- indent lines
 Plug 'nvim-tree/nvim-web-devicons'                                                        -- devicons
 Plug 'liuchengxu/vista.vim'                                                               -- show symbols
+Plug "neovim/nvim-lspconfig" -- lsp (also navic dependency)
 Plug "SmiteshP/nvim-navic"                                                                -- breadcrumbs
 Plug "kevinhwang91/promise-async"                                                         -- [folds] (dependency)
 Plug 'vim-syntastic/syntastic'                                                            -- check !
