@@ -27,6 +27,7 @@ Plug 'tpope/vim-fugitive'                                                       
 Plug 'tpope/vim-rhubarb'                                                                  -- [git] fugitive's hub
 Plug 'tpope/vim-scriptease'                                                               -- vim debugging tools
 Plug 'tpope/vim-commentary'                                                               -- comment text
+Plug 'puremourning/vimspector'                                                            -- vim debugger
 Plug 'morhetz/gruvbox'                                                                    -- colorscheme
 Plug 'sainnhe/gruvbox-material'                                                           -- colorscheme
 Plug 'EdenEast/nightfox.nvim'                                                             -- colorscheme
@@ -50,7 +51,8 @@ Plug 'm-demare/hlargs.nvim'                                                     
 Plug 'brenoprata10/nvim-highlight-colors'                                                 -- highlight colors
 Plug 'andrejlevkovitch/vim-lua-format'                                                    -- lua formatter (?)
 Plug 'milisims/nvim-luaref'
-Plug ('franespeche/strawberry', { ['branch'] = 'main' })
+-- Plug ('franespeche/strawberry', { ['branch'] = 'develop' })
+Plug '~/strbry'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/lua-dev.nvim'
@@ -64,17 +66,19 @@ Plug 'karb94/neoscroll.nvim'                                                    
 Plug 'vimwiki/vimwiki/'                                                                   -- vim wiki
 
 -- Development
+Plug "neovim/nvim-lspconfig" -- lsp (also navic dependency)
+Plug 'hrsh7th/cmp-nvim-lsp' -- completions
+Plug 'hrsh7th/cmp-buffer' -- completions
+Plug 'hrsh7th/cmp-path' -- completions
+Plug 'hrsh7th/cmp-cmdline' -- completions
+Plug 'hrsh7th/nvim-cmp' -- completions
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'}) -- snipets
+Plug 'saadparwaiz1/cmp_luasnip' -- snipets completions
+Plug 'saadparwaiz1/cmp_luasnip' -- snipets completions
 Plug 'folke/neodev.nvim' -- lua types (?)
--- Plug 'hrsh7th/cmp-nvim-lsp' -- completions
--- Plug 'hrsh7th/cmp-buffer' -- completions
--- Plug 'hrsh7th/cmp-path' -- completions
--- Plug 'hrsh7th/cmp-cmdline' -- completions
--- Plug 'hrsh7th/nvim-cmp' -- completions
--- Plug 'hrsh7th/cmp-vsnip'
--- Plug 'hrsh7th/vim-vsnip'
--- Plug('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'}) -- snipets
--- Plug 'saadparwaiz1/cmp_luasnip' -- snipets completions
--- Plug 'puremourning/vimspector'                                                            -- vim debugger
+
 vim.call('plug#end')
 -- LuaFormatter on
 
