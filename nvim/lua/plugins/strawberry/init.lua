@@ -1,5 +1,5 @@
 -- Imports --
-local components = require("pluginsbstrawberry.components")
+local components = require("plugins.strawberry.components")
 local git_worktree_recent_files = components.git_worktree_recent_files
 local recent_files = components.recent_files
 local active_buffers = components.active_buffers
