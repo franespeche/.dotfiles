@@ -1,6 +1,7 @@
 --  local status_icon = navic.is_available() and "  "  or "  "
 -- imports
 local navic = require("nvim-navic")
+local copilot = require("plugins.copilot")
 
 -- system locals
 local vim = vim
@@ -37,7 +38,9 @@ local conditions = {
   end,
 }
 
-local function DynamicPath() return vim.fn.winwidth(0) > 100 and vim.fn.expand("%:h") or "" end
+local function DynamicPath()
+  return vim.fn.winwidth(0) > 100 and vim.fn.expand("%:h") or ""
+end
 
 local colors = {
   bg = "#262626",
@@ -69,7 +72,11 @@ local searchcount = {
   color = { fg = colors.search_fg_color, bg = colors.search_bg_color },
 }
 
-local diff = { "diff", padding = { left = 0, right = 0 }, cond = function() return conditions.hide_in_width(MINIMALISTIC_WIDTH) end }
+local diff = {
+  "diff",
+  padding = { left = 0, right = 0 },
+  cond = function() return conditions.hide_in_width(MINIMALISTIC_WIDTH) end,
+}
 
 local diagnostics = {
   "diagnostics",
@@ -83,9 +90,19 @@ local diagnostics = {
   cond = function() return conditions.hide_in_width(MINIMALISTIC_WIDTH) end,
 }
 
-local mode = { "mode", fmt = function(str) return str:sub(1, 1) end, align = "right", color = { gui = "bold" } }
+local mode = {
+  "mode",
+  fmt = function(str) return str:sub(1, 1) end,
+  align = "right",
+  color = { gui = "bold" },
+}
 
-local filetype = { "filetype", colored = false, icon_only = true, padding = { left = 1, right = 0 } }
+local filetype = {
+  "filetype",
+  colored = false,
+  icon_only = true,
+  padding = { left = 1, right = 0 },
+}
 
 local filename = { "filename", padding = { left = 1, right = 0 } }
 
@@ -97,15 +114,36 @@ local branch = {
   cond = function() return conditions.hide_in_width(65) end,
 }
 
+local navic_path = { function() return navic.get_location() end, cond = function() return navic.is_available() end }
+local navic_status = {
+        function()
+          local status_icon = navic.is_available() and "󰗠 " or "x "
+          return status_icon .. "navic"
+        end,
+      }
+
+local copilot_status = { function()
+  -- TODO: fix this is_enabled state bug which forces this ternary to be odd
+  local status_icon = copilot.is_copilot_enabled() and "󰗠 " or "x "
+  -- local status_icon = true and "󰗠 " or "x "
+  return status_icon .. "copilot"
+end, cond = function() return true end }
+
 -- setup
 require("lualine").setup {
   options = {
     icons_enabled = true,
-    theme = vim.g.is_dark_mode and g.dark_theme or g.light_theme,
+    -- theme = vim.g.is_dark_mode and g.dark_theme or g.light_theme,
     -- section_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "·" },
-    disabled_filetypes = { "Trouble", "neo-tree", "quickfix", statusline = {}, winbar = {} },
+    disabled_filetypes = {
+      "Trouble",
+      "neo-tree",
+      "quickfix",
+      statusline = {},
+      winbar = {},
+    },
     ignore_focus = {},
     always_divide_middle = true,
     globalstatus = false,
@@ -115,10 +153,10 @@ require("lualine").setup {
     lualine_a = { mode },
     lualine_b = { branch, diff },
     lualine_c = {
-        filetype,
-        filename ,
-        -- diagnostics 
-      },
+      filetype,
+      filename,
+      -- diagnostics 
+    },
     lualine_x = { DynamicPath },
     lualine_y = { progress },
     lualine_z = { "location", searchcount, "selectioncount" },
@@ -127,20 +165,21 @@ require("lualine").setup {
     lualine_a = {},
     lualine_b = {},
     lualine_c = { filename },
-    lualine_x = {  },
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {},
   },
   tabline = {},
   winbar = {
-    lualine_c = { { function() return navic.get_location() end, cond = function() return navic.is_available() end } },
-    lualine_y = {
+    lualine_c = {
       {
-        function()
-          local status_icon = navic.is_available() and "󰗠 " or " "
-          return status_icon .. "navic"
-        end,
+        function() return navic.get_location() end,
+        cond = function() return navic.is_available() end,
       },
+    },
+    lualine_y = {
+      -- copilot_status,
+      navic_status
 
     },
   },

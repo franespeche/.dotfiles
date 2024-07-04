@@ -22,7 +22,6 @@ local function toggle_copilot()
   local value = is_enabled and "disable" or "enable"
   local cmd = "Copilot " .. value
   vim.api.nvim_command(cmd)
-  -- print("Copilot " .. (is_enabled and "Disabled" or "Enabled"))
 end
 
 local function get_copilot_label()
@@ -41,7 +40,6 @@ end
 local picker = {
   name = "custom_menu",
   config = { close_on_leave = true, close_on_select = false },
-
   get_items = function()
     local items = {}
     for _, menu_item in ipairs(get_menu_items()) do

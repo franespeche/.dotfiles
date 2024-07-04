@@ -5,7 +5,7 @@ local open_file = require("strawberry").utils.open_file
 
 local picker = {
   name = "recent_files",
-  config = { auto_close = true },
+  config = { close_on_leave = true, close_on_select = true },
   get_items = function(limit)
     limit = limit or 15
 

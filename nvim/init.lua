@@ -42,6 +42,7 @@ Plug 'nvim-treesitter/nvim-treesitter'                                          
 Plug 'lukas-reineke/indent-blankline.nvim'                                                -- indent lines
 Plug 'nvim-tree/nvim-web-devicons'                                                        -- devicons
 Plug 'liuchengxu/vista.vim'                                                               -- show symbols
+Plug "neovim/nvim-lspconfig" -- lsp (also navic dependency)
 Plug "SmiteshP/nvim-navic"                                                                -- breadcrumbs
 Plug "kevinhwang91/promise-async"                                                         -- [folds] (dependency)
 Plug 'vim-syntastic/syntastic'                                                            -- check !
@@ -77,6 +78,7 @@ Plug('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'}) -
 Plug 'saadparwaiz1/cmp_luasnip' -- snipets completions
 Plug 'saadparwaiz1/cmp_luasnip' -- snipets completions
 Plug 'folke/neodev.nvim' -- lua types (?)
+
 vim.call('plug#end')
 -- LuaFormatter on
 
