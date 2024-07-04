@@ -38,7 +38,9 @@ local conditions = {
   end,
 }
 
-local function DynamicPath() return vim.fn.winwidth(0) > 100 and vim.fn.expand("%:h") or "" end
+local function DynamicPath()
+  return vim.fn.winwidth(0) > 100 and vim.fn.expand("%:h") or ""
+end
 
 local colors = {
   bg = "#262626",
@@ -70,7 +72,11 @@ local searchcount = {
   color = { fg = colors.search_fg_color, bg = colors.search_bg_color },
 }
 
-local diff = { "diff", padding = { left = 0, right = 0 }, cond = function() return conditions.hide_in_width(MINIMALISTIC_WIDTH) end }
+local diff = {
+  "diff",
+  padding = { left = 0, right = 0 },
+  cond = function() return conditions.hide_in_width(MINIMALISTIC_WIDTH) end,
+}
 
 local diagnostics = {
   "diagnostics",
@@ -84,9 +90,19 @@ local diagnostics = {
   cond = function() return conditions.hide_in_width(MINIMALISTIC_WIDTH) end,
 }
 
-local mode = { "mode", fmt = function(str) return str:sub(1, 1) end, align = "right", color = { gui = "bold" } }
+local mode = {
+  "mode",
+  fmt = function(str) return str:sub(1, 1) end,
+  align = "right",
+  color = { gui = "bold" },
+}
 
-local filetype = { "filetype", colored = false, icon_only = true, padding = { left = 1, right = 0 } }
+local filetype = {
+  "filetype",
+  colored = false,
+  icon_only = true,
+  padding = { left = 1, right = 0 },
+}
 
 local filename = { "filename", padding = { left = 1, right = 0 } }
 
@@ -121,7 +137,13 @@ require("lualine").setup {
     -- section_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "·" },
-    disabled_filetypes = { "Trouble", "neo-tree", "quickfix", statusline = {}, winbar = {} },
+    disabled_filetypes = {
+      "Trouble",
+      "neo-tree",
+      "quickfix",
+      statusline = {},
+      winbar = {},
+    },
     ignore_focus = {},
     always_divide_middle = true,
     globalstatus = false,
@@ -131,10 +153,10 @@ require("lualine").setup {
     lualine_a = { mode },
     lualine_b = { branch, diff },
     lualine_c = {
-        filetype,
-        filename ,
-        -- diagnostics 
-      },
+      filetype,
+      filename,
+      -- diagnostics 
+    },
     lualine_x = { DynamicPath },
     lualine_y = { progress },
     lualine_z = { "location", searchcount, "selectioncount" },
@@ -143,13 +165,18 @@ require("lualine").setup {
     lualine_a = {},
     lualine_b = {},
     lualine_c = { filename },
-    lualine_x = {  },
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {},
   },
   tabline = {},
   winbar = {
-    lualine_c = { navic_path },
+    lualine_c = {
+      {
+        function() return navic.get_location() end,
+        cond = function() return navic.is_available() end,
+      },
+    },
     lualine_y = {
       -- copilot_status,
       navic_status
