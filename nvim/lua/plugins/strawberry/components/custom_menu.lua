@@ -31,11 +31,16 @@ local function get_copilot_label()
   return is_enabled and "Disable" or "Enable"
 end
 
+local function toggle_gitblame()
+  vim.api.nvim_command("Gitsigns toggle_current_line_blame")
+end
+
 -- Custom menu items
 local function get_menu_items()
   return {
     { title = "Copilot", label = get_copilot_label(),
       on_select = toggle_copilot },
+    { title = "GitBlame", label = "Toggle", on_select = toggle_gitblame },
   }
 end
 
