@@ -1,8 +1,5 @@
 -- Imports --
-local components_path = vim.fn.stdpath("config") ..
-                            "/lua/plugins/strawberry/?.lua"
-package.path = package.path .. ";" .. components_path
-local components = require("components")
+local components = require("pluginsbstrawberry.components")
 local git_worktree_recent_files = components.git_worktree_recent_files
 local recent_files = components.recent_files
 local active_buffers = components.active_buffers
@@ -31,4 +28,4 @@ require("strawberry"):setup({
 -- Keymaps --
 Keymap("n", "<leader>rf", ":Strawberry git_worktree_recent_files<cr>", Opts)
 Keymap("n", "<leader>rm", ":Strawberry custom_menu<cr>", Opts)
-Keymap("n", "<beader>rb", ":Strawberry active_buffers<cr>", Opts)
+Keymap("n", "<leader>rb", ":Strawberry active_buffers<cr>", Opts)
