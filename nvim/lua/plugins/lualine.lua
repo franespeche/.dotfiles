@@ -133,7 +133,7 @@ end, cond = function() return true end }
 require("lualine").setup {
   options = {
     icons_enabled = true,
-    -- theme = vim.g.is_dark_mode and g.dark_theme or g.light_theme,
+    theme = vim.g.is_dark_mode and vim.g.dark_theme or vim.g.light_theme,
     -- section_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "·" },
