@@ -179,7 +179,8 @@ Keymap("x", "<leader>gl", ":GBrowse<cr>", Opts)
 -- git blame [vim fuvitive]
 Keymap("n", "<leader>gb", ":Git blame<cr>", Opts)
 -- open lazygit
-Keymap("n", "<leader>gg", ":cd %:h<cr> :LazyGit<cr>", Opts)
+-- Keymap("n", "<leader>gg", ":cd %:h<cr> :LazyGit<cr>", Opts)
+Keymap("n", "<leader>gg", ":LazyGitCurrentFile<cr>", Opts)
 
 -- go to the last cursor position before going into Visual mode
 Keymap("n", "go", "gvogvo<ESC>")
