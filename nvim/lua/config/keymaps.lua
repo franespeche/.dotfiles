@@ -189,5 +189,6 @@ Keymap("n", "go", "gvogvo<ESC>")
 Keymap("n", "#", "#zz")
 Keymap("n", "*", "*zz")
 
--- fun
-Keymap("n", "<leader>mr", ":CellularAutomaton make_it_rain<cr>")
+-- Delete Boundaries (first and last line) of selected range
+Keymap("v", ",db", "<Esc>:'>d<Cr>:'<d<Cr>")
+
