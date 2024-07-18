@@ -51,8 +51,11 @@ Plug 'm-demare/hlargs.nvim'                                                     
 Plug 'brenoprata10/nvim-highlight-colors'                                                 -- highlight colors
 Plug 'andrejlevkovitch/vim-lua-format'                                                    -- lua formatter (?)
 Plug 'milisims/nvim-luaref'
--- Plug ('franespeche/strawberry', { ['branch'] = 'develop' })
+if (vim.fn.filereadable(vim.fn.expand('~/strbry')) == 1) then
 Plug '~/strbry'
+else
+end
+Plug ('franespeche/strawberry', { ['branch'] = 'develop' })
 Plug 'MunifTanjim/nui.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/lua-dev.nvim'
