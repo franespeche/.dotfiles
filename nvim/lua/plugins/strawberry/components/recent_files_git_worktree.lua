@@ -1,6 +1,7 @@
 -- helpers
 local create_item = require("strawberry").create_item
 local utils = require("strawberry").utils
+local actions = require("strawberry").actions
 
 local picker = {
   name = "git_worktree_recent_files",
@@ -27,7 +28,7 @@ local picker = {
           title = utils.get_filename(file),
           label = utils.remove_home_path(file),
           value = file,
-          on_select = utils.open_file,
+          on_select = actions.open_file,
         })
         table.insert(menu_items, menu_item)
       end
