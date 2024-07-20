@@ -50,7 +50,6 @@ Plug 'm-demare/hlargs.nvim'                                                     
 Plug 'brenoprata10/nvim-highlight-colors'                                                 -- highlight colors
 Plug 'andrejlevkovitch/vim-lua-format'                                                    -- lua formatter (?)
 Plug 'milisims/nvim-luaref'
-Plug ('franespeche/strawberry', { ['branch'] = 'main' })
 Plug 'MunifTanjim/nui.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/lua-dev.nvim'
@@ -62,6 +61,13 @@ Plug 'ThePrimeagen/harpoon'                                                     
 Plug 'shellRaining/hlchunk.nvim'                                                          -- highlight chunks
 Plug 'karb94/neoscroll.nvim'                                                              -- highlight chunks
 Plug 'vimwiki/vimwiki/'                                                                   -- vim wiki
+
+-- Local Plugins
+if(vim.fn.isdirectory(vim.fn.expand('~/strbry/')) == 1) then
+Plug '~/strbry'
+else
+Plug ('franespeche/strawberry', { ['branch'] = 'main' })
+end
 
 -- Development
 Plug 'folke/neodev.nvim' -- lua types (?)
@@ -81,7 +87,6 @@ vim.call('plug#end')
 -- source
 require 'config'
 require 'plugins'
-
 -- private
 if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/private.lua')) == 1) then
     vim.cmd 'source ~/.dotfiles/nvim/private.lua'
