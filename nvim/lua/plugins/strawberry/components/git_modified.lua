@@ -8,8 +8,8 @@ local function get_default_branch_name()
   if vim.v.shell_error == 0 then
     return result:match("^refs/remotes/origin/(.+)%s*$"):gsub("%s+$", "") -- Extract the branch name and remove trailing whitespace
   else
-    print("Error executing command")
-    return nil
+    -- TODO: find a better way to get the default branch name
+    return "main"
   end
 end
 
