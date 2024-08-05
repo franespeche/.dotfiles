@@ -17,7 +17,7 @@ local picker = {
     local i = 1
     while (i <= #bufs and (#menu_items < limit or i < 10)) do
       local buf = bufs[i]
-      if (vim.api.nvim_buf_is_loaded(buf)) then
+      if (vim.api.nvim_buf_is_valid(buf)) then
         local file = vim.api.nvim_buf_get_name(buf)
         if file == "" then goto continue end
         local item = create_item({
