@@ -13,7 +13,7 @@ local picker = {
     if (not utils.is_git_directory()) then
       error("Not inside a git working tree")
     end
-    limit = limit or 15
+    limit = limit or 25
 
     local menu_items = {}
     local oldfiles = vim.v.oldfiles
