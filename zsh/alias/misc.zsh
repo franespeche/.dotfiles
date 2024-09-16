@@ -24,6 +24,8 @@ alias vn='nvim $ZDOTDIR/nvim'
 alias kan='killall -9 node'
 alias ac='arduino-cli'
 alias meteo="curl wttr.in/Buenos%20Aires"
+alias xai='python3 ~/projects/xai/xai.py "$@"'
+alias ge='gh copilot explain "$@"'
 
 # vi git
 function vg() {
