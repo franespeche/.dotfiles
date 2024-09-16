@@ -50,6 +50,7 @@ cmp.setup.cmdline(":", {
 })
 ]] --
 
+require "config.copilot"
 require "config.utils"
 require "config.settings"
 require "config.autocommands"
