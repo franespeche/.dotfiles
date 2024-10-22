@@ -96,22 +96,22 @@ function gshp() {
   git stash pop
 }
 
-function ggp() {
+function gl() {
   msg "git log"
   git log --pretty=oneline
 }
 
-function gg() {
-  msg "git log"
-  git log
-}
+# function gl() {
+  # msg "git log"
+  # git log
+# }
 
-function gl() {
+function gp() {
   msg "git pull"
   git pull
 }
 
-function gp() {
+function gP() {
   msg "git push"
   git push
 }
@@ -119,12 +119,6 @@ function gp() {
 function g-() {
   msg "git switch -"
   git switch -
-}
-
-function gpsu() {
-  CURRENT=`git_current_branch`
-  msg "git push --set-upstream $CURRENT"
-  git push --set-upstream origin $CURRENT
 }
 
 function gf() {
