@@ -69,6 +69,12 @@ else
 Plug ('franespeche/strawberry', { ['branch'] = 'main' })
 end
 
+if(vim.fn.isdirectory(vim.fn.expand('~/teleport.nvim/')) == 1) then
+Plug '~/teleport.nvim'
+else
+Plug ('franespeche/teleport.nvim', { ['branch'] = 'main' })
+end
+
 -- Development
 Plug 'folke/neodev.nvim' -- lua types (?)
 -- Plug 'hrsh7th/cmp-nvim-lsp' -- completions
