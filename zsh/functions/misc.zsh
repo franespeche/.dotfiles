@@ -41,21 +41,6 @@ function makegif(){
   ffmpeg -i $1 -pix_fmt rgb8 -r 10 output.gif && gifsicle -03 output.gif -o output.gif && echo -e "\07"
 }
 
-# get dollar blue
-function dolar() {
-  DOLAR=$(curl -s https://api.bluelytics.com.ar/v2/latest)
-  DOLAR_COMPRA=$(echo $DOLAR | jq -r .blue.value_buy)
-  DOLAR_VENTA=$(echo $DOLAR | jq -r .blue.value_sell)
-
-  msg "dolar hoy: \n        compra: $DOLAR_COMPRA \n        venta: $DOLAR_VENTA"
-}
-
-# install py3 dependencies
-function py3install() {
-  msg "python3 -m pip install --upgrade $1"
-  python3 -m pip install --upgrade $1
-}
-
 # relaod zsh
 function rr() {
   msg "reload .zshrc"
@@ -67,6 +52,10 @@ function rr() {
 function changeDirectory() {
   msg "cd $1"
   cd "$1"
+}
+
+function llg() {
+  ll | grep "$1"
 }
 
 # print formated message

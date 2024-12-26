@@ -35,7 +35,7 @@ end
 
 if not o.termguicolors then o.termguicolors = true end
 
--- force italic comments
+-- italic comments
 g.one_allow_italics = 1
 local hl_comment = vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Comment") })
 vim.api.nvim_set_hl(0, "Comment", { italic = true, ctermfg = hl_comment.ctermfg, fg = hl_comment.fg })
@@ -48,3 +48,5 @@ cmd("syntax match fbSubCollections /sub-collection/")
 cmd("highlight fbSubCollections guifg=#E9BD15")
 cmd("syntax match fbDocuments /document/")
 cmd("highlight fbDocuments guifg=#FA8072")
+
+cmd("highlight CursorLineNr guifg=#FFFFFF")

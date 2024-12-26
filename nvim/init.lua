@@ -39,7 +39,8 @@ Plug 'nvim-telescope/telescope.nvim'                                            
 Plug 'nvim-telescope/telescope-live-grep-args.nvim'                                       -- [telescope] ripgrep
 Plug 'nvim-treesitter/nvim-treesitter'                                                    -- [telescope] finder/preview
 Plug 'lukas-reineke/indent-blankline.nvim'                                                -- indent lines
-Plug 'nvim-tree/nvim-web-devicons'                                                        -- devicons
+Plug 'ryanoasis/vim-devicons'                                                        -- devicons
+-- Plug 'nvim-tree/nvim-web-devicons'                                                        -- devicons
 Plug 'liuchengxu/vista.vim'                                                               -- show symbols
 Plug "neovim/nvim-lspconfig" -- lsp (also navic dependency)
 Plug "SmiteshP/nvim-navic"                                                                -- breadcrumbs
