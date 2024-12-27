@@ -36,6 +36,7 @@ Plug 'nvim-lua/plenary.nvim'                                                    
 Plug 'sharkdp/fd'                                                                         -- [telescope] (dependency)
 Plug 'nvim-telescope/telescope.nvim'                                                      -- [telescope] chore
 -- Plug 'nvim-telescope/telescope-file-browser.nvim'                                         -- [telescope] file browser
+Plug 'hedyhli/outline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'                                                    -- [telescope] finder/preview
 Plug 'lukas-reineke/indent-blankline.nvim'                                                -- indent lines
 Plug 'ryanoasis/vim-devicons'                                                        -- devicons
@@ -61,7 +62,6 @@ Plug 'ThePrimeagen/harpoon'                                                     
 Plug 'shellRaining/hlchunk.nvim'                                                          -- highlight chunks
 Plug 'karb94/neoscroll.nvim'                                                              -- highlight chunks
 Plug 'vimwiki/vimwiki/'                                                                   -- vim wiki
-
 -- Local Plugins
 if(vim.fn.isdirectory(vim.fn.expand('~/strbry/')) == 1) then
 Plug '~/strbry'
