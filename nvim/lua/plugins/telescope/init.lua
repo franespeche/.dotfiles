@@ -76,8 +76,7 @@ telescope.setup {
 Keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", Opts)
 Keymap("n", "<leader>fn", "<cmd>lua require('telescope.builtin').find_files{ cwd = '~/.dotfiles/nvim/' }<cr>", Opts)
 Keymap("n", "<leader>fng", "<cmd>lua require('telescope.builtin').live_grep{ cwd = '~/.dotfiles/nvim/' }<cr>", Opts)
--- Keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", Opts)
-Keymap("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", Opts)
+-- Keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", Opts) -- this is set in ./multigrep.lua
 Keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", Opts)
 Keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", Opts)
 Keymap("n", "<leader>fq", "<cmd>Telescope quickfix<cr>", Opts)
