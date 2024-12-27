@@ -72,6 +72,8 @@ telescope.setup {
   },
 }
 
+require"plugins.telescope.multigrep".setup()
+
 
 Keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", Opts)
 Keymap("n", "<leader>fn", "<cmd>lua require('telescope.builtin').find_files{ cwd = '~/.dotfiles/nvim/' }<cr>", Opts)
