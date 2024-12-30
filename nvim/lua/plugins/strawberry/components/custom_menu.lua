@@ -1,6 +1,10 @@
 local create_item = require("strawberry").create_item
 
 -- Helpers
+local get_enabled_label = function(is_enabled)
+  return is_enabled and "Disable" or "Enable"
+end
+
 local function is_copilot_enabled()
   local status_output = vim.api.nvim_exec(":Copilot status", true)
 
@@ -23,13 +27,23 @@ local function toggle_copilot()
   vim.api.nvim_command("Copilot " .. value)
 end
 
+local function get_debug_mode_label()
+  local is_enabled = vim.g.debug_mode or false
+  return get_enabled_label(is_enabled)
+end
+
 local function get_copilot_label()
   local is_enabled = is_copilot_enabled()
-  return is_enabled and "Disable" or "Enable"
+  return get_enabled_label(is_enabled)
 end
 
 local function toggle_gitblame()
   vim.api.nvim_command("Gitsigns toggle_current_line_blame")
+end
+
+local function toggle_debug_mode()
+  local is_enabled = vim.g.debug_mode or false
+  vim.g.debug_mode = not is_enabled
 end
 
 -- Custom menu items
@@ -38,6 +52,7 @@ local function get_menu_items()
     { title = "Copilot", label = get_copilot_label(),
       on_select = toggle_copilot },
     { title = "GitBlame", label = "Toggle", on_select = toggle_gitblame },
+    { title = "Debug Mode", label = get_debug_mode_label(), on_select = toggle_debug_mode },
   }
 end
 
