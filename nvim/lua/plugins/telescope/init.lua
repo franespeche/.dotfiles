@@ -45,6 +45,15 @@ telescope.setup {
       -- theme = "dropdown", 
       -- wrap_results = true
     },
+    location_list = {
+      path_display = function(opts, path)
+        local tail = require("telescope.utils").path_tail(path)
+        return string.format("%s (%s)", tail, path)
+      end,
+      results_title = false,
+      -- theme = "dropdown", 
+      -- wrap_results = true
+    },
     quickfix = {
       path_display = function(opts, path)
         local tail = require("telescope.utils").path_tail(path)
@@ -76,6 +85,8 @@ require"plugins.telescope.multigrep".setup()
 
 
 Keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", Opts)
+Keymap("n", "<leader>fQ", "<cmd>lua require('telescope.builtin').quickfixhistory{}<cr>", Opts)
+Keymap("n", "<leader>fl", "<cmd>lua require('telescope.builtin').loclist{}<cr>", Opts)
 Keymap("n", "<leader>fn", "<cmd>lua require('telescope.builtin').find_files{ cwd = '~/.dotfiles/nvim/' }<cr>", Opts)
 Keymap("n", "<leader>fng", "<cmd>lua require('telescope.builtin').live_grep{ cwd = '~/.dotfiles/nvim/' }<cr>", Opts)
 -- Keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", Opts) -- this is set in ./multigrep.lua
