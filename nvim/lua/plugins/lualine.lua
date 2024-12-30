@@ -114,20 +114,19 @@ local branch = {
   cond = function() return conditions.hide_in_width(65) end,
 }
 
-local navic_path = { function() return navic.get_location() end, cond = function() return navic.is_available() end }
 local navic_status = {
         function()
-          local status_icon = navic.is_available() and "󰗠 " or "x "
+          local status_icon = navic.is_available() and "󰗠 " or " "
           return status_icon .. "navic"
         end,
       }
 
-local copilot_status = { function()
-  -- TODO: fix this is_enabled state bug which forces this ternary to be odd
-  local status_icon = copilot.is_copilot_enabled() and "󰗠 " or "x "
-  -- local status_icon = true and "󰗠 " or "x "
-  return status_icon .. "copilot"
-end, cond = function() return true end }
+local quickfix_amount_items = { function() return "  " .. vim.fn.len(vim.fn.getqflist()) end, cond = function() return vim.g.debug_mode end }
+
+local is_debug_mode = { function () return vim.g.debug_mode and " " or "" end, color = { fg = colors.orange }}
+
+local window_id = { function() return " " .. vim.fn.win_getid() end, cond = function() return vim.g.debug_mode end }
+local buf_id = { function() return " " .. vim.fn.bufnr() end, cond = function() return vim.g.debug_mode end }
 
 -- setup
 require("lualine").setup {
@@ -136,7 +135,7 @@ require("lualine").setup {
     theme = vim.g.is_dark_mode and vim.g.dark_theme or vim.g.light_theme,
     -- section_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    component_separators = { left = "", right = "·" },
+    component_separators = { left = "", right = "" },
     disabled_filetypes = {
       "Trouble",
       "neo-tree",
@@ -178,8 +177,11 @@ require("lualine").setup {
       },
     },
     lualine_y = {
-      -- copilot_status,
-      navic_status
+      window_id,
+      buf_id,
+      quickfix_amount_items,
+      is_debug_mode,
+      navic_status,
 
     },
   },
