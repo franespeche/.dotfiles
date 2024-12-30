@@ -192,3 +192,5 @@ Keymap("n", "*", "*zz")
 -- Delete Boundaries (first and last line) of selected range
 Keymap("v", ",db", "<Esc>:'>d<Cr>:'<d<Cr>")
 
+Keymap("n", "[q", ":cp<cr>")
+Keymap("n", "]q", ":cn<cr>")
