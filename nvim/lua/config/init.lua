@@ -1,5 +1,4 @@
 Opts = { noremap = true, silent = true }
-Keymap = vim.keymap.set
 
 -- local cmp = require "cmp"
 --[[

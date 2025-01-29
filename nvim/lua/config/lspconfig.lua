@@ -2,7 +2,7 @@
 local lspconfig = require "lspconfig"
 local navic = require "nvim-navic"
 
-local on_attach = function(client, bufnr)
+local on_attach = function (client, bufnr)
   if client.server_capabilities.documentSymbolProvider then navic.attach(client, bufnr) end
 end
 
@@ -25,7 +25,7 @@ vim.keymap.set('n', '<leader>ch', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>cc', vim.diagnostic.setloclist)
-Keymap("n", "<leader>cr", ":LspRestart<cr> ", Opts)
+vim.keymap.set("n", "<leader>cr", ":LspRestart<cr> ", Opts)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -55,4 +55,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end, opts)
   end,
 })
-]] -- 
+]] --
