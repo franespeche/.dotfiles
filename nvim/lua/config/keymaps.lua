@@ -194,5 +194,5 @@ vim.keymap.set("v", ",db", "<Esc>:'>d<Cr>:'<d<Cr>")
 vim.keymap.set("n", "[q", ":cp<cr>")
 vim.keymap.set("n", "]q", ":cn<cr>")
 
-vim.keymap.set("n", "p", "P")
-vim.keymap.set("n", "P", "p")
+vim.keymap.set("v", "p", "P")
+vim.keymap.set("v", "P", "p")

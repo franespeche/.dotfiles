@@ -1,9 +1,9 @@
 -- local opts = { noremap = true, silent = true }
 -- local keymap = vim.keymap.set
-Keymap("n", "<space>ef", ":Neotree left toggle reveal_force_cwd<cr>", Opts)
-Keymap("n", "<space>eg", "Neotree left toggle git_status master reveal_force_cwd git_base=master<cr>", Opts)
-Keymap("n", "<space>en", ":Neotree left toggle ~/.dotfiles/nvim reveal_force_cwd<cr>", Opts)
-Keymap("n", "<space>ez", ":Neotree left toggle ~/.dotfiles/zsh reveal_force_cwd<cr>", Opts)
+vim.keymap.set("n", "<space>ef", ":Neotree left toggle reveal_force_cwd<cr>", Opts)
+vim.keymap.set("n", "<space>eg", "Neotree left toggle git_status master reveal_force_cwd git_base=master<cr>", Opts)
+vim.keymap.set("n", "<space>en", ":Neotree left toggle ~/.dotfiles/nvim reveal_force_cwd<cr>", Opts)
+vim.keymap.set("n", "<space>ez", ":Neotree left toggle ~/.dotfiles/zsh reveal_force_cwd<cr>", Opts)
 -- nnoremap <silent> <leader>rl :lua package.loaded["neotree"] = nil<cr>
 
 -- hi Directory ctermfg=109 guifg=Cyan
@@ -13,14 +13,14 @@ vim.g.neo_tree_remove_legacy_commands = 1
 
 require("neo-tree").setup({
   close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
-  log_to_file = false, -- true, false, "/path/to/file.log", use :NeoTreeLogs to show the file
-  use_popups_for_input = true, -- If false, inputs will use vim.ui.input() instead of custom floats.
+  log_to_file = false,          -- true, false, "/path/to/file.log", use :NeoTreeLogs to show the file
+  use_popups_for_input = true,  -- If false, inputs will use vim.ui.input() instead of custom floats.
   popup_border_style = "rounded",
   enable_git_status = true,
   event_handlers = {
     {
       event = "file_opened",
-      handler = function()
+      handler = function ()
         -- auto close
         require("neo-tree").close_all()
       end,
@@ -28,7 +28,7 @@ require("neo-tree").setup({
   },
   enable_diagnostics = true,
   sort_case_insensitive = false, -- used when sorting files and directories in the tree
-  sort_function = nil, -- use a custom function for sorting files and directories in the tree 
+  sort_function = nil,           -- use a custom function for sorting files and directories in the tree
   default_component_configs = {
     container = { enable_character_fade = true },
     indent = {
@@ -75,7 +75,7 @@ require("neo-tree").setup({
   window = {
     position = "left",
     width = 40,
-    same_level = false, -- Create and paste/move files/directories on the same level as the directory under cursor (as opposed to within the directory under cursor).
+    same_level = false,  -- Create and paste/move files/directories on the same level as the directory under cursor (as opposed to within the directory under cursor).
     insert_as = "child", -- Affects how nodes get inserted into the tree during creation/pasting/moving of files if the node under the cursor is a directory:
     -- "child":   Insert nodes as children of the directory under cursor.
     -- "sibling": Insert nodes  as siblings of the directory under cursor.
@@ -139,7 +139,7 @@ require("neo-tree").setup({
       hide_gitignored = false,
       hide_hidden = false, -- only works on Windows for hidden files/directories
       hide_by_name = { ".DS_Store", "node_modules" },
-      hide_by_pattern = { -- uses glob style patterns
+      hide_by_pattern = {  -- uses glob style patterns
         -- "*.meta",
         -- "*/src/*/tsconfig.json",
       },
@@ -156,10 +156,10 @@ require("neo-tree").setup({
     },
     follow_current_file = { enabled = true }, -- This will find and focus the file in the active buffer every
     -- time the current file is changed while the tree is open.
-    use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
+    use_libuv_file_watcher = true,            -- This will use the OS level file watchers to detect changes
     -- instead of relying on nvim autocmd events.
-    group_empty_dirs = true, -- when true, empty folders will be grouped together
-    hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
+    group_empty_dirs = true,                  -- when true, empty folders will be grouped together
+    hijack_netrw_behavior = "open_default",   -- netrw disabled, opening a directory opens neo-tree
     -- in whatever position is specified in window.position
     -- "open_current",  -- netrw disabled, opening a directory opens within the
     -- window like netrw would, regardless of window.position

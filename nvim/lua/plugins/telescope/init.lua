@@ -31,36 +31,36 @@ telescope.setup {
     live_grep = {
       results_title = false,
       path_display = { "truncate" },
-      -- theme = "dropdown", 
+      -- theme = "dropdown",
       -- wrap_results = true
     },
     buffers = {
       theme = "dropdown",
-      path_display = function(opts, path)
+      path_display = function (opts, path)
         local filename = require("telescope.utils").path_tail(path)
         local filepath = string.gsub(path, "/" .. filename, "")
         return string.format("%s (%s)", filename, filepath)
       end,
       results_title = false,
-      -- theme = "dropdown", 
+      -- theme = "dropdown",
       -- wrap_results = true
     },
     location_list = {
-      path_display = function(opts, path)
+      path_display = function (opts, path)
         local tail = require("telescope.utils").path_tail(path)
         return string.format("%s (%s)", tail, path)
       end,
       results_title = false,
-      -- theme = "dropdown", 
+      -- theme = "dropdown",
       -- wrap_results = true
     },
     quickfix = {
-      path_display = function(opts, path)
+      path_display = function (opts, path)
         local tail = require("telescope.utils").path_tail(path)
         return string.format("%s (%s)", tail, path)
       end,
       results_title = false,
-      -- theme = "dropdown", 
+      -- theme = "dropdown",
       -- wrap_results = true
     },
     help_tags = {
@@ -69,32 +69,34 @@ telescope.setup {
       -- theme = "dropdown",
       layout_strategy = "vertical",
       layout_config = { height = 0.99, width = 0.99, preview_height = 0.68 },
-      -- theme = "dropdown", 
+      -- theme = "dropdown",
       -- wrap_results = true
     },
     -- highlights = {
     --   path_display = { "truncate" },
     --   results_title = false,
-    --   -- theme = "dropdown", 
+    --   -- theme = "dropdown",
     --   -- wrap_results = true
     --   },
   },
 }
 
-require"plugins.telescope.multigrep".setup()
+require "plugins.telescope.multigrep".setup()
 
 
-Keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", Opts)
-Keymap("n", "<leader>fQ", "<cmd>lua require('telescope.builtin').quickfixhistory{}<cr>", Opts)
-Keymap("n", "<leader>fl", "<cmd>lua require('telescope.builtin').loclist{}<cr>", Opts)
-Keymap("n", "<leader>fn", "<cmd>lua require('telescope.builtin').find_files{ cwd = '~/.dotfiles/nvim/' }<cr>", Opts)
-Keymap("n", "<leader>fng", "<cmd>lua require('telescope.builtin').live_grep{ cwd = '~/.dotfiles/nvim/' }<cr>", Opts)
--- Keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", Opts) -- this is set in ./multigrep.lua
-Keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", Opts)
-Keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", Opts)
-Keymap("n", "<leader>fq", "<cmd>Telescope quickfix<cr>", Opts)
-Keymap("n", "<leader>fp", ":lua require 'telescope.builtin'.current_buffer_fuzzy_find {}<CR>", Opts)
-Keymap("n", "<leader>fz", ":lua require 'telescope.builtin'.live_grep({ grep_open_fies=true })<CR>", Opts)
-Keymap("n", "<leader>fc", ":lua require 'telescope.builtin'.colorscheme {}<CR>", Opts)
-Keymap("n", "<Leader>fa", ":lua require 'telescope.builtin'.autocommands{}<cr>", Opts)
-Keymap("n", "<Leader>fi", ":lua require 'telescope.builtin'.highlights{}<cr>", Opts)
+vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", Opts)
+vim.keymap.set("n", "<leader>fQ", "<cmd>lua require('telescope.builtin').quickfixhistory{}<cr>", Opts)
+vim.keymap.set("n", "<leader>fl", "<cmd>lua require('telescope.builtin').loclist{}<cr>", Opts)
+vim.keymap.set("n", "<leader>fn", "<cmd>lua require('telescope.builtin').find_files{ cwd = '~/.dotfiles/nvim/' }<cr>",
+  Opts)
+vim.keymap.set("n", "<leader>fng", "<cmd>lua require('telescope.builtin').live_grep{ cwd = '~/.dotfiles/nvim/' }<cr>",
+  Opts)
+-- vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", Opts) -- this is set in ./multigrep.lua
+vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", Opts)
+vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", Opts)
+vim.keymap.set("n", "<leader>fq", "<cmd>Telescope quickfix<cr>", Opts)
+vim.keymap.set("n", "<leader>fp", ":lua require 'telescope.builtin'.current_buffer_fuzzy_find {}<CR>", Opts)
+vim.keymap.set("n", "<leader>fz", ":lua require 'telescope.builtin'.live_grep({ grep_open_fies=true })<CR>", Opts)
+vim.keymap.set("n", "<leader>fc", ":lua require 'telescope.builtin'.colorscheme {}<CR>", Opts)
+vim.keymap.set("n", "<Leader>fa", ":lua require 'telescope.builtin'.autocommands{}<cr>", Opts)
+vim.keymap.set("n", "<Leader>fi", ":lua require 'telescope.builtin'.highlights{}<cr>", Opts)

@@ -11,9 +11,9 @@ require("strawberry"):setup({
     git_modified = components.git_modified,
   },
   config = {
-    window_height = 15, -- strawberry's window height
-    close_on_leave = true, -- close when leaving the picker
-    close_on_select = true, -- close on item selection
+    window_height = 15,         -- strawberry's window height
+    close_on_leave = true,      -- close when leaving the picker
+    close_on_select = true,     -- close on item selection
     keymaps = {
       close = { "<esc>", "q" }, -- close the picker
       select_item = { "<cr>" },
@@ -22,8 +22,8 @@ require("strawberry"):setup({
   },
 })
 
--- Keymaps --
-Keymap("n", "<leader>rf", ":Strawberry git_worktree_recent_files<cr>", Opts)
-Keymap("n", "<leader>rm", ":Strawberry custom_menu<cr>", Opts)
-Keymap("n", "<leader>rg", ":Strawberry git_modified<cr>", Opts)
-Keymap("n", "<leader>rb", ":Strawberry active_buffers<cr>", Opts)
+-- vim.keymap.sets --
+vim.keymap.set("n", "<leader>rf", ":Strawberry git_worktree_recent_files<cr>", Opts)
+vim.keymap.set("n", "<leader>rm", ":Strawberry custom_menu<cr>", Opts)
+vim.keymap.set("n", "<leader>rg", ":Strawberry git_modified<cr>", Opts)
+vim.keymap.set("n", "<leader>rb", ":Strawberry active_buffers<cr>", Opts)
