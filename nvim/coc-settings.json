@@ -1,22 +1,23 @@
 {
-  "Lua.diagnostics.globals": [
-    "vim"
-  ],
+  "Lua.diagnostics.globals": ["vim"],
   "languageserver": {
     "typescript": {
       "command": "typescript-language-server",
       "args": ["--stdio"],
-      "filetypes": ["javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"],
+      "filetypes": [
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx"
+      ],
       "initializationOptions": {
         "host": "coc.nvim"
       }
-    },
+    }
   },
-  "workspace.ignoredFolders": [
-    "$HOME",
-    "$HOME/.cargo/**",
-    "$HOME/.rustup/**"
-  ],
+  "workspace.ignoredFolders": ["$HOME", "$HOME/.cargo/**", "$HOME/.rustup/**"],
   "diagnostic.virtualTextCurrentLineOnly": true,
   //"tsserver.disableAutomaticTypescriptReacTypeAcquisition": true,
   //  "list.source.files.excludePatterns": [
@@ -25,13 +26,15 @@
   //    "**/node_modules/**/.*/**"
   //  ],
   "coc.source.file.ignorePatterns": [
-//    "**/node_modules/**",
-//    "**/node_modules/**/.*",
-//    "**/node_modules/**/.*/**"
+    //    "**/node_modules/**",
+    //    "**/node_modules/**/.*",
+    //    "**/node_modules/**/.*/**"
   ],
+  "tsserver.enable": true,
+  // "tsserver.log": "verbose",
   "tsserver.maxTsServerMemory": 12000,
   "tsserver.useLocalTsdk": true,
-  "coc.preferences.formatOnSave": false,
+  "coc.preferences.formatOnSave": true,
   //  "coc.preferences.formatOnSaveFiletypes": [
   //    "css",
   //    "markdown",
