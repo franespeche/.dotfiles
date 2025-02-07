@@ -1,6 +1,6 @@
 customCommands:
   - key: "&"
-    command: 'yq -i ".variables.git_modified.target_branch = \"{{.SelectedLocalBranch.Name}}\"" ~/.dotfiles/strawberry/config.yaml'
+    command: 'yq -i ".variables.git_modified.target_branch = \"{{.SelectedLocalBranch.Name}}\"" ~/.dotfiles/strawberry/state.yaml'
     context: "localBranches"
     stream: true
     description: "Change target branch name"

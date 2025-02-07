@@ -3,11 +3,11 @@ local utils = require("strawberry").utils
 local actions = require("strawberry").actions
 
 local function read_branch_name_from_config()
-  local config_path = vim.fn.expand("~/.dotfiles/strawberry/config.yaml")
+  local state_path = vim.fn.expand("~/.dotfiles/strawberry/state.yaml")
 
-  if vim.fn.filereadable(config_path) == 1 then
+  if vim.fn.filereadable(state_path) == 1 then
     local output = vim.fn.system("yq .variables.git_modified.target_branch " ..
-      config_path)
+      state_path)
     return vim.trim(output) ~= "" and output or false
   end
 
