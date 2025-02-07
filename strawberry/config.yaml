@@ -1,0 +1,3 @@
+variables:
+  git_modified:
+    target_branch: main
