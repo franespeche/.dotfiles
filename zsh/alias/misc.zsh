@@ -28,6 +28,9 @@ alias ac='arduino-cli'
 alias meteo="curl wttr.in/Buenos%20Aires"
 alias xai='python3 ~/projects/xai/xai.py "$@"'
 alias ge='gh copilot explain "$@"'
+alias -- -='cd -'
+alias yrun='yarn run $(cat package.json | jq ".scripts | keys[]" | fzf | tr -d "\"")'
+alias yb='yarn build'
 
 # vi git
 function vg() {
