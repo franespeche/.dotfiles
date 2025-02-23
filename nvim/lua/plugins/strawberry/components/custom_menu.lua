@@ -1,8 +1,10 @@
 local create_item = require("strawberry").create_item
 
 -- Helpers
-local get_enabled_label = function(is_enabled)
-  return is_enabled and "Disable" or "Enable"
+local get_enabled_label = function (is_enabled)
+  local ENABLE = " "
+  local DISABLE = " "
+  return is_enabled and DISABLE or ENABLE
 end
 
 local function is_copilot_enabled()
@@ -43,23 +45,41 @@ end
 
 local function toggle_debug_mode()
   local is_enabled = vim.g.debug_mode or false
+  -- do autocommand
+  vim.api.nvim_exec_autocmds("User", {
+    pattern = "DebugModeToggle",
+  })
   vim.g.debug_mode = not is_enabled
 end
 
 -- Custom menu items
 local function get_menu_items()
   return {
-    { title = "Copilot", label = get_copilot_label(),
-      on_select = toggle_copilot },
-    { title = "GitBlame", label = "Toggle", on_select = toggle_gitblame },
-    { title = "Debug Mode", label = get_debug_mode_label(), on_select = toggle_debug_mode },
+    {
+      title = "Copilot",
+      label = get_copilot_label(),
+      on_select = toggle_copilot,
+    },
+    {
+      title = "GitBlame",
+      label = "Toggle",
+      on_select = toggle_gitblame,
+    },
+    {
+      title = "Debug Mode",
+      label = get_debug_mode_label(),
+      on_select = toggle_debug_mode,
+    },
   }
 end
 
 local picker = {
   name = "custom_menu",
-  config = { close_on_leave = true, close_on_select = false },
-  get_items = function()
+  config = {
+    close_on_leave = true,
+    close_on_select = false,
+  },
+  get_items = function ()
     local items = {}
     for _, menu_item in ipairs(get_menu_items()) do
       local item = create_item(menu_item)

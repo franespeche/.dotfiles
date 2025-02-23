@@ -1,4 +1,5 @@
 vim.g.mapleader = ","
+vim.g.debug_mode = false
 
 require 'plugins'
 require 'config'

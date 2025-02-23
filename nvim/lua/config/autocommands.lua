@@ -119,7 +119,6 @@ au({ "ColorScheme" }, {
   end
 })
 
--- Lua formatter
 au('BufEnter', {
   pattern = ".lua-format",
   callback = function ()
@@ -134,30 +133,31 @@ au({ "BufWrite" }, {
     vim.cmd(":call LuaFormat()")
   end
 })
--- LuaFormatter on
 
-local Plug = vim.fn["plug#"]
-local dataPath = vim.fn["stdpath"]("data") .. "/plugged"
+vim.api.nvim_create_autocmd("User", {
+  pattern = "DebugModeDisable",
+  callback = function ()
+    vim.g.debug_mode = false
+  end,
+})
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "DebugModeEnable",
   callback = function ()
-    print("loading..")
-    vim.call("plug#begin", dataPath)
-    Plug "folke/neodev.nvim"
-    Plug "hrsh7th/cmp-nvim-lsp"
-    Plug "hrsh7th/cmp-buffer"
-    Plug "hrsh7th/cmp-path"
-    Plug "hrsh7th/cmp-cmdline"
-    Plug "hrsh7th/nvim-cmp"
-    Plug "hrsh7th/cmp-vsnip"
-    Plug "hrsh7th/vim-vsnip"
-    Plug("L3MON4D3/LuaSnip", {
-      ["tag"] = "v2.*",
-      ["do"] = "make install_jsregexp",
-    })
-    Plug "saadparwaiz1/cmp_luasnip"
-    Plug "puremourning/vimspector"
-    vim.call("plug#end")
+    require("development")
+    vim.g.debug_mode = true
   end,
 })
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "DebugModeToggle",
+  callback = function ()
+    local is_enabled = vim.g.debug_mode or false
+    if (is_enabled) then
+      vim.api.nvim_exec_autocmds("User", { pattern = "DebugModeDisable" })
+    else
+      vim.api.nvim_exec_autocmds("User", { pattern = "DebugModeEnable" })
+    end
+  end,
+})
+-- LuaFormatter on

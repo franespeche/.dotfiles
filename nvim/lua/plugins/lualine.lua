@@ -67,10 +67,10 @@ local searchcount = {
   maxcount = 999,
   colored = true,
   timeout = 500,
-  color = {
-    fg = search_fg_color,
-    bg = search_bg_color,
-  },
+  -- color = {
+  -- fg = colors.search_fg_color,
+  -- bg = colors.search_bg_color,
+  -- },
 }
 
 local diff = {
@@ -156,11 +156,11 @@ local navic_status = {
 
 local quickfix_amount_items = {
   function () return "  " .. vim.fn.len(vim.fn.getqflist()) end,
-  cond = function () return vim.gdebug_mode end,
+  cond = function () return vim.g.debug_mode end,
 }
 
 local is_debug_mode = {
-  function () return vim.gdebug_mode and " " or "" end,
+  function () return vim.g.debug_mode and " " or "" end,
   color = {
     fg = colors.orange,
   },
@@ -168,11 +168,11 @@ local is_debug_mode = {
 
 local window_id = {
   function () return " " .. vim.fn.win_getid() end,
-  cond = function () return vim.gdebug_mode end,
+  cond = function () return vim.g.debug_mode end,
 }
 local buf_id = {
   function () return " " .. vim.fn.bufnr() end,
-  cond = function () return vim.gdebug_mode end,
+  cond = function () return vim.g.debug_mode end,
 }
 
 -- setup
