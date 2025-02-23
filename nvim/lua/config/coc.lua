@@ -1,24 +1,32 @@
-local vim = vim
-local opt = vim.opt
 local au = vim.api.nvim_create_autocmd
 local aug = vim.api.nvim_create_augroup
 
 -- settings
-vim.g.coc_global_extensions = { "coc-tsserver", "coc-json", "coc-lua", "coc-yaml", "coc-pyright" }
+vim.g.coc_global_extensions = {
+  "coc-tsserver",
+  "coc-json",
+  "coc-lua",
+  "coc-yaml",
+  "coc-pyright",
+}
 vim.g.jsx_ext_required = 0 -- enable JSX syntax highlighing in javascript files
 
-opt.signcolumn = "yes"     -- always show the sign column, otherwise it would shift the text each time
-opt.updatetime = 300
+vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
+vim.opt.updatetime = 300
 
 -- helpers
 local function show_documentation()
   local filetype = vim.bo.filetype
   local cword = vim.fn.expand("<cword>")
 
-  if vim.fn.index({ "help" }, filetype) >= 0 then
+  if vim.fn.index({
+      "help",
+    }, filetype) >= 0 then
     vim.cmd("h " .. cword)
   else
-    if vim.fn.index({ "lua" }, filetype) >= 0 then
+    if vim.fn.index({
+        "lua",
+      }, filetype) >= 0 then
       vim.lsp.buf.hover()
     else
       vim.fn.CocAction("doHover")
@@ -28,7 +36,9 @@ end
 
 -- autocommands
 -- coc
-aug("coc-custom", { clear = true })
+aug("coc-custom", {
+  clear = true,
+})
 au("FileType", {
   pattern = "typescript,json",
   group = "coc-custom",
@@ -50,7 +60,10 @@ au("User", {
 -- desc = "highlight symbol under cursor on CursorHold",
 -- })
 -- disable autocommenting
-au("BufEnter", { desc = "disables autocommenting", command = "set fp-=c fo-=r fo-=o" })
+au("BufEnter", {
+  desc = "disables autocommenting",
+  command = "set fp-=c fo-=r fo-=o",
+})
 
 -- restart
 vim.keymap.set("n", "<leader>cr", ":CocRestart<cr> ", Opts)
@@ -66,11 +79,8 @@ vim.keymap.set("n", "[g", "<Plug>(coc-diagnostic-prev)", Opts)
 vim.keymap.set("n", "]g", "<Plug>(coc-diagnostic-next)", Opts)
 
 -- actions
-vim.keymap.set("n", "<leader>cl", ":<C-u>call CocActionAsync('codeLensAction')<CR>", Opts)
-
--- explorer
-vim.keymap.set("n", "<space>en", ":CocCommand explorer --preset nvim<CR>", Opts)
-vim.keymap.set("n", "<space>ef", ":CocCommand explorer --preset floating<CR>", Opts)
+vim.keymap.set("n", "<leader>cl",
+  ":<C-u>call CocActionAsync('codeLensAction')<CR>", Opts)
 
 -- definitions
 vim.keymap.set("n", "gd", "<Plug>(coc-definition)zz", Opts)

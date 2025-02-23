@@ -14,21 +14,21 @@ au('BufEnter', {
 
 -- brieflye highlight yanked text
 au('TextYankPost', {
-  callback = function() vim.highlight.on_yank() end,
+  callback = function () vim.highlight.on_yank() end,
   desc = "briefly highlight yanked text"
 })
 
 -- mimic github's tabulation
 aug('TabulationConfig', { clear = true })
 au('FileType', {
-  pattern="vim",
+  pattern = "vim",
   group = "TabulationConfig",
   desc = "match github's tabulation's width",
   command = 'setlocal shiftwidth=4 softtabstop=4'
 })
 
 au('FileType', {
-  pattern="md",
+  pattern = "md",
   group = "TabulationConfig",
   desc = "match github's tabulation's width",
   command = 'setlocal shiftwidth=4 softtabstop=4'
@@ -41,17 +41,17 @@ au('FileType', {
 })
 
 -- python settings
-au({"BufNewFile", "BufRead"}, {
-  pattern = {"*.py"},
+au({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.py" },
   desc = "python settings",
-  callback = function()
+  callback = function ()
     vim.opt.tabstop = 4
-    vim.opt.softtabstop=4
-    vim.opt.shiftwidth=4
-    vim.opt.textwidth=79
-    vim.opt.expandtab=true
-    vim.opt.autoindent=true
-    vim.opt.fileformat='unix'
+    vim.opt.softtabstop = 4
+    vim.opt.shiftwidth = 4
+    vim.opt.textwidth = 79
+    vim.opt.expandtab = true
+    vim.opt.autoindent = true
+    vim.opt.fileformat = 'unix'
   end
 })
 
@@ -59,24 +59,24 @@ au({"BufNewFile", "BufRead"}, {
 aug("persistent_folds", { clear = true })
 
 au("BufWinLeave", {
-	pattern = "*.*",
-	callback = function()
-		vim.cmd.mkview()
-	end,
-	group = "persistent_folds",
+  pattern = "*.*",
+  callback = function ()
+    vim.cmd.mkview()
+  end,
+  group = "persistent_folds",
   desc = ""
 })
 au("BufWinEnter", {
-	pattern = "*.*",
-	callback = function()
-		vim.cmd.loadview({ mods = { emsg_silent = true } })
-	end,
-	group = "persistent_folds",
+  pattern = "*.*",
+  callback = function ()
+    vim.cmd.loadview({ mods = { emsg_silent = true } })
+  end,
+  group = "persistent_folds",
 })
 
 -- persist cursor position
 au("BufReadPost", {
-  callback = function()
+  callback = function ()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local lcount = vim.api.nvim_buf_line_count(0)
     if mark[1] > 0 and mark[1] <= lcount then
@@ -87,7 +87,7 @@ au("BufReadPost", {
 
 -- cursor line on each window
 au({ "InsertLeave", "WinEnter" }, {
-  callback = function()
+  callback = function ()
     local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
     if ok and cl then
       vim.wo.cursorline = true
@@ -96,7 +96,7 @@ au({ "InsertLeave", "WinEnter" }, {
   end,
 })
 au({ "InsertEnter", "WinLeave" }, {
-  callback = function()
+  callback = function ()
     local cl = vim.wo.cursorline
     if cl then
       vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
@@ -106,15 +106,15 @@ au({ "InsertEnter", "WinLeave" }, {
 })
 
 au({ "ColorScheme" }, {
-  callback = function()
+  callback = function ()
     local theme_name = vim.fn.expand("<amatch>")
     local runtimepath = vim.api.nvim_list_runtime_paths()[1]
-    vim.schedule(function()
+    vim.schedule(function ()
       if (vim.g.dark_theme == nil) then return end
       vim.g.dark_theme = theme_name
       vim.g.light_theme = theme_name
-      vim.cmd( 'source ' .. runtimepath .. '/lua/config/theme.lua')
-      vim.cmd( 'source ' .. runtimepath .. '/lua/plugins/lualine.lua')
+      vim.cmd('source ' .. runtimepath .. '/lua/config/theme.lua')
+      -- vim.cmd('source ' .. runtimepath .. '/lua/plugins/lualine.lua')
     end)
   end
 })
@@ -122,16 +122,42 @@ au({ "ColorScheme" }, {
 -- Lua formatter
 au('BufEnter', {
   pattern = ".lua-format",
-  callback = function()
+  callback = function ()
     vim.cmd("syntax match LuaFormatConfig /^[^:]*:/")
     vim.cmd("highlight link LuaFormatConfig String")
   end
 })
 
 au({ "BufWrite" }, {
-pattern = "*.lua",
-  callback = function()
+  pattern = "*.lua",
+  callback = function ()
     vim.cmd(":call LuaFormat()")
   end
 })
 -- LuaFormatter on
+
+local Plug = vim.fn["plug#"]
+local dataPath = vim.fn["stdpath"]("data") .. "/plugged"
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "DebugModeEnable",
+  callback = function ()
+    print("loading..")
+    vim.call("plug#begin", dataPath)
+    Plug "folke/neodev.nvim"
+    Plug "hrsh7th/cmp-nvim-lsp"
+    Plug "hrsh7th/cmp-buffer"
+    Plug "hrsh7th/cmp-path"
+    Plug "hrsh7th/cmp-cmdline"
+    Plug "hrsh7th/nvim-cmp"
+    Plug "hrsh7th/cmp-vsnip"
+    Plug "hrsh7th/vim-vsnip"
+    Plug("L3MON4D3/LuaSnip", {
+      ["tag"] = "v2.*",
+      ["do"] = "make install_jsregexp",
+    })
+    Plug "saadparwaiz1/cmp_luasnip"
+    Plug "puremourning/vimspector"
+    vim.call("plug#end")
+  end,
+})

@@ -6,8 +6,14 @@ vim.keymap.set("n", "<leader>rr", ":so ~/.dotfiles/nvim/init.lua<cr>", Opts)
 vim.keymap.set("n", "<leader>cd", ":cd %:h<cr> :pwd<cr>")
 
 -- motion
-vim.keymap.set({ "v", "n" }, "<S-h>", "^")
-vim.keymap.set({ "v", "n" }, "<S-l>", "$")
+vim.keymap.set({
+  "v",
+  "n",
+}, "<S-h>", "^")
+vim.keymap.set({
+  "v",
+  "n",
+}, "<S-l>", "$")
 
 -- open new tab
 vim.keymap.set("n", "<leader>tn", ":tabnew<cr>", Opts)
@@ -47,11 +53,11 @@ vim.keymap.set("n", "<space>o", "o<C-u>")
 
 vim.keymap.set("n", "<leader>C", ":Copilot disable<cr>")
 
---INSERT mode
+-- INSERT mode
 -- insert line
 vim.keymap.set("i", "<C-o>", "<Esc>o")
 -- paste from system clipboard
-vim.keymap.set("i", "<C-p>", '<Esc>"+pa')
+vim.keymap.set("i", "<C-p>", "<Esc>\"+pa")
 
 -- start a substitute
 vim.keymap.set("n", "<leader>ss", ":%s#\\v")

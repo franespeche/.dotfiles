@@ -4,6 +4,7 @@ nvim/TODO.txt
 nvim/TODO.md
 nvim/private.vim
 nvim/private.lua
+nvim/local.lua
 nvim/lua/playground.lua
 nvim/pack/github/start/copilot.vim
 nvim/debug.vim
