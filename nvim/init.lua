@@ -50,7 +50,6 @@ Plug 'm-demare/hlargs.nvim'                -- highlight arguments
 Plug 'brenoprata10/nvim-highlight-colors'  -- highlight colors
 Plug 'andrejlevkovitch/vim-lua-format'     -- lua formatter (?)
 Plug 'milisims/nvim-luaref'
-Plug 'MunifTanjim/nui.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/lua-dev.nvim'
 Plug 'rafcamlet/nvim-luapad'
@@ -65,8 +64,6 @@ Plug 'vimwiki/vimwiki/'          -- vim wiki
 -- Avante
 -- Deps
 Plug 'stevearc/dressing.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'MunifTanjim/nui.nvim'
 
 -- Optional deps
 Plug 'hrsh7th/nvim-cmp'
@@ -110,6 +107,7 @@ vim.call('plug#end')
 -- source
 require 'config'
 require 'plugins'
+
 -- private
 if (vim.fn.filereadable(vim.fn.expand('~/.dotfiles/nvim/private.lua')) == 1) then
   vim.cmd 'source ~/.dotfiles/nvim/private.lua'
