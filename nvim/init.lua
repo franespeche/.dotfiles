@@ -73,6 +73,7 @@ Plug 'hrsh7th/nvim-cmp'
 -- Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
 Plug 'HakonHarnes/img-clip.nvim'
 Plug 'zbirenbaum/copilot.lua'
+Plug 'metakirby5/codi.vim'
 
 -- Yay, pass source=true if you want to build from source
 Plug('yetone/avante.nvim', { ['branch'] = 'main', ['do'] = 'make' })
