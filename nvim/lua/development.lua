@@ -1,8 +1,8 @@
+local Plug = vim.fn["plug#"]
+local dataPath = vim.fn["stdpath"]("data") .. "/plugged"
+
 return {
   enable = function ()
-    local Plug = vim.fn["plug#"]
-    local dataPath = vim.fn["stdpath"]("data") .. "/plugged"
-
     vim.call("plug#begin", dataPath)
     Plug "folke/neodev.nvim"
     Plug "hrsh7th/cmp-nvim-lsp"

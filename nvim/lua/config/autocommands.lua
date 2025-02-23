@@ -144,7 +144,8 @@ vim.api.nvim_create_autocmd("User", {
 vim.api.nvim_create_autocmd("User", {
   pattern = "DebugModeEnable",
   callback = function ()
-    require("development")
+    print("Initializing debug mode")
+    require("development").enable()
     vim.g.debug_mode = true
   end,
 })
