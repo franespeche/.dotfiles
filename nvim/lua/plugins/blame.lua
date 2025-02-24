@@ -5,6 +5,7 @@ local M = {}
 local api = vim.api
 
 local blame_ns = api.nvim_create_namespace("minimal_line_blame")
+local blame_cache = {}
 
 local function get_blame_info(bufnr, lnum)
   local filepath = api.nvim_buf_get_name(bufnr)
@@ -35,7 +36,15 @@ function M.show_blame()
   local line_nr = api.nvim_win_get_cursor(0)[1]
 
   api.nvim_buf_clear_namespace(bufnr, blame_ns, 0, -1)
-  local blame = get_blame_info(bufnr, line_nr)
+
+  -- Check cache first
+  if not blame_cache[bufnr] then blame_cache[bufnr] = {} end
+
+  local blame = blame_cache[bufnr][line_nr]
+  if not blame then
+    blame = get_blame_info(bufnr, line_nr)
+    blame_cache[bufnr][line_nr] = blame
+  end
 
   if blame then
     api.nvim_buf_set_extmark(bufnr, blame_ns, line_nr - 1, -1, {
@@ -59,6 +68,7 @@ function M.toggle()
   if not enabled then
     for _, bufnr in ipairs(api.nvim_list_bufs()) do
       api.nvim_buf_clear_namespace(bufnr, blame_ns, 0, -1)
+      blame_cache[bufnr] = nil -- Clear cache when disabled
     end
   else
     M.show_blame()
@@ -72,6 +82,13 @@ function M.setup()
     "CursorMoved",
   }, {
     callback = M.show_blame,
+  })
+
+  api.nvim_create_autocmd("BufWritePost", {
+    callback = function ()
+      local bufnr = api.nvim_get_current_buf()
+      blame_cache[bufnr] = nil -- Invalidate cache on buffer write
+    end,
   })
 
   vim.api.nvim_create_user_command("LineBlameToggle", M.toggle, {})
