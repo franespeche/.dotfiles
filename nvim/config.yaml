@@ -1,0 +1,15 @@
+dark_mode:
+  value: "system"  # "system", true, or false
+  description: "Enable dark mode"
+  type: ['string', 'boolean']
+  enum: ['system', true, false]
+
+line_blame_enabled:
+  value: true
+  type: boolean
+  description: "Show blame information in the gutter"
+
+debug_mode:
+  value: false
+  type: boolean
+  description: "Enable debug mode"

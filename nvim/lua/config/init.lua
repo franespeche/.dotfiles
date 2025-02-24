@@ -7,7 +7,7 @@ local BASE_CONFIG = {
   debug_mode = true,
 }
 -- TODO: get/set this from somewhere else
-local yaml_path = vim.fn.expand("~/.config/nvim/lua/config/.config.yaml")
+local yaml_path = vim.fn.stdpath("config") .. vim.g.config_path
 
 local base_config = utils.read_yaml(yaml_path) or BASE_CONFIG
 
@@ -29,8 +29,9 @@ M.setup = function ()
 end
 
 M.get = function (key)
-  local config = utils.read_yaml(yaml_path) or BASE_CONFIG
-  return config[key]
+  local config = utils.read_yaml(yaml_path)
+  local value = config[key] == nil and BASE_CONFIG[key] or config[key].value
+  return value
 end
 
 M.set = function (key, value) utils.set_yaml_key(yaml_path, key, value) end

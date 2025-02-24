@@ -1,5 +1,6 @@
 vim.g.mapleader = ","
 vim.g.debug_mode = false
+vim.g.config_path = '/config.yaml'
 
 require 'plugins'.setup()
 require 'config'.setup()
