@@ -6,10 +6,10 @@ local actions = require("strawberry").actions
 local picker = {
   name = "git_worktree_recent_files",
   config = {
-    close_on_leave = true, -- auto close the picker when an item is selected
+    close_on_leave = true,  -- auto close the picker when an item is selected
     close_on_select = true, -- auto close the picker when an item is selected
   },
-  get_items = function(limit)
+  get_items = function (limit)
     if (not utils.is_git_directory()) then
       error("Not inside a git working tree")
     end
@@ -22,8 +22,8 @@ local picker = {
     local i = 1
     while (i <= #oldfiles and (#menu_items < limit or i < 10)) do
       local file = oldfiles[i]
-      if (vim.fn.filereadable(file) == 1 and
-          vim.startswith(vim.trim(file), vim.trim(git_root_dir))) then
+      if (vim.fn.filereadable(file) == 1
+          and vim.startswith(vim.trim(file), vim.trim(git_root_dir))) then
         local menu_item = create_item({
           title = utils.get_filename(file),
           label = utils.remove_home_path(file),

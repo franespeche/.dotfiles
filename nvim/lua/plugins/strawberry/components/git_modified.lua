@@ -15,21 +15,23 @@ end
 
 local picker = {
   name = "git_modified",
-  config = { close_on_leave = true, close_on_select = true },
-  get_items = function(branch)
+  config = {
+    close_on_leave = true,
+    close_on_select = true,
+  },
+  get_items = function (branch)
     if (branch == nil) then branch = get_default_branch_name() end
 
     -- using systemlist here because system appends a newline character at the end :/
     local root_dir = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
     local git_modified_files = vim.fn.systemlist(
-                                   "git diff --name-only " .. branch)
+      "git diff --name-only " .. branch)
 
     local menu_items = {}
     local i = 1
     while (i <= #git_modified_files) do
       local file = root_dir .. "/" .. git_modified_files[i]
       if (vim.fn.filereadable(file) == 1) then
-        if i == 1 then P(file) end
         local menu_item = create_item({
           title = utils.get_filename(file),
           label = utils.remove_home_path(file),
