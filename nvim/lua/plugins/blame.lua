@@ -20,7 +20,6 @@ local function parse_blame(data)
 end
 
 local function run_blame(buf, line_num, filepath)
-  -- Using porcelain format for easier parsing.
   local cmd = {
     "git",
     "blame",
@@ -36,9 +35,21 @@ local function run_blame(buf, line_num, filepath)
       if not data or #data == 0 then return end
       local author, author_time, summary = parse_blame(data)
       if author and author_time and summary then
-        local virt_text = string.format(" %s • %s • %s",
+        local blame_info = string.format(" %s • %s • %s",
           vim.trim(author), author_time,
           vim.trim(summary))
+        -- Calculate filler spaces to extend background to end of line.
+        local line_text = vim.api.nvim_buf_get_lines(buf, line_num - 1,
+          line_num, false)[1] or ""
+        local code_width = vim.fn.strdisplaywidth(line_text)
+        local win_width = vim.api.nvim_win_get_width(0)
+        local blame_width = vim.fn.strdisplaywidth(blame_info)
+        local filler = ""
+        if win_width > code_width + blame_width then
+          local filler_count = win_width - code_width - blame_width
+          filler = string.rep(" ", filler_count)
+        end
+        local virt_text = blame_info .. filler
         vim.schedule(function ()
           vim.api.nvim_buf_set_extmark(buf, ns, line_num - 1, 0, {
             virt_text = {
