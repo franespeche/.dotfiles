@@ -1,3 +1,5 @@
+local config = require('config')
+
 --  local status_icon = navic.is_available() and "  "  or "  "
 -- imports
 local navic = require("nvim-navic")
@@ -156,11 +158,11 @@ local navic_status = {
 
 local quickfix_amount_items = {
   function () return "  " .. vim.fn.len(vim.fn.getqflist()) end,
-  cond = function () return vim.g.debug_mode end,
+  cond = function () return config.get('debug_mode') end,
 }
 
 local is_debug_mode = {
-  function () return vim.g.debug_mode and " " or "" end,
+  function () return config.get('debug_mode') and " " or "" end,
   color = {
     fg = colors.orange,
   },
@@ -168,18 +170,18 @@ local is_debug_mode = {
 
 local window_id = {
   function () return " " .. vim.fn.win_getid() end,
-  cond = function () return vim.g.debug_mode end,
+  cond = function () return config.get('debug_mode') end,
 }
 local buf_id = {
   function () return " " .. vim.fn.bufnr() end,
-  cond = function () return vim.g.debug_mode end,
+  cond = function () return config.get('debug_mode') end,
 }
 
 -- setup
 require("lualine").setup {
   options = {
     icons_enabled = true,
-    theme = vim.g.dark_mode and vim.g.dark_theme or vim.g.light_theme,
+    theme = config.get('dark_mode') and vim.g.dark_theme or vim.g.light_theme,
     -- section_separators = {
     -- left = "",
     -- right = "",
