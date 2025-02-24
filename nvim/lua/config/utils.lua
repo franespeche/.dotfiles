@@ -29,7 +29,7 @@ M.is_dark_mode = function ()
 end
 
 M.set_yaml_key = function (path, key, value)
-  local cmd = string.format("yq -i '.%s = %s' %s", key,
+  local cmd = string.format("yq -i '.%s.value = %s' %s", key,
     vim.fn.shellescape(vim.fn.json_encode(value)),
     vim.fn.shellescape(path))
   os.execute(cmd)

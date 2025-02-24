@@ -1,3 +1,5 @@
+local config = require("config")
+
 -- LuaFormatter off
 local au = vim.api.nvim_create_autocmd
 local aug = vim.api.nvim_create_augroup
@@ -137,7 +139,7 @@ au({ "BufWrite" }, {
 vim.api.nvim_create_autocmd("User", {
   pattern = "DebugModeDisable",
   callback = function ()
-    vim.g.debug_mode = false
+    config.set('debug_mode', false)
   end,
 })
 
@@ -146,15 +148,15 @@ vim.api.nvim_create_autocmd("User", {
   callback = function ()
     print("Initializing debug mode")
     require("development").enable()
-    vim.g.debug_mode = true
+    config.set('debug_mode', true)
   end,
 })
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "DebugModeToggle",
   callback = function ()
-    local is_enabled = vim.g.debug_mode or false
-      vim.api.nvim_exec_autocmds("User", { pattern = is_enabled and "DebugModeDisable" or "DebugModeEnable" })
+    local is_enabled = config.get('debug_mode')
+    vim.api.nvim_exec_autocmds("User", { pattern = is_enabled and "DebugModeDisable" or "DebugModeEnable" })
   end,
 })
 -- LuaFormatter on

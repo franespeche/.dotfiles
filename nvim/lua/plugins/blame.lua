@@ -29,7 +29,7 @@ local function get_blame_info(bufnr, lnum)
 end
 
 function M.show_blame()
-  if not vim.g.line_blame_enabled then return end
+  if not config.get("line_blame") then return end
 
   local bufnr = api.nvim_get_current_buf()
   local line_nr = api.nvim_win_get_cursor(0)[1]
@@ -52,9 +52,11 @@ function M.show_blame()
 end
 
 function M.toggle()
-  local enabled = not vim.g.line_blame_enabled
-  vim.g.line_blame_enabled = enabled
-  if not vim.g.line_blame_enabled then
+  local enabled = not config.get("line_blame")
+  P(enabled)
+  config.set("line_blame", enabled)
+
+  if not enabled then
     for _, bufnr in ipairs(api.nvim_list_bufs()) do
       api.nvim_buf_clear_namespace(bufnr, blame_ns, 0, -1)
     end
@@ -64,7 +66,7 @@ function M.toggle()
 end
 
 function M.setup()
-  vim.g.line_blame_enabled = config.get("line_blame_enabled")
+  vim.g.line_blame = config.get("line_blame")
   api.nvim_create_autocmd({
     "CursorHold",
     "CursorMoved",
@@ -75,6 +77,6 @@ function M.setup()
   vim.api.nvim_create_user_command("LineBlameToggle", M.toggle, {})
 end
 
-function M.is_enabled() return vim.g.line_blame_enabled end
+M.is_enabled = function () return config.get("line_blame") end
 
 return M

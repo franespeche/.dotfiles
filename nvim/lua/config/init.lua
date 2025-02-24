@@ -3,7 +3,7 @@ local utils = require("config.utils")
 -- Just in case config file doesn't exist
 local BASE_CONFIG = {
   dark_mode = "system",
-  line_blame_enabled = true,
+  line_blame = true,
   debug_mode = true,
 }
 -- TODO: get/set this from somewhere else
