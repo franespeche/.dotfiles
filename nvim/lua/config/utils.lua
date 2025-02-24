@@ -36,17 +36,29 @@ M.set_yaml_key = function (path, key, value)
 end
 
 M.read_yaml = function (path)
-  local cmd = string.format("yq -o=json '.' %s 2>/dev/null",
-    vim.fn.shellescape(path))
-  local handle = io.popen(cmd)
-  local result = handle and handle:read("*a") or ""
-  handle:close()
+  local co = coroutine.create(function ()
+    local cmd = string.format("yq -o=json '.' %s 2>/dev/null",
+      vim.fn.shellescape(path))
+    local handle = io.popen(cmd)
+    local result = handle and handle:read("*a") or ""
+    handle:close()
 
-  if result == "" then error("Failed to read or parse YAML file at: " .. path) end
+    if result == "" then
+      vim.notify("Failed to read or parse YAML file at: " .. path .. "\n Is 'yq' installed?", vim.log.levels.ERROR)
+      return nil
+    end
 
-  local a = vim.fn.json_decode(result)
+    local a = vim.fn.json_decode(result)
+    return a
+  end)
 
-  return a
+  local success, result = coroutine.resume(co)
+  if not success then
+    vim.notify("Coroutine failed: " .. result, vim.log.levels.ERROR)
+    return nil
+  end
+
+  return result
 end
 
 return M

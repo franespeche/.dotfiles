@@ -30,10 +30,17 @@ end
 
 M.get = function (key)
   local config = utils.read_yaml(yaml_path)
-  local value = config[key] == nil and BASE_CONFIG[key] or config[key].value
-  return value
+
+  if not config then
+    vim.notify('Failed to read config file, using default values', vim.log.levels.WARN)
+    return BASE_CONFIG[key]
+  end
+
+  return config[key].value
 end
 
-M.set = function (key, value) utils.set_yaml_key(yaml_path, key, value) end
+M.set = function (key, value)
+  utils.set_yaml_key(yaml_path, key, value)
+end
 
 return M
