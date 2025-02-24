@@ -45,7 +45,6 @@ end
 
 local function toggle_debug_mode()
   local is_enabled = vim.g.debug_mode or false
-  -- do autocommand
   vim.api.nvim_exec_autocmds("User", {
     pattern = "DebugModeToggle",
   })
