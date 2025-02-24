@@ -154,11 +154,7 @@ vim.api.nvim_create_autocmd("User", {
   pattern = "DebugModeToggle",
   callback = function ()
     local is_enabled = vim.g.debug_mode or false
-    if (is_enabled) then
-      vim.api.nvim_exec_autocmds("User", { pattern = "DebugModeDisable" })
-    else
-      vim.api.nvim_exec_autocmds("User", { pattern = "DebugModeEnable" })
-    end
+      vim.api.nvim_exec_autocmds("User", { pattern = is_enabled and "DebugModeDisable" or "DebugModeEnable" })
   end,
 })
 -- LuaFormatter on
