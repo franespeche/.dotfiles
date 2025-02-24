@@ -26,6 +26,7 @@ M.setup = function ()
   require "config.lspconfig"
   require "config.git"
   require "config.keymaps"
+  require "config.folds"
 end
 
 M.get = function (key)
