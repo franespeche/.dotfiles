@@ -1,3 +1,6 @@
+local config = require("config")
+local utils = require("config.utils")
+
 local color_scheme = "catppuccin"
 
 if vim.g.dark_theme == nil then vim.g.dark_theme = color_scheme end
@@ -11,7 +14,10 @@ end
 
 -- dark/light themes
 if vim.g.colors_name == nil then
-  if vim.g.is_dark_mode then
+  local dark_mode = config.get("dark_mode")
+  if dark_mode == "system" then dark_mode = utils.is_dark_mode() end
+
+  if dark_mode then
     vim.cmd("silent! colorscheme " .. vim.g.dark_theme)
     vim.cmd("silent! set background=dark")
     if (color_scheme == "gruvbox") then
@@ -27,7 +33,7 @@ if vim.g.colors_name == nil then
   end
 end
 
-if not vim.o.termguicolors then o.termguicolors = true end
+if not vim.o.termguicolors then vim.o.termguicolors = true end
 
 -- italic comments
 vim.g.one_allow_italics = 1

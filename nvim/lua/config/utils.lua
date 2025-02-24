@@ -1,4 +1,7 @@
-Opts = { noremap = true, silent = true }
+Opts = {
+  noremap = true,
+  silent = true,
+}
 
 P = function (v)
   print(vim.inspect(v))
@@ -11,3 +14,39 @@ R = function (name)
   RELOAD(name)
   return require(name)
 end
+
+local M = {}
+M.a = 1
+
+M.is_dark_mode = function ()
+  local os_name = vim.fn.system("uname")
+  if vim.fn.match(os_name, "Darwin") >= 0 then
+    local result = vim.fn.system(
+      "defaults read -g AppleInterfaceStyle 2>/dev/null | tr -d '\n'")
+    return result == "Dark"
+  end
+  return false
+end
+
+M.set_yaml_key = function (path, key, value)
+  local cmd = string.format("yq -i '.%s = %s' %s", key,
+    vim.fn.shellescape(vim.fn.json_encode(value)),
+    vim.fn.shellescape(path))
+  os.execute(cmd)
+end
+
+M.read_yaml = function (path)
+  local cmd = string.format("yq -o=json '.' %s 2>/dev/null",
+    vim.fn.shellescape(path))
+  local handle = io.popen(cmd)
+  local result = handle and handle:read("*a") or ""
+  handle:close()
+
+  if result == "" then error("Failed to read or parse YAML file at: " .. path) end
+
+  local a = vim.fn.json_decode(result)
+
+  return a
+end
+
+return M

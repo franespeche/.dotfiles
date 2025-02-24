@@ -75,9 +75,8 @@ Plug("yetone/avante.nvim", {
   ["do"] = "make",
 })
 
--- Local Plugins
 Plug("franespeche/strawberry", {
-  ["branch"] = "main",
+  branch = "main",
 })
 
 -- Development
