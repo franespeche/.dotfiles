@@ -11043,3 +11043,7 @@ vim.opt.wildmode = {
 vim.opt.wrapscan = true -- cycle search
 vim.opt.showcmd = true
 vim.wo.wrap = false     -- no line wrapping
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false -- Start with folds open
+vim.opt.foldlevel = 99     -- Prevent auto-folding everything

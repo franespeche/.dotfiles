@@ -46,6 +46,10 @@ local function get_line_blame_label()
 end
 
 local function toggle_line_blame() vim.cmd(":LineBlameToggle") end
+local function format_json()
+  vim.api.nvim_command("set filetype=json")
+  vim.api.nvim_command("Prettier")
+end
 
 local function toggle_debug_mode()
   vim.api.nvim_exec_autocmds("User", {
@@ -71,6 +75,7 @@ local function get_menu_items()
       label = get_debug_mode_label(),
       on_select = toggle_debug_mode,
     },
+    { title = "Format Json", label = "", on_select = format_json },
   }
 end
 
