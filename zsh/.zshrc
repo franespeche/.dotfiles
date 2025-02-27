@@ -1,4 +1,3 @@
-
 #!/bin/zsh
 
 # defaults write -g ApplePressAndHoldEnabled -bool false
@@ -59,14 +58,24 @@ promptinit
 # # # # # # # # # # # #
 #       default       #
 # # # # # # # # # # # #
-# TODO: eval this only in osx
-eval $(/opt/homebrew/bin/brew shellenv)
+
+# setup brew
+if [ "$(uname)" = "Darwin" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.rd/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
+
 # pyenv init
-# TODO: execute only if pyenv is installed
-eval "$(pyenv init -)"
+
+if command -v pyenv > /dev/null 2>&1; then
+  eval "$(pyenv init -)"
+else
+  echo "pyenv not found; skipping pyenv init."
+  echo "try running: brew install pyenv"
+fi
 
 # # # # # # # # # # # #
 #         nvm         #
@@ -227,7 +236,12 @@ if [[ `uname` == 'Linux' ]]; then
 	unset zsh_linux_file
 
 	# set keyboard speed
-	xset r rate 200 50
+  if command -v xset > /dev/null 2>&1; then
+      xset r rate 200 50
+  else
+      echo "xset not found; skipping xset rate configuration."
+      echo "try running: sudo apt-get install x11-xserver-utils"
+  fi
 fi
 
 # source local cfg
