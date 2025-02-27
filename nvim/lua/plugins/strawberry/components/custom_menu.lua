@@ -1,5 +1,6 @@
 local config = require("config")
 local create_item = require("strawberry").create_item
+local get_origin_buf = require("strawberry").get_origin_buf
 
 -- Helpers
 local get_enabled_label = function (is_enabled)
@@ -45,10 +46,16 @@ local function get_line_blame_label()
   return get_enabled_label(is_enabled)
 end
 
-local function toggle_line_blame() vim.cmd(":LineBlameToggle") end
+local function toggle_line_blame() require("plugins.blame").toggle() end
+
 local function format_json()
-  vim.api.nvim_command("set filetype=json")
-  vim.api.nvim_command("Prettier")
+  local buf = get_origin_buf()
+  if not buf then return end
+
+  vim.api.nvim_buf_call(buf, function ()
+    vim.cmd("set filetype=json")
+    vim.cmd("Prettier")
+  end)
 end
 
 local function toggle_debug_mode()
@@ -75,7 +82,7 @@ local function get_menu_items()
       label = get_debug_mode_label(),
       on_select = toggle_debug_mode,
     },
-    { title = "Format Json", label = "", on_select = format_json },
+    { title = "Format Json", label = "Format buffer as json", on_select = format_json, close_on_leave = true },
   }
 end
 
