@@ -1,8 +1,9 @@
-local config = require("config")
+local config = require('config')
 
--- minimal-line-blame.nvim
 local M = {}
 local api = vim.api
+local ns = vim.api.nvim_create_namespace("current_blame")
+local debounce_timer = nil
 
 local blame_ns = api.nvim_create_namespace("minimal_line_blame")
 local blame_cache = {}
