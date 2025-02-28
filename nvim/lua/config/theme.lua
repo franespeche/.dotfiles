@@ -1,7 +1,7 @@
 local config = require("config")
 local utils = require("config.utils")
 
-local color_scheme = "catppuccin"
+local color_scheme = "gruvbox"
 
 if vim.g.dark_theme == nil then vim.g.dark_theme = color_scheme end
 if vim.g.light_theme == nil then vim.g.light_theme = color_scheme .. "-latte" end
