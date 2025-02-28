@@ -35,6 +35,7 @@
   "tsserver.maxTsServerMemory": 12000,
   "tsserver.useLocalTsdk": true,
   "coc.preferences.formatOnSave": true,
+  "python.formatting.provider": "autopep8",
   //  "coc.preferences.formatOnSaveFiletypes": [
   //    "css",
   //    "markdown",
