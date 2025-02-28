@@ -1,9 +1,9 @@
+require("plugins._load")
+
 local M = {}
 
 M.setup = function ()
-  require("plugins._load")
-
-  require("plugins.blame").setup()
+  -- require("plugins.blame").setup()
   require("plugins.neodev")
   require("plugins.telescope")
   require("plugins.harpoon")
