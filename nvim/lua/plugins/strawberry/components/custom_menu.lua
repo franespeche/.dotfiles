@@ -82,7 +82,11 @@ local function get_menu_items()
       label = get_debug_mode_label(),
       on_select = toggle_debug_mode,
     },
-    { title = "Format Json", label = "Format buffer as json", on_select = format_json, close_on_leave = true },
+    {
+      title = "Format Json",
+      label = "Applies json prettier format",
+      on_select = format_json,
+    },
   }
 end
 
