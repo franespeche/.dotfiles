@@ -4,6 +4,7 @@ vim.g.config_path = '/config.yaml'
 
 require 'plugins'.setup()
 require 'config'.setup()
+require 'helpers'
 
 -- Source any private configs
 local config_dir = vim.fn.stdpath("config")
