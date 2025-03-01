@@ -1,9 +1,9 @@
 local function get_module_path()
-  -- Get info about the currently running function (this function)
+  -- get info about the currently running function (this function)
   local info = debug.getinfo(1, "S")
-  -- Extract the filename from the source path
+  -- extract the filename from the source path
   local module_path = info.source:sub(2) -- Remove the '@' prefix
-  -- Get the directory containing the module
+  -- get the directory containing the module
   return vim.fn.fnamemodify(module_path, ":h")
 end
 
