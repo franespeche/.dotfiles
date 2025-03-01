@@ -1,6 +1,12 @@
 local Plug = vim.fn["plug#"]
 local dataPath = vim.fn["stdpath"]("data") .. "/plugged"
 
+vim.api.nvim_create_user_command('RunTS', function ()
+  local file = vim.fn.expand('%')
+  vim.cmd('split term://yarn start ' .. file)
+end, {})
+vim.keymap.set('n', '<leader>yr', ':RunTS<CR>', { silent = true })
+
 return {
   enable = function ()
     vim.call("plug#begin", dataPath)
