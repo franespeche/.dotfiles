@@ -9,6 +9,8 @@ nvim/lua/playground.lua
 nvim/pack/github/start/copilot.vim
 nvim/debug.vim
 nvim/lazy-lock.json
+nvim/config.yaml
+nvim/.env
 
 zsh/.zcompdump  
 zsh/.zsh_history  
