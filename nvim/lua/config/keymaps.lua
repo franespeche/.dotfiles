@@ -202,3 +202,6 @@ vim.keymap.set("n", "]q", ":cn<cr>")
 
 vim.keymap.set("v", "p", "P")
 vim.keymap.set("v", "P", "p")
+
+vim.keymap.set('n', 'j', "gj", Opts)
+vim.keymap.set('n', 'k', "gk", Opts)
