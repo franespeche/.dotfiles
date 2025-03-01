@@ -24,6 +24,7 @@ local function require_all(directory)
     local name = file:match("([^/]+)%.lua$")
     local module_path = module_prefix .. name
     require(module_path)
+
     ::continue::
   end
 end

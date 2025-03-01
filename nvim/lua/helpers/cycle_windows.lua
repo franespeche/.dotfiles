@@ -56,5 +56,5 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 -- Keymaps
-vim.keymap.set('n', '[w', ':CycleWindowsPrev<CR>', Opts)
-vim.keymap.set('n', ']w', ':CycleWindowsNext<CR>', Opts)
+vim.keymap.set('n', '[w', ':doautocmd User CycleWindowsPrev<CR>', Opts)
+vim.keymap.set('n', ']w', ':doautocmd User CycleWindowsNext<CR>', Opts)
