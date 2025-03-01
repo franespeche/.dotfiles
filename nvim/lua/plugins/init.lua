@@ -23,6 +23,7 @@ M.setup = function ()
   require("plugins.copilot")
   require("plugins.outline")
   require("plugins.avante")
+  require("plugins.gitsigns")
 end
 
 return M
