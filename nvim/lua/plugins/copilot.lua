@@ -1,1 +1,9 @@
-vim.g.copilot_filetypes = { vimwiki = false, json = false }
+return {
+  "github/copilot.vim",
+  config = function()
+    vim.g.copilot_filetypes = {
+      vimwiki = false,
+      json = false,
+     }
+  end,
+ }

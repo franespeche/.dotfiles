@@ -1,3 +1,19 @@
-require("outline").setup({})
-
-vim.keymap.set('n', '<leader>O', ':Outline<CR>')
+return {
+  -- display symbols
+  "hedyhli/outline.nvim",
+  lazy = true,
+  cmd = {
+    "Outline",
+    "OutlineOpen",
+  },
+  keys = {
+    {
+      "<leader>O",
+      "<cmd>Outline<CR>",
+      desc = "Toggle outline",
+    },
+  },
+  opts = {
+    -- Your setup opts here
+  },
+}

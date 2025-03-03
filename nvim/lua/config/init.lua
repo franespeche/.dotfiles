@@ -17,7 +17,6 @@ M.setup = function ()
   -- store default config in vim global dynamically
   for k, v in pairs(base_config) do vim.g[k] = v end
 
-  require "config.copilot"
   require "config.utils"
   require "config.settings"
   require "config.autocommands"
@@ -33,15 +32,14 @@ M.get = function (key)
   local config = utils.read_yaml(yaml_path)
 
   if not config then
-    vim.notify('Failed to read config file, using default values', vim.log.levels.WARN)
+    vim.notify("Failed to read config file, using default values",
+      vim.log.levels.WARN)
     return BASE_CONFIG[key]
   end
 
   return config[key].value
 end
 
-M.set = function (key, value)
-  utils.set_yaml_key(yaml_path, key, value)
-end
+M.set = function (key, value) utils.set_yaml_key(yaml_path, key, value) end
 
 return M

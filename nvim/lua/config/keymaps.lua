@@ -170,10 +170,34 @@ vim.keymap.set("i", "<C-k>", "<Esc>ka")
 vim.keymap.set("n", "<leader>cp", ":let @* = expand(\"%\")<cr>", Opts)
 
 -- console log snippet
+-- TODO: make this language agnostic
 vim.keymap.set("n", "<space>cl",
   "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
 vim.keymap.set("v", "<space>cl",
   "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
+
+-- go to the last cursor position before going into Visual mode
+vim.keymap.set("n", "go", "gvogvo<ESC>")
+
+-- goto prev/next occurrence and center buffer
+vim.keymap.set("n", "#", "#zz")
+vim.keymap.set("n", "*", "*zz")
+
+-- Delete Boundaries (first and last line) of selected range
+vim.keymap.set("v", ",db", "<Esc>:'>d<Cr>:'<d<Cr>")
+
+-- Cycle through quickfix list
+vim.keymap.set("n", "[q", ":cp<cr>")
+vim.keymap.set("n", "]q", ":cn<cr>")
+
+-- Don't lose yanked text when pasting
+vim.keymap.set("v", "p", "P")
+-- Lose yanked text when pasting
+vim.keymap.set("v", "P", "p")
+
+-- Normal motions for when when 'wrap' is set
+vim.keymap.set("n", "j", "gj", Opts)
+vim.keymap.set("n", "k", "gk", Opts)
 
 -- Git
 --
@@ -186,22 +210,3 @@ vim.keymap.set("n", "<leader>gb", ":Git blame<cr>", Opts)
 -- open lazygit
 -- vim.keymap.set("n", "<leader>gg", ":cd %:h<cr> :LazyGit<cr>", Opts)
 vim.keymap.set("n", "<leader>gg", ":LazyGitCurrentFile<cr>", Opts)
-
--- go to the last cursor position before going into Visual mode
-vim.keymap.set("n", "go", "gvogvo<ESC>")
-
--- goto prev/next occurrence and center buffer
-vim.keymap.set("n", "#", "#zz")
-vim.keymap.set("n", "*", "*zz")
-
--- Delete Boundaries (first and last line) of selected range
-vim.keymap.set("v", ",db", "<Esc>:'>d<Cr>:'<d<Cr>")
-
-vim.keymap.set("n", "[q", ":cp<cr>")
-vim.keymap.set("n", "]q", ":cn<cr>")
-
-vim.keymap.set("v", "p", "P")
-vim.keymap.set("v", "P", "p")
-
-vim.keymap.set('n', 'j', "gj", Opts)
-vim.keymap.set('n', 'k', "gk", Opts)
