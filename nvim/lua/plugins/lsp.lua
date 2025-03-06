@@ -1,247 +1,94 @@
+-- helpers
+local function show_documentation()
+  local filetype = vim.bo.filetype
+  local cword = vim.fn.expand("<cword>")
+
+  if vim.fn.index({
+    "help",
+   }, filetype) >= 0 then
+    vim.cmd("h " .. cword)
+  else
+    if vim.fn.index({
+      "lua",
+     }, filetype) >= 0 then
+      vim.lsp.buf.hover()
+    else
+      vim.fn.CocAction("doHover")
+    end
+  end
+end
+
+-- restart
+vim.keymap.set("n", "<leader>cr", ":CocRestart<cr> ", Opts)
+vim.keymap.set("n", "<leader>tr", ":CocCommand tsserver.restart<cr>", Opts)
+
+-- either doHover or show documentation in preview window
+vim.keymap.set("n", "<leader>ck", function() show_documentation() end, Opts)
+vim.keymap.set("n", "<leader>ch", "<Plug>(coc-codeaction)", Opts)
+
+-- diagnostics
+vim.keymap.set("n", "<leader>cc", ":CocFzfList diagnostics<cr>", Opts)
+vim.keymap.set("n", "[g", "<Plug>(coc-diagnostic-prev)", Opts)
+vim.keymap.set("n", "]g", "<Plug>(coc-diagnostic-next)", Opts)
+
+-- actions
+vim.keymap.set("n", "<leader>cl",
+               ":<C-u>call CocActionAsync('codeLensAction')<CR>", Opts)
+
+-- definitions
+vim.keymap.set("n", "gd", "<Plug>(coc-definition)zz", Opts)
+vim.keymap.set("n", "gy", "<Plug>(coc-type-definition)", Opts)
+vim.keymap.set("n", "gi", "<Plug>(coc-implementation)", Opts)
+vim.keymap.set("n", "gr", "<Plug>(coc-references)", Opts)
+
 return {
-  {
-    "neovim/nvim-lspconfig",
-    event = {
-      "BufReadPre",
-      "BufNewFile",
-     },
-    dependencies = {
-      {
-        "folke/neoconf.nvim",
-        cmd = "Neoconf",
-        config = true,
-       },
-      {
-        "folke/neodev.nvim",
-        opts = {
-          experimental = {
-            pathStrict = true,
-           },
-         },
-       },
-      "mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      {
-        "hrsh7th/cmp-nvim-lsp",
-        cond = function()
-          local ok, _ = pcall(require, "lazyvim.util")
-          if not ok then return false end
-          return require("lazyvim.util").has("nvim-cmp")
-        end,
-       },
-     },
-    opts = {
-      -- options for vim.diagnostic.config()
-      diagnostics = {
-        underline = true,
-        update_in_insert = false,
-        virtual_text = {
-          spacing = 4,
-          source = "if_many",
-          prefix = "THIS_IS_THE_PREFIX●",
-          -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-          -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-          -- prefix = "icons",
-         },
-        severity_sort = true,
-       },
-      -- add any global capabilities here
-      capabilities = {},
-      -- Automatically format on save
-      autoformat = true,
-      -- options for vim.lsp.buf.format
-      -- `bufnr` and `filter` is handled by the LazyVim formatter,
-      -- but can be also overridden when specified
-      format = {
-        formatting_options = nil,
-        timeout_ms = nil,
-       },
-      -- LSP Server Settings
-      ---@type lspconfig.options
-      servers = {
-        jsonls = {},
-        lua_ls = {
-          -- mason = false, -- set to false if you don't want this server to be installed with mason
-          settings = {
-            Lua = {
-              workspace = {
-                checkThirdParty = false,
-               },
-              completion = {
-                callSnippet = "Replace",
-               },
-             },
-           },
-         },
-       },
-      -- you can do any additional lsp server setup here
-      -- return true if you don't want this server to be setup with lspconfig
-      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
-      setup = {
-        -- example to setup with typescript.nvim
-        tsserver = function(_, opts)
-          require("typescript").setup({
-            server = opts,
-           })
-          return true
-        end,
-        -- Specify * to use this function as a fallback for any server
-        ["*"] = function(server, opts)
-          print("no server attached for: " .. server)
-        end,
-       },
-     },
-
-    ---@param opts PluginLspOpts
-    config = function(_, opts)
-      local ok, Util = pcall(require, "lazyvim.util")
-      print(vim.inspect({
-        "ok",
-        Util,
-       }))
-      if not ok then
-        vim.notify("lazyvim.util not found", vim.log.levels.ERROR)
-        return
-      end
-
-      -- setup autoformat
-      local ok, format = pcall(require, "lazyvim.plugins.lsp")
-      if not ok then
-        vim.notify("lazyvim.plugins.lsp not found", vim.log.levels.ERROR)
-        return
-      end
-
-      format.autoformat = opts.autoformat
-      -- setup formatting and keymaps
-      Util.on_attach(function(client, buffer)
-        require("lazyvim.plugins.lsp.format").on_attach(client, buffer)
-        require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
-      end)
-
-      -- diagnostics
-      local ok, config = pcall(require, "lazyvim.config")
-      if not ok then
-        vim.notify("lazyvim.config not found", vim.log.levels.ERROR)
-        return
-      end
-
-      for name, icon in pairs(require("lazyvim.config").icons.diagnostics) do
-        name = "DiagnosticSign" .. name
-        vim.fn.sign_define(name, {
-          text = icon,
-          texthl = name,
-          numhl = "",
-         })
-      end
-
-      if type(opts.diagnostics.virtual_text) == "table"
-          and opts.diagnostics.virtual_text.prefix == "icons" then
-        opts.diagnostics.virtual_text.prefix =
-            vim.fn.has("nvim-0.10.0") == 0 and "●" or function(diagnostic)
-              local icons = require("lazyvim.config").icons.diagnostics
-              for d, icon in pairs(icons) do
-                if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-                  return icon
-                end
-              end
-            end
-      end
-
-      vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
-
-      local servers = opts.servers
-      local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol
-                                                   .make_client_capabilities(),
-                                               require("cmp_nvim_lsp").default_capabilities(),
-                                               opts.capabilities or {})
-
-      local function setup(server)
-        local server_opts = vim.tbl_deep_extend("force", {
-          capabilities = vim.deepcopy(capabilities),
-         }, servers[server] or {})
-
-        if opts.setup[server] then
-          if opts.setup[server](server, server_opts) then return end
-        elseif opts.setup["*"] then
-          if opts.setup["*"](server, server_opts) then return end
-        end
-        require("lspconfig")[server].setup(server_opts)
-      end
-
-      -- get all the servers that are available thourgh mason-lspconfig
-      local have_mason, mlsp = pcall(require, "mason-lspconfig")
-      local all_mslp_servers = {}
-      if have_mason then
-        all_mslp_servers = vim.tbl_keys(require(
-                                            "mason-lspconfig.mappings.server").lspconfig_to_package)
-      end
-
-      local ensure_installed = {} ---@type string[]
-      for server, server_opts in pairs(servers) do
-        if server_opts then
-          server_opts = server_opts == true and {} or server_opts
-          -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-          if server_opts.mason == false
-              or not vim.tbl_contains(all_mslp_servers, server) then
-            setup(server)
-          else
-            ensure_installed[#ensure_installed + 1] = server
-          end
-        end
-      end
-
-      if have_mason then
-        mlsp.setup({
-          ensure_installed = ensure_installed,
-         })
-        mlsp.setup_handlers({
-          setup,
-         })
-      end
-
-      if Util.lsp_get_config("denols") and Util.lsp_get_config("tsserver") then
-        local is_deno = require("lspconfig.util").root_pattern("deno.json",
-                                                               "deno.jsonc")
-        Util.lsp_disable("tsserver", is_deno)
-        Util.lsp_disable("denols",
-                         function(root_dir) return not is_deno(root_dir) end)
-      end
-    end,
+  "neoclide/coc.nvim",
+  branch = "release",
+  enabled = true,
+  dependencies = {
+    "tjdevries/coc-zsh",
+    "antoinemadec/coc-fzf",
    },
+  init = function()
+    vim.g.coc_global_extensions = {
+      "coc-tsserver",
+      "coc-json",
+      "coc-lua",
+      "coc-yaml",
+      "coc-pyright",
+     }
+    vim.g.jsx_ext_required = 0 -- enable JSX syntax highlighing in javascript files
 
-  -- mason
-  {
-    "williamboman/mason.nvim",
-    cmd = "Mason",
-    keys = {
-      {
-        "<leader>cm",
-        "<cmd>Mason<cr>",
-        desc = "Mason",
-       },
-     },
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "shfmt",
-        -- "flake8",
-       },
-     },
-    ---@param opts MasonSettings | {ensure_installed: string[]}
-    config = function(_, opts)
-      require("mason").setup(opts)
-      local mr = require("mason-registry")
-      local function ensure_installed()
-        for _, tool in ipairs(opts.ensure_installed) do
-          local p = mr.get_package(tool)
-          if not p:is_installed() then p:install() end
-        end
-      end
-      if mr.refresh then
-        mr.refresh(ensure_installed)
-      else
-        ensure_installed()
-      end
-    end,
-   },
+    vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
+    vim.opt.updatetime = 300
+
+    vim.cmd([[ command! -nargs=0 Prettier :CocCommand prettier.formatFile ]])
+    vim.cmd([[ highlight link CocHighlightText Visual ]])
+    vim.cmd([[ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>" ]])
+
+    local au = vim.api.nvim_create_autocmd
+    local aug = vim.api.nvim_create_augroup
+    -- autocommands
+    -- coc
+    aug("coc-custom", {
+      clear = true,
+     })
+    au("FileType", {
+      pattern = "typescript,json",
+      group = "coc-custom",
+      command = "setl formatexpr=CocAction('formatSelected')",
+      desc = "setup formatexpr specified filetype(s)",
+     })
+    au("User", {
+      pattern = "CocJumpPlaceholder",
+      group = "coc-custom",
+      command = "CocActionAsync('showSignatureHelp')",
+      desc = "update signature help on jump placeholder",
+     })
+    au("BufEnter", {
+      desc = "disables autocommenting",
+      command = "set fp-=c fo-=r fo-=o",
+     })
+  end,
+
  }

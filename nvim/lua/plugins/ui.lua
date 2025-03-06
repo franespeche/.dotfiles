@@ -343,18 +343,25 @@ return {
   -- colorschemes
   {
     "morhetz/gruvbox",
+    enabled = false,
    },
   {
     "sainnhe/gruvbox-material",
+    enabled = true,
+    priority = 1000,
+    config = function() vim.cmd.colorscheme("gruvbox-material") end,
    },
   {
     "EdenEast/nightfox.nvim",
+    enabled = false,
    },
   {
     "rebelot/kanagawa.nvim",
+    enabled = false,
    },
   {
     "catppuccin/nvim",
+    enabled = false,
    },
 
   -- UNKNOWN
@@ -365,6 +372,9 @@ return {
   -- breadcrumbs
   {
     "SmiteshP/nvim-navic",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+     },
     opts = {
       icons = {
         File = " ",
