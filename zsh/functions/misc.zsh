@@ -1,29 +1,47 @@
 #!/bin/bash
 
+
 # # # # # # # # # # # #
 #        misc         #
 # # # # # # # # # # # #
 
 # change iterm profile
-function setItermProfile(){
-  #	might be safe to remove
-  #	export ITERM_PROFILE="$1"
-  echo -e "\033]50;SetProfile=$1\a"
+function setTerminalProfile() {
+  if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
+    BASE_DIR="${XDG_DATA_HOME:-$HOME/.dotfiles}"
+    $XDG_CONFIG_HOME/zsh/venv/bin/python "$BASE_DIR/zsh/functions/set_iterm2_profile.py" --profile "$1" &
+  else
+    echo $TERM_PROGRAM 'not supported'
+  fi
 }
 
-# toggle dark mode
+function nvim_emit() {
+  for socket in $(lsof -U | grep /tmp/nvim | awk '{print $NF}'); do
+    if [ -S "$socket" ]; then
+      nvim --server "$socket" --remote-send "<Cmd>doautocmd User $1<CR>" > /dev/null 2>&1
+    fi
+  done
+}
+
+# MacOS only
 function dark() {
-  CURRENT_MODE=$(defaults read -g AppleInterfaceStyle 2> /dev/null)
-  if [[ "$CURRENT_MODE" == "Dark" ]]; then
-    setItermProfile light &&
-    -
-  else
-    setItermProfile dark &&
-    -
+  if [ "$(uname)" = "Linux" ]; then
+    echo "OS not supported"
+    return
   fi
-  # change os mode
+
   osascript -e \
-  'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
+  'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode' &> /dev/null
+
+  CURRENT_MODE=$(defaults read -g AppleInterfaceStyle 2>/dev/null || echo "Light")
+
+  if [[ "$CURRENT_MODE" == "Dark" ]]; then
+    nvim_emit 'SetDarkMode' &&
+    setTerminalProfile dark
+  else
+    nvim_emit 'SetLightMode' &&
+    setTerminalProfile light
+  fi
 }
 
 # upload screenshot from mouse selection and store url on the clipboard

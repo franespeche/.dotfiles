@@ -1,3 +1,7 @@
+vim.opt.shell = "/bin/zsh"
+
+vim.g.dark_theme = "gruvbox-material"
+vim.g.light_theme = "catppuccin-latte"
 vim.g.mapleader = ","
 vim.g.debug_mode = false
 vim.g.config_path = "/config.yaml"
@@ -10,14 +14,13 @@ vim.g["prettier#autoformat_config_present"] = 1 -- toggle the g:prettier#autofor
 require("config.lazy")
 require("config").setup()
 require("helpers")
+require("theme")
 
 -- Source any private configs
 local config_dir = vim.fn.stdpath("config")
 
-local private_files = { "private.lua", "private.vim", "local.lua" }
+local private_files = {"private.lua", "private.vim", "local.lua"}
 for _, name in ipairs(private_files) do
-  local path = config_dir .. "/" .. name
-  if vim.fn.filereadable(path) == 1 then
-    vim.cmd("source " .. path)
-  end
+    local path = config_dir .. "/" .. name
+    if vim.fn.filereadable(path) == 1 then vim.cmd("source " .. path) end
 end

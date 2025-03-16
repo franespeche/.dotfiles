@@ -1,24 +1,23 @@
 #!/bin/zsh
 
-# defaults write -g ApplePressAndHoldEnabled -bool false
 # # # # # # # # # # # #
 #    dark mode        #
 # # # # # # # # # # # #
 
-local CURRENT_MODE=$(defaults read -g AppleInterfaceStyle 2> /dev/null)
-local MODE
-# if [ "$(defaults read -g AppleInterfaceStyle)" = "Dark" ]; then
-if [[ "$CURRENT_MODE" == "Dark" ]]; then
-  MODE="dark"
-  # export ITERM_PROFILE="dark"
+local IS_DARK_MODE=false
+
+# TODO: make this OS agnostic
+if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"; then
+  IS_DARK_MODE=true
+fi
+
+if $IS_DARK_MODE; then
+  # TODO: make this terminal agnostic
   echo -e "\033]50;SetProfile=dark\a"
 else
-  MODE="light" 
-  # export ITERM_PROFILE="light"
   echo -e "\033]50;SetProfile=light\a"
 fi
-unset CURRENT_MODE
-unset MODE
+unset IS_DARK_MODE
 
 # # # # # # # # # # # #
 #         env         #
@@ -226,14 +225,14 @@ setopt auto_cd
 # linux only
 if [[ `uname` == 'Linux' ]]; then
 	# source .zsh files
-	for zsh_linux_file ($ZDOTDIR/linux/*.zsh(D)); do
+	for file ($ZDOTDIR/linux/*.zsh(D)); do
 		if [[ $1 == "-v" ]]; then
 			# verbose
-			echo "sourcing $zsh_linux_file"
+			echo "sourcing $file"
 		fi
-		source $zsh_linux_file
+		source $file
 	done
-	unset zsh_linux_file
+	unset file
 
 	# set keyboard speed
   if command -v xset > /dev/null 2>&1; then
@@ -284,3 +283,7 @@ bindkey '^Z' fancy-ctrl-z
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+# TLDR
+TLDR_AUTO_UPDATE_DISABLED=true
+

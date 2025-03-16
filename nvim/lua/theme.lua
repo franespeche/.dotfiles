@@ -1,10 +1,7 @@
 local config = require("config")
 local utils = require("config.utils")
 
-local color_scheme = "gruvbox"
-
-if vim.g.dark_theme == nil then vim.g.dark_theme = color_scheme end
-if vim.g.light_theme == nil then vim.g.light_theme = color_scheme .. "-latte" end
+local color_scheme = "gruvbox-material"
 
 -- avoid syntax inconsistencies
 if vim.g.syntax_on == nil then
@@ -23,8 +20,8 @@ if vim.g.colors_name == nil then
     if (color_scheme == "gruvbox") then
       local yellow = "#fabd2f"
       vim.cmd(
-        "highlight Search cterm=None ctermfg=214 ctermbg=235 gui=None guifg=#1d2021 guibg="
-        .. yellow)
+          "highlight Search cterm=None ctermfg=214 ctermbg=235 gui=None guifg=#1d2021 guibg="
+              .. yellow)
     end
   else
     vim.cmd("silent! colorscheme " .. vim.g.light_theme)
@@ -39,13 +36,14 @@ if not vim.o.termguicolors then vim.o.termguicolors = true end
 vim.g.one_allow_italics = 1
 local hl_comment = vim.api.nvim_get_hl(0, {
   id = vim.api.nvim_get_hl_id_by_name("Comment"),
-})
+ })
 vim.api.nvim_set_hl(0, "Comment", {
   italic = true,
   ctermfg = hl_comment.ctermfg,
   fg = hl_comment.fg,
-})
+ })
 
+--[[
 -- used in nerd-tree
 vim.cmd("highlight Directory guifg=#549699")
 vim.cmd("syntax match fbCollections /collection/")
@@ -56,3 +54,4 @@ vim.cmd("syntax match fbDocuments /document/")
 vim.cmd("highlight fbDocuments guifg=#FA8072")
 
 vim.cmd("highlight CursorLineNr guifg=#FFFFFF")
+]] -- 
