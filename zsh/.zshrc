@@ -184,15 +184,9 @@ for zsh_file ($ZDOTDIR/*.zsh(D)); do
 done
 
 
-# source alias
-if [ -d $ZDOTDIR/alias/ ]; then
-	# exit if empty
-	if [ -z "$(ls $ZDOTDIR/alias/)" ]; then
-		echo "No files in $ZDOTDIR/alias/"
-			return
-	fi
-
-	for file ($ZDOTDIR/alias/*.zsh(D)); do
+# source config
+if [ -d $ZDOTDIR/config/ ]; then
+	for file ($ZDOTDIR/config/*.zsh(D)); do
 	if [[ $1 == "-v" ]]; then
 		# verbose
 		echo "sourcing $file"
@@ -254,7 +248,6 @@ fi
 
 autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files
-source $ZDOTDIR/completion.zsh
 
 fpath=($ZDIR/plugins/zsh-completions/src $fpath)
 # if this doesnt work, try running  rm -f ~/.zcompdump; compinit
@@ -284,6 +277,6 @@ bindkey '^Z' fancy-ctrl-z
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# TLDR
+# tldr
 TLDR_AUTO_UPDATE_DISABLED=true
 
