@@ -280,3 +280,7 @@ export LC_ALL=en_US.UTF-8
 # tldr
 TLDR_AUTO_UPDATE_DISABLED=true
 
+export NVIM_BASE_SOCKET="/tmp/nvim"
+
+# setup python
+source $XDG_CONFIG_HOME/python/setup.sh
