@@ -12,6 +12,8 @@ nvim/lazy-lock.json
 nvim/config.yaml
 nvim/.env
 
+python/venv
+
 zsh/.zcompdump  
 zsh/.zsh_history  
 

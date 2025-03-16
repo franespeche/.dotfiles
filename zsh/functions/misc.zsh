@@ -1,27 +1,36 @@
 #!/bin/bash
 
-
 # # # # # # # # # # # #
 #        misc         #
 # # # # # # # # # # # #
 
 # change iterm profile
-function setTerminalProfile() {
+function set_terminal_profile() {
   if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
-    BASE_DIR="${XDG_DATA_HOME:-$HOME/.dotfiles}"
-    $XDG_CONFIG_HOME/zsh/venv/bin/python "$BASE_DIR/zsh/functions/set_iterm2_profile.py" --profile "$1" &
+    $XDG_CONFIG_HOME/python/venv/bin/python "$PYTHON_SCRIPTS_DIR/set_iterm2_profile.py" --profile "$1" &
   else
-    echo $TERM_PROGRAM 'not supported'
+    echo $TERM_PROGRAM ' not supported'
   fi
 }
 
 function nvim_emit() {
-  for socket in $(lsof -U | grep /tmp/nvim | awk '{print $NF}'); do
+  for socket in $(lsof -U | grep $NVIM_BASE_SOCKET | awk '{print $NF}'); do
     if [ -S "$socket" ]; then
-      nvim --server "$socket" --remote-send "<Cmd>doautocmd User $1<CR>" > /dev/null 2>&1
+      nvim --server "$socket" --remote-send $1 > /dev/null 2>&1
     fi
   done
 }
+
+function set_nvim_dark_mode() {
+  local autocmd
+  if [ "$1" = "dark" ]; then
+    autocmd="SetDarkMode"
+  else
+    autocmd="SetLightMode"
+  fi
+  nvim_emit "<Cmd>doautocmd User $autocmd<CR>"
+}
+
 
 # MacOS only
 function dark() {
@@ -35,13 +44,15 @@ function dark() {
 
   CURRENT_MODE=$(defaults read -g AppleInterfaceStyle 2>/dev/null || echo "Light")
 
+  local mode
   if [[ "$CURRENT_MODE" == "Dark" ]]; then
-    nvim_emit 'SetDarkMode' &&
-    setTerminalProfile dark
+    mode=dark
   else
-    nvim_emit 'SetLightMode' &&
-    setTerminalProfile light
+    mode=light
   fi
+
+  set_nvim_dark_mode "$mode" &> /dev/null &&
+  set_terminal_profile "$mode" &> /dev/null &
 }
 
 # upload screenshot from mouse selection and store url on the clipboard

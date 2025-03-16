@@ -1,4 +1,4 @@
-#!/Users/frean/.dotfiles/zsh/venv/bin/python
+#!/Users/frean/.dotfiles/python/venv/bin/python
 import iterm2
 import argparse
 
