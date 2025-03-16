@@ -353,15 +353,15 @@ return {
    },
   {
     "EdenEast/nightfox.nvim",
-    enabled = false,
+    enabled = true,
    },
   {
     "rebelot/kanagawa.nvim",
-    enabled = false,
+    enabled = true,
    },
   {
     "catppuccin/nvim",
-    enabled = false,
+    enabled = true,
    },
 
   -- UNKNOWN
