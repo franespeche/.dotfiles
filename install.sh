@@ -33,6 +33,3 @@
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' 
 # install prettier globally to avoid bugs in neovim 
 # npm install -g prettier
-
-# Rust
-# CocInstall coc-rust-analyzer
