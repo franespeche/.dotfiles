@@ -3,12 +3,11 @@
 # # # # # # # # # # # #
 
 function exec_neovim() {
-  local BASE_SOCKET="/tmp/nvim"
   local socket
 
   # Find an available socket
   for i in {1..10}; do
-    socket="${BASE_SOCKET}_${i}"
+    socket="${NVIM_BASE_SOCKET}_${i}"
     if [ ! -e "$socket" ]; then
       break
     fi
