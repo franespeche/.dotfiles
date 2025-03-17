@@ -125,21 +125,21 @@ au({
   end,
  })
 
-au({
-  "ColorScheme",
- }, {
-  callback = function()
-    local theme_name = vim.fn.expand("<amatch>")
-    local runtimepath = vim.api.nvim_list_runtime_paths()[1]
-    vim.schedule(function()
-      if (vim.g.dark_theme == nil) then return end
-      vim.g.dark_theme = theme_name
-      vim.g.light_theme = theme_name
-      vim.cmd("source " .. runtimepath .. "/lua/theme.lua")
-      vim.cmd("source " .. runtimepath .. "/lua/plugins/ui.lua")
-    end)
-  end,
- })
+-- au({
+-- "ColorScheme",
+-- }, {
+-- callback = function()
+-- local theme_name = vim.fn.expand("<amatch>")
+-- local runtimepath = vim.api.nvim_list_runtime_paths()[1]
+-- vim.schedule(function()
+-- if (vim.g.dark_theme == nil) then return end
+-- vim.g.dark_theme = theme_name
+-- vim.g.light_theme = theme_name
+-- -- vim.cmd("source " .. runtimepath .. "/lua/theme.lua")
+-- vim.cmd("source " .. runtimepath .. "/lua/plugins/ui.lua")
+-- end)
+-- end,
+-- })
 
 au("BufEnter", {
   pattern = ".lua-format",
@@ -160,6 +160,11 @@ local function set_theme(mode)
   local theme = mode == "light" and vim.g.light_theme or vim.g.dark_theme
   vim.o.background = mode
   vim.cmd("colorscheme " .. theme)
+  P({
+    "set_theme ",
+    mode,
+    theme,
+   })
 
   local ok, lualine = pcall(require, "lualine")
   if not ok then return end

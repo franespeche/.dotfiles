@@ -1,8 +1,6 @@
 local config = require("config")
 local utils = require("config.utils")
 
-local color_scheme = "gruvbox-material"
-
 -- avoid syntax inconsistencies
 if vim.g.syntax_on == nil then
   vim.cmd("syntax on")
@@ -14,8 +12,10 @@ if vim.g.colors_name == nil then
   local dark_mode = config.get("dark_mode")
   if dark_mode == "system" then dark_mode = utils.is_dark_mode() end
 
+  local color_scheme
   if dark_mode then
-    vim.cmd("silent! colorscheme " .. vim.g.dark_theme)
+    color_scheme = vim.g.dark_theme
+    vim.cmd("silent! colorscheme " .. color_scheme)
     vim.cmd("silent! set background=dark")
     if (color_scheme == "gruvbox") then
       local yellow = "#fabd2f"
@@ -24,7 +24,8 @@ if vim.g.colors_name == nil then
               .. yellow)
     end
   else
-    vim.cmd("silent! colorscheme " .. vim.g.light_theme)
+    color_scheme = vim.g.light_theme
+    vim.cmd("colorscheme " .. color_scheme)
     vim.g.gruvbox_contrast_light = "soft"
     vim.cmd("silent! set background=light")
   end

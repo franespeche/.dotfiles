@@ -1,3 +1,7 @@
+local utils = require("config.utils")
+
+local theme = utils.is_dark_mode() and vim.g.dark_theme or vim.g.light_theme
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -30,7 +34,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local theme = "gruvbox-material"
 -- Setup lazy.nvim
 require("lazy").setup({
   root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed

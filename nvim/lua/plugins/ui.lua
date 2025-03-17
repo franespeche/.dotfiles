@@ -252,8 +252,8 @@ return {
        }
       opts.options = {
         icons_enabled = true,
-        theme = config.get("dark_mode") and vim.g.dark_theme or vim.g
-            .light_theme,
+        -- theme = config.get("dark_mode") and vim.g.dark_theme or vim.g
+        -- .light_theme,
         -- section_separators = {
         -- left = "",
         -- right = "",
@@ -348,23 +348,21 @@ return {
   {
     "sainnhe/gruvbox-material",
     enabled = true,
-    priority = 1000,
-    config = function() vim.cmd.colorscheme("gruvbox-material") end,
    },
   {
     "EdenEast/nightfox.nvim",
-    enabled = true,
+    enabled = false,
    },
   {
     "rebelot/kanagawa.nvim",
-    enabled = true,
+    enabled = false,
    },
   {
     "catppuccin/nvim",
     enabled = true,
    },
 
-  -- UNKNOWN
+  -- Navigate symbols
   {
     "hedyhli/outline.nvim",
    },

@@ -1,7 +1,7 @@
 vim.opt.shell = "/bin/zsh"
 
 vim.g.dark_theme = "gruvbox-material"
-vim.g.light_theme = "catppuccin-latte"
+vim.g.light_theme = "catppuccin"
 vim.g.mapleader = ","
 vim.g.debug_mode = false
 vim.g.config_path = "/config.yaml"
