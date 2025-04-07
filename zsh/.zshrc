@@ -284,3 +284,10 @@ export NVIM_BASE_SOCKET="/tmp/nvim"
 
 # setup python
 source $XDG_CONFIG_HOME/python/setup.sh
+
+# Completion for yarn
+_yarn_scripts() {
+  local scripts=($(jq -r '.scripts | keys[]' package.json 2>/dev/null))
+  compadd -- $scripts
+}
+compdef _yarn_scripts yarn
