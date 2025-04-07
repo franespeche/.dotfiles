@@ -1,12 +1,24 @@
 return {
   "vimwiki/vimwiki",
-  init = function()
+  keys = {
+    {
+      "<leader>tl",
+      ':VimwikiToggleListItem<cr>',
+      mode = "x",
+    },
+    {
+      "<leader>tl",
+      ':VimwikiToggleListItem<cr>',
+      mode = "x",
+    },
+  },
+  init = function ()
     vim.g.vimwiki_list = {
       {
         path = "~/vimwiki/",
         syntax = "markdown",
         ext = ".md",
-       },
-     }
+      },
+    }
   end,
- }
+}

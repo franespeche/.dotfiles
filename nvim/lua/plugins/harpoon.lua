@@ -1,8 +1,8 @@
 return {
   -- anchor files for quick access
   "ThePrimeagen/harpoon",
-  enabled = false,
-  init = function()
+  enabled = true,
+  init = function ()
     require("telescope").load_extension("harpoon")
   end,
   keys = {

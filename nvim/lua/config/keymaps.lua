@@ -9,11 +9,11 @@ vim.keymap.set("n", "<leader>cd", ":cd %:h<cr> :pwd<cr>")
 vim.keymap.set({
   "v",
   "n",
- }, "<S-h>", "^")
+}, "<S-h>", "^")
 vim.keymap.set({
   "v",
   "n",
- }, "<S-l>", "$")
+}, "<S-l>", "$")
 
 -- open new tab
 vim.keymap.set("n", "<leader>tn", ":tabnew<cr>", Opts)
@@ -30,7 +30,7 @@ vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", Opts)
 vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", Opts)
 vim.keymap.set("i", "<C-l>", "<Esc>:wincmd l<cr>", Opts)
 vim.keymap.set("i", "<C-h>", "<Esc>:wincmd h<cr>", Opts)
-vim.keymap.set("i", "<C-j>", "<Esc>:wincmd j<cr>", Opts)
+-- vim.keymap.set("i", "<C-j>", "<Esc>:wincmd j<cr>", Opts)
 vim.keymap.set("i", "<C-k>", "<Esc>:wincmd k<cr>", Opts)
 
 --	splits resize
@@ -126,7 +126,7 @@ vim.keymap.set("n", "<space>O", "O<C-u>")
 
 -- exec current line (helpful for debugging)
 -- nnoremap <leader>e :exe getline(line('.'))<cr>
-vim.keymap.set("n", "<leader>e", function() return vim.cmd([[luafile %]]) end)
+vim.keymap.set("n", "<leader>e", function () return vim.cmd([[luafile %]]) end)
 
 -- repeat last substitution
 vim.keymap.set("n", "<leader>.", ":&&<cr>")
@@ -163,7 +163,7 @@ vim.keymap.set("n", "<space>}", ":bn<cr>")
 
 vim.keymap.set("i", "<C-h>", "<Esc>ha")
 vim.keymap.set("i", "<C-l>", "<Esc>la")
-vim.keymap.set("i", "<C-j>", "<Esc>ja")
+-- vim.keymap.set("i", "<C-j>", "<Esc>ja")
 vim.keymap.set("i", "<C-k>", "<Esc>ka")
 
 -- copy current buffer's file path to clipboard
@@ -172,9 +172,9 @@ vim.keymap.set("n", "<leader>cp", ":let @* = expand(\"%\")<cr>", Opts)
 -- console log snippet
 -- TODO: make this language agnostic
 vim.keymap.set("n", "<space>cl",
-               "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
+  "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
 vim.keymap.set("v", "<space>cl",
-               "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
+  "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
 
 -- go to the last cursor position before going into Visual mode
 vim.keymap.set("n", "go", "gvogvo<ESC>")
@@ -191,9 +191,9 @@ vim.keymap.set("n", "[q", ":cp<cr>")
 vim.keymap.set("n", "]q", ":cn<cr>")
 
 -- Don't lose yanked text when pasting
-vim.keymap.set("v", "p", "P")
+-- vim.keymap.set("v", "p", "P")
 -- Lose yanked text when pasting
-vim.keymap.set("v", "P", "p")
+-- vim.keymap.set("v", "P", "p")
 
 -- Normal motions for when when 'wrap' is set
 vim.keymap.set("n", "j", "gj", Opts)
