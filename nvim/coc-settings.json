@@ -1,5 +1,6 @@
 {
   "Lua.diagnostics.globals": ["vim"],
+  "typescript.preferences.importModuleSpecifier": "relative",
   "languageserver": {
     "typescript": {
       "command": "typescript-language-server",

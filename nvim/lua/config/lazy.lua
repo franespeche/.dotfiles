@@ -95,7 +95,7 @@ require("lazy").setup({
     path = "~/nvim-plugins",
     ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
     patterns = {
-      "franespeche",
+      "franespeche/",
      },
     fallback = true, -- Fallback to git when local plugin doesn't exist
    },
