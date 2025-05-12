@@ -207,3 +207,6 @@ vim.keymap.set("n", "<leader>gm", ":GitMessenger<cr>", Opts)
 vim.keymap.set("x", "<leader>gl", ":GBrowse<cr>", Opts)
 -- git blame [vim fuvitive]
 vim.keymap.set("n", "<leader>gb", ":Git blame<cr>", Opts)
+
+-- Lazy
+vim.keymap.set("n", "<leader>L", ":Lazy<cr>", Opts)
