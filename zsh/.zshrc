@@ -282,8 +282,8 @@ TLDR_AUTO_UPDATE_DISABLED=true
 
 export NVIM_BASE_SOCKET="/tmp/nvim"
 
-# setup python
-source $XDG_CONFIG_HOME/python/setup.sh
+# setup python (fails silently)
+source "$XDG_CONFIG_HOME/python/setup.sh" >/dev/null 2>&1 || true
 
 # TODO: this overrides any existing yarn completion
 # Completion for yarn
