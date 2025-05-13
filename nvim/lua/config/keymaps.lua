@@ -5,15 +5,32 @@ vim.keymap.set("n", "<leader>rr", ":so ~/.dotfiles/nvim/init.lua<cr>", Opts)
 -- see :help expand
 vim.keymap.set("n", "<leader>cd", ":cd %:h<cr> :pwd<cr>")
 
+vim.keymap.set("n", "<leader>cdr", function()
+  -- set cwd to the root of the project
+  local cwd = vim.loop.cwd()
+  local root_dir = vim.fs.find(".git", {
+    upward = true,
+    path = cwd,
+   })[1] or cwd
+  P(root_dir)
+  -- change directory
+  if root_dir then
+    vim.cmd("cd " .. vim.fs.dirname(root_dir))
+  else
+    vim.cmd("cd " .. cwd)
+  end
+  vim.cmd("pwd")
+end)
+
 -- motion
 vim.keymap.set({
   "v",
   "n",
-}, "<S-h>", "^")
+ }, "<S-h>", "^")
 vim.keymap.set({
   "v",
   "n",
-}, "<S-l>", "$")
+ }, "<S-l>", "$")
 
 -- open new tab
 vim.keymap.set("n", "<leader>tn", ":tabnew<cr>", Opts)
@@ -126,7 +143,7 @@ vim.keymap.set("n", "<space>O", "O<C-u>")
 
 -- exec current line (helpful for debugging)
 -- nnoremap <leader>e :exe getline(line('.'))<cr>
-vim.keymap.set("n", "<leader>e", function () return vim.cmd([[luafile %]]) end)
+vim.keymap.set("n", "<leader>e", function() return vim.cmd([[luafile %]]) end)
 
 -- repeat last substitution
 vim.keymap.set("n", "<leader>.", ":&&<cr>")
@@ -172,9 +189,9 @@ vim.keymap.set("n", "<leader>cp", ":let @* = expand(\"%\")<cr>", Opts)
 -- console log snippet
 -- TODO: make this language agnostic
 vim.keymap.set("n", "<space>cl",
-  "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
+               "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
 vim.keymap.set("v", "<space>cl",
-  "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
+               "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
 
 -- go to the last cursor position before going into Visual mode
 vim.keymap.set("n", "go", "gvogvo<ESC>")
