@@ -7,9 +7,18 @@ local picker = {
   config = {
     close_on_leave = true,
     close_on_select = true,
-  },
-  get_items = function (limit)
-    limit = limit or 15
+   },
+  actions = {
+    {
+      -- this is super hacky
+      name = "cycle",
+      description = "Cycle through the recent files pickers",
+      fn = function() vim.cmd("Strawberry git_worktree_recent_files") end,
+      keymap = "<space>",
+     },
+   },
+  get_items = function(limit)
+    limit = limit or 25
 
     local oldfiles = vim.v.oldfiles
     local menu_items = {}
@@ -20,16 +29,16 @@ local picker = {
       if (vim.fn.filereadable(file) == 1) then
         local menu_item = create_item({
           title = utils.get_filename(file),
-          label = function (v) return (utils.remove_home_path(v)) end,
+          label = utils.remove_home_path(file),
           value = file,
           on_select = actions.open_file,
-        })
+         })
         table.insert(menu_items, menu_item)
       end
       i = i + 1
     end
     return menu_items
   end,
-}
+ }
 
 return picker
