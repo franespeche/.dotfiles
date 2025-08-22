@@ -1,6 +1,11 @@
 local config = require("config")
 local utils = require("config.utils")
 
+local color_scheme = "kanagawa"
+
+if vim.g.dark_theme == nil then vim.g.dark_theme = color_scheme end
+if vim.g.light_theme == nil then vim.g.light_theme = color_scheme .. "-latte" end
+
 -- avoid syntax inconsistencies
 if vim.g.syntax_on == nil then
   vim.cmd("syntax on")
