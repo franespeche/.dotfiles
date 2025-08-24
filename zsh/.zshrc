@@ -292,3 +292,7 @@ source "$XDG_CONFIG_HOME/python/setup.sh" >/dev/null 2>&1 || true
   # compadd -- $scripts
 # }
 # compdef _yarn_scripts yarn
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/frean/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

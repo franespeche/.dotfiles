@@ -55,7 +55,9 @@ local function format_json()
 
   vim.api.nvim_buf_call(buf, function()
     vim.cmd("set filetype=json")
-    vim.cmd("Prettier")
+
+    vim.fn.system('prettier --write ' .. vim.fn.expand('%'))
+    vim.cmd('edit') -- Reload the file to reflect changes
   end)
 end
 
