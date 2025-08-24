@@ -177,17 +177,14 @@ return {
       local lspconfig = require("lspconfig")
       local mason_lspconfig = require("mason-lspconfig")
 
+      local map = function(mode, lhs, rhs) vim.keymap.set(mode, lhs, rhs) end
+      map("n", "gd", vim.lsp.buf.definition)
+      map("n", "<leader>ck", vim.lsp.buf.hover)
+      map("n", "<leader>rn", vim.lsp.buf.rename)
+      map("n", "<leader>ca", vim.lsp.buf.code_action)
       -- shared setup
       local on_attach = function(client, bufnr)
-        local map = function(mode, lhs, rhs)
-          vim.keymap.set(mode, lhs, rhs, {
-            buffer = bufnr,
-           })
-        end
-        map("n", "gd", vim.lsp.buf.definition)
-        map("n", "K", vim.lsp.buf.hover)
-        map("n", "<leader>rn", vim.lsp.buf.rename)
-        map("n", "<leader>ca", vim.lsp.buf.code_action)
+        print("Attached to " .. client.name)
       end
 
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -202,6 +199,7 @@ return {
         handlers = {
           -- default handler for all servers
           function(server)
+            print("Setting up " .. server)
             lspconfig[server].setup({
               on_attach = on_attach,
               capabilities = capabilities,
