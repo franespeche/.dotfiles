@@ -5,40 +5,56 @@
 # # # # # # # # # # # #
 
 # change iterm profile
-function setItermProfile(){
-  #	might be safe to remove
-  #	export ITERM_PROFILE="$1"
-  echo -e "\033]50;SetProfile=$1\a"
-}
-
-# toggle dark mode
-function dark() {
-  CURRENT_MODE=$(defaults read -g AppleInterfaceStyle 2> /dev/null)
-  if [[ "$CURRENT_MODE" == "Dark" ]]; then
-    setItermProfile light &&
-    -
+function set_terminal_profile() {
+  if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
+    $XDG_CONFIG_HOME/python/venv/bin/python "$PYTHON_SCRIPTS_DIR/set_iterm2_profile.py" --profile "$1" &
   else
-    setItermProfile dark &&
-    -
+    echo $TERM_PROGRAM ' not supported'
   fi
-  # change os mode
+}
+
+# emit command to nvim running instances
+function nvim_emit() {
+  for socket in $(lsof -U | grep $NVIM_BASE_SOCKET | awk '{print $NF}'); do
+    if [ -S "$socket" ]; then
+      nvim --server "$socket" --remote-send $1 > /dev/null 2>&1
+    fi
+  done
+}
+
+function set_nvim_dark_mode() {
+  local autocmd
+  if [ "$1" = "dark" ]; then
+    autocmd="SetDarkMode"
+  else
+    autocmd="SetLightMode"
+  fi
+  nvim_emit "<Cmd>doautocmd User $autocmd<CR>"
+  unset autocmd
+}
+
+
+# MacOS only
+function dark() {
+  if [ "$(uname)" = "Linux" ]; then
+    echo "OS not supported"
+    return
+  fi
+
   osascript -e \
-  'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
-}
+  'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode' &> /dev/null
 
-# upload screenshot from mouse selection and store url on the clipboard
-function shoot() {
-  msg "python3 $CUSTOM_SCRIPTS/screenshoot/run.py"
-  cd $CUSTOM_SCRIPTS/screenshoot
-  python3 run.py
-  -
-}
+  CURRENT_MODE=$(defaults read -g AppleInterfaceStyle 2>/dev/null || echo "Light")
 
-# make gif from .mov
-function makegif(){
-  # notes:
-  #   echo -e "\07" === tput bell
-  ffmpeg -i $1 -pix_fmt rgb8 -r 10 output.gif && gifsicle -03 output.gif -o output.gif && echo -e "\07"
+  local mode
+  if [[ "$CURRENT_MODE" == "Dark" ]]; then
+    mode=dark
+  else
+    mode=light
+  fi
+
+  set_nvim_dark_mode "$mode" &> /dev/null &&
+  set_terminal_profile "$mode" &> /dev/null &
 }
 
 # relaod zsh
@@ -61,8 +77,7 @@ function llg() {
 # print formated message
 function msg() {
 	# TODO: get number of lines $PS1 currently has
-  echo "$blue·  ➜  $yellow$1"
-  echo "·"
+  echo "${blue}·  ➜  ${yellow}$1"
   # reset terminal attributes
   tput sgr0
 }

@@ -5,15 +5,32 @@ vim.keymap.set("n", "<leader>rr", ":so ~/.dotfiles/nvim/init.lua<cr>", Opts)
 -- see :help expand
 vim.keymap.set("n", "<leader>cd", ":cd %:h<cr> :pwd<cr>")
 
+vim.keymap.set("n", "<leader>cdr", function()
+  -- set cwd to the root of the project
+  local cwd = vim.loop.cwd()
+  local root_dir = vim.fs.find(".git", {
+    upward = true,
+    path = cwd,
+   })[1] or cwd
+  P(root_dir)
+  -- change directory
+  if root_dir then
+    vim.cmd("cd " .. vim.fs.dirname(root_dir))
+  else
+    vim.cmd("cd " .. cwd)
+  end
+  vim.cmd("pwd")
+end)
+
 -- motion
 vim.keymap.set({
   "v",
   "n",
-}, "<S-h>", "^")
+ }, "<S-h>", "^")
 vim.keymap.set({
   "v",
   "n",
-}, "<S-l>", "$")
+ }, "<S-l>", "$")
 
 -- open new tab
 vim.keymap.set("n", "<leader>tn", ":tabnew<cr>", Opts)
@@ -30,7 +47,7 @@ vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", Opts)
 vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", Opts)
 vim.keymap.set("i", "<C-l>", "<Esc>:wincmd l<cr>", Opts)
 vim.keymap.set("i", "<C-h>", "<Esc>:wincmd h<cr>", Opts)
-vim.keymap.set("i", "<C-j>", "<Esc>:wincmd j<cr>", Opts)
+-- vim.keymap.set("i", "<C-j>", "<Esc>:wincmd j<cr>", Opts)
 vim.keymap.set("i", "<C-k>", "<Esc>:wincmd k<cr>", Opts)
 
 --	splits resize
@@ -126,7 +143,7 @@ vim.keymap.set("n", "<space>O", "O<C-u>")
 
 -- exec current line (helpful for debugging)
 -- nnoremap <leader>e :exe getline(line('.'))<cr>
-vim.keymap.set("n", "<leader>e", function () return vim.cmd([[luafile %]]) end)
+vim.keymap.set("n", "<leader>e", function() return vim.cmd([[luafile %]]) end)
 
 -- repeat last substitution
 vim.keymap.set("n", "<leader>.", ":&&<cr>")
@@ -163,29 +180,18 @@ vim.keymap.set("n", "<space>}", ":bn<cr>")
 
 vim.keymap.set("i", "<C-h>", "<Esc>ha")
 vim.keymap.set("i", "<C-l>", "<Esc>la")
-vim.keymap.set("i", "<C-j>", "<Esc>ja")
+-- vim.keymap.set("i", "<C-j>", "<Esc>ja")
 vim.keymap.set("i", "<C-k>", "<Esc>ka")
 
 -- copy current buffer's file path to clipboard
 vim.keymap.set("n", "<leader>cp", ":let @* = expand(\"%\")<cr>", Opts)
 
 -- console log snippet
+-- TODO: make this language agnostic
 vim.keymap.set("n", "<space>cl",
-  "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
+               "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
 vim.keymap.set("v", "<space>cl",
-  "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
-
--- Git
---
--- open tooltip with commit info
-vim.keymap.set("n", "<leader>gm", ":GitMessenger<cr>", Opts)
--- get link with the selected range (in visual mode) or to the file (in normal mode)
-vim.keymap.set("x", "<leader>gl", ":GBrowse<cr>", Opts)
--- git blame [vim fuvitive]
-vim.keymap.set("n", "<leader>gb", ":Git blame<cr>", Opts)
--- open lazygit
--- vim.keymap.set("n", "<leader>gg", ":cd %:h<cr> :LazyGit<cr>", Opts)
-vim.keymap.set("n", "<leader>gg", ":LazyGitCurrentFile<cr>", Opts)
+               "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
 
 -- go to the last cursor position before going into Visual mode
 vim.keymap.set("n", "go", "gvogvo<ESC>")
@@ -197,11 +203,27 @@ vim.keymap.set("n", "*", "*zz")
 -- Delete Boundaries (first and last line) of selected range
 vim.keymap.set("v", ",db", "<Esc>:'>d<Cr>:'<d<Cr>")
 
+-- Cycle through quickfix list
 vim.keymap.set("n", "[q", ":cp<cr>")
 vim.keymap.set("n", "]q", ":cn<cr>")
 
-vim.keymap.set("v", "p", "P")
-vim.keymap.set("v", "P", "p")
+-- Don't lose yanked text when pasting
+-- vim.keymap.set("v", "p", "P")
+-- Lose yanked text when pasting
+-- vim.keymap.set("v", "P", "p")
 
-vim.keymap.set('n', 'j', "gj", Opts)
-vim.keymap.set('n', 'k', "gk", Opts)
+-- Normal motions for when when 'wrap' is set
+vim.keymap.set("n", "j", "gj", Opts)
+vim.keymap.set("n", "k", "gk", Opts)
+
+-- Git
+--
+-- open tooltip with commit info
+vim.keymap.set("n", "<leader>gm", ":GitMessenger<cr>", Opts)
+-- get link with the selected range (in visual mode) or to the file (in normal mode)
+vim.keymap.set("x", "<leader>gl", ":GBrowse<cr>", Opts)
+-- git blame [vim fuvitive]
+vim.keymap.set("n", "<leader>gb", ":Git blame<cr>", Opts)
+
+-- Lazy
+vim.keymap.set("n", "<leader>L", ":Lazy<cr>", Opts)

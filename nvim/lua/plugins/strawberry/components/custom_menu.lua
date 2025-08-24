@@ -3,14 +3,15 @@ local create_item = require("strawberry").create_item
 local get_origin_buf = require("strawberry").get_origin_buf
 
 -- Helpers
-local get_enabled_label = function (is_enabled)
+local get_enabled_label = function(is_enabled)
   local ENABLE = " "
   local DISABLE = " "
   return is_enabled and DISABLE or ENABLE
 end
 
 local function is_copilot_enabled()
-  local status_output = vim.api.nvim_exec(":Copilot status", true)
+  local ok, status_output = pcall(vim.api.nvim_exec(":Copilot status", true))
+  if not ok then return false end
 
   local is_enabled = nil
 
@@ -52,7 +53,7 @@ local function format_json()
   local buf = get_origin_buf()
   if not buf then return end
 
-  vim.api.nvim_buf_call(buf, function ()
+  vim.api.nvim_buf_call(buf, function()
     vim.cmd("set filetype=json")
 
     vim.fn.system('prettier --write ' .. vim.fn.expand('%'))
@@ -63,33 +64,34 @@ end
 local function toggle_debug_mode()
   vim.api.nvim_exec_autocmds("User", {
     pattern = "DebugModeToggle",
-  })
+   })
 end
 
 -- Custom menu items
 local function get_menu_items()
   return {
-    {
-      title = "Copilot",
-      label = get_copilot_label(),
-      on_select = toggle_copilot,
-    },
-    {
-      title = "Git Blame",
-      label = get_line_blame_label(),
-      on_select = toggle_line_blame,
-    },
+    -- {
+    -- title = "Copilot",
+    -- label = get_copilot_label(),
+    -- on_select = toggle_copilot,
+    -- },
+    -- {
+    -- title = "Git Blame",
+    -- enabled = false,
+    -- label = get_line_blame_label,
+    -- on_select = toggle_line_blame,
+    -- },
     {
       title = "Debug Mode",
       label = get_debug_mode_label(),
       on_select = toggle_debug_mode,
-    },
+     },
     {
       title = "Format Json",
       label = "Applies json prettier format",
       on_select = format_json,
-    },
-  }
+     },
+   }
 end
 
 local picker = {
@@ -97,15 +99,15 @@ local picker = {
   config = {
     close_on_leave = true,
     close_on_select = false,
-  },
-  get_items = function ()
+   },
+  get_items = function()
     local items = {}
     for _, menu_item in ipairs(get_menu_items()) do
       local item = create_item(menu_item)
-      table.insert(items, item)
+      if item then table.insert(items, item) end
     end
     return items
   end,
-}
+ }
 
 return picker

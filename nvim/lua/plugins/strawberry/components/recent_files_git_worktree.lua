@@ -6,10 +6,19 @@ local actions = require("strawberry").actions
 local picker = {
   name = "git_worktree_recent_files",
   config = {
-    close_on_leave = true,  -- auto close the picker when an item is selected
+    close_on_leave = true, -- auto close the picker when an item is selected
     close_on_select = true, -- auto close the picker when an item is selected
-  },
-  get_items = function (limit)
+   },
+  actions = {
+    {
+      -- this is super hacky
+      name = "cycle",
+      description = "Cycle through the recent files pickers",
+      fn = function() vim.cmd("Strawberry recent_files") end,
+      keymap = "<space>",
+     },
+   },
+  get_items = function(limit)
     if (not utils.is_git_directory()) then
       error("Not inside a git working tree")
     end
@@ -29,13 +38,13 @@ local picker = {
           label = utils.remove_home_path(file),
           value = file,
           on_select = actions.open_file,
-        })
+         })
         table.insert(menu_items, menu_item)
       end
       i = i + 1
     end
     return menu_items
   end,
-}
+ }
 
 return picker
