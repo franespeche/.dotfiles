@@ -3,7 +3,6 @@ local lspconfig = require("lspconfig")
 local navic = require("nvim-navic")
 
 local on_attach = function(client, bufnr)
-  print("on_attach", client.name)
   if client.server_capabilities.documentSymbolProvider then navic.attach(client, bufnr) end
 end
 
@@ -12,7 +11,7 @@ local POETRY_VENV_PATH = os.getenv("POETRY_VENV_PATH")
 -- lua
 lspconfig.lua_ls.setup({
   on_attach = on_attach,
-  -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
   settings = {
     Lua = {
       diagnostics = {

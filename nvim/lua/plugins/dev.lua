@@ -5,31 +5,20 @@ return {
     name = "prompt-debug",
     config = function() require("prompt-debug") end,
   },
+
   -- quickfix-lint
   {
     dir = "~/nvim-plugins/quickfix-lint/",
     name = "quickfix-lint",
     config = function() require("quickfix-lint") end,
   },
+
   -- lua
-  {
-    "folke/lua-dev.nvim",
-  },
-  {
-    enabled = false,
-    "rafcamlet/nvim-luapad",
-  },
-  {
-    "milisims/nvim-luaref",
-  },
+  { "folke/neodev.nvim", enabled = true, event = "DebugModeEnable" }, -- note: this might not be needed since we are already adding $RUNTIME paths to lua_ls
+  { "milisims/nvim-luaref", ft = { "lua" } },
 
   -- vim
-  {
-    enabled = false,
-    -- debugging tools
-    "tpope/vim-scriptease",
-  },
-
+  { "tpope/vim-scriptease", enabled = true },
   -- scope context
   {
     enabled = true,

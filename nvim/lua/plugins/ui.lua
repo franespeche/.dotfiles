@@ -4,7 +4,7 @@ return {
   {
     "nvim-tree/nvim-web-devicons",
     lazy = true,
-   },
+  },
 
   -- highlight chunks
   {
@@ -12,14 +12,14 @@ return {
     opts = {
       line_num = {
         style = "#806d9c",
-       },
-     },
-   },
+      },
+    },
+  },
 
   -- highlight arguments
   {
     "m-demare/hlargs.nvim",
-   },
+  },
 
   -- highlight colors
   {
@@ -33,43 +33,40 @@ return {
         {
           label = "%-%-theme%-font%-color",
           color = "#fff",
-         },
+        },
         {
           label = "%-%-theme%-background%-color",
           color = "#23222f",
-         },
+        },
         {
           label = "%-%-theme%-primary%-color",
           color = "#0f1219",
-         },
+        },
         {
           label = "%-%-theme%-secondary%-color",
           color = "#5a5d64",
-         },
+        },
         {
           label = "%-%-theme%-contrast%-color",
           color = "#fff",
-         },
+        },
         {
           label = "%-%-theme%-accent%-color",
           color = "#55678e",
-         },
-       },
-     },
-   },
+        },
+      },
+    },
+  },
 
   -- statusline
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-     },
+    enabled = true,
+    dependencies = { "SmiteshP/nvim-navic" },
     opts = function(_, opts)
-      local config = require("config")
-
-      --  local status_icon = navic.is_available() and "  "  or "  "
       -- imports
       local navic = require("nvim-navic")
+      local ok_cfg, config = pcall(require, "config")
 
       -- system locals
       local MINIMALISTIC_WIDTH = 100
@@ -88,9 +85,7 @@ return {
       end
 
       local conditions = {
-        buffer_not_empty = function()
-          return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
-        end,
+        buffer_not_empty = function() return vim.fn.empty(vim.fn.expand("%:t")) ~= 1 end,
         hide_in_width = function(width)
           local w = width or 80
           return vim.fn.winwidth(0) > w
@@ -104,11 +99,9 @@ return {
           local winwidth = vim.api.nvim_win_get_width(0)
           return n / winwidth <= thresh
         end,
-       }
+      }
 
-      local function DynamicPath()
-        return vim.fn.winwidth(0) > 100 and vim.fn.expand("%:h") or ""
-      end
+      local function DynamicPath() return vim.fn.winwidth(0) > 100 and vim.fn.expand("%:h") or "" end
 
       local colors = {
         bg = "#262626",
@@ -116,18 +109,15 @@ return {
         dark_grey = "#6a6a6a",
         bg_light = "#404040",
         red = "#b66467",
-        green = "#",
+        green = "#88c0d0", -- set to a valid hex if you use it
         orange = "#d9bc8c",
         blue = "#8da3b9",
         magenta = "#a988b0",
         cyan = "#8ca3af",
         white = "#e8e3e3",
-        gruvbox_aqua = "#abb66f",
-        search_bg_color = vim.fn.synIDattr(vim.fn.hlID("Search"), "bg")
-            or "#000000",
-        search_fg_color = vim.fn.synIDattr(vim.fn.hlID("Search"), "fg")
-            or "#ffffff",
-       }
+        search_bg_color = vim.fn.synIDattr(vim.fn.hlID("Search"), "bg") or "#000000",
+        search_fg_color = vim.fn.synIDattr(vim.fn.hlID("Search"), "fg") or "#ffffff",
+      }
 
       -- safe check
       local status_ok = pcall(require, "lualine")
@@ -139,240 +129,167 @@ return {
         maxcount = 999,
         colored = true,
         timeout = 500,
-        -- color = {
-        -- fg = colors.search_fg_color,
-        -- bg = colors.search_bg_color,
-        -- },
-       }
+        -- color = { fg = colors.search_fg_color, bg = colors.search_bg_color },
+      }
 
       local diff = {
         "diff",
-        padding = {
-          left = 0,
-          right = 0,
-         },
-        cond = function()
-          return conditions.hide_in_width(MINIMALISTIC_WIDTH)
-        end,
-       }
+        padding = { left = 0, right = 0 },
+        cond = function() return conditions.hide_in_width(MINIMALISTIC_WIDTH) end,
+      }
 
       local diagnostics = {
         "diagnostics",
-        sources = {
-          "nvim_diagnostic",
-          "coc",
-         },
-        sections = {
-          "error",
-          "hint",
-          "warn",
-         },
-        symbols = {
-          error = " ",
-          warn = " ",
-          info = "",
-          hint = " ",
-         },
+        sources = { "nvim_diagnostic", "coc" },
+        sections = { "error", "hint", "warn" },
+        symbols = { error = " ", warn = " ", info = "", hint = " " },
         colored = false,
         update_in_insert = true,
         always_visible = false,
-        padding = {
-          left = 2,
-          right = 0,
-         },
-        cond = function()
-          return conditions.hide_in_width(MINIMALISTIC_WIDTH)
-        end,
-       }
+        padding = { left = 2, right = 0 },
+        cond = function() return conditions.hide_in_width(MINIMALISTIC_WIDTH) end,
+      }
 
       local mode = {
         "mode",
         fmt = function(str) return str:sub(1, 1) end,
         align = "right",
-        color = {
-          gui = "bold",
-         },
-       }
+        color = { gui = "bold" },
+      }
 
       local filetype = {
         "filetype",
         colored = false,
         icon_only = true,
-        padding = {
-          left = 1,
-          right = 0,
-         },
-       }
+        padding = { left = 1, right = 0 },
+      }
 
       local filename = {
         "filename",
-        padding = {
-          left = 1,
-          right = 0,
-         },
-       }
+        padding = { left = 1, right = 0 },
+        cond = conditions.buffer_not_empty,
+      }
 
       local branch = {
         "branch",
         icons_enabled = true,
         icon = "",
-        padding = {
-          left = 2,
-          right = 1,
-         },
+        padding = { left = 2, right = 1 },
         cond = function() return conditions.hide_in_width(65) end,
-       }
+      }
 
       local navic_status = {
         function()
           local status_icon = navic.is_available() and "󰗠 " or " "
           return status_icon .. "navic"
         end,
-       }
+      }
 
       local quickfix_amount_items = {
         function() return "  " .. vim.fn.len(vim.fn.getqflist()) end,
-        cond = function() return config.get("debug_mode") end,
-       }
+        cond = function() return ok_cfg and config.get("debug_mode") end,
+      }
 
       local is_debug_mode = {
-        function() return config.get("debug_mode") and " " or "" end,
-        color = {
-          fg = colors.orange,
-         },
-       }
+        function() return (ok_cfg and config.get("debug_mode")) and " " or "" end,
+        color = { fg = colors.orange },
+      }
 
       local window_id = {
         function() return " " .. vim.fn.win_getid() end,
-        cond = function() return config.get("debug_mode") end,
-       }
+        cond = function() return ok_cfg and config.get("debug_mode") end,
+      }
+
       local buf_id = {
         function() return " " .. vim.fn.bufnr() end,
-        cond = function() return config.get("debug_mode") end,
-       }
+        cond = function() return ok_cfg and config.get("debug_mode") end,
+      }
+
+      -- TOP-LEVEL KEYS (not inside options)
       opts.options = {
         icons_enabled = true,
-        -- theme = config.get("dark_mode") and vim.g.dark_theme or vim.g
-        -- .light_theme,
-        -- section_separators = {
-        -- left = "",
-        -- right = "",
-        -- },
-        section_separators = {
-          left = "",
-          right = "",
-         },
-        component_separators = {
-          left = "",
-          right = "",
-         },
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
         disabled_filetypes = {
-          "Trouble",
-          "neo-tree",
-          "quickfix",
-          statusline = {},
+          statusline = { "Trouble", "neo-tree", "quickfix" },
           winbar = {},
-         },
+        },
         ignore_focus = {},
         always_divide_middle = true,
-        globalstatus = false,
-        refresh = {
-          statusline = 1000,
-          tabline = 1000,
-          winbar = 1000,
-         },
-        sections = {
-          lualine_a = {
-            mode,
-           },
-          lualine_b = {
-            branch,
-            diff,
-           },
-          lualine_c = {
-            filetype,
-            filename,
-            -- diagnostics
-           },
-          lualine_x = {
-            DynamicPath,
-           },
-          lualine_y = {
-            progress,
-           },
-          lualine_z = {
-            "location",
-            searchcount,
-            "selectioncount",
-           },
-         },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = {
-            filename,
-           },
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = {},
-         },
-        tabline = {},
-        winbar = {
-          lualine_c = {
-            {
-              function() return navic.get_location() end,
-              cond = function() return navic.is_available() end,
-             },
-           },
-          lualine_y = {
-            window_id,
-            buf_id,
-            quickfix_amount_items,
-            is_debug_mode,
-            navic_status,
+        globalstatus = false, -- bottom statusline per-window; top UI is winbar
+        refresh = { statusline = 1000, tabline = 1000, winbar = 1000 },
+      }
 
-           },
-         },
+      opts.sections = {
+        lualine_a = { mode },
+        lualine_b = { branch, diff },
+        lualine_c = { filetype, filename },
+        lualine_x = { DynamicPath },
+        lualine_y = { progress },
+        lualine_z = { "location", searchcount, "selectioncount" },
+      }
 
-        inactive_winbar = {},
-        extensions = {},
-       }
+      opts.inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { filename },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      }
+
+      -- This is the “status bar at the top”
+      opts.winbar = {
+        lualine_c = {
+          {
+            function() return navic.get_location() end,
+            cond = function() return navic.is_available() end,
+          },
+        },
+        lualine_y = { window_id, buf_id, quickfix_amount_items, is_debug_mode, navic_status },
+      }
+
+      opts.inactive_winbar = {}
+      opts.tabline = {}
+      opts.extensions = {}
+
+      return opts
     end,
-   },
+  },
 
   -- colorschemes
   {
     "morhetz/gruvbox",
     enabled = false,
-   },
+  },
   {
     "sainnhe/gruvbox-material",
     enabled = true,
-   },
+  },
   {
     "EdenEast/nightfox.nvim",
     enabled = false,
-   },
+  },
   {
     "rebelot/kanagawa.nvim",
     enabled = false,
-   },
+  },
   {
     "catppuccin/nvim",
     enabled = true,
-   },
+  },
 
   -- Navigate symbols
   {
     "hedyhli/outline.nvim",
-   },
+  },
 
   -- breadcrumbs
   {
     "SmiteshP/nvim-navic",
     dependencies = {
       "neovim/nvim-lspconfig",
-     },
+    },
     opts = {
       icons = {
         File = " ",
@@ -401,7 +318,7 @@ return {
         Event = " ",
         Operator = " ",
         TypeParameter = " ",
-       },
+      },
       highlight = true, -- add colors to icons and text as defined by highlight groups NavicIcons*
       separator = "  ",
       click = false, -- single click to goto element, double click to open nvim-navbuddy on the clicked element
@@ -409,8 +326,8 @@ return {
       depth_limit_indicator = "..", -- icon to indicate that depth_limit was hit and the shown context is truncated
       lazy_update_context = true, -- if true, turns off context updates for the "CursorMoved" event
       safe_output = true, -- sanitize the output for use in statusline and winbar
-     },
-   },
+    },
+  },
 
   -- easily read csv
   {
@@ -425,24 +342,23 @@ return {
         "csv_pipe",
         "rfc_csv",
         "rfc_semicolon",
-       },
+      },
       cmd = {
         "RainbowDelim",
         "RainbowDelimSimple",
         "RainbowDelimQuoted",
         "RainbowMultiDelim",
-       },
-     },
-   },
+      },
+    },
+  },
 
   -- highlight symbol under cursor
   {
     "rrethy/vim-illuminate",
-   },
+  },
 
   -- highlight chunks
   {
     "shellRaining/hlchunk.nvim",
-   },
-
- }
+  },
+}

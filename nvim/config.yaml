@@ -6,7 +6,7 @@ dark_mode:
   description: "Enable dark mode"
   enum: ['system', true, false]
 debug_mode:
-  value: true
+  value: false
   description: "Enable debug mode"
 line_blame:
   value: true

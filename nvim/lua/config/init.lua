@@ -24,7 +24,6 @@ M.setup = function()
   require("config.autocommands")
   require("config.lspconfig")
   -- require "config.theme"
-  -- require "config.coc"
   require("config.git")
   require("config.keymaps")
   require("config.folds")

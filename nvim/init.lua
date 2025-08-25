@@ -3,10 +3,10 @@ vim.opt.shell = "/bin/zsh"
 vim.g.dark_theme = "gruvbox-material"
 vim.g.light_theme = "catppuccin"
 vim.g.mapleader = ","
-vim.g.debug_mode = false
+vim.g.debug_mode = falsea
 vim.g.config_path = "/config.yaml"
 
-vim.g["prettier#autoformat"] = 1                -- enable auto formatting of files that have "@format" or "@prettier" tag
+vim.g["prettier#autoformat"] = 1 -- enable auto formatting of files that have "@format" or "@prettier" tag
 vim.g["prettier#autoformat_require_pragma"] = 1 -- allow auto formatting for files without "@format" or "@prettier" tag
 vim.g["prettier#autoformat_config_present"] = 1 -- toggle the g:prettier#autoformat setting based on whether a config file can be found in the current directory or any parent directory. Note that this will override the g:prettier#autoformat setting!
 
@@ -34,3 +34,8 @@ end
 
 vim.api.nvim_set_hl(0, "PastelGreen", { bg = "#77dd77", bold = true })
 vim.api.nvim_create_user_command("Highlight", HighlightSelection, {})
+
+-- fire DebugModeEnable event
+-- if vim.g.debug_mode then vim.api.nvim_exec_autocmds("User", {
+-- pattern = "DebugModeEnable",
+-- }) end
