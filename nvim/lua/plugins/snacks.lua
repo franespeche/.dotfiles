@@ -163,7 +163,7 @@ return {
     -- Pretty vim.notify	
     notifier = {
       enabled = true,
-      timeout = 3000,
+      timeout = 30000,
       width = {
         min = 40,
         max = 0.4,
