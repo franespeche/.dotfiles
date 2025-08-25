@@ -1,17 +1,16 @@
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-local lspconfig = require "lspconfig"
-local navic = require "nvim-navic"
+local lspconfig = require("lspconfig")
+local navic = require("nvim-navic")
 
-local on_attach = function (client, bufnr)
-  if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
-  end
+local on_attach = function(client, bufnr)
+  print("on_attach", client.name)
+  if client.server_capabilities.documentSymbolProvider then navic.attach(client, bufnr) end
 end
 
 local POETRY_VENV_PATH = os.getenv("POETRY_VENV_PATH")
 
 -- lua
-lspconfig.lua_ls.setup {
+lspconfig.lua_ls.setup({
   on_attach = on_attach,
   -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
   settings = {
@@ -20,6 +19,8 @@ lspconfig.lua_ls.setup {
         globals = {
           "vim",
           "describe",
+          "Snacks",
+          "P",
         },
       },
       completion = {
@@ -28,6 +29,7 @@ lspconfig.lua_ls.setup {
       workspace = {
         library = {
           vim.fn.expand("$VIMRUNTIME/lua"),
+          vim.fn.stdpath("data") .. "/lazy", -- plugin install dir (Lazy.nvim)
           vim.fn.stdpath("config") .. "/lua",
         },
         maxPreload = 2000,
@@ -46,15 +48,15 @@ lspconfig.lua_ls.setup {
       },
     },
   },
-}
+})
 
-lspconfig.pyright.setup {
+lspconfig.pyright.setup({
   root_dir = POETRY_VENV_PATH or lspconfig.pyright.root_dir,
   settings = {
     python = {
       analysis = {
         autoSearchPaths = true,
-      }
-    }
+      },
+    },
   },
-}
+})

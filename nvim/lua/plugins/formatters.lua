@@ -4,30 +4,14 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        lua = {
-          "stylua",
-        },
-        javascript = {
-          "prettier",
-        },
-        typescript = {
-          "prettier",
-        },
-        typescriptreact = {
-          "prettier",
-        },
-        javascriptreact = {
-          "prettier",
-        },
-        python = {
-          "black",
-        },
-        terraform = {
-          "terraform_fmt",
-        },
-        json = {
-          "prettier",
-        },
+        lua = { "stylua" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        javascriptreact = { "prettier" },
+        python = { "black" },
+        terraform = { "terraform_fmt" },
+        json = { "prettier" },
       },
 
       -- format on save

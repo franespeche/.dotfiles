@@ -1,3 +1,18 @@
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT",
+      },
+      diagnostics = {
+        globals = {
+          "vim",
+          "require",
+        },
+      },
+    },
+  },
+})
 return {
   -- lspconfig: NOT NEEDED SINCE USING MASON-LSPCONFIG
   {
@@ -10,72 +25,30 @@ return {
     "williamboman/mason.nvim",
     opts = {},
   },
-
-  -- Mason <-> LSPConfig bridge
   {
     "williamboman/mason-lspconfig.nvim",
     enabled = true,
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
     },
     keys = {
-      {
-        "<leader>M",
-        "<cmd>Mason<cr>",
-        desc = "Mason",
-      },
-      {
-        "gd",
-        vim.lsp.buf.definition,
-        desc = "Go to Definition",
-      },
-      {
-        "<leader>ck",
-        vim.lsp.buf.hover,
-        desc = "Hover Documentation",
-      },
-      {
-        "<leader>rn",
-        vim.lsp.buf.rename,
-        desc = "Rename Symbol",
-      },
-      {
-        "<leader>ca",
-        vim.lsp.buf.code_action,
-        desc = "Code Action",
-      },
+      { "gd", vim.lsp.buf.definition, desc = "Go to Definition" },
+      { "<leader>M", "<cmd>Mason<cr>", desc = "Mason" },
+      { "<leader>ck", vim.lsp.buf.hover, desc = "Hover Documentation" },
+      { "<leader>rn", vim.lsp.buf.rename, desc = "Rename Symbol" },
+      { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action" },
+      { "<leader>cq", vim.diagnostic.setqflist, desc = "Put diagnostics in quickfix" },
     },
     opts = {
-      lua_ls = {
-        on_attach = function(client, bufnr)
-          -- Disable formatting for lua_ls to avoid conflicts with other formatters
-          print("holas")
-        end,
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = {
-                "vim",
-              },
-            },
-            workspace = {
-              library = vim.api.nvim_get_runtime_file("", true),
-              checkThirdParty = false,
-            },
-            telemetry = {
-              enable = false,
-            },
-          },
-        },
-      },
-
       ensure_installed = {
         "lua_ls",
         "ts_ls",
         "pyright",
         "jsonls",
       },
+      automatic_enable = true,
     },
   },
 
