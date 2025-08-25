@@ -2,6 +2,7 @@ return {
   -- prompt-debug
   {
     dir = "~/nvim-plugins/prompt-debug/",
+    enabled = false,
     name = "prompt-debug",
     config = function() require("prompt-debug") end,
   },
@@ -10,6 +11,7 @@ return {
   {
     dir = "~/nvim-plugins/quickfix-lint/",
     name = "quickfix-lint",
+    enabled = false,
     config = function() require("quickfix-lint") end,
   },
 
@@ -21,7 +23,7 @@ return {
   { "tpope/vim-scriptease", enabled = true },
   -- scope context
   {
-    enabled = true,
+    enabled = false, -- TODO: enabling this causes pain with mini.jump
     "nvim-treesitter/nvim-treesitter-context",
   },
 }

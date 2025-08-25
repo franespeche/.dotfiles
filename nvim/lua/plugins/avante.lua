@@ -1,7 +1,7 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  enabled = true,
+  enabled = false,
   lazy = false,
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   opts = {
@@ -16,8 +16,8 @@ return {
         extra_request_body = {
           temperature = 0.75,
           max_tokens = 20480,
-         },
-       },
+        },
+      },
       moonshot = {
         endpoint = "https://api.moonshot.ai/v1",
         model = "kimi-k2-0711-preview",
@@ -25,10 +25,10 @@ return {
         extra_request_body = {
           temperature = 0.75,
           max_tokens = 32768,
-         },
-       },
-     },
-   },
+        },
+      },
+    },
+  },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
@@ -70,12 +70,12 @@ return {
         file_types = {
           "markdown",
           "Avante",
-         },
-       },
+        },
+      },
       ft = {
         "markdown",
         "Avante",
-       },
-     },
-   },
- }
+      },
+    },
+  },
+}
