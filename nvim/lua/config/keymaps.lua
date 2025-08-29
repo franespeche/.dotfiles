@@ -11,7 +11,7 @@ vim.keymap.set("n", "<leader>cdr", function()
   local root_dir = vim.fs.find(".git", {
     upward = true,
     path = cwd,
-   })[1] or cwd
+  })[1] or cwd
   P(root_dir)
   -- change directory
   if root_dir then
@@ -26,11 +26,11 @@ end)
 vim.keymap.set({
   "v",
   "n",
- }, "<S-h>", "^")
+}, "<S-h>", "^")
 vim.keymap.set({
   "v",
   "n",
- }, "<S-l>", "$")
+}, "<S-l>", "$")
 
 -- open new tab
 vim.keymap.set("n", "<leader>tn", ":tabnew<cr>", Opts)
@@ -40,11 +40,12 @@ vim.keymap.set("n", "<leader>tq", ":tabclose<cr>", Opts)
 vim.keymap.set("n", "<leader>l", ":vsp<cr>", Opts)
 vim.keymap.set("n", "<leader>j", ":sp<cr>", Opts)
 
+-- this is set in coding.lua
+-- vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", Opts)
+-- vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", Opts)
+-- vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", Opts)
+-- vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", Opts)
 -- splits navigatekeymaps
-vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", Opts)
-vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", Opts)
-vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", Opts)
-vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", Opts)
 vim.keymap.set("i", "<C-l>", "<Esc>:wincmd l<cr>", Opts)
 vim.keymap.set("i", "<C-h>", "<Esc>:wincmd h<cr>", Opts)
 -- vim.keymap.set("i", "<C-j>", "<Esc>:wincmd j<cr>", Opts)
@@ -74,16 +75,16 @@ vim.keymap.set("n", "<leader>C", ":Copilot disable<cr>")
 -- insert line
 vim.keymap.set("i", "<C-o>", "<Esc>o")
 -- paste from system clipboard
-vim.keymap.set("i", "<C-p>", "<Esc>\"+pa")
+vim.keymap.set("i", "<C-p>", '<Esc>"+pa')
 
 -- start a substitute
 vim.keymap.set("n", "<leader>ss", ":%s#\\v")
 -- start a substitute inside the selected range only
 vim.keymap.set("v", "<leader>ss", ":<C-u>%s#\\%V\\v")
 -- subsitute word under " register
-vim.keymap.set("n", "<lmmmmm><space>s", ":<C-u>%s#<C-r>\"#")
+vim.keymap.set("n", "<lmmmmm><space>s", ':<C-u>%s#<C-r>"#')
 -- subsitute word under " register inside the selected range
-vim.keymap.set("v", "<leader><space>s", ":<C-u>%s#\\%V\\v<C-r>\"#")
+vim.keymap.set("v", "<leader><space>s", ':<C-u>%s#\\%V\\v<C-r>"#')
 -- substitute cword
 -- (note that boundaries are being added "\\<" "\\>")
 vim.keymap.set("n", "<leader>sw", ":%s#\\<<C-r><C-w>\\>#")
@@ -92,7 +93,7 @@ vim.keymap.set("v", "<leader>sw", ":<C-u>%s#\\%V\\<<C-r><C-w>\\>#") -- nnoremap 
 -- search within selection
 vim.keymap.set("v", "/", "<ESC>/\\%V")
 -- search selected text
-vim.keymap.set("v", "//", "y/<C-R>=escape(@\",'/\')<CR>")
+vim.keymap.set("v", "//", "y/<C-R>=escape(@\",'/')<CR>")
 -- substitute selected text
 -- vim.keymap.set("v", "<leader>sw", "\"hy:%s#\\V<C-r>h##g<left><left>")
 
@@ -184,14 +185,12 @@ vim.keymap.set("i", "<C-l>", "<Esc>la")
 vim.keymap.set("i", "<C-k>", "<Esc>ka")
 
 -- copy current buffer's file path to clipboard
-vim.keymap.set("n", "<leader>cp", ":let @* = expand(\"%\")<cr>", Opts)
+vim.keymap.set("n", "<leader>cp", ':let @* = expand("%")<cr>', Opts)
 
 -- console log snippet
 -- TODO: make this language agnostic
-vim.keymap.set("n", "<space>cl",
-               "viw\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
-vim.keymap.set("v", "<space>cl",
-               "\"adiconsole.log()<ESC>F(\"apviwyea, <ESC>pbbbi\"<ESC>ea\"<ESC>")
+vim.keymap.set("n", "<space>cl", 'viw"adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>')
+vim.keymap.set("v", "<space>cl", '"adiconsole.log()<ESC>F("apviwyea, <ESC>pbbbi"<ESC>ea"<ESC>')
 
 -- go to the last cursor position before going into Visual mode
 vim.keymap.set("n", "go", "gvogvo<ESC>")
