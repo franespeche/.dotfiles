@@ -2,6 +2,21 @@
   "Lua.diagnostics.globals": ["vim", "P", "Snacks"],
   "typescript.preferences.importModuleSpecifier": "relative",
   "languageserver": {
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": [
+        "compile_flags.txt",
+        "compile_commands.json",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/clangd"
+        }
+      }
+    },
     "typescript": {
       "command": "typescript-language-server",
       "args": ["--stdio"],
