@@ -1,5 +1,7 @@
 *.logs
 
+ai-tools
+
 nvim/TODO.txt
 nvim/TODO.md
 nvim/private.vim
